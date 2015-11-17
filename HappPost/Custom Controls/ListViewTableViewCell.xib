@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListCell" id="KGk-i7-Jjw" customClass="ListViewTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdC-fo-p5b">
+                        <rect key="frame" x="8" y="8" width="304" height="133"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9oY-UF-rPv">
+                                <rect key="frame" x="8" y="8" width="72" height="117"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="117" id="VXX-kf-fZ1"/>
+                                    <constraint firstAttribute="width" constant="72" id="rKV-Y1-T0r"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum dolor sit amet dolor sit amet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5I-zk-XrS">
+                                <rect key="frame" x="88" y="8" width="216" height="46"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="8nz-VT-aeP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 MIN" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iy7-0V-E38">
+                                <rect key="frame" x="206" y="107" width="90" height="18"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="hA3-5O-n8e"/>
+                                    <constraint firstAttribute="width" constant="90" id="vsr-yX-g9u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum dolor sit amet dolor sit amet lorem ipsumn sada" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBU-Mr-HWD">
+                                <rect key="frame" x="88" y="62" width="216" height="35"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="xnV-Z6-lLl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9oY-UF-rPv" firstAttribute="leading" secondItem="gdC-fo-p5b" secondAttribute="leading" constant="8" id="6lx-Cl-iOR"/>
+                            <constraint firstItem="iy7-0V-E38" firstAttribute="top" secondItem="nBU-Mr-HWD" secondAttribute="bottom" constant="10" id="KfZ-26-GAr"/>
+                            <constraint firstItem="v5I-zk-XrS" firstAttribute="top" secondItem="gdC-fo-p5b" secondAttribute="top" constant="8" id="f14-Yg-Pdm"/>
+                            <constraint firstItem="v5I-zk-XrS" firstAttribute="leading" secondItem="9oY-UF-rPv" secondAttribute="trailing" constant="8" id="fIK-Kt-cCe"/>
+                            <constraint firstItem="nBU-Mr-HWD" firstAttribute="top" secondItem="v5I-zk-XrS" secondAttribute="bottom" constant="8" id="feM-cp-Ii5"/>
+                            <constraint firstAttribute="trailing" secondItem="nBU-Mr-HWD" secondAttribute="trailing" id="fy6-ln-6Ks"/>
+                            <constraint firstItem="nBU-Mr-HWD" firstAttribute="leading" secondItem="9oY-UF-rPv" secondAttribute="trailing" constant="8" id="pAB-VT-JBM"/>
+                            <constraint firstAttribute="trailing" secondItem="iy7-0V-E38" secondAttribute="trailing" constant="8" id="qHd-IS-taa"/>
+                            <constraint firstItem="9oY-UF-rPv" firstAttribute="top" secondItem="gdC-fo-p5b" secondAttribute="top" constant="8" id="vuu-za-Y0b"/>
+                            <constraint firstAttribute="trailing" secondItem="v5I-zk-XrS" secondAttribute="trailing" id="yKx-yG-BWX"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="gdC-fo-p5b" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="VxR-mb-c0P"/>
+                    <constraint firstItem="gdC-fo-p5b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="aEg-XI-LWH"/>
+                    <constraint firstItem="gdC-fo-p5b" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="e93-Vo-QEX"/>
+                    <constraint firstItem="gdC-fo-p5b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="xus-t9-Ftb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="newsDescription" destination="nBU-Mr-HWD" id="rq6-GZ-vr6"/>
+                <outlet property="newsHeading" destination="v5I-zk-XrS" id="ED4-aO-WjD"/>
+                <outlet property="newsImgView" destination="9oY-UF-rPv" id="CnY-jD-PnK"/>
+                <outlet property="newsTime" destination="iy7-0V-E38" id="ER1-lc-CW6"/>
+                <outlet property="newsView" destination="gdC-fo-p5b" id="SFB-Tb-JRl"/>
+            </connections>
+            <point key="canvasLocation" x="245" y="312"/>
+        </tableViewCell>
+    </objects>
+</document>
