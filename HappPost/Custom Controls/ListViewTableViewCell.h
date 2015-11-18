@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *newsDescription;
 @property (weak, nonatomic) IBOutlet UILabel *newsTime;
 @property (weak, nonatomic) IBOutlet UIView *newsView;
+@property (weak, nonatomic) IBOutlet UIImageView *borderImgView;
 
 @end

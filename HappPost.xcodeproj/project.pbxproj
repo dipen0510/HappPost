@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18908A7C1BFCFD9E008A7252 /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = 18908A7B1BFCFD9E008A7252 /* border.png */; };
 		18BDF7711BFBA4EB003B7D7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDF7701BFBA4EB003B7D7D /* main.m */; };
 		18BDF7741BFBA4EB003B7D7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDF7731BFBA4EB003B7D7D /* AppDelegate.m */; };
 		18BDF7771BFBA4EB003B7D7D /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDF7761BFBA4EB003B7D7D /* ListViewController.m */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18908A7B1BFCFD9E008A7252 /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border.png; sourceTree = "<group>"; };
 		18BDF76B1BFBA4EB003B7D7D /* HappPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BDF76F1BFBA4EB003B7D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18BDF7701BFBA4EB003B7D7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		18BDF7951BFBA88A003B7D7D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18908A7B1BFCFD9E008A7252 /* border.png */,
 				18BDF7C01BFBB2E8003B7D7D /* tmp1.png */,
 				18BDF7C11BFBB2E8003B7D7D /* tmp2.png */,
 				18BDF7C21BFBB2E8003B7D7D /* tmp3.png */,
@@ -307,6 +310,7 @@
 				18BDF7AE1BFBA88A003B7D7D /* india.png in Resources */,
 				18BDF7C61BFBB2E8003B7D7D /* tmp3.png in Resources */,
 				18BDF7AD1BFBA88A003B7D7D /* icnMenu.png in Resources */,
+				18908A7C1BFCFD9E008A7252 /* border.png in Resources */,
 				18BDF7AF1BFBA88A003B7D7D /* lifestyle.png in Resources */,
 				18BDF7C41BFBB2E8003B7D7D /* tmp1.png in Resources */,
 				18BDF7C51BFBB2E8003B7D7D /* tmp2.png in Resources */,
@@ -532,6 +536,7 @@
 				18BDF7901BFBA4EB003B7D7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18BDF7911BFBA4EB003B7D7D /* Build configuration list for PBXNativeTarget "HappPostTests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +545,7 @@
 				18BDF7931BFBA4EB003B7D7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -11,6 +11,7 @@
 @interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *listTblView;
+- (IBAction)switchViewButtonTapped:(id)sender;
 
 @end
 

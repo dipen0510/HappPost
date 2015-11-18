@@ -56,12 +56,20 @@
                                 <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="border.png" translatesAutoresizingMaskIntoConstraints="NO" id="bgU-aq-bOp">
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="133"/>
+                                <animations/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9oY-UF-rPv" firstAttribute="leading" secondItem="gdC-fo-p5b" secondAttribute="leading" constant="8" id="6lx-Cl-iOR"/>
+                            <constraint firstItem="bgU-aq-bOp" firstAttribute="leading" secondItem="gdC-fo-p5b" secondAttribute="leading" id="96D-33-Oue"/>
+                            <constraint firstAttribute="bottom" secondItem="bgU-aq-bOp" secondAttribute="bottom" id="9sk-K2-W6W"/>
                             <constraint firstItem="iy7-0V-E38" firstAttribute="top" secondItem="nBU-Mr-HWD" secondAttribute="bottom" constant="10" id="KfZ-26-GAr"/>
+                            <constraint firstAttribute="trailing" secondItem="bgU-aq-bOp" secondAttribute="trailing" id="OWj-gP-Nbj"/>
+                            <constraint firstItem="bgU-aq-bOp" firstAttribute="top" secondItem="gdC-fo-p5b" secondAttribute="top" id="T03-fC-T1U"/>
                             <constraint firstItem="v5I-zk-XrS" firstAttribute="top" secondItem="gdC-fo-p5b" secondAttribute="top" constant="8" id="f14-Yg-Pdm"/>
                             <constraint firstItem="v5I-zk-XrS" firstAttribute="leading" secondItem="9oY-UF-rPv" secondAttribute="trailing" constant="8" id="fIK-Kt-cCe"/>
                             <constraint firstItem="nBU-Mr-HWD" firstAttribute="top" secondItem="v5I-zk-XrS" secondAttribute="bottom" constant="8" id="feM-cp-Ii5"/>
@@ -83,6 +91,7 @@
             </tableViewCellContentView>
             <animations/>
             <connections>
+                <outlet property="borderImgView" destination="bgU-aq-bOp" id="8dq-Ox-IiF"/>
                 <outlet property="newsDescription" destination="nBU-Mr-HWD" id="rq6-GZ-vr6"/>
                 <outlet property="newsHeading" destination="v5I-zk-XrS" id="ED4-aO-WjD"/>
                 <outlet property="newsImgView" destination="9oY-UF-rPv" id="CnY-jD-PnK"/>
@@ -92,4 +101,7 @@
             <point key="canvasLocation" x="245" y="312"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="border.png" width="900" height="372"/>
+    </resources>
 </document>

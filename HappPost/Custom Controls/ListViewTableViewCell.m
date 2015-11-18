@@ -13,11 +13,10 @@
 - (void)awakeFromNib {
     // Initialization code
     
-    self.newsView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    self.newsView.layer.borderWidth = 1.0;
-    self.newsView.layer.cornerRadius = 10.0;
     self.newsImgView.layer.cornerRadius = 10.0;
     self.newsImgView.layer.masksToBounds = YES;
+    self.borderImgView.layer.zPosition = -1;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

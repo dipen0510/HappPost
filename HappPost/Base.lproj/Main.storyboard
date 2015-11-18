@@ -39,18 +39,35 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLr-vW-jq1">
+                                        <rect key="frame" x="35" y="26" width="150" height="25"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="fUm-9u-34X"/>
+                                            <constraint firstAttribute="height" constant="25" id="hn0-DD-lXC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <state key="normal" title="Switch to card View">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="switchViewButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="uTm-ec-VDW"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.98431372549019602" green="0.75686274509803919" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="LbE-Ku-2Zt" firstAttribute="top" secondItem="0DI-J3-uYg" secondAttribute="top" constant="21" id="7cn-We-bWD"/>
                                     <constraint firstAttribute="trailing" secondItem="LbE-Ku-2Zt" secondAttribute="trailing" constant="8" id="Awn-LA-yEt"/>
+                                    <constraint firstItem="lLr-vW-jq1" firstAttribute="leading" secondItem="Ct8-ap-xsm" secondAttribute="trailing" constant="8" id="FG8-1K-eBq"/>
                                     <constraint firstAttribute="height" constant="64" id="FeM-6R-HNO"/>
+                                    <constraint firstItem="lLr-vW-jq1" firstAttribute="top" secondItem="0DI-J3-uYg" secondAttribute="top" constant="26" id="I4O-rp-YNV"/>
                                     <constraint firstItem="Ct8-ap-xsm" firstAttribute="leading" secondItem="0DI-J3-uYg" secondAttribute="leading" constant="8" id="NfT-Dw-Hay"/>
                                     <constraint firstItem="Ct8-ap-xsm" firstAttribute="top" secondItem="0DI-J3-uYg" secondAttribute="top" constant="32" id="jPo-gx-7Oe"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IbG-Di-psK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IbG-Di-psK">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
