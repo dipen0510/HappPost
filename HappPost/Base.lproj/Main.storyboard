@@ -92,11 +92,99 @@
                     <navigationItem key="navigationItem" id="V5j-gI-DsM"/>
                     <connections>
                         <outlet property="listTblView" destination="IbG-Di-psK" id="2pf-Vg-DQ2"/>
+                        <segue destination="4lm-Rr-60S" kind="show" identifier="showCardViewSegue" id="A0z-bs-JaG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1206" y="-399"/>
+        </scene>
+        <!--Card View Controller-->
+        <scene sceneID="ib0-cB-DDo">
+            <objects>
+                <viewController id="4lm-Rr-60S" customClass="CardViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="au4-Dx-LkV"/>
+                        <viewControllerLayoutGuide type="bottom" id="0oA-ai-j9S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r2Q-0d-NEx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xih-hJ-FEz" customClass="JT3DScrollView">
+                                <rect key="frame" x="16" y="72" width="568" height="508"/>
+                                <animations/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mO2-rx-3jq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="titleLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Olz-QA-S7R">
+                                        <rect key="frame" x="553" y="21" width="39" height="35"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="NQL-qT-II3"/>
+                                            <constraint firstAttribute="width" constant="39" id="QPE-Qa-5Zw"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6A-Zj-WVi">
+                                        <rect key="frame" x="8" y="32" width="19" height="14"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="kwV-Jb-0sf"/>
+                                            <constraint firstAttribute="width" constant="19" id="tZS-GU-yaS"/>
+                                        </constraints>
+                                        <state key="normal" image="icnMenu.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80t-ld-Y7a">
+                                        <rect key="frame" x="35" y="26" width="150" height="25"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="Dob-X2-8cg"/>
+                                            <constraint firstAttribute="height" constant="25" id="qXd-0Q-jqt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <state key="normal" title="Switch to list View">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="listViewButtonTapped:" destination="4lm-Rr-60S" eventType="touchUpInside" id="rh2-UN-u5q"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.98431372549999996" green="0.75686274509999996" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="f6A-Zj-WVi" secondAttribute="bottom" constant="18" id="4aT-dc-BFx"/>
+                                    <constraint firstAttribute="height" constant="64" id="7k8-dn-LNz"/>
+                                    <constraint firstAttribute="trailing" secondItem="Olz-QA-S7R" secondAttribute="trailing" constant="8" id="EKc-N3-AdT"/>
+                                    <constraint firstItem="80t-ld-Y7a" firstAttribute="leading" secondItem="f6A-Zj-WVi" secondAttribute="trailing" constant="8" id="HLv-oO-7UX"/>
+                                    <constraint firstAttribute="bottom" secondItem="80t-ld-Y7a" secondAttribute="bottom" constant="13" id="Oo8-a1-hjx"/>
+                                    <constraint firstAttribute="bottom" secondItem="Olz-QA-S7R" secondAttribute="bottom" constant="8" id="oyr-K6-yyY"/>
+                                    <constraint firstItem="f6A-Zj-WVi" firstAttribute="leading" secondItem="mO2-rx-3jq" secondAttribute="leading" constant="8" id="vR1-BS-nO5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mO2-rx-3jq" firstAttribute="leading" secondItem="r2Q-0d-NEx" secondAttribute="leadingMargin" constant="-16" id="J2G-Kc-p1x"/>
+                            <constraint firstItem="Xih-hJ-FEz" firstAttribute="leading" secondItem="r2Q-0d-NEx" secondAttribute="leadingMargin" id="Tb4-pA-ojh"/>
+                            <constraint firstItem="Xih-hJ-FEz" firstAttribute="trailing" secondItem="r2Q-0d-NEx" secondAttribute="trailingMargin" id="Xq1-44-YFf"/>
+                            <constraint firstItem="mO2-rx-3jq" firstAttribute="top" secondItem="r2Q-0d-NEx" secondAttribute="topMargin" id="ZJr-Jc-kEk"/>
+                            <constraint firstItem="0oA-ai-j9S" firstAttribute="top" secondItem="Xih-hJ-FEz" secondAttribute="bottom" constant="20" id="fo5-vy-p8Z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mO2-rx-3jq" secondAttribute="trailing" constant="-16" id="irj-w5-wec"/>
+                            <constraint firstItem="Xih-hJ-FEz" firstAttribute="top" secondItem="mO2-rx-3jq" secondAttribute="bottom" constant="8" id="tb0-r5-oUY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="Xih-hJ-FEz" id="Yv4-aN-1SE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PWc-d1-Ycb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1991" y="-399"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="i33-7V-XFe">

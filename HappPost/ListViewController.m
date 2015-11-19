@@ -59,5 +59,6 @@
 }
 
 - (IBAction)switchViewButtonTapped:(id)sender {
+    [self performSegueWithIdentifier:@"showCardViewSegue" sender:nil];
 }
 @end

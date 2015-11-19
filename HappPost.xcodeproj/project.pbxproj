@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18049F421BFE59C500A5B5C5 /* JT3DScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18049F411BFE59C500A5B5C5 /* JT3DScrollView.m */; };
+		18049F451BFE5A3E00A5B5C5 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18049F441BFE5A3E00A5B5C5 /* CardViewController.m */; };
+		180899011BFE760500E5A4F4 /* tmp5.png in Resources */ = {isa = PBXBuildFile; fileRef = 180899001BFE760500E5A4F4 /* tmp5.png */; };
+		180899031BFE765F00E5A4F4 /* tmp6.png in Resources */ = {isa = PBXBuildFile; fileRef = 180899021BFE765F00E5A4F4 /* tmp6.png */; };
 		18908A7C1BFCFD9E008A7252 /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = 18908A7B1BFCFD9E008A7252 /* border.png */; };
 		18BDF7711BFBA4EB003B7D7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDF7701BFBA4EB003B7D7D /* main.m */; };
 		18BDF7741BFBA4EB003B7D7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDF7731BFBA4EB003B7D7D /* AppDelegate.m */; };
@@ -52,6 +56,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18049F401BFE59C500A5B5C5 /* JT3DScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JT3DScrollView.h; sourceTree = "<group>"; };
+		18049F411BFE59C500A5B5C5 /* JT3DScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JT3DScrollView.m; sourceTree = "<group>"; };
+		18049F431BFE5A3E00A5B5C5 /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
+		18049F441BFE5A3E00A5B5C5 /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
+		180899001BFE760500E5A4F4 /* tmp5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp5.png; sourceTree = "<group>"; };
+		180899021BFE765F00E5A4F4 /* tmp6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp6.png; sourceTree = "<group>"; };
 		18908A7B1BFCFD9E008A7252 /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border.png; sourceTree = "<group>"; };
 		18BDF76B1BFBA4EB003B7D7D /* HappPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BDF76F1BFBA4EB003B7D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +121,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18049F3E1BFE59C500A5B5C5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				18049F3F1BFE59C500A5B5C5 /* JT3DScrollView */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		18049F3F1BFE59C500A5B5C5 /* JT3DScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				18049F401BFE59C500A5B5C5 /* JT3DScrollView.h */,
+				18049F411BFE59C500A5B5C5 /* JT3DScrollView.m */,
+			);
+			path = JT3DScrollView;
+			sourceTree = "<group>";
+		};
 		18BDF7621BFBA4EA003B7D7D = {
 			isa = PBXGroup;
 			children = (
@@ -132,12 +159,15 @@
 		18BDF76D1BFBA4EB003B7D7D /* HappPost */ = {
 			isa = PBXGroup;
 			children = (
+				18049F3E1BFE59C500A5B5C5 /* Helpers */,
 				18BDF7BA1BFBAB5D003B7D7D /* Custom Controls */,
 				18BDF7951BFBA88A003B7D7D /* Resources */,
 				18BDF7721BFBA4EB003B7D7D /* AppDelegate.h */,
 				18BDF7731BFBA4EB003B7D7D /* AppDelegate.m */,
 				18BDF7751BFBA4EB003B7D7D /* ListViewController.h */,
 				18BDF7761BFBA4EB003B7D7D /* ListViewController.m */,
+				18049F431BFE5A3E00A5B5C5 /* CardViewController.h */,
+				18049F441BFE5A3E00A5B5C5 /* CardViewController.m */,
 				18BDF7781BFBA4EB003B7D7D /* Main.storyboard */,
 				18BDF77B1BFBA4EB003B7D7D /* Images.xcassets */,
 				18BDF77D1BFBA4EB003B7D7D /* LaunchScreen.xib */,
@@ -175,6 +205,8 @@
 		18BDF7951BFBA88A003B7D7D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				180899021BFE765F00E5A4F4 /* tmp6.png */,
+				180899001BFE760500E5A4F4 /* tmp5.png */,
 				18908A7B1BFCFD9E008A7252 /* border.png */,
 				18BDF7C01BFBB2E8003B7D7D /* tmp1.png */,
 				18BDF7C11BFBB2E8003B7D7D /* tmp2.png */,
@@ -299,6 +331,7 @@
 				18BDF7A91BFBA88A003B7D7D /* check.png in Resources */,
 				18BDF77F1BFBA4EB003B7D7D /* LaunchScreen.xib in Resources */,
 				18BDF7B31BFBA88A003B7D7D /* splash.png in Resources */,
+				180899011BFE760500E5A4F4 /* tmp5.png in Resources */,
 				18BDF7AB1BFBA88A003B7D7D /* entertainment.png in Resources */,
 				18BDF7B81BFBA88A003B7D7D /* trending.png in Resources */,
 				18BDF7B21BFBA88A003B7D7D /* special.png in Resources */,
@@ -306,6 +339,7 @@
 				18BDF7B61BFBA88A003B7D7D /* switchView.png in Resources */,
 				18BDF7B41BFBA88A003B7D7D /* sports.png in Resources */,
 				18BDF77C1BFBA4EB003B7D7D /* Images.xcassets in Resources */,
+				180899031BFE765F00E5A4F4 /* tmp6.png in Resources */,
 				18BDF7B01BFBA88A003B7D7D /* radio.png in Resources */,
 				18BDF7AE1BFBA88A003B7D7D /* india.png in Resources */,
 				18BDF7C61BFBB2E8003B7D7D /* tmp3.png in Resources */,
@@ -336,6 +370,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18049F451BFE5A3E00A5B5C5 /* CardViewController.m in Sources */,
+				18049F421BFE59C500A5B5C5 /* JT3DScrollView.m in Sources */,
 				18BDF7BE1BFBAB8F003B7D7D /* ListViewTableViewCell.m in Sources */,
 				18BDF7771BFBA4EB003B7D7D /* ListViewController.m in Sources */,
 				18BDF7741BFBA4EB003B7D7D /* AppDelegate.m in Sources */,
