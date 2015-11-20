@@ -37,6 +37,14 @@
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+    [self.scrollView removeFromSuperview];
+    
+}
+
 - (void)createCardWithColor
 {
     CGFloat width = CGRectGetWidth(self.scrollView.frame);
@@ -73,12 +81,30 @@
     UILabel* headingLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, imgView.frame.size.height + 10, width - 40, 60.)];
     headingLabel.textColor = [UIColor blackColor];
     headingLabel.text = @"Lorem ipsum dolor sit amet consectr adipisicing elit";
-    headingLabel.font = [UIFont boldSystemFontOfSize:20.0];
+    headingLabel.font = [UIFont boldSystemFontOfSize:18.0];
     headingLabel.numberOfLines = 2;
+    
+    UILabel* authorLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, headingLabel.frame.origin.y + 60, width - 40, 30.)];
+    authorLabel.textColor = [UIColor lightGrayColor];
+    authorLabel.text = @"Swapnil Harkanth";
+    authorLabel.font = [UIFont boldSystemFontOfSize:14.0];
+    
+    UIView* lineView = [[UIView alloc] initWithFrame:CGRectMake(20, authorLabel.frame.origin.y + 30, 100, 3.)];
+    [lineView setBackgroundColor:[UIColor whiteColor]];
+    
+    UILabel* descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, lineView.frame.origin.y + 10 , width - 30, height - (lineView.frame.origin.y + 40))];
+    descriptionLabel.textColor = [UIColor blackColor];
+    descriptionLabel.text = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, officia";
+    descriptionLabel.font = [UIFont systemFontOfSize:16.0];
+    descriptionLabel.numberOfLines = 20;
+
     
     [view addSubview:imgView];
     [view addSubview:imgLabel];
     [view addSubview:headingLabel];
+    [view addSubview:authorLabel];
+    [view addSubview:lineView];
+    [view addSubview:descriptionLabel];
     
     [self.scrollView addSubview:view];
     self.scrollView.contentSize = CGSizeMake(x + width, height);
