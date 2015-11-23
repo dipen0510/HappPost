@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *listTblView;
 - (IBAction)switchViewButtonTapped:(id)sender;
+- (IBAction)menuButtonTapped:(id)sender;
 
 @end
 

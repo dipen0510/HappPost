@@ -22,6 +22,10 @@
 		182B20DC1C010685000AD63D /* nature6.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B20D41C010685000AD63D /* nature6.png */; };
 		182B20DD1C010685000AD63D /* nature7.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B20D51C010685000AD63D /* nature7.png */; };
 		182B20DE1C010685000AD63D /* nature8.png in Resources */ = {isa = PBXBuildFile; fileRef = 182B20D61C010685000AD63D /* nature8.png */; };
+		187197231C039BF700ACC58B /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 187197221C039BF700ACC58B /* MenuView.m */; };
+		187197251C039C0500ACC58B /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187197241C039C0500ACC58B /* MenuView.xib */; };
+		187197291C03A7B600ACC58B /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187197271C03A7B600ACC58B /* MenuTableViewCell.m */; };
+		1871972A1C03A7B600ACC58B /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187197281C03A7B600ACC58B /* MenuTableViewCell.xib */; };
 		18908A7C1BFCFD9E008A7252 /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = 18908A7B1BFCFD9E008A7252 /* border.png */; };
 		18BDF7711BFBA4EB003B7D7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDF7701BFBA4EB003B7D7D /* main.m */; };
 		18BDF7741BFBA4EB003B7D7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDF7731BFBA4EB003B7D7D /* AppDelegate.m */; };
@@ -87,6 +91,12 @@
 		182B20D41C010685000AD63D /* nature6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nature6.png; sourceTree = "<group>"; };
 		182B20D51C010685000AD63D /* nature7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nature7.png; sourceTree = "<group>"; };
 		182B20D61C010685000AD63D /* nature8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nature8.png; sourceTree = "<group>"; };
+		187197211C039BF700ACC58B /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuView.h; path = "Custom Controls/MenuView.h"; sourceTree = "<group>"; };
+		187197221C039BF700ACC58B /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuView.m; path = "Custom Controls/MenuView.m"; sourceTree = "<group>"; };
+		187197241C039C0500ACC58B /* MenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuView.xib; path = "Custom Controls/MenuView.xib"; sourceTree = "<group>"; };
+		187197261C03A7B600ACC58B /* MenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuTableViewCell.h; path = "Custom Controls/MenuTableViewCell.h"; sourceTree = "<group>"; };
+		187197271C03A7B600ACC58B /* MenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuTableViewCell.m; path = "Custom Controls/MenuTableViewCell.m"; sourceTree = "<group>"; };
+		187197281C03A7B600ACC58B /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuTableViewCell.xib; path = "Custom Controls/MenuTableViewCell.xib"; sourceTree = "<group>"; };
 		18908A7B1BFCFD9E008A7252 /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border.png; sourceTree = "<group>"; };
 		18BDF76B1BFBA4EB003B7D7D /* HappPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BDF76F1BFBA4EB003B7D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -303,6 +313,12 @@
 				18BDF7BB1BFBAB8F003B7D7D /* ListViewTableViewCell.h */,
 				18BDF7BC1BFBAB8F003B7D7D /* ListViewTableViewCell.m */,
 				18BDF7BD1BFBAB8F003B7D7D /* ListViewTableViewCell.xib */,
+				187197211C039BF700ACC58B /* MenuView.h */,
+				187197221C039BF700ACC58B /* MenuView.m */,
+				187197241C039C0500ACC58B /* MenuView.xib */,
+				187197261C03A7B600ACC58B /* MenuTableViewCell.h */,
+				187197271C03A7B600ACC58B /* MenuTableViewCell.m */,
+				187197281C03A7B600ACC58B /* MenuTableViewCell.xib */,
 			);
 			name = "Custom Controls";
 			sourceTree = "<group>";
@@ -408,6 +424,7 @@
 				18BDF7B61BFBA88A003B7D7D /* switchView.png in Resources */,
 				18BDF7B41BFBA88A003B7D7D /* sports.png in Resources */,
 				18BDF77C1BFBA4EB003B7D7D /* Images.xcassets in Resources */,
+				1871972A1C03A7B600ACC58B /* MenuTableViewCell.xib in Resources */,
 				180899031BFE765F00E5A4F4 /* tmp6.png in Resources */,
 				18BDF7B01BFBA88A003B7D7D /* radio.png in Resources */,
 				18BDF7AE1BFBA88A003B7D7D /* india.png in Resources */,
@@ -418,6 +435,7 @@
 				182B20D71C010685000AD63D /* nature1.png in Resources */,
 				18BDF7C41BFBB2E8003B7D7D /* tmp1.png in Resources */,
 				18BDF7C51BFBB2E8003B7D7D /* tmp2.png in Resources */,
+				187197251C039C0500ACC58B /* MenuView.xib in Resources */,
 				18BDF7A81BFBA88A003B7D7D /* business.png in Resources */,
 				18BDF7BF1BFBAB8F003B7D7D /* ListViewTableViewCell.xib in Resources */,
 				18BDF7B71BFBA88A003B7D7D /* titleLogo.png in Resources */,
@@ -448,8 +466,10 @@
 				182B20CA1C0105F8000AD63D /* CardContentViewController.m in Sources */,
 				182B20CE1C01064E000AD63D /* PhotoModel.m in Sources */,
 				18BDF7741BFBA4EB003B7D7D /* AppDelegate.m in Sources */,
+				187197291C03A7B600ACC58B /* MenuTableViewCell.m in Sources */,
 				182B20C01C010548000AD63D /* YRCoverFlowLayout.m in Sources */,
 				18BDF7711BFBA4EB003B7D7D /* main.m in Sources */,
+				187197231C039BF700ACC58B /* MenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

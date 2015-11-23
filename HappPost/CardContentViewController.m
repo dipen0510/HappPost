@@ -51,6 +51,12 @@ UICollectionViewDataSource
     _coverDensityValueLabel.text = [NSString stringWithFormat:@"%.2f", _coverFlowLayout.coverDensity];
     
     [self generateDatasource];
+    
+    self.navigationMenuHeightConstraint.constant = 0.0;
+    
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped)];
+    [self.view addGestureRecognizer:tapGesture];
+    
 }
 
 #pragma mark - Auto Layout
@@ -148,4 +154,26 @@ UICollectionViewDataSource
 }
 */
 
+- (IBAction)switcchToCardContentButtonTapped:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) viewTapped {
+    
+    if (isNavigationViewShown) {
+        self.navigationMenuHeightConstraint.constant = 0.0f;
+        [UIView animateWithDuration:0.25 delay:0 options:0 animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {}];
+    }
+    else {
+        self.navigationMenuHeightConstraint.constant = 64.0f;
+        [UIView animateWithDuration:0.25 delay:0 options:0 animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {}];
+    }
+    
+    isNavigationViewShown = !isNavigationViewShown;
+    
+}
 @end
