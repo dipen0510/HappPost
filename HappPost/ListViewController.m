@@ -32,7 +32,7 @@
     menuView.transform = CGAffineTransformScale(self.view.transform, 3, 3);
     menuView.alpha = 0.0;
     [menuView.closeButton addTarget:self action:@selector(hideMenuView) forControlEvents:UIControlEventTouchUpInside];
-    [menuView.switchToCardView addTarget:self action:@selector(switchViewButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [menuView.switchToCardView addTarget:self action:@selector(switchViewButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     
     UIBlurEffect* blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
@@ -140,6 +140,12 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:true];
     
+    if (tableView == menuView.menuTableView) {
+    }
+    else {
+        [self performSegueWithIdentifier:@"showDetailSegue" sender:nil];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -147,14 +153,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)switchViewButtonTapped:(id)sender {
-    [self performSegueWithIdentifier:@"showCardViewSegue" sender:nil];
-}
+#pragma mark - Menu Button Events
 
 - (IBAction)menuButtonTapped:(id)sender {
     
     [self showMenuView];
     
+}
+
+-(void) switchViewButtonTapped {
+    [self hideMenuView];
+    [self performSegueWithIdentifier:@"showCardViewSegue" sender:nil];
 }
 
 - (void) showMenuView {

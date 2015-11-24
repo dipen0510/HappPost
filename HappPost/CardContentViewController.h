@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CardContentViewController : UIViewController {
+@interface CardContentViewController : UIViewController<UITableViewDataSource, UITableViewDelegate> {
     BOOL isNavigationViewShown;
 }
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationMenuHeightConstraint;
 - (IBAction)switcchToCardContentButtonTapped:(id)sender;
+- (IBAction)expandButtonTapped:(id)sender;
+- (IBAction)shareButtonTapped:(id)sender;
+- (IBAction)menuButtonTapped:(id)sender;
+
 @end
