@@ -11,13 +11,14 @@
 // Components
 #import "YRCoverFlowLayout.h"
 
-// Model
-#import "PhotoModel.h"
+// Modal
+#import "CardModal.h"
 
 // Cells
 #import "CustomCollectionViewCollectionViewCell.h"
 #import "MenuView.h"
 #import "MenuTableViewCell.h"
+
 
 @interface CardContentViewController ()
 <
@@ -31,7 +32,7 @@ UICollectionViewDataSource
 @end
 
 @implementation CardContentViewController {
-    NSArray *_photoModelsDatasource;
+    NSMutableArray *_photoModelsDatasource;
     
     __weak IBOutlet UICollectionView *_photosCollectionView;
     __weak IBOutlet UICollectionViewFlowLayout *_coverFlowLayout;
@@ -76,8 +77,12 @@ UICollectionViewDataSource
     blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     blurEffectView.frame = self.view.bounds;
     blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
     
 }
+
+
+
 
 #pragma mark - Auto Layout
 
@@ -107,24 +112,18 @@ UICollectionViewDataSource
 #pragma mark - Private
 
 - (void)generateDatasource {
-    _photoModelsDatasource = @[[PhotoModel modelWithImageNamed:@"nature1"
-                                                   description:@"Lake and forest."],
-                               [PhotoModel modelWithImageNamed:@"nature2"
-                                                   description:@"Beautiful bench."],
-                               [PhotoModel modelWithImageNamed:@"nature3"
-                                                   description:@"Sun rays going through trees."],
-                               [PhotoModel modelWithImageNamed:@"nature4"
-                                                   description:@"Autumn Road."],
-                               [PhotoModel modelWithImageNamed:@"nature5"
-                                                   description:@"Outstanding Waterfall."],
-                               [PhotoModel modelWithImageNamed:@"nature6"
-                                                   description:@"Different Seasons."],
-                               [PhotoModel modelWithImageNamed:@"nature7"
-                                                   description:@"Home near lake."],
-                               [PhotoModel modelWithImageNamed:@"nature8"
-                                                   description:@"Perfect Mirror."],
-                               [PhotoModel modelWithImageNamed:@"smtng"
-                                                   description:@"Interesting formula."],];
+    
+    _photoModelsDatasource = [[NSMutableArray alloc] init];
+    
+    NSMutableArray* newsArr = [[NSMutableArray alloc] init];
+    newsArr = [[DBManager sharedManager] getAllNews];
+    
+    for (int i = 0; i < newsArr.count; i++) {
+        
+        [_photoModelsDatasource addObject:[CardModal modelWithNews:[newsArr objectAtIndex:i]]];
+        
+    }
+    
 }
 
 #pragma mark - UITableView Datasource -
@@ -224,7 +223,7 @@ UICollectionViewDataSource
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CustomCollectionViewCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCustomCellIdentifier
                                                                                              forIndexPath:indexPath];
-    cell.photoModel = _photoModelsDatasource[indexPath.row];
+    [cell setCardModel:_photoModelsDatasource[indexPath.row]];
     cell.cardView.layer.cornerRadius = 10.0;
     [cell.cardView.layer setMasksToBounds:YES];
     

@@ -1,0 +1,25 @@
+//
+//  PrefixHeader.pch
+//  HappPost
+//
+//  Created by Dipen Sekhsaria on 29/11/15.
+//  Copyright © 2015 Star Deep. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "Settings.h"
+#import "SVProgressHUD.h"
+#import "Constants.h"
+#import "SharedClass.h"
+#import "DataSyncManager.h"
+#import "DBManager.h"
+#import "NewsCommentObject.h"
+#import "NewsGenreObject.h"
+#import "SingleNewsObject.h"
+
+#endif /* PrefixHeader_pch */

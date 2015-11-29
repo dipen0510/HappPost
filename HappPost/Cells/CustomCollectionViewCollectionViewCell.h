@@ -10,14 +10,14 @@
 
 extern NSString *const kCustomCellIdentifier;
 
-@class PhotoModel;
+@class CardModal;
 
 /**
  *  Custom collection view cell that shows simple photo.
  */
 @interface CustomCollectionViewCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic) PhotoModel *photoModel;
+@property (nonatomic) CardModal *cardModel;
 @property (weak, nonatomic) IBOutlet UIView *cardView;
 @property (weak, nonatomic) IBOutlet UIView *contentContainerView;
 

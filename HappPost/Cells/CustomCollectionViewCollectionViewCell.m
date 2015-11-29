@@ -10,23 +10,31 @@
 #import "CustomCollectionViewCollectionViewCell.h"
 
 // Model
-#import "PhotoModel.h"
+#import "CardModal.h"
+#import "UIImageView+AFNetworking.h"
 
 NSString *const kCustomCellIdentifier = @"CustomCell";
 
 @implementation CustomCollectionViewCollectionViewCell {
     __weak IBOutlet UIImageView *_photoImageView;
-    __weak IBOutlet UILabel *_photoDescription;
+    __weak IBOutlet UILabel *_subheading;
+    __weak IBOutlet UILabel *_heading;
+    __weak IBOutlet UILabel *_authorName;
+    __weak IBOutlet UILabel *_summary;
 }
 
 #pragma mark - Dynamic Properties
 
-- (void)setPhotoModel:(PhotoModel *)photoModel {
+- (void)setCardModel:(CardModal *)cardModel {
     
-    _photoModel = photoModel;
+    _cardModel = cardModel;
     
-    _photoImageView.image = photoModel.image;
-    _photoDescription.text = photoModel.imageDescription;
+    _heading.text = cardModel.heading;
+    _subheading.text = cardModel.subheading;
+    _summary.text = cardModel.summary;
+    _authorName.text = cardModel.author;
+    
+    [self downloadNewsImagewithURL:cardModel.imgURL];
     
     UIBezierPath *maskPath;
     maskPath = [UIBezierPath bezierPathWithRoundedRect:_photoImageView.bounds
@@ -47,6 +55,28 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
     maskLayer1.frame = self.contentContainerView.bounds;
     maskLayer1.path = maskPath1.CGPath;
     self.contentContainerView.layer.mask = maskLayer1;
+}
+
+-(void) downloadNewsImagewithURL:(NSString *)imgURL {
+    
+   if(![imgURL isEqualToString:@""])
+    {
+        NSURL *url = [NSURL URLWithString:imgURL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
+        
+        __weak UIImageView *weakImgView = _photoImageView;
+        
+        [_photoImageView setImageWithURLRequest:request
+                                     placeholderImage:placeholderImage
+                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                  
+                                                  weakImgView.image = image;
+                                                  [weakImgView setNeedsLayout];
+                                                  
+                                              } failure:nil];
+        
+    }
 }
 
 @end
