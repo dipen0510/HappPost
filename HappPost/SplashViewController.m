@@ -90,7 +90,13 @@
     
     NewsContentRequestObject* requestObj = [[NewsContentRequestObject alloc] init];
     requestObj.userId = [[SharedClass sharedInstance] userId];
-    requestObj.timestamp = [[[DBManager sharedManager] getAllSettings] valueForKey:timestampKey];
+    
+    if (requestObj.timestamp) {
+        requestObj.timestamp = [[[DBManager sharedManager] getAllSettings] valueForKey:timestampKey];
+    }
+    else {
+        requestObj.timestamp = @"";
+    }
     
     return [requestObj createRequestDictionary];
     

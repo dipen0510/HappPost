@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+    
+    NSMutableArray* newsContentArr;
+    long selectedIndex;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *listTblView;
 - (IBAction)menuButtonTapped:(id)sender;

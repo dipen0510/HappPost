@@ -10,6 +10,7 @@
 #import "ListViewTableViewCell.h"
 #import "MenuView.h"
 #import "MenuTableViewCell.h"
+#import "ContentDetailViewController.h"
 
 @interface ListViewController () {
     MenuView* menuView;
@@ -38,13 +39,19 @@
     blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     blurEffectView.frame = self.view.bounds;
     blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    newsContentArr = [[NSMutableArray alloc] init];
+    newsContentArr = [[DBManager sharedManager] getAllNews];
 }
 
 #pragma mark - UITableView Datasource -
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 8;
+    if (tableView == menuView.menuTableView) {
+        return 8;
+    }
+    return newsContentArr.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -122,7 +129,8 @@
         cell=[nib objectAtIndex:0];
     }
     
-    cell.newsImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"tmp%ld",(indexPath.row%4)+1]];
+    [self generateContentForCell:cell andIndexPath:(NSIndexPath *)indexPath];
+    
     return cell;
     
 }
@@ -143,7 +151,39 @@
     if (tableView == menuView.menuTableView) {
     }
     else {
+        selectedIndex = indexPath.row;
         [self performSegueWithIdentifier:@"showDetailSegue" sender:nil];
+    }
+    
+}
+
+- (void) generateContentForCell:(ListViewTableViewCell *)cell andIndexPath:(NSIndexPath *)indexPath {
+    
+    SingleNewsObject* newsObj = (SingleNewsObject *) [newsContentArr objectAtIndex:indexPath.row];
+    
+    cell.newsHeading.text = newsObj.heading;
+    cell.newsDescription.text = newsObj.subHeading;
+    cell.newsTime.text = newsObj.dateCreated;
+    
+    NSString* imgURL = newsObj.newsImage;
+    
+    if(![imgURL isEqualToString:@""])
+    {
+        NSURL *url = [NSURL URLWithString:imgURL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
+        
+        __weak UIImageView *weakImgView = cell.newsImgView;
+        
+        [cell.newsImgView setImageWithURLRequest:request
+                               placeholderImage:placeholderImage
+                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                            
+                                            weakImgView.image = image;
+                                            [weakImgView setNeedsLayout];
+                                            
+                                        } failure:nil];
+        
     }
     
 }
@@ -163,7 +203,7 @@
 
 -(void) switchViewButtonTapped {
     [self hideMenuView];
-    [self performSegueWithIdentifier:@"showCardViewSegue" sender:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) showMenuView {
@@ -193,5 +233,24 @@
     }];
     
 }
+
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"showDetailSegue"]) {
+        
+        ContentDetailViewController* controller = (ContentDetailViewController *)[segue destinationViewController];
+        
+        [controller setNewsObj:(SingleNewsObject *)[newsContentArr objectAtIndex:selectedIndex]];
+        
+    }
+    
+}
+
 
 @end

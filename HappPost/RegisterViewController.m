@@ -94,6 +94,7 @@
     if ([requestServiceKey isEqualToString:kGetNewsContent]) {
         
         [SVProgressHUD showSuccessWithStatus:@"News Updated"];
+        [[SharedClass sharedInstance] insertNewsContentResponseIntoDB:(NewsContentResponseObject *)responseData];
         [self performSegueWithIdentifier:@"showCardViewSegue" sender:nil];
         
     }

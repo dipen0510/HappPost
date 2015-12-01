@@ -10,10 +10,11 @@
 
 @interface CardContentViewController : UIViewController<UITableViewDataSource, UITableViewDelegate> {
     BOOL isNavigationViewShown;
+    NSMutableArray* newsArr;
+    long selectedIndex;
 }
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationMenuHeightConstraint;
-- (IBAction)switcchToCardContentButtonTapped:(id)sender;
 - (IBAction)expandButtonTapped:(id)sender;
 - (IBAction)shareButtonTapped:(id)sender;
 - (IBAction)menuButtonTapped:(id)sender;

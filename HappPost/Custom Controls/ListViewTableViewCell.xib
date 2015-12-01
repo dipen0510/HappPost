@@ -37,11 +37,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 MIN" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iy7-0V-E38">
-                                <rect key="frame" x="206" y="107" width="90" height="18"/>
+                                <rect key="frame" x="146" y="107" width="150" height="18"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="hA3-5O-n8e"/>
-                                    <constraint firstAttribute="width" constant="90" id="vsr-yX-g9u"/>
+                                    <constraint firstAttribute="width" constant="150" id="vsr-yX-g9u"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

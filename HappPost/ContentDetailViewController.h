@@ -19,6 +19,12 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *contentCollectionView;
 @property (weak, nonatomic) IBOutlet UILabel *secondaryDescriptionLabel;
 
+@property (strong, nonatomic) SingleNewsObject* newsObj;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *headingHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *subheadingHeightCoonstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *primaryDescriptionHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scondaryDescriptionHeadingConstraint;
 
 - (IBAction)menuButtonTapped:(id)sender;
 @end

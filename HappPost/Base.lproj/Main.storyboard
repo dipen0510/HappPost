@@ -80,7 +80,6 @@
                     <navigationItem key="navigationItem" id="V5j-gI-DsM"/>
                     <connections>
                         <outlet property="listTblView" destination="IbG-Di-psK" id="2pf-Vg-DQ2"/>
-                        <segue destination="4lm-Rr-60S" kind="show" identifier="showCardViewSegue" id="A0z-bs-JaG"/>
                         <segue destination="AI0-gY-Tst" kind="show" identifier="showDetailSegue" id="lY2-FV-ro0"/>
                     </connections>
                 </viewController>
@@ -142,14 +141,14 @@
                                 <rect key="frame" x="-8" y="64" width="391" height="1586"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature2.png" translatesAutoresizingMaskIntoConstraints="NO" id="AZO-XS-Hwi">
-                                        <rect key="frame" x="8" y="0.0" width="376" height="410"/>
+                                        <rect key="frame" x="8" y="0.0" width="375" height="409"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="AZO-XS-Hwi" secondAttribute="height" multiplier="383:400" constant="-16.617500000000007" id="7dy-qq-wuf"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5I-gF-qCO">
-                                        <rect key="frame" x="16" y="418" width="361" height="85"/>
+                                        <rect key="frame" x="16" y="417" width="360" height="85"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="85" id="Oj5-Qs-8Fk"/>
@@ -158,8 +157,8 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="fT1-xH-90t">
-                                        <rect key="frame" x="16" y="511" width="361" height="90"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fT1-xH-90t">
+                                        <rect key="frame" x="16" y="510" width="360" height="90"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="kPe-Kn-x2W"/>
@@ -176,11 +175,11 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="7a6-U3-1P4">
-                                        <rect key="frame" x="15" y="817" width="361" height="324"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7a6-U3-1P4">
+                                        <rect key="frame" x="15" y="835" width="361" height="305"/>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="324" id="jLO-sw-Omv"/>
+                                            <constraint firstAttribute="height" constant="305" id="jLO-sw-Omv"/>
                                         </constraints>
                                         <attributedString key="attributedText">
                                             <fragment>
@@ -195,14 +194,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature3.png" translatesAutoresizingMaskIntoConstraints="NO" id="hJO-u6-che">
-                                        <rect key="frame" x="16" y="615" width="361" height="213"/>
+                                        <rect key="frame" x="16" y="614" width="360" height="212"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="hJO-u6-che" secondAttribute="height" multiplier="367:207" constant="-15.864734299516954" id="BOZ-SX-Z5U"/>
                                         </constraints>
                                     </imageView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="elp-lb-Q63">
-                                        <rect key="frame" x="8" y="1149" width="376" height="128"/>
+                                        <rect key="frame" x="8" y="1148" width="375" height="128"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -247,8 +246,8 @@
                                             <outlet property="delegate" destination="AI0-gY-Tst" id="sQQ-5v-SjI"/>
                                         </connections>
                                     </collectionView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="11" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="fWU-BA-2yA">
-                                        <rect key="frame" x="16" y="1285" width="361" height="291"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWU-BA-2yA">
+                                        <rect key="frame" x="16" y="1284" width="360" height="291"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="291" id="hwd-f9-9lg"/>
@@ -258,7 +257,7 @@
                                                 <string key="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non </string>
                                                 <attributes>
                                                     <color key="NSColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="17" name="ArialMT"/>
+                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
                                                     <real key="NSKern" value="0.0"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="leftToRight" paragraphSpacing="12" minimumLineHeight="24" lineHeightMultiple="1.3999999999999999" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                         <tabStops/>
@@ -271,7 +270,7 @@
 Cg
 </string>
                                                 <attributes>
-                                                    <font key="NSFont" size="17" name="ArialMT"/>
+                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
                                                     <real key="NSKern" value="0.0"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="leftToRight" paragraphSpacing="12" minimumLineHeight="24" lineHeightMultiple="1.3999999999999999" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                         <tabStops/>
@@ -289,13 +288,13 @@ Cg
                                     <constraint firstAttribute="bottom" secondItem="fWU-BA-2yA" secondAttribute="bottom" constant="20" id="1pU-gf-gre"/>
                                     <constraint firstAttribute="trailing" secondItem="hJO-u6-che" secondAttribute="trailing" constant="15" id="2v1-Zo-XCV"/>
                                     <constraint firstAttribute="trailing" secondItem="fT1-xH-90t" secondAttribute="trailing" constant="15" id="CzU-Bi-gbA"/>
-                                    <constraint firstItem="7a6-U3-1P4" firstAttribute="top" secondItem="fT1-xH-90t" secondAttribute="bottom" constant="216" id="Ikr-3a-UbU"/>
+                                    <constraint firstItem="7a6-U3-1P4" firstAttribute="top" secondItem="fT1-xH-90t" secondAttribute="bottom" constant="235" id="Ikr-3a-UbU"/>
                                     <constraint firstAttribute="trailing" secondItem="fWU-BA-2yA" secondAttribute="trailing" constant="15" id="OTa-XI-IXs"/>
                                     <constraint firstItem="7a6-U3-1P4" firstAttribute="leading" secondItem="aRg-H5-N0p" secondAttribute="leading" constant="15" id="Ore-Cr-Z1I"/>
                                     <constraint firstItem="fT1-xH-90t" firstAttribute="leading" secondItem="aRg-H5-N0p" secondAttribute="leading" constant="16" id="QGS-yP-XVg"/>
                                     <constraint firstItem="elp-lb-Q63" firstAttribute="leading" secondItem="aRg-H5-N0p" secondAttribute="leading" constant="8" id="TJf-De-Tc0"/>
                                     <constraint firstItem="AZO-XS-Hwi" firstAttribute="top" secondItem="aRg-H5-N0p" secondAttribute="top" id="UBl-Jq-JtG"/>
-                                    <constraint firstAttribute="trailing" secondItem="7a6-U3-1P4" secondAttribute="trailing" constant="16" id="a5V-n3-X1o"/>
+                                    <constraint firstAttribute="trailing" secondItem="7a6-U3-1P4" secondAttribute="trailing" constant="15" id="a5V-n3-X1o"/>
                                     <constraint firstItem="7a6-U3-1P4" firstAttribute="centerX" secondItem="aRg-H5-N0p" secondAttribute="centerX" id="asU-2w-wR2"/>
                                     <constraint firstItem="A5I-gF-qCO" firstAttribute="top" secondItem="AZO-XS-Hwi" secondAttribute="bottom" constant="8" id="eoR-1S-NI9"/>
                                     <constraint firstItem="elp-lb-Q63" firstAttribute="top" secondItem="7a6-U3-1P4" secondAttribute="bottom" constant="8" id="eyg-u8-We4"/>
@@ -329,12 +328,16 @@ Cg
                     <connections>
                         <outlet property="contentCollectionView" destination="elp-lb-Q63" id="Wra-fc-HbO"/>
                         <outlet property="contentScrollView" destination="aRg-H5-N0p" id="n6d-p3-ofO"/>
+                        <outlet property="headingHeightConstraint" destination="Oj5-Qs-8Fk" id="2lx-PO-dWL"/>
                         <outlet property="headingLabel" destination="A5I-gF-qCO" id="f9z-Fi-vTc"/>
                         <outlet property="navigationView" destination="BMF-e2-Ahv" id="ESJ-EF-Jvg"/>
+                        <outlet property="primaryDescriptionHeightConstraint" destination="jLO-sw-Omv" id="5vb-6i-4dU"/>
                         <outlet property="primaryDescriptionLabel" destination="7a6-U3-1P4" id="yXo-kR-UeY"/>
                         <outlet property="primaryImageView" destination="AZO-XS-Hwi" id="luX-Zf-pbq"/>
+                        <outlet property="scondaryDescriptionHeadingConstraint" destination="hwd-f9-9lg" id="wED-pD-3uk"/>
                         <outlet property="secondaryDescriptionLabel" destination="fWU-BA-2yA" id="3N8-dv-yH6"/>
                         <outlet property="secondaryImageView" destination="hJO-u6-che" id="QY9-Xs-0Yb"/>
+                        <outlet property="subheadingHeightCoonstraint" destination="kPe-Kn-x2W" id="7Qs-AJ-ELL"/>
                         <outlet property="subheadingLabel" destination="fT1-xH-90t" id="Kbd-sb-AQe"/>
                     </connections>
                 </viewController>
@@ -584,6 +587,7 @@ Cg
                         <outlet property="_photosCollectionView" destination="JJe-gq-fIq" id="0bQ-fY-0Lg"/>
                         <outlet property="navigationMenuHeightConstraint" destination="7k8-dn-LNz" id="7wG-3p-soN"/>
                         <segue destination="AI0-gY-Tst" kind="show" identifier="showDetailSegue" id="Kb6-yS-sIu"/>
+                        <segue destination="vXZ-lx-hvc" kind="show" identifier="showListViewSegue" id="3R2-uj-37F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWc-d1-Ycb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -780,7 +784,7 @@ Cg
         <image name="titleLogo.png" width="117" height="105"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eca-uT-q5f"/>
         <segue reference="Kb6-yS-sIu"/>
+        <segue reference="wMo-YW-qj2"/>
     </inferredMetricsTieBreakers>
 </document>

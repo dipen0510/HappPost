@@ -19,6 +19,9 @@
 #import "MenuView.h"
 #import "MenuTableViewCell.h"
 
+//Controllers
+#import "ContentDetailViewController.h"
+
 
 @interface CardContentViewController ()
 <
@@ -57,10 +60,10 @@ UICollectionViewDataSource
     
     [self generateDatasource];
     
-    self.navigationMenuHeightConstraint.constant = 0.0;
+    /*self.navigationMenuHeightConstraint.constant = 0.0;
     
     UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped)];
-    [self.view addGestureRecognizer:tapGesture];
+    [self.view addGestureRecognizer:tapGesture];*/
     
     NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"MenuView" owner:self options:nil];
     menuView = [subviewArray objectAtIndex:0];
@@ -115,7 +118,7 @@ UICollectionViewDataSource
     
     _photoModelsDatasource = [[NSMutableArray alloc] init];
     
-    NSMutableArray* newsArr = [[NSMutableArray alloc] init];
+    newsArr = [[NSMutableArray alloc] init];
     newsArr = [[DBManager sharedManager] getAllNews];
     
     for (int i = 0; i < newsArr.count; i++) {
@@ -227,6 +230,8 @@ UICollectionViewDataSource
     cell.cardView.layer.cornerRadius = 10.0;
     [cell.cardView.layer setMasksToBounds:YES];
     
+    //selectedIndex = indexPath.row;
+    
     return cell;
 }
 
@@ -248,24 +253,22 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(0, 10, 0, 10);
 }
 
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    CGFloat pageWidth = _photosCollectionView.frame.size.width;
+    int currentPage = floor(_photosCollectionView.contentOffset.x / pageWidth);
+    selectedIndex = currentPage;
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
-- (IBAction)switcchToCardContentButtonTapped:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (IBAction)expandButtonTapped:(id)sender {
     [self performSegueWithIdentifier:@"showDetailSegue" sender:nil];
@@ -303,7 +306,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
 
 -(void) switchViewButtonTapped {
     [self hideMenuView];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self performSegueWithIdentifier:@"showListViewSegue" sender:nil];
 }
 
 - (void) showMenuView {
@@ -334,5 +337,23 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     
 }
 
+
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"showDetailSegue"]) {
+        
+        ContentDetailViewController* controller = (ContentDetailViewController *)[segue destinationViewController];
+        
+        [controller setNewsObj:(SingleNewsObject *)[newsArr objectAtIndex:selectedIndex]];
+        
+    }
+    
+}
 
 @end

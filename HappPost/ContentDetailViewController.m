@@ -17,6 +17,8 @@
 
 @implementation ContentDetailViewController
 
+@synthesize newsObj;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -28,12 +30,97 @@
     gradient.colors = [NSArray arrayWithObjects:(id)[self.navigationView.backgroundColor CGColor], (id)[[UIColor whiteColor] CGColor], nil];
     [self.contentScrollView.layer insertSublayer:gradient atIndex:0];
     
+    [self generateContent];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+-(void) generateContent {
+    
+    self.headingLabel.text = newsObj.heading;
+    self.subheadingLabel.text = newsObj.subHeading;
+    self.primaryDescriptionLabel.text = newsObj.summary;
+    self.secondaryDescriptionLabel.text = newsObj.summary;
+    
+    [self adjustHeightForLabel:self.headingLabel andConstraint:self.headingHeightConstraint];
+    [self adjustHeightForLabel:self.subheadingLabel andConstraint:self.subheadingHeightCoonstraint];
+    [self adjustHeightForLabel:self.primaryDescriptionLabel andConstraint:self.primaryDescriptionHeightConstraint];
+    [self adjustHeightForLabel:self.secondaryDescriptionLabel andConstraint:self.scondaryDescriptionHeadingConstraint];
+    
+    [self downloadPrimaryNewsImagewithURL:newsObj.newsImage];
+    [self downloadSecondaryNewsImagewithURL:@"http://www.un.org/News/dh/photos/large/2015/March/03-20-2015Drinks_Day.jpg"];
+    
+}
+
+- (void) adjustHeightForLabel:(UILabel *)label andConstraint:(NSLayoutConstraint *)constraint {
+    
+//    label.numberOfLines = 0;
+//    
+//    //Calculate the expected size based on the font and linebreak mode of your label
+//    // FLT_MAX here simply means no constraint in height
+//    CGSize maximumLabelSize = CGSizeMake(296, FLT_MAX);
+//    
+//    CGSize expectedLabelSize = [label.text sizeWithFont:label.font constrainedToSize:maximumLabelSize lineBreakMode:label.lineBreakMode];
+//    
+//    //adjust the label the the new height.
+    
+    CGSize size = [label sizeOfMultiLineLabel];
+    
+    constraint.constant = size.height + 20.;
+    
+}
+
+
+-(void) downloadPrimaryNewsImagewithURL:(NSString *)imgURL {
+    
+    if(![imgURL isEqualToString:@""])
+    {
+        NSURL *url = [NSURL URLWithString:imgURL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
+        
+        __weak UIImageView *weakImgView = self.primaryImageView;
+        
+        [self.primaryImageView setImageWithURLRequest:request
+                               placeholderImage:placeholderImage
+                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                            
+                                            weakImgView.image = image;
+                                            [weakImgView setNeedsLayout];
+                                            
+                                        } failure:nil];
+        
+    }
+}
+
+-(void) downloadSecondaryNewsImagewithURL:(NSString *)imgURL {
+    
+    if(![imgURL isEqualToString:@""])
+    {
+        NSURL *url = [NSURL URLWithString:imgURL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
+        
+        __weak UIImageView *weakImgView = self.secondaryImageView;
+        
+        [self.secondaryImageView setImageWithURLRequest:request
+                                     placeholderImage:placeholderImage
+                                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                  
+                                                  weakImgView.image = image;
+                                                  [weakImgView setNeedsLayout];
+                                                  
+                                              } failure:nil];
+        
+    }
+}
+
 
 #pragma mark - CollectionView Datasource
 
@@ -45,12 +132,48 @@
     
     DetailContentCollectionViewCell *cell = (DetailContentCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"contentCell" forIndexPath:indexPath];
     
-    cell.contentImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"tmp%ld",(indexPath.row%4)+3]];
+    [self generateContentForCell:cell andIndexPath:indexPath];
     
     return cell;
     
 }
 
+
+- (void) generateContentForCell:(DetailContentCollectionViewCell *)cell andIndexPath:(NSIndexPath *)indexPath {
+
+    
+    NSString* imgURL = newsObj.newsImage;
+    
+    if (indexPath.row == 0) {
+        imgURL = @"http://images.indianexpress.com/2015/05/russia_759.jpg";
+    }
+    else if (indexPath.row == 1){
+        imgURL = @"http://magazine.providence.edu/wp-content/uploads/2014/01/pc-news-joe-day.jpg";
+    }
+    else {
+        imgURL = @"http://www.bbc.co.uk/news/special/world/11/911_timeline/img/splash-image-976x482-2.jpg";
+    }
+    
+    if(![imgURL isEqualToString:@""])
+    {
+        NSURL *url = [NSURL URLWithString:imgURL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
+        
+        __weak UIImageView *weakImgView = cell.contentImageView;
+        
+        [cell.contentImageView setImageWithURLRequest:request
+                                placeholderImage:placeholderImage
+                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                             
+                                             weakImgView.image = image;
+                                             [weakImgView setNeedsLayout];
+                                             
+                                         } failure:nil];
+        
+    }
+    
+}
 
 
 /*
