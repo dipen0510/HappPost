@@ -63,6 +63,7 @@ static SharedClass *singletonObject = nil;
         [[DBManager sharedManager] insertEntryIntoNewsTableWithObj:singleNewsObj];
         [[DBManager sharedManager] insertEntryIntoNewsCommentsTableWithCommentArr:singleNewsObj.newsComments andNewsId:singleNewsObj.newsId];
         [[DBManager sharedManager] insertEntryIntoNewsGenresTableWithGenreArr:singleNewsObj.newsGenres andNewsId:singleNewsObj.newsId];
+        [[DBManager sharedManager] insertEntryIntoNewsInfographicsTableWithCommentArr:singleNewsObj.newsInfographics andNewsId:singleNewsObj.newsId];
         
     }
     

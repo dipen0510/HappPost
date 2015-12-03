@@ -19,6 +19,8 @@ NSString* create_TblNewsComments_table = @"CREATE TABLE IF NOT EXISTS NEWSCOMMEN
 
 NSString* create_TblNewsGenres_table = @"CREATE TABLE IF NOT EXISTS NEWSGENRES (newsGenreId TEXT PRIMARY KEY, genre TEXT, genreId TEXT, newsId TEXT)";
 
+NSString* create_TblNewsInfographics_table = @"CREATE TABLE IF NOT EXISTS NEWSINFOGRAPHICS (newsInfographicId TEXT PRIMARY KEY, newsImage TEXT, newsId TEXT)";
+
 NSString* create_TblSettings_table = @"CREATE TABLE IF NOT EXISTS SETTINGS (timestamp TEXT, notificationSetting TEXT)";
 
 @implementation DBManager
@@ -96,6 +98,15 @@ static DBManager *sharedObject = nil;
             else
             {
                 NSLog(@"Failed to create NEWSGENRES table: %@)",[objectDB lastErrorMessage]);
+            }
+            
+            if([objectDB executeUpdate:create_TblNewsInfographics_table withArgumentsInArray:nil])
+            {
+                NSLog(@"NEWSINFOGRAPHICS table created");
+            }
+            else
+            {
+                NSLog(@"Failed to create NEWSINFOGRAPHICS table: %@)",[objectDB lastErrorMessage]);
             }
             
             if([objectDB executeUpdate:create_TblSettings_table withArgumentsInArray:nil])
@@ -360,7 +371,7 @@ static DBManager *sharedObject = nil;
             
             newsObj.newsComments = [self getAllNewsCommentsForNewsId:newsObj.newsId];
             newsObj.newsGenres = [self getAllNewsGenreForNewsId:newsObj.newsId];
-            newsObj.newsInfographics = [[NSMutableArray alloc] init];
+            newsObj.newsInfographics = [self getAllNewsInfographicsForNewsId:newsObj.newsId];;
             
             [arr addObject:newsObj];
             
@@ -462,7 +473,7 @@ static DBManager *sharedObject = nil;
         }
         [objectDB close];
         
-        NSLog(@"NEWS Data fetched Successfully");
+        NSLog(@"NEWSGENRES Data fetched Successfully");
         
     }
     else {
@@ -554,7 +565,7 @@ static DBManager *sharedObject = nil;
         }
         [objectDB close];
         
-        NSLog(@"NEWS Data fetched Successfully");
+        NSLog(@"NEWSCOMMENTS Data fetched Successfully");
         
     }
     else {
@@ -577,6 +588,95 @@ static DBManager *sharedObject = nil;
         }
         else {
             NSLog(@"NEWSCOMMENTS Data deleted Successfully");
+        }
+        [objectDB close];
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+}
+
+#pragma mark - NEWSINFOGRAPHICS TABLE
+
+-(void) insertEntryIntoNewsInfographicsTableWithCommentArr:(NSMutableArray *)newsInfographicsArr andNewsId:(NSString *)newsId {
+    
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    
+    for (int i = 0; i<newsInfographicsArr.count; i++) {
+        
+        NewsInfographicsObject* obj = [[NewsInfographicsObject alloc] initWithDictionary:[newsInfographicsArr objectAtIndex:i] andNewsId:newsId];
+        
+        NSArray* arr = [NSArray arrayWithObjects: obj.newsInfographicsId, obj.newsImage, obj.newsId, nil];
+        
+        if ([objectDB open]) {
+            NSString* query = @"INSERT INTO NEWSINFOGRAPHICS (newsInfographicId, newsImage, newsId) VALUES (?, ?, ?)";
+            if (![objectDB executeUpdate:query withArgumentsInArray:arr]) {
+                
+                NSLog(@"insert into NEWSINFOGRAPHICS table failed: %@)",[objectDB lastErrorMessage]);
+                
+            }
+            else {
+                NSLog(@"NEWSINFOGRAPHICS Data inserted Successfully");
+            }
+            
+            [objectDB close];
+        }
+        else {
+            NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+        }
+        
+    }
+    
+    
+}
+
+-(NSMutableArray *) getAllNewsInfographicsForNewsId:(NSString *)newsId {
+    
+    NSMutableArray* arr = [[NSMutableArray alloc] init];
+    
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= @"SELECT * from NEWSINFOGRAPHICS where newsId = ?";
+        FMResultSet* resultSet = [objectDB executeQuery:query withArgumentsInArray:[NSArray arrayWithObject:newsId]];
+        while ([resultSet next]) {
+            
+            NewsInfographicsObject* newsObj = [[NewsInfographicsObject alloc] init];
+            
+            newsObj.newsInfographicsId = [resultSet stringForColumnIndex:0];
+            newsObj.newsImage = [resultSet stringForColumnIndex:1];
+            newsObj.newsId = [resultSet stringForColumnIndex:2];
+            
+            
+            [arr addObject:newsObj];
+            
+        }
+        [objectDB close];
+        
+        NSLog(@"NEWSINFOGRAPHICS Data fetched Successfully");
+        
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+    
+    return arr;
+    
+}
+
+-(void) deleteAllEntriesFromNewsInfographicsTable {
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= @"DELETE FROM NEWSINFOGRAPHICS";
+        if (![objectDB executeUpdate:query withArgumentsInArray:nil]) {
+            
+            NSLog(@"delete from NEWSINFOGRAPHICS failed: %@)",[objectDB lastErrorMessage]);
+            
+        }
+        else {
+            NSLog(@"NEWSINFOGRAPHICS Data deleted Successfully");
         }
         [objectDB close];
     }

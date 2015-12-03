@@ -58,6 +58,9 @@
 #define GenreKey @"Genre"
 #define GenreIdKey @"GenreId"
 #define NewsGenreIdKey @"NewsGenreId"
+#define NewsInfographicsIdKey @"NewsInfographicId"
+#define NewsImageKey @"NewsImage"
+
 
 //MISC
 

@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewsInfographicsObject.h"
 
-@interface ContentDetailViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface ContentDetailViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate> {
+    
+    NewsInfographicsObject* secondaryImageNewsInfogrphicsObj;
+    
+}
 
 @property (weak, nonatomic) IBOutlet UIScrollView *contentScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *primaryImageView;

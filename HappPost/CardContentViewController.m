@@ -25,8 +25,7 @@
 
 @interface CardContentViewController ()
 <
-UICollectionViewDelegate,
-UICollectionViewDataSource
+UICollectionViewDelegate,UICollectionViewDataSource
 >{
     MenuView* menuView;
     UIVisualEffectView *blurEffectView;

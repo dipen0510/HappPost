@@ -23,5 +23,6 @@
 #import "SingleNewsObject.h"
 #import "UIImageView+AFNetworking.h"
 #import "UILabel+UILabelDynamicHeight.h"
+#import "NewsInfographicsObject.h"
 
 #endif /* PrefixHeader_pch */

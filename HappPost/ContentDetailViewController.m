@@ -26,7 +26,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = CGRectMake(self.contentScrollView.frame.origin.x, self.contentScrollView.frame.origin.y, self.contentScrollView.frame.size.width, self.secondaryImageView.frame.origin.y + self.secondaryImageView.frame.size.height/2.);
+    gradient.frame = CGRectMake(self.contentScrollView.frame.origin.x, self.contentScrollView.frame.origin.y - 70., self.contentScrollView.frame.size.width + 50., self.secondaryImageView.frame.origin.y + self.secondaryImageView.frame.size.height/2.);
     gradient.colors = [NSArray arrayWithObjects:(id)[self.navigationView.backgroundColor CGColor], (id)[[UIColor whiteColor] CGColor], nil];
     [self.contentScrollView.layer insertSublayer:gradient atIndex:0];
     
@@ -54,7 +54,26 @@
     [self adjustHeightForLabel:self.secondaryDescriptionLabel andConstraint:self.scondaryDescriptionHeadingConstraint];
     
     [self downloadPrimaryNewsImagewithURL:newsObj.newsImage];
-    [self downloadSecondaryNewsImagewithURL:@"http://www.un.org/News/dh/photos/large/2015/March/03-20-2015Drinks_Day.jpg"];
+    
+    if (newsObj.newsInfographics.count > 0) {
+        
+        secondaryImageNewsInfogrphicsObj = [[NewsInfographicsObject alloc] initWithDictionary:[newsObj.newsInfographics objectAtIndex:0] andNewsId:newsObj.newsId];
+        
+        if ([self isVideoURL:secondaryImageNewsInfogrphicsObj.newsImage]) {
+            
+            
+            
+        }
+        else {
+            
+            [self downloadSecondaryNewsImagewithURL:secondaryImageNewsInfogrphicsObj.newsImage];
+            
+        }
+        
+    }
+    
+    
+    
     
 }
 
@@ -172,6 +191,15 @@
                                          } failure:nil];
         
     }
+    
+}
+
+- (BOOL) isVideoURL:(NSString *)url {
+    
+    if ([url containsString:@"youtu"]) {
+        return true;
+    }
+    return false;
     
 }
 

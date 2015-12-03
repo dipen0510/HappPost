@@ -140,7 +140,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-H5-N0p">
                                 <rect key="frame" x="-8" y="64" width="391" height="1586"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature2.png" translatesAutoresizingMaskIntoConstraints="NO" id="AZO-XS-Hwi">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AZO-XS-Hwi">
                                         <rect key="frame" x="8" y="0.0" width="375" height="409"/>
                                         <animations/>
                                         <constraints>
@@ -193,7 +193,7 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature3.png" translatesAutoresizingMaskIntoConstraints="NO" id="hJO-u6-che">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hJO-u6-che">
                                         <rect key="frame" x="16" y="614" width="360" height="212"/>
                                         <animations/>
                                         <constraints>
@@ -221,7 +221,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="187" height="120"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature6.png" translatesAutoresizingMaskIntoConstraints="NO" id="r8p-b5-UZE">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r8p-b5-UZE">
                                                             <rect key="frame" x="0.0" y="-4" width="187" height="128"/>
                                                             <animations/>
                                                         </imageView>
@@ -776,9 +776,6 @@ Cg
         <image name="expand.png" width="39" height="39"/>
         <image name="happ post .png" width="320" height="227"/>
         <image name="icnMenu.png" width="57" height="42"/>
-        <image name="nature2.png" width="640" height="400"/>
-        <image name="nature3.png" width="800" height="450"/>
-        <image name="nature6.png" width="1440" height="900"/>
         <image name="share.png" width="48" height="48"/>
         <image name="splash.png" width="960" height="1704"/>
         <image name="titleLogo.png" width="117" height="105"/>
