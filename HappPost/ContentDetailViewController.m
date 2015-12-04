@@ -57,7 +57,7 @@
     
     if (newsObj.newsInfographics.count > 0) {
         
-        secondaryImageNewsInfogrphicsObj = [[NewsInfographicsObject alloc] initWithDictionary:[newsObj.newsInfographics objectAtIndex:0] andNewsId:newsObj.newsId];
+        secondaryImageNewsInfogrphicsObj = (NewsInfographicsObject *) [newsObj.newsInfographics objectAtIndex:0];
         
         if ([self isVideoURL:secondaryImageNewsInfogrphicsObj.newsImage]) {
             
@@ -71,7 +71,11 @@
         }
         
     }
-    
+    else {
+        
+        
+        
+    }
     
     
     
