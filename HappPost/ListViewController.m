@@ -163,7 +163,7 @@
     
     cell.newsHeading.text = newsObj.heading;
     cell.newsDescription.text = newsObj.subHeading;
-    cell.newsTime.text = newsObj.dateCreated;
+    cell.newsTime.text = [[[SharedClass sharedInstance] dateFromString:newsObj.dateCreated] timeAgo];
     
     NSString* imgURL = newsObj.newsImage;
     

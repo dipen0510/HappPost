@@ -21,6 +21,7 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
     __weak IBOutlet UILabel *_heading;
     __weak IBOutlet UILabel *_authorName;
     __weak IBOutlet UILabel *_summary;
+    __weak IBOutlet UILabel *_dateTime;
 }
 
 #pragma mark - Dynamic Properties
@@ -33,6 +34,7 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
     _subheading.text = cardModel.subheading;
     _summary.text = cardModel.summary;
     _authorName.text = cardModel.author;
+    _dateTime.text = cardModel.dateTime;
     
     [self downloadNewsImagewithURL:cardModel.imgURL];
     

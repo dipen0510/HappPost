@@ -61,11 +61,24 @@
         
         if ([self isVideoURL:secondaryImageNewsInfogrphicsObj.newsImage]) {
             
+            [self.videoPlayerView setHidden:YES];
             
+            NSString* videoURl = [[secondaryImageNewsInfogrphicsObj.newsImage componentsSeparatedByString:@"/"] lastObject];
+            if ([videoURl containsString:@"watch"]) {
+                
+                videoURl = [[videoURl componentsSeparatedByString:@"="] lastObject];
+                
+            }
+            
+            [self.videoPlayerView loadWithVideoId:videoURl];
+            self.videoPlayerView.delegate = self;
+            
+            self.secondaryImageView.image = [UIImage imageNamed:@"videoPlayerPlaceholder.png"];
             
         }
         else {
             
+            [self.videoPlayerView setHidden:YES];
             [self downloadSecondaryNewsImagewithURL:secondaryImageNewsInfogrphicsObj.newsImage];
             
         }
@@ -73,7 +86,9 @@
     }
     else {
         
-        
+        [self.videoPlayerView setHidden:YES];
+        [self.secondaryImageView setHidden:YES];
+        self.primaryDescriptionTopConstraint.constant = 14.;
         
     }
     
@@ -98,6 +113,25 @@
     constraint.constant = size.height + 20.;
     
 }
+
+
+#pragma mark - Youtube Player Delegates
+
+- (void)playerViewDidBecomeReady:(YTPlayerView *)playerView {
+    
+    
+    if (playerView == self.videoPlayerView) {
+        [self.videoPlayerView setHidden:NO];
+        [self.secondaryImageView setHidden:YES];
+    }
+    
+    
+    
+}
+
+- (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state{}
+- (void)playerView:(YTPlayerView *)playerView didChangeToQuality:(YTPlaybackQuality)quality{}
+- (void)playerView:(YTPlayerView *)playerView receivedError:(YTPlayerError)error{}
 
 
 -(void) downloadPrimaryNewsImagewithURL:(NSString *)imgURL {
@@ -148,7 +182,14 @@
 #pragma mark - CollectionView Datasource
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 3;
+    
+    long count = (newsObj.newsInfographics.count - 1);
+    
+    if (count <= 0) {
+        self.collectionViewHeightConstraint.constant = 0;
+    }
+    
+    return count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -163,38 +204,52 @@
 
 
 - (void) generateContentForCell:(DetailContentCollectionViewCell *)cell andIndexPath:(NSIndexPath *)indexPath {
-
     
-    NSString* imgURL = newsObj.newsImage;
-    
-    if (indexPath.row == 0) {
-        imgURL = @"http://images.indianexpress.com/2015/05/russia_759.jpg";
-    }
-    else if (indexPath.row == 1){
-        imgURL = @"http://magazine.providence.edu/wp-content/uploads/2014/01/pc-news-joe-day.jpg";
-    }
-    else {
-        imgURL = @"http://www.bbc.co.uk/news/special/world/11/911_timeline/img/splash-image-976x482-2.jpg";
-    }
-    
-    if(![imgURL isEqualToString:@""])
-    {
-        NSURL *url = [NSURL URLWithString:imgURL];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
         
-        __weak UIImageView *weakImgView = cell.contentImageView;
+        NewsInfographicsObject* newsInfoObj = (NewsInfographicsObject *)[newsObj.newsInfographics objectAtIndex:(indexPath.row + 1)];
         
-        [cell.contentImageView setImageWithURLRequest:request
-                                placeholderImage:placeholderImage
-                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                             
-                                             weakImgView.image = image;
-                                             [weakImgView setNeedsLayout];
-                                             
-                                         } failure:nil];
+        NSString* imgURL = newsInfoObj.newsImage;
         
-    }
+        if ([self isVideoURL:imgURL]) {
+            
+            NSString* videoURl = [[imgURL componentsSeparatedByString:@"/"] lastObject];
+            if ([videoURl containsString:@"watch"]) {
+                
+                videoURl = [[videoURl componentsSeparatedByString:@"="] lastObject];
+                
+            }
+            
+            YTPlayerView* videPlayer = [[YTPlayerView alloc] initWithFrame:cell.frame];
+            [videPlayer setBackgroundColor:[UIColor blackColor]];
+            [videPlayer loadWithVideoId:videoURl];
+            videPlayer.delegate = self;
+            
+            [cell addSubview:videPlayer];
+            
+            
+        }
+        else {
+            
+            if(![imgURL isEqualToString:@""])
+            {
+                NSURL *url = [NSURL URLWithString:imgURL];
+                NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
+                
+                __weak UIImageView *weakImgView = cell.contentImageView;
+                
+                [cell.contentImageView setImageWithURLRequest:request
+                                             placeholderImage:placeholderImage
+                                                      success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                          
+                                                          weakImgView.image = image;
+                                                          [weakImgView setNeedsLayout];
+                                                          
+                                                      } failure:nil];
+                
+            }
+            
+        }
     
 }
 

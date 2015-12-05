@@ -18,6 +18,7 @@
 @property (nonatomic, readonly) NSString *subheading;
 @property (nonatomic, readonly) NSString *author;
 @property (nonatomic, readonly) NSString *summary;
+@property (nonatomic, readonly) NSString *dateTime;
 
 + (instancetype)modelWithNews:(SingleNewsObject *)newsObj;
 

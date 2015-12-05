@@ -24,5 +24,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "UILabel+UILabelDynamicHeight.h"
 #import "NewsInfographicsObject.h"
+#import "YouTubeiOSPlayerHelper.h"
+#import "NSDate+TimeAgo.h"
 
 #endif /* PrefixHeader_pch */

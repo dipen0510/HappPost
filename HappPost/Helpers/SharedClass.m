@@ -70,6 +70,80 @@ static SharedClass *singletonObject = nil;
     
 }
 
+- (NSDate *) dateFromString:(NSString *)dateTime {
+    
+    NSArray* dateArr = [dateTime componentsSeparatedByString:@" "];
+    
+    int day = [[dateArr objectAtIndex:2] intValue];
+    int month = [self monthForString:[dateArr objectAtIndex:0]];
+    int year = [[dateArr objectAtIndex:3] intValue];
+    
+    int hour = 0;
+    int minute  = 0;
+    
+    if ([[dateArr lastObject] containsString:@"AM"]) {
+        NSString* time = [[dateArr lastObject] stringByReplacingOccurrencesOfString:@"AM" withString:@""];
+        hour = [[[time componentsSeparatedByString:@":"] firstObject] intValue];
+        minute = [[[time componentsSeparatedByString:@":"] lastObject] intValue];
+    }
+    else {
+        NSString* time = [[dateArr lastObject] stringByReplacingOccurrencesOfString:@"PM" withString:@""];
+        hour = [[[time componentsSeparatedByString:@":"] firstObject] intValue] + 12;
+        minute = [[[time componentsSeparatedByString:@":"] lastObject] intValue];
+    }
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar] ;
+    NSDateComponents *components = [[NSDateComponents alloc] init] ;
+    [components setYear:year];
+    [components setMonth:month];
+    [components setDay:day];
+    [components setHour:hour];
+    [components setMinute:minute];
+    
+    return [calendar dateFromComponents:components];
+    
+}
+
+- (int) monthForString:(NSString *)month {
+    
+    if ([month isEqualToString:@"Jan"]) {
+        return 1;
+    }
+    else if ([month isEqualToString:@"Feb"]) {
+        return 2;
+    }
+    else if ([month isEqualToString:@"Mar"]) {
+        return 3;
+    }
+    else if ([month isEqualToString:@"Apr"]) {
+        return 4;
+    }
+    else if ([month isEqualToString:@"May"]) {
+        return 5;
+    }
+    else if ([month isEqualToString:@"Jun"]) {
+        return 6;
+    }
+    else if ([month isEqualToString:@"Jul"]) {
+        return 7;
+    }
+    else if ([month isEqualToString:@"Aug"]) {
+        return 8;
+    }
+    else if ([month isEqualToString:@"Sep"]) {
+        return 9;
+    }
+    else if ([month isEqualToString:@"Oct"]) {
+        return 10;
+    }
+    else if ([month isEqualToString:@"Nov"]) {
+        return 11;
+    }
+    return 12;
+    
+    
+}
+
 
 
 @end

@@ -19,5 +19,6 @@
 
 -(NSDate *)getCurrentUTCFormatDate;
 - (void) insertNewsContentResponseIntoDB: (NewsContentResponseObject *)newsObj;
+- (NSDate *) dateFromString:(NSString *)dateTime;
 
 @end

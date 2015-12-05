@@ -229,6 +229,11 @@ UICollectionViewDelegate,UICollectionViewDataSource
     cell.cardView.layer.cornerRadius = 10.0;
     [cell.cardView.layer setMasksToBounds:YES];
     
+    cell.cardView.clipsToBounds = NO;
+    cell.cardView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    cell.cardView.layer.shadowOffset = CGSizeMake(0,5);
+    cell.cardView.layer.shadowOpacity = 0.5;
+    
     //selectedIndex = indexPath.row;
     
     return cell;

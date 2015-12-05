@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NewsInfographicsObject.h"
 
-@interface ContentDetailViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate> {
+@interface ContentDetailViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,YTPlayerViewDelegate> {
     
     NewsInfographicsObject* secondaryImageNewsInfogrphicsObj;
     
@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *primaryDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *contentCollectionView;
 @property (weak, nonatomic) IBOutlet UILabel *secondaryDescriptionLabel;
+@property (weak, nonatomic) IBOutlet YTPlayerView *videoPlayerView;
 
 @property (strong, nonatomic) SingleNewsObject* newsObj;
 
@@ -30,6 +31,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *subheadingHeightCoonstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *primaryDescriptionHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scondaryDescriptionHeadingConstraint;
+
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *primaryDescriptionTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
+
 
 - (IBAction)menuButtonTapped:(id)sender;
 @end

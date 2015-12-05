@@ -24,10 +24,12 @@
         _summary = newsObj.summary;
         _author = newsObj.authorName;
         _imgURL = newsObj.newsImage;
+        _dateTime = [[[SharedClass sharedInstance] dateFromString:newsObj.dateCreated] timeAgo];
         
     }
     
     return self;
 }
+
 
 @end

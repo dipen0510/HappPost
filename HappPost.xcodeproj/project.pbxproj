@@ -51,6 +51,11 @@
 		1880A0FD1C04F290001F6B78 /* DetailContentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1880A0FC1C04F290001F6B78 /* DetailContentCollectionViewCell.m */; };
 		1882FADD1C10C9AB0063499C /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1882FADC1C10C9AB0063499C /* splash.png */; };
 		1882FAE01C10D5E10063499C /* NewsInfographicsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1882FADF1C10D5E10063499C /* NewsInfographicsObject.m */; };
+		188D52C61C120B0200C92A0E /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D52C51C120B0200C92A0E /* YTPlayerView.m */; };
+		188D52C91C120B1800C92A0E /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 188D52C71C120B1800C92A0E /* Assets.bundle */; };
+		188D52CD1C1211AA00C92A0E /* videoPlayerPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 188D52CC1C1211AA00C92A0E /* videoPlayerPlaceholder.png */; };
+		188D52D21C12567B00C92A0E /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D52D01C12567B00C92A0E /* NSDate+TimeAgo.m */; };
+		188D52D31C12567B00C92A0E /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 188D52D11C12567B00C92A0E /* NSDateTimeAgo.bundle */; };
 		18908A7C1BFCFD9E008A7252 /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = 18908A7B1BFCFD9E008A7252 /* border.png */; };
 		18945D591C0AD956007D6A26 /* NewsContentRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 18945D581C0AD956007D6A26 /* NewsContentRequestObject.m */; };
 		18945D5C1C0ADA64007D6A26 /* NewsContentResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 18945D5B1C0ADA64007D6A26 /* NewsContentResponseObject.m */; };
@@ -193,6 +198,14 @@
 		1882FADC1C10C9AB0063499C /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		1882FADE1C10D5E10063499C /* NewsInfographicsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsInfographicsObject.h; sourceTree = "<group>"; };
 		1882FADF1C10D5E10063499C /* NewsInfographicsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsInfographicsObject.m; sourceTree = "<group>"; };
+		188D52C41C120B0200C92A0E /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
+		188D52C51C120B0200C92A0E /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
+		188D52C71C120B1800C92A0E /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Assets.bundle; sourceTree = "<group>"; };
+		188D52C81C120B1800C92A0E /* YouTubeiOSPlayerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeiOSPlayerHelper.h; sourceTree = "<group>"; };
+		188D52CC1C1211AA00C92A0E /* videoPlayerPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videoPlayerPlaceholder.png; sourceTree = "<group>"; };
+		188D52CF1C12567B00C92A0E /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
+		188D52D01C12567B00C92A0E /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeAgo.m"; sourceTree = "<group>"; };
+		188D52D11C12567B00C92A0E /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
 		18908A7B1BFCFD9E008A7252 /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border.png; sourceTree = "<group>"; };
 		18945D571C0AD956007D6A26 /* NewsContentRequestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsContentRequestObject.h; sourceTree = "<group>"; };
 		18945D581C0AD956007D6A26 /* NewsContentRequestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsContentRequestObject.m; sourceTree = "<group>"; };
@@ -275,6 +288,8 @@
 		1801B8311C0ABC9300AA82CA /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				188D52CE1C12566600C92A0E /* DateTimeAgo */,
+				188D52C31C120AF600C92A0E /* Youtube */,
 				18945D601C0AE04D007D6A26 /* fmdb */,
 				1801B8901C0AD15600AA82CA /* SVProgressHUD */,
 				1801B8361C0ABEF700AA82CA /* AFNetworking */,
@@ -436,6 +451,27 @@
 			name = Category;
 			sourceTree = "<group>";
 		};
+		188D52C31C120AF600C92A0E /* Youtube */ = {
+			isa = PBXGroup;
+			children = (
+				188D52C71C120B1800C92A0E /* Assets.bundle */,
+				188D52C81C120B1800C92A0E /* YouTubeiOSPlayerHelper.h */,
+				188D52C41C120B0200C92A0E /* YTPlayerView.h */,
+				188D52C51C120B0200C92A0E /* YTPlayerView.m */,
+			);
+			name = Youtube;
+			sourceTree = "<group>";
+		};
+		188D52CE1C12566600C92A0E /* DateTimeAgo */ = {
+			isa = PBXGroup;
+			children = (
+				188D52CF1C12567B00C92A0E /* NSDate+TimeAgo.h */,
+				188D52D01C12567B00C92A0E /* NSDate+TimeAgo.m */,
+				188D52D11C12567B00C92A0E /* NSDateTimeAgo.bundle */,
+			);
+			name = DateTimeAgo;
+			sourceTree = "<group>";
+		};
 		18945D601C0AE04D007D6A26 /* fmdb */ = {
 			isa = PBXGroup;
 			children = (
@@ -532,6 +568,7 @@
 		18BDF7951BFBA88A003B7D7D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				188D52CC1C1211AA00C92A0E /* videoPlayerPlaceholder.png */,
 				180B3C3F1C0B9F3D009D364B /* placeholder.png */,
 				1801B82C1C0AB81B00AA82CA /* happ post .png */,
 				18908A7B1BFCFD9E008A7252 /* border.png */,
@@ -669,6 +706,7 @@
 				1882FADD1C10C9AB0063499C /* splash.png in Resources */,
 				18BDF7AB1BFBA88A003B7D7D /* entertainment.png in Resources */,
 				18BDF7B81BFBA88A003B7D7D /* trending.png in Resources */,
+				188D52C91C120B1800C92A0E /* Assets.bundle in Resources */,
 				18BDF7B21BFBA88A003B7D7D /* special.png in Resources */,
 				18BDF7AC1BFBA88A003B7D7D /* expand.png in Resources */,
 				18BDF7B61BFBA88A003B7D7D /* switchView.png in Resources */,
@@ -677,6 +715,7 @@
 				1871972A1C03A7B600ACC58B /* MenuTableViewCell.xib in Resources */,
 				18BDF7B01BFBA88A003B7D7D /* radio.png in Resources */,
 				18BDF7AE1BFBA88A003B7D7D /* india.png in Resources */,
+				188D52CD1C1211AA00C92A0E /* videoPlayerPlaceholder.png in Resources */,
 				18BDF7C61BFBB2E8003B7D7D /* tmp3.png in Resources */,
 				18BDF7AD1BFBA88A003B7D7D /* icnMenu.png in Resources */,
 				18908A7C1BFCFD9E008A7252 /* border.png in Resources */,
@@ -687,6 +726,7 @@
 				18BDF7A81BFBA88A003B7D7D /* business.png in Resources */,
 				18BDF7BF1BFBAB8F003B7D7D /* ListViewTableViewCell.xib in Resources */,
 				1801B89A1C0AD15600AA82CA /* SVProgressHUD.bundle in Resources */,
+				188D52D31C12567B00C92A0E /* NSDateTimeAgo.bundle in Resources */,
 				18BDF7B71BFBA88A003B7D7D /* titleLogo.png in Resources */,
 				18BDF7B51BFBA88A003B7D7D /* spotlight.png in Resources */,
 				18BDF7B11BFBA88A003B7D7D /* share.png in Resources */,
@@ -724,7 +764,9 @@
 				182B20C41C01057B000AD63D /* CustomCollectionViewCollectionViewCell.m in Sources */,
 				1801B86C1C0ABEF700AA82CA /* AFURLResponseSerialization.m in Sources */,
 				1801B89C1C0AD15600AA82CA /* SVRadialGradientLayer.m in Sources */,
+				188D52D21C12567B00C92A0E /* NSDate+TimeAgo.m in Sources */,
 				1801B8841C0AC01A00AA82CA /* RegisterRequestObject.m in Sources */,
+				188D52C61C120B0200C92A0E /* YTPlayerView.m in Sources */,
 				1801B86A1C0ABEF700AA82CA /* AFURLConnectionOperation.m in Sources */,
 				182B20CA1C0105F8000AD63D /* CardContentViewController.m in Sources */,
 				1880A0FA1C04EC38001F6B78 /* ContentDetailViewController.m in Sources */,
