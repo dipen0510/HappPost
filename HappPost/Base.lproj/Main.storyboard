@@ -96,7 +96,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HnX-Dc-S7K"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kD8-zc-RCd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1650"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="2100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BMF-e2-Ahv">
@@ -137,8 +137,8 @@
                                     <constraint firstAttribute="height" constant="64" id="vae-bR-r8Y"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-H5-N0p">
-                                <rect key="frame" x="-8" y="64" width="391" height="1586"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRg-H5-N0p">
+                                <rect key="frame" x="-8" y="64" width="391" height="2036"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AZO-XS-Hwi">
                                         <rect key="frame" x="8" y="0.0" width="375" height="409"/>
@@ -289,13 +289,35 @@ Cg
                                             <constraint firstAttribute="width" secondItem="zwj-OM-Yap" secondAttribute="height" multiplier="90:53" id="HAa-cj-x1r"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UO-hR-j0I">
+                                        <rect key="frame" x="8" y="1583" width="375" height="10"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="4Lj-gc-Jd2"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tlB-Ka-niT">
+                                        <rect key="frame" x="8" y="1601" width="375" height="435"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="435" id="1Co-48-wzz"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="AI0-gY-Tst" id="q54-7n-Muw"/>
+                                            <outlet property="delegate" destination="AI0-gY-Tst" id="Nbx-Xh-WVx"/>
+                                        </connections>
+                                    </tableView>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="fWU-BA-2yA" secondAttribute="bottom" constant="20" id="1pU-gf-gre"/>
                                     <constraint firstAttribute="trailing" secondItem="hJO-u6-che" secondAttribute="trailing" constant="15" id="2v1-Zo-XCV"/>
+                                    <constraint firstAttribute="trailing" secondItem="tlB-Ka-niT" secondAttribute="trailing" constant="8" id="6SK-iA-4PX"/>
+                                    <constraint firstAttribute="trailing" secondItem="7UO-hR-j0I" secondAttribute="trailing" constant="8" id="6ZJ-nE-mBz"/>
                                     <constraint firstAttribute="trailing" secondItem="fT1-xH-90t" secondAttribute="trailing" constant="15" id="CzU-Bi-gbA"/>
+                                    <constraint firstAttribute="bottom" secondItem="tlB-Ka-niT" secondAttribute="bottom" id="ILU-Mb-DGN"/>
                                     <constraint firstItem="7a6-U3-1P4" firstAttribute="top" secondItem="fT1-xH-90t" secondAttribute="bottom" constant="235" id="Ikr-3a-UbU"/>
                                     <constraint firstItem="zwj-OM-Yap" firstAttribute="leading" secondItem="aRg-H5-N0p" secondAttribute="leading" constant="16" id="MFy-hG-Lal"/>
                                     <constraint firstAttribute="trailing" secondItem="fWU-BA-2yA" secondAttribute="trailing" constant="15" id="OTa-XI-IXs"/>
@@ -304,10 +326,12 @@ Cg
                                     <constraint firstItem="elp-lb-Q63" firstAttribute="leading" secondItem="aRg-H5-N0p" secondAttribute="leading" constant="8" id="TJf-De-Tc0"/>
                                     <constraint firstItem="AZO-XS-Hwi" firstAttribute="top" secondItem="aRg-H5-N0p" secondAttribute="top" id="UBl-Jq-JtG"/>
                                     <constraint firstAttribute="trailing" secondItem="7a6-U3-1P4" secondAttribute="trailing" constant="15" id="a5V-n3-X1o"/>
+                                    <constraint firstItem="tlB-Ka-niT" firstAttribute="leading" secondItem="aRg-H5-N0p" secondAttribute="leading" constant="8" id="aAo-Ad-r9g"/>
                                     <constraint firstItem="7a6-U3-1P4" firstAttribute="centerX" secondItem="aRg-H5-N0p" secondAttribute="centerX" id="asU-2w-wR2"/>
                                     <constraint firstItem="zwj-OM-Yap" firstAttribute="top" secondItem="fT1-xH-90t" secondAttribute="bottom" constant="14" id="dWf-kh-WgP"/>
                                     <constraint firstItem="A5I-gF-qCO" firstAttribute="top" secondItem="AZO-XS-Hwi" secondAttribute="bottom" constant="8" id="eoR-1S-NI9"/>
                                     <constraint firstItem="elp-lb-Q63" firstAttribute="top" secondItem="7a6-U3-1P4" secondAttribute="bottom" constant="8" id="eyg-u8-We4"/>
+                                    <constraint firstItem="tlB-Ka-niT" firstAttribute="top" secondItem="7UO-hR-j0I" secondAttribute="bottom" constant="8" id="fco-7S-2Og"/>
                                     <constraint firstItem="fWU-BA-2yA" firstAttribute="leading" secondItem="aRg-H5-N0p" secondAttribute="leading" constant="16" id="g44-zq-Zja"/>
                                     <constraint firstItem="A5I-gF-qCO" firstAttribute="leading" secondItem="aRg-H5-N0p" secondAttribute="leading" constant="16" id="hAW-Qf-JXv"/>
                                     <constraint firstItem="fWU-BA-2yA" firstAttribute="top" secondItem="elp-lb-Q63" secondAttribute="bottom" constant="8" id="hXd-eo-luh"/>
@@ -315,10 +339,12 @@ Cg
                                     <constraint firstAttribute="trailing" secondItem="A5I-gF-qCO" secondAttribute="trailing" constant="15" id="hq0-s3-PWj"/>
                                     <constraint firstItem="fT1-xH-90t" firstAttribute="top" secondItem="A5I-gF-qCO" secondAttribute="bottom" constant="8" id="jek-Cs-hVI"/>
                                     <constraint firstAttribute="trailing" secondItem="AZO-XS-Hwi" secondAttribute="trailing" constant="8" id="jly-Rg-pfQ"/>
+                                    <constraint firstItem="7UO-hR-j0I" firstAttribute="top" secondItem="fWU-BA-2yA" secondAttribute="bottom" constant="8" id="lPF-bc-ZI4"/>
                                     <constraint firstAttribute="trailing" secondItem="elp-lb-Q63" secondAttribute="trailing" constant="8" id="rPe-zH-2D6"/>
                                     <constraint firstAttribute="trailing" secondItem="zwj-OM-Yap" secondAttribute="trailing" constant="15" id="ssU-od-dx5"/>
                                     <constraint firstItem="hJO-u6-che" firstAttribute="top" secondItem="fT1-xH-90t" secondAttribute="bottom" constant="14" id="wlg-4q-IU7"/>
                                     <constraint firstItem="hJO-u6-che" firstAttribute="leading" secondItem="aRg-H5-N0p" secondAttribute="leading" constant="16" id="ya5-n9-ybn"/>
+                                    <constraint firstItem="7UO-hR-j0I" firstAttribute="leading" secondItem="aRg-H5-N0p" secondAttribute="leading" constant="8" id="zZg-jc-4F3"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -335,9 +361,10 @@ Cg
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="1650"/>
+                    <size key="freeformSize" width="375" height="2100"/>
                     <connections>
                         <outlet property="collectionViewHeightConstraint" destination="NGQ-TY-Zc0" id="fzi-uv-jIT"/>
+                        <outlet property="commentsTableView" destination="tlB-Ka-niT" id="qvf-vp-U1a"/>
                         <outlet property="contentCollectionView" destination="elp-lb-Q63" id="Wra-fc-HbO"/>
                         <outlet property="contentScrollView" destination="aRg-H5-N0p" id="n6d-p3-ofO"/>
                         <outlet property="headingHeightConstraint" destination="Oj5-Qs-8Fk" id="2lx-PO-dWL"/>
@@ -357,7 +384,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azf-Bp-sZb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2138.5" y="1282"/>
+            <point key="canvasLocation" x="2138.5" y="1495"/>
         </scene>
         <!--Card Content View Controller-->
         <scene sceneID="ib0-cB-DDo">

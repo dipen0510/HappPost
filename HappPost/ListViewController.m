@@ -9,7 +9,6 @@
 #import "ListViewController.h"
 #import "ListViewTableViewCell.h"
 #import "MenuView.h"
-#import "MenuTableViewCell.h"
 #import "ContentDetailViewController.h"
 
 @interface ListViewController () {
@@ -27,8 +26,6 @@
     
     NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"MenuView" owner:self options:nil];
     menuView = [subviewArray objectAtIndex:0];
-    menuView.menuTableView.dataSource = self;
-    menuView.menuTableView.delegate = self;
     menuView.frame = self.view.frame;
     menuView.transform = CGAffineTransformScale(self.view.transform, 3, 3);
     menuView.alpha = 0.0;
@@ -40,87 +37,30 @@
     blurEffectView.frame = self.view.bounds;
     blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self generateDatasourceForList];
+}
+
+- (void) generateDatasourceForList {
+    
     newsContentArr = [[NSMutableArray alloc] init];
-    newsContentArr = [[DBManager sharedManager] getAllNews];
+    newsContentArr = [[DBManager sharedManager] checkAndFetchNews];
+    [self.listTblView reloadData];
+    
 }
 
 #pragma mark - UITableView Datasource -
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    if (tableView == menuView.menuTableView) {
-        return 8;
-    }
+
     return newsContentArr.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (tableView == menuView.menuTableView) {
-        
-        NSString* identifier = @"MenuView";
-        MenuTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        
-        if (cell == nil) {
-            NSArray *nib=[[NSBundle mainBundle] loadNibNamed:@"MenuTableViewCell" owner:self options:nil];
-            cell=[nib objectAtIndex:0];
-        }
-        cell.backgroundColor = [UIColor clearColor];
-        
-        switch (indexPath.row) {
-            case 0:
-                cell.categoryLabel.text = @"India";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"india"]];
-                break;
-                
-            case 1:
-                cell.categoryLabel.text = @"World";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"world"]];
-                break;
-                
-            case 2:
-                cell.categoryLabel.text = @"Sport";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"sports"]];
-                break;
-                
-            case 3:
-                cell.categoryLabel.text = @"Entertainment";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"entertainment"]];
-                break;
-                
-            case 4:
-                cell.categoryLabel.text = @"Business";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"business"]];
-                break;
-                
-            case 5:
-                cell.categoryLabel.text = @"Life/Style";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"lifestyle"]];
-                break;
-                
-            case 6:
-                cell.categoryLabel.text = @"Spotlight";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"spotlight"]];
-                break;
-                
-            case 7:
-                cell.categoryLabel.text = @"Special";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"special"]];
-                break;
-                
-            case 8:
-                cell.categoryLabel.text = @"Trending";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"trending"]];
-                break;
-                
-            default:
-                break;
-        }
-        
-        return cell;
-        
-    }
-    
+
     NSString* identifier = @"ListCell";
     ListViewTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
@@ -136,10 +76,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (tableView == menuView.menuTableView) {
-        return 50.0;
-    }
+
     return 150.0;
 }
 
@@ -147,13 +84,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:true];
-    
-    if (tableView == menuView.menuTableView) {
-    }
-    else {
+
         selectedIndex = indexPath.row;
         [self performSegueWithIdentifier:@"showDetailSegue" sender:nil];
-    }
+
     
 }
 
@@ -220,6 +154,8 @@
 }
 
 - (void) hideMenuView {
+    
+    [self generateDatasourceForList];
     
     [blurEffectView removeFromSuperview];
     [UIView animateWithDuration:0.25 delay:0 options:0 animations:^{

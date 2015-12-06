@@ -20,6 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [[SharedClass sharedInstance] setSelectedMyNewsArr:[[NSMutableArray alloc] init]];
+    [[SharedClass sharedInstance] setSelectedGenresArr:[[NSMutableArray alloc] init]];
+    
     if ([[SharedClass sharedInstance] userId]) {
         
         [self startGetNewsContentService];

@@ -26,5 +26,6 @@
 #import "NewsInfographicsObject.h"
 #import "YouTubeiOSPlayerHelper.h"
 #import "NSDate+TimeAgo.h"
+#import "HPTopLeftLabel.h"
 
 #endif /* PrefixHeader_pch */

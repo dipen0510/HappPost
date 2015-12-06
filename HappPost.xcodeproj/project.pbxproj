@@ -35,6 +35,12 @@
 		1801B89B1C0AD15600AA82CA /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801B8961C0AD15600AA82CA /* SVProgressHUD.m */; };
 		1801B89C1C0AD15600AA82CA /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801B8981C0AD15600AA82CA /* SVRadialGradientLayer.m */; };
 		180B3C401C0B9F3D009D364B /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 180B3C3F1C0B9F3D009D364B /* placeholder.png */; };
+		181D3EFC1C1367B100C3C1DB /* AddCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181D3EFA1C1367B100C3C1DB /* AddCommentsTableViewCell.m */; };
+		181D3EFD1C1367B100C3C1DB /* AddCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D3EFB1C1367B100C3C1DB /* AddCommentsTableViewCell.xib */; };
+		181D3F001C136A0200C3C1DB /* HPTopLeftLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 181D3EFF1C136A0200C3C1DB /* HPTopLeftLabel.m */; };
+		181D3F041C13731400C3C1DB /* UserCommenstsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 181D3F021C13731400C3C1DB /* UserCommenstsTableViewCell.m */; };
+		181D3F051C13731400C3C1DB /* UserCommenstsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D3F031C13731400C3C1DB /* UserCommenstsTableViewCell.xib */; };
+		181D3F0B1C138BCE00C3C1DB /* AddCommentRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 181D3F0A1C138BCE00C3C1DB /* AddCommentRequestObject.m */; };
 		182B20C01C010548000AD63D /* YRCoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B20BF1C010548000AD63D /* YRCoverFlowLayout.m */; };
 		182B20C41C01057B000AD63D /* CustomCollectionViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B20C31C01057B000AD63D /* CustomCollectionViewCollectionViewCell.m */; };
 		182B20CA1C0105F8000AD63D /* CardContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182B20C91C0105F8000AD63D /* CardContentViewController.m */; };
@@ -93,10 +99,6 @@
 		18BDF7B91BFBA88A003B7D7D /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF7A71BFBA88A003B7D7D /* world.png */; };
 		18BDF7BE1BFBAB8F003B7D7D /* ListViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDF7BC1BFBAB8F003B7D7D /* ListViewTableViewCell.m */; };
 		18BDF7BF1BFBAB8F003B7D7D /* ListViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF7BD1BFBAB8F003B7D7D /* ListViewTableViewCell.xib */; };
-		18BDF7C41BFBB2E8003B7D7D /* tmp1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF7C01BFBB2E8003B7D7D /* tmp1.png */; };
-		18BDF7C51BFBB2E8003B7D7D /* tmp2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF7C11BFBB2E8003B7D7D /* tmp2.png */; };
-		18BDF7C61BFBB2E8003B7D7D /* tmp3.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF7C21BFBB2E8003B7D7D /* tmp3.png */; };
-		18BDF7C71BFBB2E8003B7D7D /* tmp4.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF7C31BFBB2E8003B7D7D /* tmp4.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +171,16 @@
 		1801B8971C0AD15600AA82CA /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		1801B8981C0AD15600AA82CA /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		180B3C3F1C0B9F3D009D364B /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		181D3EF91C1367B100C3C1DB /* AddCommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentsTableViewCell.h; sourceTree = "<group>"; };
+		181D3EFA1C1367B100C3C1DB /* AddCommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentsTableViewCell.m; sourceTree = "<group>"; };
+		181D3EFB1C1367B100C3C1DB /* AddCommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCommentsTableViewCell.xib; sourceTree = "<group>"; };
+		181D3EFE1C136A0200C3C1DB /* HPTopLeftLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPTopLeftLabel.h; path = "Custom Controls/HPTopLeftLabel.h"; sourceTree = "<group>"; };
+		181D3EFF1C136A0200C3C1DB /* HPTopLeftLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPTopLeftLabel.m; path = "Custom Controls/HPTopLeftLabel.m"; sourceTree = "<group>"; };
+		181D3F011C13731400C3C1DB /* UserCommenstsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommenstsTableViewCell.h; sourceTree = "<group>"; };
+		181D3F021C13731400C3C1DB /* UserCommenstsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommenstsTableViewCell.m; sourceTree = "<group>"; };
+		181D3F031C13731400C3C1DB /* UserCommenstsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCommenstsTableViewCell.xib; sourceTree = "<group>"; };
+		181D3F091C138BCE00C3C1DB /* AddCommentRequestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentRequestObject.h; sourceTree = "<group>"; };
+		181D3F0A1C138BCE00C3C1DB /* AddCommentRequestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentRequestObject.m; sourceTree = "<group>"; };
 		182B20BE1C010548000AD63D /* YRCoverFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRCoverFlowLayout.h; sourceTree = "<group>"; };
 		182B20BF1C010548000AD63D /* YRCoverFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRCoverFlowLayout.m; sourceTree = "<group>"; };
 		182B20C21C01057B000AD63D /* CustomCollectionViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCollectionViewCell.h; sourceTree = "<group>"; };
@@ -260,10 +272,6 @@
 		18BDF7BB1BFBAB8F003B7D7D /* ListViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewTableViewCell.h; path = "Custom Controls/ListViewTableViewCell.h"; sourceTree = "<group>"; };
 		18BDF7BC1BFBAB8F003B7D7D /* ListViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewTableViewCell.m; path = "Custom Controls/ListViewTableViewCell.m"; sourceTree = "<group>"; };
 		18BDF7BD1BFBAB8F003B7D7D /* ListViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListViewTableViewCell.xib; path = "Custom Controls/ListViewTableViewCell.xib"; sourceTree = "<group>"; };
-		18BDF7C01BFBB2E8003B7D7D /* tmp1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp1.png; sourceTree = "<group>"; };
-		18BDF7C11BFBB2E8003B7D7D /* tmp2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp2.png; sourceTree = "<group>"; };
-		18BDF7C21BFBB2E8003B7D7D /* tmp3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp3.png; sourceTree = "<group>"; };
-		18BDF7C31BFBB2E8003B7D7D /* tmp4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmp4.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,6 +364,8 @@
 				1801B8801C0AC01A00AA82CA /* RegisterRequestObject.m */,
 				18945D571C0AD956007D6A26 /* NewsContentRequestObject.h */,
 				18945D581C0AD956007D6A26 /* NewsContentRequestObject.m */,
+				181D3F091C138BCE00C3C1DB /* AddCommentRequestObject.h */,
+				181D3F0A1C138BCE00C3C1DB /* AddCommentRequestObject.m */,
 			);
 			name = RequestObj;
 			sourceTree = "<group>";
@@ -418,6 +428,12 @@
 				182B20C31C01057B000AD63D /* CustomCollectionViewCollectionViewCell.m */,
 				1880A0FB1C04F290001F6B78 /* DetailContentCollectionViewCell.h */,
 				1880A0FC1C04F290001F6B78 /* DetailContentCollectionViewCell.m */,
+				181D3EF91C1367B100C3C1DB /* AddCommentsTableViewCell.h */,
+				181D3EFA1C1367B100C3C1DB /* AddCommentsTableViewCell.m */,
+				181D3EFB1C1367B100C3C1DB /* AddCommentsTableViewCell.xib */,
+				181D3F011C13731400C3C1DB /* UserCommenstsTableViewCell.h */,
+				181D3F021C13731400C3C1DB /* UserCommenstsTableViewCell.m */,
+				181D3F031C13731400C3C1DB /* UserCommenstsTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -572,10 +588,6 @@
 				180B3C3F1C0B9F3D009D364B /* placeholder.png */,
 				1801B82C1C0AB81B00AA82CA /* happ post .png */,
 				18908A7B1BFCFD9E008A7252 /* border.png */,
-				18BDF7C01BFBB2E8003B7D7D /* tmp1.png */,
-				18BDF7C11BFBB2E8003B7D7D /* tmp2.png */,
-				18BDF7C21BFBB2E8003B7D7D /* tmp3.png */,
-				18BDF7C31BFBB2E8003B7D7D /* tmp4.png */,
 				18BDF7961BFBA88A003B7D7D /* business.png */,
 				18BDF7971BFBA88A003B7D7D /* check.png */,
 				18BDF7981BFBA88A003B7D7D /* close.png */,
@@ -611,6 +623,8 @@
 				187197261C03A7B600ACC58B /* MenuTableViewCell.h */,
 				187197271C03A7B600ACC58B /* MenuTableViewCell.m */,
 				187197281C03A7B600ACC58B /* MenuTableViewCell.xib */,
+				181D3EFE1C136A0200C3C1DB /* HPTopLeftLabel.h */,
+				181D3EFF1C136A0200C3C1DB /* HPTopLeftLabel.m */,
 			);
 			name = "Custom Controls";
 			sourceTree = "<group>";
@@ -698,7 +712,7 @@
 				18BDF7AA1BFBA88A003B7D7D /* close.png in Resources */,
 				18BDF7B91BFBA88A003B7D7D /* world.png in Resources */,
 				18BDF77A1BFBA4EB003B7D7D /* Main.storyboard in Resources */,
-				18BDF7C71BFBB2E8003B7D7D /* tmp4.png in Resources */,
+				181D3EFD1C1367B100C3C1DB /* AddCommentsTableViewCell.xib in Resources */,
 				18BDF7A91BFBA88A003B7D7D /* check.png in Resources */,
 				18BDF77F1BFBA4EB003B7D7D /* LaunchScreen.xib in Resources */,
 				1801B82D1C0AB81B00AA82CA /* happ post .png in Resources */,
@@ -709,6 +723,7 @@
 				188D52C91C120B1800C92A0E /* Assets.bundle in Resources */,
 				18BDF7B21BFBA88A003B7D7D /* special.png in Resources */,
 				18BDF7AC1BFBA88A003B7D7D /* expand.png in Resources */,
+				181D3F051C13731400C3C1DB /* UserCommenstsTableViewCell.xib in Resources */,
 				18BDF7B61BFBA88A003B7D7D /* switchView.png in Resources */,
 				18BDF7B41BFBA88A003B7D7D /* sports.png in Resources */,
 				18BDF77C1BFBA4EB003B7D7D /* Images.xcassets in Resources */,
@@ -716,12 +731,9 @@
 				18BDF7B01BFBA88A003B7D7D /* radio.png in Resources */,
 				18BDF7AE1BFBA88A003B7D7D /* india.png in Resources */,
 				188D52CD1C1211AA00C92A0E /* videoPlayerPlaceholder.png in Resources */,
-				18BDF7C61BFBB2E8003B7D7D /* tmp3.png in Resources */,
 				18BDF7AD1BFBA88A003B7D7D /* icnMenu.png in Resources */,
 				18908A7C1BFCFD9E008A7252 /* border.png in Resources */,
 				18BDF7AF1BFBA88A003B7D7D /* lifestyle.png in Resources */,
-				18BDF7C41BFBB2E8003B7D7D /* tmp1.png in Resources */,
-				18BDF7C51BFBB2E8003B7D7D /* tmp2.png in Resources */,
 				187197251C039C0500ACC58B /* MenuView.xib in Resources */,
 				18BDF7A81BFBA88A003B7D7D /* business.png in Resources */,
 				18BDF7BF1BFBAB8F003B7D7D /* ListViewTableViewCell.xib in Resources */,
@@ -757,6 +769,7 @@
 				18945D6D1C0AE04D007D6A26 /* FMDatabaseAdditions.m in Sources */,
 				18945D591C0AD956007D6A26 /* NewsContentRequestObject.m in Sources */,
 				1801B89B1C0AD15600AA82CA /* SVProgressHUD.m in Sources */,
+				181D3F0B1C138BCE00C3C1DB /* AddCommentRequestObject.m in Sources */,
 				18945D6E1C0AE04D007D6A26 /* FMDatabasePool.m in Sources */,
 				1801B8991C0AD15600AA82CA /* SVIndefiniteAnimatedView.m in Sources */,
 				18BDF7771BFBA4EB003B7D7D /* ListViewController.m in Sources */,
@@ -764,6 +777,7 @@
 				182B20C41C01057B000AD63D /* CustomCollectionViewCollectionViewCell.m in Sources */,
 				1801B86C1C0ABEF700AA82CA /* AFURLResponseSerialization.m in Sources */,
 				1801B89C1C0AD15600AA82CA /* SVRadialGradientLayer.m in Sources */,
+				181D3EFC1C1367B100C3C1DB /* AddCommentsTableViewCell.m in Sources */,
 				188D52D21C12567B00C92A0E /* NSDate+TimeAgo.m in Sources */,
 				1801B8841C0AC01A00AA82CA /* RegisterRequestObject.m in Sources */,
 				188D52C61C120B0200C92A0E /* YTPlayerView.m in Sources */,
@@ -793,8 +807,10 @@
 				1801B8651C0ABEF700AA82CA /* AFHTTPRequestOperation.m in Sources */,
 				18BDF7711BFBA4EB003B7D7D /* main.m in Sources */,
 				1801B86E1C0ABEF700AA82CA /* AFNetworkActivityIndicatorManager.m in Sources */,
+				181D3F001C136A0200C3C1DB /* HPTopLeftLabel.m in Sources */,
 				1801B8671C0ABEF700AA82CA /* AFHTTPSessionManager.m in Sources */,
 				1801B8751C0ABEF700AA82CA /* UIWebView+AFNetworking.m in Sources */,
+				181D3F041C13731400C3C1DB /* UserCommenstsTableViewCell.m in Sources */,
 				187197231C039BF700ACC58B /* MenuView.m in Sources */,
 				1801B86D1C0ABEF700AA82CA /* AFURLSessionManager.m in Sources */,
 				18945D6F1C0AE04D007D6A26 /* FMDatabaseQueue.m in Sources */,

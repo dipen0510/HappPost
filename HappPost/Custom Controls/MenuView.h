@@ -8,13 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuView : UIView
+@interface MenuView : UIView<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate> {
+    
+    NSMutableArray* selectedGenreArr;
+    NSMutableArray* selectedMyNewsArr;
+    
+}
 
+@property (weak, nonatomic) IBOutlet UIScrollView *mewnuScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *menuTableView;
+@property (weak, nonatomic) IBOutlet UITableView *genreTableView;
 @property (weak, nonatomic) IBOutlet UIButton *switchToCardView;
 @property (weak, nonatomic) IBOutlet UIButton *noneButton;
 @property (weak, nonatomic) IBOutlet UIButton *dayButton;
 @property (weak, nonatomic) IBOutlet UIButton *allNotificationButton;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareHappPostButton;
+@property (weak, nonatomic) IBOutlet UIButton *myBookbarkButton;
 
 @end

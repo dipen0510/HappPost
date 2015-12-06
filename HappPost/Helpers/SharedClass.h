@@ -17,6 +17,9 @@
 @property (strong, nonatomic) NSString* userId;
 @property (strong, nonatomic) RegisterRequestObject* userRegisterDetails;
 
+@property (strong, nonatomic) NSMutableArray* selectedGenresArr;
+@property (strong, nonatomic) NSMutableArray* selectedMyNewsArr;
+
 -(NSDate *)getCurrentUTCFormatDate;
 - (void) insertNewsContentResponseIntoDB: (NewsContentResponseObject *)newsObj;
 - (NSDate *) dateFromString:(NSString *)dateTime;

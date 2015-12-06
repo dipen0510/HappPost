@@ -30,7 +30,9 @@ FOUNDATION_EXPORT NSString* getRiverImagesURL;
 
 -(void) getAllUserDetailsAndStoreInSharedClass;
 -(NSMutableDictionary *) getAllSettings;
+- (NSMutableArray *) checkAndFetchNews;
 -(NSMutableArray *) getAllNews;
+-(NSMutableArray *) getAllNewsWithSelectedCategories:(NSString *)categories ;
 -(NSMutableArray *) getAllNewsGenreForNewsId:(NSString *)newsId;
 -(NSMutableArray *) getAllNewsCommentsForNewsId:(NSString *)newsId;
 -(NSMutableArray *) getAllNewsInfographicsForNewsId:(NSString *)newsId;

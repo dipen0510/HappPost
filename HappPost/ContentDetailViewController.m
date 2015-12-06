@@ -8,6 +8,10 @@
 
 #import "ContentDetailViewController.h"
 #import "DetailContentCollectionViewCell.h"
+#import "AddCommentsTableViewCell.h"
+#import "UserCommenstsTableViewCell.h"
+#import "NewsCommentObject.h"
+#import "AddCommentRequestObject.h"
 
 @interface ContentDetailViewController ()
 
@@ -252,6 +256,163 @@
         }
     
 }
+
+
+#pragma mark - UITableView Datasource -
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return newsObj.newsComments.count + 1;
+    
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 0) {
+        
+        NSString* identifier = @"AddCommentsView";
+        AddCommentsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        
+        if (cell == nil) {
+            NSArray *nib=[[NSBundle mainBundle] loadNibNamed:@"AddCommentsTableViewCell" owner:self options:nil];
+            cell=[nib objectAtIndex:0];
+        }
+        
+        [cell.addButton addTarget:self action:@selector(addCommentButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+        
+        return cell;
+        
+    }
+    
+    NSString* identifier = @"UserCommentsView";
+    UserCommenstsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    if (cell == nil) {
+        NSArray *nib=[[NSBundle mainBundle] loadNibNamed:@"UserCommenstsTableViewCell" owner:self options:nil];
+        cell=[nib objectAtIndex:0];
+    }
+    
+    NewsCommentObject* commentObj = (NewsCommentObject *)[newsObj.newsComments objectAtIndex:indexPath.row-1];
+    
+    cell.profileNameLbl.text = commentObj.user;
+    cell.commentDateLbl.text = commentObj.dateCreated;
+    cell.commentDescriptonLbl.text = commentObj.comments;
+    
+    return cell;
+    
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 0) {
+        return 180.0;
+    }
+    
+    NewsCommentObject* commentObj = (NewsCommentObject *)[newsObj.newsComments objectAtIndex:indexPath.row-1];
+    NSString *str = commentObj.comments;
+    CGSize size = [str sizeWithFont:[UIFont fontWithName:@"Helvetica" size:16] constrainedToSize:CGSizeMake(280, 999) lineBreakMode:NSLineBreakByWordWrapping];
+    NSLog(@"%f",size.height);
+    return size.height + 80;
+}
+
+#pragma mark - UITableView Delegate -
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
+    
+    
+    
+}
+
+
+- (void) addCommentButtonTapped {
+    
+    NSString* userId = [[SharedClass sharedInstance] userId];
+    
+    if (userId && [userId intValue]!=-1) {
+        
+        [self startAddCommentService];
+        
+    }
+    else {
+        
+        [SVProgressHUD showErrorWithStatus:@"Register first to add comment"];
+        
+    }
+    
+}
+
+#pragma mark - Add Comment API
+
+-(void) startAddCommentService {
+    
+    [SVProgressHUD showWithStatus:@"Adding Comment"];
+    
+    AddCommentsTableViewCell* cell = (AddCommentsTableViewCell *)[self.commentsTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [cell.addCommentTextView resignFirstResponder];
+    
+    DataSyncManager* manager = [[DataSyncManager alloc] init];
+    manager.serviceKey = kAddComment;
+    manager.delegate = self;
+    [manager startPOSTWebServicesWithParams:[self prepareDictionaryForAddComment]];
+    
+}
+
+
+#pragma mark - DATASYNCMANAGER Delegates
+
+-(void) didFinishServiceWithSuccess:(id)responseData andServiceKey:(NSString *)requestServiceKey {
+    
+    if ([requestServiceKey isEqualToString:kAddComment]) {
+        
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showSuccessWithStatus:@"Comment Added"];
+        
+        AddCommentsTableViewCell* cell = (AddCommentsTableViewCell *)[self.commentsTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        [cell.addCommentTextView setText:@""];
+        
+    }
+    
+}
+
+
+-(void) didFinishServiceWithFailure:(NSString *)errorMsg {
+    
+    [SVProgressHUD dismiss];
+    
+    UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"Server error"
+                                                  message:@"Request timed out, please try again later."
+                                                 delegate:self
+                                        cancelButtonTitle:@"OK"
+                                        otherButtonTitles: nil];
+    
+    if (![errorMsg isEqualToString:@""]) {
+        [alert setMessage:errorMsg];
+    }
+    
+    [alert show];
+    
+    return;
+    
+}
+
+#pragma mark - Modalobject
+
+- (NSMutableDictionary *) prepareDictionaryForAddComment {
+    
+    AddCommentRequestObject* requestObj = [[AddCommentRequestObject alloc] init];
+    requestObj.userId = [[SharedClass sharedInstance] userId];
+    requestObj.newsId = newsObj.newsId;
+    
+    AddCommentsTableViewCell* cell = (AddCommentsTableViewCell *)[self.commentsTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+    requestObj.comments = cell.addCommentTextView.text;
+    
+    return [requestObj createRequestDictionary];
+    
+}
+
 
 - (BOOL) isVideoURL:(NSString *)url {
     

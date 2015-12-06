@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CardContentViewController : UIViewController<UITableViewDataSource, UITableViewDelegate> {
+@interface CardContentViewController : UIViewController {
     BOOL isNavigationViewShown;
     NSMutableArray* newsArr;
     long selectedIndex;
