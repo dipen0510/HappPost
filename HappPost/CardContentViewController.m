@@ -147,6 +147,15 @@ UICollectionViewDelegate,UICollectionViewDataSource
     cell.cardView.layer.shadowOffset = CGSizeMake(0,5);
     cell.cardView.layer.shadowOpacity = 0.5;
     
+    SingleNewsObject* newsObj = (SingleNewsObject *)[newsArr objectAtIndex:indexPath.row];
+    
+    if (!newsObj.detailedStory || [newsObj.detailedStory isEqualToString:@""]) {
+        [cell.expandButton setHidden:YES];
+    }
+    else {
+        [cell.expandButton setHidden:NO];
+    }
+    
     //selectedIndex = indexPath.row;
     
     return cell;

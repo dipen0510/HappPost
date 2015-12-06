@@ -50,7 +50,7 @@
     self.headingLabel.text = newsObj.heading;
     self.subheadingLabel.text = newsObj.subHeading;
     self.primaryDescriptionLabel.text = newsObj.summary;
-    self.secondaryDescriptionLabel.text = newsObj.summary;
+    self.secondaryDescriptionLabel.text = newsObj.detailedStory;
     
     [self adjustHeightForLabel:self.headingLabel andConstraint:self.headingHeightConstraint];
     [self adjustHeightForLabel:self.subheadingLabel andConstraint:self.subheadingHeightCoonstraint];

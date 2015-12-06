@@ -246,7 +246,7 @@
                                             <outlet property="delegate" destination="AI0-gY-Tst" id="sQQ-5v-SjI"/>
                                         </connections>
                                     </collectionView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="13" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWU-BA-2yA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="99" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWU-BA-2yA">
                                         <rect key="frame" x="16" y="1284" width="360" height="291"/>
                                         <animations/>
                                         <constraints>
@@ -615,6 +615,7 @@ Cg
                                             <outlet property="_summary" destination="xoP-eL-K2X" id="1ec-7L-qa2"/>
                                             <outlet property="cardView" destination="jOb-pB-aCA" id="N9R-u6-yY1"/>
                                             <outlet property="contentContainerView" destination="X19-dQ-NFq" id="HR9-ct-SJT"/>
+                                            <outlet property="expandButton" destination="qAL-Hr-Tvt" id="uud-Zk-adN"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

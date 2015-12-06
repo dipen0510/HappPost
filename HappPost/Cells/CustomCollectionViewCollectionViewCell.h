@@ -20,5 +20,6 @@ extern NSString *const kCustomCellIdentifier;
 @property (nonatomic) CardModal *cardModel;
 @property (weak, nonatomic) IBOutlet UIView *cardView;
 @property (weak, nonatomic) IBOutlet UIView *contentContainerView;
+@property (weak, nonatomic) IBOutlet UIButton *expandButton;
 
 @end
