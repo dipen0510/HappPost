@@ -31,6 +31,7 @@
     menuView.alpha = 0.0;
     [menuView.closeButton addTarget:self action:@selector(hideMenuView) forControlEvents:UIControlEventTouchUpInside];
     [menuView.switchToCardView addTarget:self action:@selector(switchViewButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [menuView.myBookbarkButton addTarget:self action:@selector(bookmarkButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     
     UIBlurEffect* blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
@@ -49,8 +50,84 @@
     newsContentArr = [[NSMutableArray alloc] init];
     newsContentArr = [[DBManager sharedManager] checkAndFetchNews];
     [self.listTblView reloadData];
+    [self.listTblView setContentOffset:CGPointZero animated:YES];
     
 }
+
+
+#pragma mark - API Handling
+
+-(void) startGetNewsContentService {
+    
+    [self.view makeToast:@"Refreshing news content"];
+    
+    DataSyncManager* manager = [[DataSyncManager alloc] init];
+    manager.serviceKey = kGetNewsContent;
+    manager.delegate = self;
+    [manager startPOSTWebServicesWithParams:[self prepareDictionaryForNewsContent]];
+    
+}
+
+#pragma mark - DATASYNCMANAGER Delegates
+
+-(void) didFinishServiceWithSuccess:(NewsContentResponseObject *)responseData andServiceKey:(NSString *)requestServiceKey {
+    
+    if ([requestServiceKey isEqualToString:kGetNewsContent]) {
+        
+        //[self performSegueWithIdentifier:@"showCardViewSegue" sender:nil];
+        
+    }
+    
+}
+
+
+-(void) didFinishServiceWithFailure:(NSString *)errorMsg {
+    
+    [SVProgressHUD dismiss];
+    
+    UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"Server error"
+                                                  message:@"Request timed out, please try again later."
+                                                 delegate:self
+                                        cancelButtonTitle:@"OK"
+                                        otherButtonTitles: nil];
+    
+    if (![errorMsg isEqualToString:@""]) {
+        [alert setMessage:errorMsg];
+    }
+    
+    [alert show];
+    
+    return;
+    
+}
+
+-(void) didUpdateLatestNewsContent {
+    
+    [self.view makeToast:@"News content updated succesfully"];
+    [self generateDatasourceForList];
+    
+}
+
+
+#pragma mark - Modalobject
+
+- (NSMutableDictionary *) prepareDictionaryForNewsContent {
+    
+    NewsContentRequestObject* requestObj = [[NewsContentRequestObject alloc] init];
+    requestObj.userId = [[SharedClass sharedInstance] userId];
+    
+    if (requestObj.timestamp) {
+        requestObj.timestamp = [[[DBManager sharedManager] getAllSettings] valueForKey:timestampKey];
+    }
+    else {
+        requestObj.timestamp = @"";
+    }
+    
+    return [requestObj createRequestDictionary];
+    
+}
+
+
 
 #pragma mark - UITableView Datasource -
 
@@ -135,10 +212,24 @@
     
 }
 
+- (IBAction)refreshButtonTapped:(id)sender {
+    
+    [self startGetNewsContentService];
+    
+}
+
 -(void) switchViewButtonTapped {
     [self hideMenuView];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void) bookmarkButtonTapped {
+    
+    [self hideMenuView];
+    [self performSegueWithIdentifier:@"showBookmarkSegue" sender:nil];
+    
+}
+
 
 - (void) showMenuView {
     

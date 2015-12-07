@@ -12,11 +12,27 @@ extern NSString *const kCustomCellIdentifier;
 
 @class CardModal;
 
+
+@protocol CustomCollectionViewCollectionViewCellDelegate <NSObject>
+
+-(void) bookmarkAdded;
+-(void) bookmarkRemoved;
+-(void) bookmarkLimitReached;
+
+@end
+
+
+
 /**
  *  Custom collection view cell that shows simple photo.
  */
-@interface CustomCollectionViewCollectionViewCell : UICollectionViewCell
+@interface CustomCollectionViewCollectionViewCell : UICollectionViewCell {
+    
+    NSString* newsId;
+    
+}
 
+@property (nonatomic,assign)  id <CustomCollectionViewCollectionViewCellDelegate> delegate;
 @property (nonatomic) CardModal *cardModel;
 @property (weak, nonatomic) IBOutlet UIView *cardView;
 @property (weak, nonatomic) IBOutlet UIView *contentContainerView;

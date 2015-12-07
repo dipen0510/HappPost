@@ -13,7 +13,7 @@
 
 NSString* create_TblUser_table = @"CREATE TABLE IF NOT EXISTS USER (userId TEXT PRIMARY KEY, email TEXT, name TEXT, deviceId TEXT, gcmId TEXT, version TEXT)";
 
-NSString* create_TblNews_table = @"CREATE TABLE IF NOT EXISTS NEWS (newsId TEXT PRIMARY KEY, activeFrom TEXT, activeTill TEXT, authorId TEXT, authorName TEXT, dateCreated TEXT, dateModified TEXT, detailedStory TEXT, heading TEXT, impactSore TEXT, latLng TEXT , loc TEXT, name TEXT, newsImage TEXT, newsTimeStamp TEXT, subHeading TEXT, summary TEXT, tags TEXT, isLeadStory TEXT, isTrending TEXT )";
+NSString* create_TblNews_table = @"CREATE TABLE IF NOT EXISTS NEWS (newsId TEXT PRIMARY KEY, activeFrom TEXT, activeTill TEXT, authorId TEXT, authorName TEXT, dateCreated TEXT, dateModified TEXT, detailedStory TEXT, heading TEXT, impactSore TEXT, latLng TEXT , loc TEXT, name TEXT, newsImage TEXT, newsTimeStamp TEXT, subHeading TEXT, summary TEXT, tags TEXT, isLeadStory TEXT, isTrending TEXT, headlineColor TEXT)";
 
 NSString* create_TblNewsComments_table = @"CREATE TABLE IF NOT EXISTS NEWSCOMMENTS (newsCommentsId TEXT PRIMARY KEY, comments TEXT, dateCreated TEXT, user TEXT, newsId TEXT)";
 
@@ -22,6 +22,8 @@ NSString* create_TblNewsGenres_table = @"CREATE TABLE IF NOT EXISTS NEWSGENRES (
 NSString* create_TblNewsInfographics_table = @"CREATE TABLE IF NOT EXISTS NEWSINFOGRAPHICS (newsInfographicId TEXT PRIMARY KEY, newsImage TEXT, newsId TEXT)";
 
 NSString* create_TblSettings_table = @"CREATE TABLE IF NOT EXISTS SETTINGS (timestamp TEXT, notificationSetting TEXT)";
+
+NSString* create_TblBookmarks_table = @"CREATE TABLE IF NOT EXISTS BOOKMARKS (newsId TEXT PRIMARY KEY)";
 
 @implementation DBManager
 
@@ -116,6 +118,15 @@ static DBManager *sharedObject = nil;
             else
             {
                 NSLog(@"Failed to create SETTINGS table: %@)",[objectDB lastErrorMessage]);
+            }
+            
+            if([objectDB executeUpdate:create_TblBookmarks_table withArgumentsInArray:nil])
+            {
+                NSLog(@"BOOKMARKS table created");
+            }
+            else
+            {
+                NSLog(@"Failed to create BOOKMARKS table: %@)",[objectDB lastErrorMessage]);
             }
             
             [objectDB close];
@@ -314,10 +325,10 @@ static DBManager *sharedObject = nil;
     NSString* databasePath = [self getDatabasePath];
     FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
     
-    NSArray* arr = [NSArray arrayWithObjects:newsObj.newsId, newsObj.activeFrom, newsObj.activeTill, newsObj.authorId, newsObj.authorName, newsObj.dateCreated, newsObj.dateModified, newsObj.detailedStory, newsObj.heading, newsObj.impactSore, newsObj.latLng, newsObj.loc, newsObj.name, newsObj.newsImage, newsObj.newsTimeStamp, newsObj.subHeading, newsObj.summary, newsObj.tags, newsObj.isLeadStory, newsObj.isTrending, nil];
+    NSArray* arr = [NSArray arrayWithObjects:newsObj.newsId, newsObj.activeFrom, newsObj.activeTill, newsObj.authorId, newsObj.authorName, newsObj.dateCreated, newsObj.dateModified, newsObj.detailedStory, newsObj.heading, newsObj.impactSore, newsObj.latLng, newsObj.loc, newsObj.name, newsObj.newsImage, newsObj.newsTimeStamp, newsObj.subHeading, newsObj.summary, newsObj.tags, newsObj.isLeadStory, newsObj.isTrending, newsObj.headlineColor, nil];
     
     if ([objectDB open]) {
-        NSString* query = @"INSERT INTO NEWS (newsId, activeFrom, activeTill, authorId, authorName, dateCreated, dateModified, detailedStory, heading, impactSore, latLng , loc, name, newsImage, newsTimeStamp, subHeading, summary, tags, isLeadStory, isTrending ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        NSString* query = @"INSERT INTO NEWS (newsId, activeFrom, activeTill, authorId, authorName, dateCreated, dateModified, detailedStory, heading, impactSore, latLng , loc, name, newsImage, newsTimeStamp, subHeading, summary, tags, isLeadStory, isTrending, headlineColor ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         if (![objectDB executeUpdate:query withArgumentsInArray:arr]) {
             
             NSLog(@"insert into NEWS table failed: %@)",[objectDB lastErrorMessage]);
@@ -406,6 +417,7 @@ static DBManager *sharedObject = nil;
             newsObj.tags = [resultSet stringForColumnIndex:17];
             newsObj.isLeadStory = [resultSet stringForColumnIndex:18];
             newsObj.isTrending = [resultSet stringForColumnIndex:19];
+            newsObj.headlineColor = [resultSet stringForColumnIndex:20];
             
             newsObj.newsComments = [self getAllNewsCommentsForNewsId:newsObj.newsId];
             newsObj.newsGenres = [self getAllNewsGenreForNewsId:newsObj.newsId];
@@ -460,6 +472,63 @@ static DBManager *sharedObject = nil;
             newsObj.tags = [resultSet stringForColumnIndex:17];
             newsObj.isLeadStory = [resultSet stringForColumnIndex:18];
             newsObj.isTrending = [resultSet stringForColumnIndex:19];
+            newsObj.headlineColor = [resultSet stringForColumnIndex:20];
+            
+            newsObj.newsComments = [self getAllNewsCommentsForNewsId:newsObj.newsId];
+            newsObj.newsGenres = [self getAllNewsGenreForNewsId:newsObj.newsId];
+            newsObj.newsInfographics = [self getAllNewsInfographicsForNewsId:newsObj.newsId];;
+            
+            [arr addObject:newsObj];
+            
+        }
+        [objectDB close];
+        
+        NSLog(@"NEWS Data fetched Successfully");
+        
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+    
+    return arr;
+    
+}
+
+
+-(NSMutableArray *) getAllNewsWithBookmarks {
+    
+    NSMutableArray* arr = [[NSMutableArray alloc] init];
+    
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= [NSString stringWithFormat:@"SELECT * from NEWS where newsId in (SELECT newsId from BOOKMARKS)"];
+        FMResultSet* resultSet = [objectDB executeQuery:query withArgumentsInArray:nil];
+        while ([resultSet next]) {
+            
+            SingleNewsObject* newsObj = [[SingleNewsObject alloc] init];
+            
+            newsObj.newsId = [resultSet stringForColumnIndex:0];
+            newsObj.activeFrom = [resultSet stringForColumnIndex:1];
+            newsObj.activeTill = [resultSet stringForColumnIndex:2];
+            newsObj.authorId = [resultSet stringForColumnIndex:3];
+            newsObj.authorName = [resultSet stringForColumnIndex:4];
+            newsObj.dateCreated = [resultSet stringForColumnIndex:5];
+            newsObj.dateModified = [resultSet stringForColumnIndex:6];
+            newsObj.detailedStory = [resultSet stringForColumnIndex:7];
+            newsObj.heading = [resultSet stringForColumnIndex:8];
+            newsObj.impactSore = [resultSet stringForColumnIndex:9];
+            newsObj.latLng = [resultSet stringForColumnIndex:10];
+            newsObj.loc = [resultSet stringForColumnIndex:11];
+            newsObj.name = [resultSet stringForColumnIndex:12];
+            newsObj.newsImage = [resultSet stringForColumnIndex:13];
+            newsObj.newsTimeStamp = [resultSet stringForColumnIndex:14];
+            newsObj.subHeading = [resultSet stringForColumnIndex:15];
+            newsObj.summary = [resultSet stringForColumnIndex:16];
+            newsObj.tags = [resultSet stringForColumnIndex:17];
+            newsObj.isLeadStory = [resultSet stringForColumnIndex:18];
+            newsObj.isTrending = [resultSet stringForColumnIndex:19];
+            newsObj.headlineColor = [resultSet stringForColumnIndex:20];
             
             newsObj.newsComments = [self getAllNewsCommentsForNewsId:newsObj.newsId];
             newsObj.newsGenres = [self getAllNewsGenreForNewsId:newsObj.newsId];
@@ -775,6 +844,83 @@ static DBManager *sharedObject = nil;
     else {
         NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
     }
+}
+
+
+
+#pragma mark - BOOKMARKS TABLE
+
+-(void) insertEntryIntoBookmarksWithNewsId:(NSString *)newsId {
+    
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    
+    NSArray* arr = [NSArray arrayWithObjects:newsId, nil];
+    
+    if ([objectDB open]) {
+        NSString* query = @"INSERT INTO BOOKMARKS (newsId) VALUES (?)";
+        if (![objectDB executeUpdate:query withArgumentsInArray:arr]) {
+            
+            NSLog(@"insert into BOOKMARKS table failed: %@)",[objectDB lastErrorMessage]);
+            
+        }
+        else {
+            NSLog(@"BOOKMARKS Data inserted Successfully");
+        }
+        
+        [objectDB close];
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+}
+
+
+
+-(void) deleteBookmarksWithNewsId:(NSString *)newsId {
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= [NSString stringWithFormat:@"DELETE FROM BOOKMARKS where newsId = %@",newsId];
+        if (![objectDB executeUpdate:query withArgumentsInArray:nil]) {
+            
+            NSLog(@"delete from BOOKMARKS failed: %@)",[objectDB lastErrorMessage]);
+            
+        }
+        else {
+            NSLog(@"BOOKMARKS Data deleted Successfully");
+        }
+        [objectDB close];
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+}
+
+
+-(BOOL) isNewsIdBookmarked:(NSString *)newsId {
+    
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= @"SELECT * from BOOKMARKS where newsId = ?";
+        FMResultSet* resultSet = [objectDB executeQuery:query withArgumentsInArray:[NSArray arrayWithObject:newsId]];
+        if ([resultSet next]) {
+            
+            [objectDB close];
+            return true;
+            
+        }
+        
+        
+        [objectDB close];
+        
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+    
+    return false;
 }
 
 @end

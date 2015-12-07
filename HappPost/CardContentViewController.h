@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomCollectionViewCollectionViewCell.h"
 
-@interface CardContentViewController : UIViewController {
+@interface CardContentViewController : UIViewController <CustomCollectionViewCollectionViewCellDelegate,DataSyncManagerDelegate> {
     BOOL isNavigationViewShown;
     NSMutableArray* newsArr;
     long selectedIndex;
+    BOOL isRefreshButtonTapped;
 }
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationMenuHeightConstraint;
 - (IBAction)expandButtonTapped:(id)sender;
 - (IBAction)shareButtonTapped:(id)sender;
 - (IBAction)menuButtonTapped:(id)sender;
+- (IBAction)refreshButtonTapped:(id)sender;
 
 @end

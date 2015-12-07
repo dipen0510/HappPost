@@ -108,7 +108,8 @@
     if ([responseServiceKey isEqualToString:kGetNewsContent] ) {
         
         NewsContentResponseObject* response = [[NewsContentResponseObject alloc] initWithDictionary:responseObj];
-        return response;
+        [[SharedClass sharedInstance] insertNewsContentResponseIntoDB:response];
+        [delegate didUpdateLatestNewsContent];
         
     }
     

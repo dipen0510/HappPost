@@ -13,12 +13,14 @@
  */
 @interface CardModal : NSObject
 
+@property (nonatomic, readonly) NSString *newsId;
 @property (nonatomic, readonly) NSString *imgURL;
 @property (nonatomic, readonly) NSString *heading;
 @property (nonatomic, readonly) NSString *subheading;
 @property (nonatomic, readonly) NSString *author;
 @property (nonatomic, readonly) NSString *summary;
 @property (nonatomic, readonly) NSString *dateTime;
+@property (nonatomic, readonly) NSString *headlineColor;
 
 + (instancetype)modelWithNews:(SingleNewsObject *)newsObj;
 

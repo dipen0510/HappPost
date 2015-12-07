@@ -24,6 +24,8 @@
         _summary = newsObj.summary;
         _author = newsObj.authorName;
         _imgURL = newsObj.newsImage;
+        _headlineColor = newsObj.headlineColor;
+        _newsId = newsObj.newsId;
         _dateTime = [[[SharedClass sharedInstance] dateFromString:newsObj.dateCreated] timeAgo];
         
     }

@@ -122,6 +122,12 @@
     
 }
 
+-(void) didUpdateLatestNewsContent {
+    
+    [self performSegueWithIdentifier:@"showCardViewSegue" sender:nil];
+    
+}
+
 #pragma mark - Modalobject
 
 - (NSMutableDictionary *) prepareDictionaryForRegister {

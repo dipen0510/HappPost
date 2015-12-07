@@ -38,6 +38,7 @@
     _tags = dictionary[TagsKey];
     _isLeadStory = dictionary[isLeadStoryKey];
     _isTrending = dictionary[isTrendingKey];
+    _headlineColor = dictionary[HeadlineColorKey];
     
     return self;
 }

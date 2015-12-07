@@ -51,6 +51,7 @@
 #define TagsKey @"Tags"
 #define isLeadStoryKey @"isLeadStory"
 #define isTrendingKey @"isTrending"
+#define HeadlineColorKey @"HeadlineColor"
 
 #define CommentsKey @"Comments"
 #define NewsCommentsIdKey @"NewsCommentsId"

@@ -33,6 +33,7 @@
 @property (nonatomic, strong) NSString* tags;
 @property (nonatomic, strong) NSString* isLeadStory;
 @property (nonatomic, strong) NSString* isTrending;
+@property (nonatomic, strong) NSString* headlineColor;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

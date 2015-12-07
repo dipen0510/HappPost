@@ -33,9 +33,11 @@ FOUNDATION_EXPORT NSString* getRiverImagesURL;
 - (NSMutableArray *) checkAndFetchNews;
 -(NSMutableArray *) getAllNews;
 -(NSMutableArray *) getAllNewsWithSelectedCategories:(NSString *)categories ;
+-(NSMutableArray *) getAllNewsWithBookmarks;
 -(NSMutableArray *) getAllNewsGenreForNewsId:(NSString *)newsId;
 -(NSMutableArray *) getAllNewsCommentsForNewsId:(NSString *)newsId;
 -(NSMutableArray *) getAllNewsInfographicsForNewsId:(NSString *)newsId;
+-(BOOL) isNewsIdBookmarked:(NSString *)newsId;
 
 
 //INSERT DATA
@@ -46,6 +48,7 @@ FOUNDATION_EXPORT NSString* getRiverImagesURL;
 -(void) insertEntryIntoNewsGenresTableWithGenreArr:(NSMutableArray *)newsGenresArr andNewsId:(NSString *)newsId;
 -(void) insertEntryIntoNewsCommentsTableWithCommentArr:(NSMutableArray *)newsCommentArr andNewsId:(NSString *)newsId;
 -(void) insertEntryIntoNewsInfographicsTableWithCommentArr:(NSMutableArray *)newsInfographicsArr andNewsId:(NSString *)newsId;
+-(void) insertEntryIntoBookmarksWithNewsId:(NSString *)newsId;
 
 
 //DELETE DATA
@@ -56,5 +59,6 @@ FOUNDATION_EXPORT NSString* getRiverImagesURL;
 -(void) deleteAllEntriesFromNewsGenreTable;
 -(void) deleteAllEntriesFromNewsCommentTable;
 -(void) deleteAllEntriesFromNewsInfographicsTable;
+-(void) deleteBookmarksWithNewsId:(NSString *)newsId;
 
 @end

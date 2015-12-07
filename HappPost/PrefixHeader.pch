@@ -27,5 +27,6 @@
 #import "YouTubeiOSPlayerHelper.h"
 #import "NSDate+TimeAgo.h"
 #import "HPTopLeftLabel.h"
+#import "UIView+Toast.h"
 
 #endif /* PrefixHeader_pch */

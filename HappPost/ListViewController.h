@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewsContentRequestObject.h"
 
-@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,DataSyncManagerDelegate> {
     
     NSMutableArray* newsContentArr;
     long selectedIndex;
@@ -16,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *listTblView;
 - (IBAction)menuButtonTapped:(id)sender;
+- (IBAction)refreshButtonTapped:(id)sender;
 
 @end
 

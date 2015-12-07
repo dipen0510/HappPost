@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SplashViewController : UIViewController<DataSyncManagerDelegate>
+@interface SplashViewController : UIViewController
 
 @end
