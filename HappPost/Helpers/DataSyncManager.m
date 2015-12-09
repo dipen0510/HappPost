@@ -112,6 +112,11 @@
         [delegate didUpdateLatestNewsContent];
         
     }
+    if ([responseServiceKey isEqualToString:kVerifyService] ) {
+        
+        return [[NSDictionary alloc] init];
+        
+    }
     
     return nil;
     

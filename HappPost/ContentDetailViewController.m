@@ -338,6 +338,7 @@
     else {
         
         [SVProgressHUD showErrorWithStatus:@"Register first to add comment"];
+        [self performSegueWithIdentifier:@"showRegisterSegue" sender:nil];
         
     }
     

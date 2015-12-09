@@ -551,6 +551,62 @@ static DBManager *sharedObject = nil;
 }
 
 
+-(NSMutableArray *) getAllNewsForSearchedText:(NSString *)text {
+    
+    NSMutableArray* arr = [[NSMutableArray alloc] init];
+    
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= [NSString stringWithFormat:@"SELECT * from NEWS where tags like '%%%@%%' OR heading like '%%%@%%' ",text, text];
+        FMResultSet* resultSet = [objectDB executeQuery:query withArgumentsInArray:nil];
+        while ([resultSet next]) {
+            
+            SingleNewsObject* newsObj = [[SingleNewsObject alloc] init];
+            
+            newsObj.newsId = [resultSet stringForColumnIndex:0];
+            newsObj.activeFrom = [resultSet stringForColumnIndex:1];
+            newsObj.activeTill = [resultSet stringForColumnIndex:2];
+            newsObj.authorId = [resultSet stringForColumnIndex:3];
+            newsObj.authorName = [resultSet stringForColumnIndex:4];
+            newsObj.dateCreated = [resultSet stringForColumnIndex:5];
+            newsObj.dateModified = [resultSet stringForColumnIndex:6];
+            newsObj.detailedStory = [resultSet stringForColumnIndex:7];
+            newsObj.heading = [resultSet stringForColumnIndex:8];
+            newsObj.impactSore = [resultSet stringForColumnIndex:9];
+            newsObj.latLng = [resultSet stringForColumnIndex:10];
+            newsObj.loc = [resultSet stringForColumnIndex:11];
+            newsObj.name = [resultSet stringForColumnIndex:12];
+            newsObj.newsImage = [resultSet stringForColumnIndex:13];
+            newsObj.newsTimeStamp = [resultSet stringForColumnIndex:14];
+            newsObj.subHeading = [resultSet stringForColumnIndex:15];
+            newsObj.summary = [resultSet stringForColumnIndex:16];
+            newsObj.tags = [resultSet stringForColumnIndex:17];
+            newsObj.isLeadStory = [resultSet stringForColumnIndex:18];
+            newsObj.isTrending = [resultSet stringForColumnIndex:19];
+            newsObj.headlineColor = [resultSet stringForColumnIndex:20];
+            
+            newsObj.newsComments = [self getAllNewsCommentsForNewsId:newsObj.newsId];
+            newsObj.newsGenres = [self getAllNewsGenreForNewsId:newsObj.newsId];
+            newsObj.newsInfographics = [self getAllNewsInfographicsForNewsId:newsObj.newsId];;
+            
+            [arr addObject:newsObj];
+            
+        }
+        [objectDB close];
+        
+        NSLog(@"NEWS Data fetched Successfully");
+        
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+    
+    return arr;
+    
+}
+
+
 -(void) deleteAllEntriesFromNewsTable {
     NSString* databasePath = [self getDatabasePath];
     FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];

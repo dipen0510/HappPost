@@ -10,11 +10,15 @@
 
 @interface MenuView : UIView<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate> {
     
+     NSMutableSet* _myNewsCollapsedSections;
+    NSMutableSet* _genresCollapsedSections;
     NSMutableArray* selectedGenreArr;
     NSMutableArray* selectedMyNewsArr;
     
 }
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *genreTableViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuTableViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIScrollView *mewnuScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *menuTableView;
 @property (weak, nonatomic) IBOutlet UITableView *genreTableView;
@@ -25,5 +29,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareHappPostButton;
 @property (weak, nonatomic) IBOutlet UIButton *myBookbarkButton;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end

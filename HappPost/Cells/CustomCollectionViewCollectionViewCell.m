@@ -62,12 +62,12 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
 
     if (![[DBManager sharedManager] isNewsIdBookmarked:newsId]) {
         
-        [_subheading setTextColor:[UIColor blackColor]];
+        [_heading setTextColor:[self.contentContainerView backgroundColor]];
         
     }
     else {
         
-        [_subheading setTextColor:[UIColor redColor]];
+        [_heading setTextColor:[UIColor whiteColor]];
         
     }
     
@@ -78,25 +78,25 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
     
     //[_photoImageView sd_setImageWithURL:[NSURL URLWithString:cardModel.imgURL] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     
-    UIBezierPath *maskPath;
-    maskPath = [UIBezierPath bezierPathWithRoundedRect:_photoImageView.bounds
-                                     byRoundingCorners:(UIRectCornerTopLeft|UIRectCornerTopRight)
-                                           cornerRadii:CGSizeMake(15.0, 15.0)];
-    
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = _photoImageView.bounds;
-    maskLayer.path = maskPath.CGPath;
-    _photoImageView.layer.mask = maskLayer;
-    
-    UIBezierPath *maskPath1;
-    maskPath1 = [UIBezierPath bezierPathWithRoundedRect:self.contentContainerView.bounds
-                                     byRoundingCorners:(UIRectCornerBottomLeft|UIRectCornerBottomRight)
-                                           cornerRadii:CGSizeMake(15.0, 15.0)];
-    
-    CAShapeLayer *maskLayer1 = [[CAShapeLayer alloc] init];
-    maskLayer1.frame = self.contentContainerView.bounds;
-    maskLayer1.path = maskPath1.CGPath;
-    self.contentContainerView.layer.mask = maskLayer1;
+//    UIBezierPath *maskPath;
+//    maskPath = [UIBezierPath bezierPathWithRoundedRect:_photoImageView.bounds
+//                                     byRoundingCorners:(UIRectCornerTopLeft|UIRectCornerTopRight)
+//                                           cornerRadii:CGSizeMake(15.0, 15.0)];
+//    
+//    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+//    maskLayer.frame = _photoImageView.bounds;
+//    maskLayer.path = maskPath.CGPath;
+//    _photoImageView.layer.mask = maskLayer;
+//    
+//    UIBezierPath *maskPath1;
+//    maskPath1 = [UIBezierPath bezierPathWithRoundedRect:self.contentContainerView.bounds
+//                                     byRoundingCorners:(UIRectCornerBottomLeft|UIRectCornerBottomRight)
+//                                           cornerRadii:CGSizeMake(15.0, 15.0)];
+//    
+//    CAShapeLayer *maskLayer1 = [[CAShapeLayer alloc] init];
+//    maskLayer1.frame = self.contentContainerView.bounds;
+//    maskLayer1.path = maskPath1.CGPath;
+//    self.contentContainerView.layer.mask = maskLayer1;
     
     self.layer.shouldRasterize = YES;
     self.layer.rasterizationScale = UIScreen.mainScreen.scale;
@@ -141,7 +141,7 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
         
         if ([[DBManager sharedManager] isNewsIdBookmarked:newsId]) {
             
-            [_subheading setTextColor:[UIColor blackColor]];
+            [_heading setTextColor:[self.contentContainerView backgroundColor]];
             [[DBManager sharedManager] deleteBookmarksWithNewsId:newsId];
             
             [delegate bookmarkRemoved];
@@ -156,7 +156,7 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
             }
             else {
                 
-                [_subheading setTextColor:[UIColor redColor]];
+                [_heading setTextColor:[UIColor whiteColor]];
                 [[DBManager sharedManager] insertEntryIntoBookmarksWithNewsId:newsId];
                 
                 [delegate bookmarkAdded];

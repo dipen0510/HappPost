@@ -10,10 +10,12 @@
 #import "ListViewTableViewCell.h"
 #import "MenuView.h"
 #import "ContentDetailViewController.h"
+#import "SearchListViewController.h"
 
 @interface ListViewController () {
     MenuView* menuView;
     UIVisualEffectView *blurEffectView;
+    NSString* searchText;
 }
 
 @end
@@ -32,6 +34,7 @@
     [menuView.closeButton addTarget:self action:@selector(hideMenuView) forControlEvents:UIControlEventTouchUpInside];
     [menuView.switchToCardView addTarget:self action:@selector(switchViewButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [menuView.myBookbarkButton addTarget:self action:@selector(bookmarkButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    menuView.searchBar.delegate = self;
     
     UIBlurEffect* blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
@@ -261,6 +264,16 @@
     
 }
 
+#pragma mark - Search Bar delegate
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    [self hideMenuView];
+    searchText = searchBar.text;
+    [self performSegueWithIdentifier:@"showSearchSegue" sender:nil];
+    
+}
+
 
 #pragma mark - Navigation
 
@@ -276,7 +289,13 @@
         [controller setNewsObj:(SingleNewsObject *)[newsContentArr objectAtIndex:selectedIndex]];
         
     }
-    
+    if ([segue.identifier isEqualToString:@"showSearchSegue"]) {
+        
+        SearchListViewController* controller = (SearchListViewController *)[segue destinationViewController];
+        
+        [controller setSearchText:searchText];
+        
+    }
 }
 
 

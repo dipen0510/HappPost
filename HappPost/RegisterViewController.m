@@ -62,23 +62,13 @@
     
 }
 
--(void) startGetNewsContentService {
-    
-    [SVProgressHUD showWithStatus:@"Fetching latest news"];
-    
-    DataSyncManager* manager = [[DataSyncManager alloc] init];
-    manager.serviceKey = kGetNewsContent;
-    manager.delegate = self;
-    [manager startPOSTWebServicesWithParams:[self prepareDictionaryForNewsContent]];
-    
-}
 
 #pragma mark - DATASYNCMANAGER Delegates
 
 -(void) didFinishServiceWithSuccess:(RegisterResponseObject *)responseData andServiceKey:(NSString *)requestServiceKey {
     
     
-    if ([requestServiceKey isEqualToString:kRegisterService] || [requestServiceKey isEqualToString:kSkipRegistrationService]) {
+    if ([requestServiceKey isEqualToString:kRegisterService]) {
         
         [[SharedClass sharedInstance] setUserId:responseData.userId];
         [[SharedClass sharedInstance] setUserRegisterDetails:registerObj];
@@ -87,15 +77,19 @@
         
         [SVProgressHUD dismiss];
         
-        [self startGetNewsContentService];
+        [self performSegueWithIdentifier:@"showVerifySegue" sender:nil];
         
     }
     
-    if ([requestServiceKey isEqualToString:kGetNewsContent]) {
+    if ([requestServiceKey isEqualToString:kSkipRegistrationService]) {
         
-        [SVProgressHUD showSuccessWithStatus:@"News Updated"];
-        [[SharedClass sharedInstance] insertNewsContentResponseIntoDB:(NewsContentResponseObject *)responseData];
-        [self performSegueWithIdentifier:@"showCardViewSegue" sender:nil];
+        [[SharedClass sharedInstance] setUserId:responseData.userId];
+        [[SharedClass sharedInstance] setUserRegisterDetails:registerObj];
+        
+        [[DBManager sharedManager] insertEntryIntoUserTableWithUserId:responseData.userId andOtherUserDetails:registerObj];
+        
+        [SVProgressHUD dismiss];
+        [self dismissViewControllerAnimated:YES completion:nil];
         
     }
     
@@ -122,11 +116,7 @@
     
 }
 
--(void) didUpdateLatestNewsContent {
-    
-    [self performSegueWithIdentifier:@"showCardViewSegue" sender:nil];
-    
-}
+
 
 #pragma mark - Modalobject
 
@@ -158,15 +148,7 @@
     
 }
 
-- (NSMutableDictionary *) prepareDictionaryForNewsContent {
-    
-    NewsContentRequestObject* requestObj = [[NewsContentRequestObject alloc] init];
-    requestObj.userId = [[SharedClass sharedInstance] userId];
-    requestObj.timestamp = @"";
-    
-    return [requestObj createRequestDictionary];
-    
-}
+
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];

@@ -21,6 +21,7 @@
 //Controllers
 #import "ContentDetailViewController.h"
 #import "NewsContentRequestObject.h"
+#import "SearchListViewController.h"
 
 
 @interface CardContentViewController ()
@@ -70,6 +71,7 @@ UICollectionViewDelegate,UICollectionViewDataSource
     [menuView.closeButton addTarget:self action:@selector(hideMenuView) forControlEvents:UIControlEventTouchUpInside];
     [menuView.switchToCardView addTarget:self action:@selector(switchViewButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [menuView.myBookbarkButton addTarget:self action:@selector(bookmarkButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    menuView.searchBar.delegate = self;
     [menuView.switchToCardView setTitle:@"Switch To List View" forState:UIControlStateNormal];
     
     UIBlurEffect* blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
@@ -228,13 +230,16 @@ UICollectionViewDelegate,UICollectionViewDataSource
     CustomCollectionViewCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCustomCellIdentifier
                                                                                              forIndexPath:indexPath];
     [cell setCardModel:_photoModelsDatasource[indexPath.row]];
-    cell.cardView.layer.cornerRadius = 10.0;
+    //cell.cardView.layer.cornerRadius = 10.0;
     [cell.cardView.layer setMasksToBounds:YES];
     
     cell.cardView.clipsToBounds = NO;
     cell.cardView.layer.shadowColor = [[UIColor blackColor] CGColor];
     cell.cardView.layer.shadowOffset = CGSizeMake(0,5);
     cell.cardView.layer.shadowOpacity = 0.5;
+    
+    cell.layer.shouldRasterize = YES;
+    cell.layer.rasterizationScale = UIScreen.mainScreen.scale;
     
     cell.delegate = self;
     
@@ -316,6 +321,29 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
 }
 
 - (IBAction)shareButtonTapped:(id)sender {
+    
+    SingleNewsObject* newsObj = (SingleNewsObject *)[newsArr objectAtIndex:selectedIndex];
+    [self shareText:newsObj.heading andImage:[UIImage imageNamed:@"splash.png"] andUrl:[NSURL URLWithString:newsObj.newsImage]];
+    
+}
+
+
+- (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url
+{
+    NSMutableArray *sharingItems = [NSMutableArray new];
+    
+    if (text) {
+        [sharingItems addObject:text];
+    }
+    if (image) {
+        [sharingItems addObject:image];
+    }
+    if (url) {
+        [sharingItems addObject:url];
+    }
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
 }
 
 - (void) viewTapped {
@@ -395,6 +423,16 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
 }
 
 
+#pragma mark - Search Bar delegate
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    [self hideMenuView];
+    searchText = searchBar.text;
+    [self performSegueWithIdentifier:@"showSearchSegue" sender:nil];
+    
+}
+
 
 #pragma mark - Navigation
 
@@ -408,6 +446,13 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
         ContentDetailViewController* controller = (ContentDetailViewController *)[segue destinationViewController];
         
         [controller setNewsObj:(SingleNewsObject *)[newsArr objectAtIndex:selectedIndex]];
+        
+    }
+    if ([segue.identifier isEqualToString:@"showSearchSegue"]) {
+        
+        SearchListViewController* controller = (SearchListViewController *)[segue destinationViewController];
+        
+        [controller setSearchText:searchText];
         
     }
     

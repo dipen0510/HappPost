@@ -38,7 +38,7 @@ FOUNDATION_EXPORT NSString* getRiverImagesURL;
 -(NSMutableArray *) getAllNewsCommentsForNewsId:(NSString *)newsId;
 -(NSMutableArray *) getAllNewsInfographicsForNewsId:(NSString *)newsId;
 -(BOOL) isNewsIdBookmarked:(NSString *)newsId;
-
+-(NSMutableArray *) getAllNewsForSearchedText:(NSString *)text;
 
 //INSERT DATA
 

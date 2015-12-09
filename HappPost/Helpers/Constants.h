@@ -62,6 +62,8 @@
 #define NewsInfographicsIdKey @"NewsInfographicId"
 #define NewsImageKey @"NewsImage"
 
+#define CodeKey @"Code"
+
 
 //MISC
 

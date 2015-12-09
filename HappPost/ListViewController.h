@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NewsContentRequestObject.h"
 
-@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,DataSyncManagerDelegate> {
+@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,DataSyncManagerDelegate,UISearchBarDelegate> {
     
     NSMutableArray* newsContentArr;
     long selectedIndex;

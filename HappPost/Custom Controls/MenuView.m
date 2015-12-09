@@ -31,6 +31,18 @@
     selectedGenreArr = [[SharedClass sharedInstance] selectedGenresArr];
     selectedMyNewsArr = [[SharedClass sharedInstance] selectedMyNewsArr];
     
+    _myNewsCollapsedSections = [NSMutableSet new];
+    _genresCollapsedSections = [NSMutableSet new];
+    [_genresCollapsedSections addObject:@(0)];
+    [_myNewsCollapsedSections addObject:@(0)];
+    self.menuTableViewHeightConstraint.constant = 33.;
+    self.genreTableViewHeightConstraint.constant = 33.;
+    [self.menuTableView setBackgroundColor:[UIColor clearColor]];
+    
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self addGestureRecognizer:tapGesture];
+    
+    
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -45,8 +57,72 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 8;
+    if (tableView == self.genreTableView) {
+        return [_genresCollapsedSections containsObject:@(section)] ? 0 : 8;
+    }
+    
+    return [_myNewsCollapsedSections containsObject:@(section)] ? 0 : 8;
 
+}
+
+-(NSArray*) indexPathsForSection:(int)section withNumberOfRows:(int)numberOfRows {
+    NSMutableArray* indexPaths = [NSMutableArray new];
+    for (int i = 0; i < numberOfRows; i++) {
+        NSIndexPath* indexPath = [NSIndexPath indexPathForRow:i inSection:section];
+        [indexPaths addObject:indexPath];
+    }
+    return indexPaths;
+}
+
+-(void)sectionButtonTouchUpInside:(UIButton*)sender {
+    
+    if (sender.tag == 0) {
+        [self.menuTableView beginUpdates];
+        int section = 0;
+        bool shouldCollapse = ![_myNewsCollapsedSections containsObject:@(section)];
+        if (shouldCollapse) {
+            int numOfRows = (int)[self.menuTableView numberOfRowsInSection:section];
+            NSArray* indexPaths = [self indexPathsForSection:section withNumberOfRows:numOfRows];
+            [self.menuTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+            self.menuTableViewHeightConstraint.constant = 33.;
+            [_myNewsCollapsedSections addObject:@(section)];
+        }
+        else {
+            int numOfRows = 8;
+            NSArray* indexPaths = [self indexPathsForSection:section withNumberOfRows:numOfRows];
+            [self.menuTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+            self.menuTableViewHeightConstraint.constant = 240;
+            [_myNewsCollapsedSections removeObject:@(section)];
+        }
+        [self.menuTableView endUpdates];
+        
+    }
+    
+    if (sender.tag == 1) {
+        [self.genreTableView beginUpdates];
+        int section = 0;
+        bool shouldCollapse = ![_genresCollapsedSections containsObject:@(section)];
+        if (shouldCollapse) {
+            int numOfRows = (int)[self.genreTableView numberOfRowsInSection:section];
+            NSArray* indexPaths = [self indexPathsForSection:section withNumberOfRows:numOfRows];
+            [self.genreTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+            self.genreTableViewHeightConstraint.constant = 33.;
+            [_genresCollapsedSections addObject:@(section)];
+        }
+        else {
+            int numOfRows = 8;
+            NSArray* indexPaths = [self indexPathsForSection:section withNumberOfRows:numOfRows];
+            [self.genreTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+            self.genreTableViewHeightConstraint.constant = 240;
+            [_genresCollapsedSections removeObject:@(section)];
+        }
+        [self.genreTableView endUpdates];
+        
+    }
+    
+    
+    
+    //[_tableView reloadData];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -151,17 +227,23 @@
     
     NSString *string = @"";
     
+    UIButton* result = [[UIButton alloc] initWithFrame:view.frame];
+    [result addTarget:self action:@selector(sectionButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     if (tableView == self.genreTableView) {
         string = @"Genres";
+        result.tag = 1;
     }
     else {
         string = @"My News";
+        result.tag = 0;
     }
-    
     
     /* Section header is in 0th index... */
     [label setText:string];
     [view addSubview:label];
+    [view addSubview:result];
     [view setBackgroundColor:[UIColor colorWithWhite:0.2 alpha:1.]]; //your background color...
     return view;
 }
@@ -209,5 +291,12 @@
     
 }
 
+
+
+- (void) hideKeyboard {
+    
+    [self endEditing:YES];
+    
+}
 
 @end

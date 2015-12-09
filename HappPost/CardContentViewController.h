@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "CustomCollectionViewCollectionViewCell.h"
 
-@interface CardContentViewController : UIViewController <CustomCollectionViewCollectionViewCellDelegate,DataSyncManagerDelegate> {
+@interface CardContentViewController : UIViewController <CustomCollectionViewCollectionViewCellDelegate,DataSyncManagerDelegate,UISearchBarDelegate> {
     BOOL isNavigationViewShown;
     NSMutableArray* newsArr;
     long selectedIndex;
     BOOL isRefreshButtonTapped;
+    NSString* searchText;
 }
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationMenuHeightConstraint;

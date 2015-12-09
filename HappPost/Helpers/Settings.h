@@ -16,6 +16,7 @@
 #define kSkipRegistrationService @"SkipRegisteriOSUser"
 #define kGetNewsContent @"RetreiveData"
 #define kAddComment @"InsertComment"
+#define kVerifyService @"RegisteriOSUser"
 
 
 #endif
