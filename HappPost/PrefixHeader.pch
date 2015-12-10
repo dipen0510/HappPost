@@ -30,5 +30,6 @@
 #import "UIView+Toast.h"
 #import <Google/Analytics.h>
 #import "GoogleAnalyticsHelper.h"
+#import "WebViewController.h"
 
 #endif /* PrefixHeader_pch */

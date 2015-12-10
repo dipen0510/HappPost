@@ -8,17 +8,36 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuView : UIView<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate> {
+@protocol MenuViewDelegate <NSObject>
+
+@optional
+
+- (void) genreCellSelected;
+- (void) myNewsSectionSelected;
+- (void) aboutUsTapped;
+- (void) privacyPolicyTapped;
+
+@end
+
+
+@interface MenuView : UIView<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate> {
     
      NSMutableSet* _myNewsCollapsedSections;
     NSMutableSet* _genresCollapsedSections;
     NSMutableArray* selectedGenreArr;
     NSMutableArray* selectedMyNewsArr;
     
+    NSMutableSet* _notificationsCollapsedSections;
+    NSMutableSet* _finePrintCollapsedSections;
+    
 }
+
+@property (nonatomic,assign)  id <MenuViewDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *genreTableViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuTableViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *notificationsTableViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *finePrintTableViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIScrollView *mewnuScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *menuTableView;
 @property (weak, nonatomic) IBOutlet UITableView *genreTableView;
@@ -30,5 +49,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *shareHappPostButton;
 @property (weak, nonatomic) IBOutlet UIButton *myBookbarkButton;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UITableView *notificationsTableView;
+@property (weak, nonatomic) IBOutlet UITableView *finePrintTableView;
 
 @end

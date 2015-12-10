@@ -10,6 +10,7 @@
 
 @interface MenuTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *categoryImageWidthConstraint;
 @property (weak, nonatomic) IBOutlet UIImageView *categoryImage;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *checkBoxImage;

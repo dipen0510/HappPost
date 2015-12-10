@@ -20,6 +20,9 @@
 @property (strong, nonatomic) NSMutableArray* selectedGenresArr;
 @property (strong, nonatomic) NSMutableArray* selectedMyNewsArr;
 
+@property int menuOptionType;
+@property (strong, nonatomic) NSString* searchText;
+
 -(NSDate *)getCurrentUTCFormatDate;
 - (void) insertNewsContentResponseIntoDB: (NewsContentResponseObject *)newsObj;
 - (NSDate *) dateFromString:(NSString *)dateTime;

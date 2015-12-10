@@ -15,7 +15,6 @@
 @interface ListViewController () {
     MenuView* menuView;
     UIVisualEffectView *blurEffectView;
-    NSString* searchText;
 }
 
 @end
@@ -25,16 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"MenuView" owner:self options:nil];
-    menuView = [subviewArray objectAtIndex:0];
-    menuView.frame = self.view.frame;
-    menuView.transform = CGAffineTransformScale(self.view.transform, 3, 3);
-    menuView.alpha = 0.0;
-    [menuView.closeButton addTarget:self action:@selector(hideMenuView) forControlEvents:UIControlEventTouchUpInside];
-    [menuView.switchToCardView addTarget:self action:@selector(switchViewButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    [menuView.myBookbarkButton addTarget:self action:@selector(bookmarkButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    menuView.searchBar.delegate = self;
     
     UIBlurEffect* blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
@@ -50,10 +39,50 @@
     [self generateDatasourceForList];
 }
 
+
+- (void) setupMenuView {
+    
+    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"MenuView" owner:self options:nil];
+    menuView = [subviewArray objectAtIndex:0];
+    menuView.frame = self.view.frame;
+    menuView.transform = CGAffineTransformScale(self.view.transform, 3, 3);
+    menuView.alpha = 0.0;
+    menuView.delegate = self;
+    [menuView.closeButton addTarget:self action:@selector(hideMenuView) forControlEvents:UIControlEventTouchUpInside];
+    [menuView.switchToCardView addTarget:self action:@selector(switchViewButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [menuView.myBookbarkButton addTarget:self action:@selector(bookmarkButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    menuView.searchBar.delegate = self;
+    [menuView.switchToCardView setTitle:@"Switch To List View" forState:UIControlStateNormal];
+    
+}
+
 - (void) generateDatasourceForList {
     
     newsContentArr = [[NSMutableArray alloc] init];
-    newsContentArr = [[DBManager sharedManager] checkAndFetchNews];
+    
+    if ([[SharedClass sharedInstance] menuOptionType] == 1) {
+        
+        self.backButtonLeftConstraint.constant = 8;
+        [self.refreshButton setHidden:YES];
+        newsContentArr = [[DBManager sharedManager] getAllNewsForSearchedText:[[SharedClass sharedInstance] searchText]];
+        
+    }
+    else if ([[SharedClass sharedInstance] menuOptionType] == 2) {
+        
+        self.backButtonLeftConstraint.constant = 8;
+        [self.refreshButton setHidden:YES];
+        newsContentArr = [[DBManager sharedManager] checkAndFetchNews];
+        
+    }
+    else {
+        
+        self.backButtonLeftConstraint.constant = -65;
+        [self.refreshButton setHidden:NO];
+        newsContentArr = [[DBManager sharedManager] checkAndFetchNews];
+        
+    }
+    
+    
     [self.listTblView reloadData];
     [self.listTblView setContentOffset:CGPointZero animated:YES];
     
@@ -228,6 +257,17 @@
     
 }
 
+
+- (BOOL) isVideoURL:(NSString *)url {
+    
+    if ([url containsString:@"youtu"]) {
+        return true;
+    }
+    return false;
+    
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -237,6 +277,8 @@
 
 - (IBAction)menuButtonTapped:(id)sender {
     
+    [menuView removeFromSuperview];
+    [self setupMenuView];
     [self showMenuView];
     
 }
@@ -256,6 +298,25 @@
     
     [self hideMenuView];
     [self performSegueWithIdentifier:@"showBookmarkSegue" sender:nil];
+  
+}
+
+- (IBAction)backButtonTapped:(id)sender {
+    
+    [[SharedClass sharedInstance] setMenuOptionType:0];
+    [[SharedClass sharedInstance] setSelectedGenresArr:[[NSMutableArray alloc] init]];
+    [self generateDatasourceForList];
+    
+}
+
+- (void) genreCellSelected {
+    [self hideMenuView];
+}
+
+- (void) myNewsSectionSelected {
+    
+    [[SharedClass sharedInstance] setMenuOptionType:2];
+    [self hideMenuView];
     
 }
 
@@ -295,8 +356,19 @@
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     
     [self hideMenuView];
-    searchText = searchBar.text;
-    [self performSegueWithIdentifier:@"showSearchSegue" sender:nil];
+    [[SharedClass sharedInstance] setSearchText:searchBar.text];
+    [[SharedClass sharedInstance] setMenuOptionType:1];
+    [self generateDatasourceForList];
+    //[self performSegueWithIdentifier:@"showSearchSegue" sender:nil];
+    
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length == 0) {
+        [menuView endEditing:YES];
+    }
+    
     
 }
 
@@ -315,24 +387,9 @@
         [controller setNewsObj:(SingleNewsObject *)[newsContentArr objectAtIndex:selectedIndex]];
         
     }
-    if ([segue.identifier isEqualToString:@"showSearchSegue"]) {
-        
-        SearchListViewController* controller = (SearchListViewController *)[segue destinationViewController];
-        
-        [controller setSearchText:searchText];
-        
-    }
 }
 
 
-- (BOOL) isVideoURL:(NSString *)url {
-    
-    if ([url containsString:@"youtu"]) {
-        return true;
-    }
-    return false;
-    
-}
 
 
 #pragma mark - Youtube Player Delegates

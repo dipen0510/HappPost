@@ -58,21 +58,6 @@ UICollectionViewDelegate,UICollectionViewDataSource
     _originalItemSize = _coverFlowLayout.itemSize;
     _originalCollectionViewSize = _photosCollectionView.bounds.size;
     
-    /*self.navigationMenuHeightConstraint.constant = 0.0;
-    
-    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped)];
-    [self.view addGestureRecognizer:tapGesture];*/
-    
-    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"MenuView" owner:self options:nil];
-    menuView = [subviewArray objectAtIndex:0];
-    menuView.frame = self.view.frame;
-    menuView.transform = CGAffineTransformScale(self.view.transform, 3, 3);
-    menuView.alpha = 0.0;
-    [menuView.closeButton addTarget:self action:@selector(hideMenuView) forControlEvents:UIControlEventTouchUpInside];
-    [menuView.switchToCardView addTarget:self action:@selector(switchViewButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    [menuView.myBookbarkButton addTarget:self action:@selector(bookmarkButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    menuView.searchBar.delegate = self;
-    [menuView.switchToCardView setTitle:@"Switch To List View" forState:UIControlStateNormal];
     
     UIBlurEffect* blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
@@ -89,6 +74,7 @@ UICollectionViewDelegate,UICollectionViewDataSource
     [self generateDatasource];
     [self startGetNewsContentService];
 }
+
 
 
 #pragma mark - Auto Layout
@@ -124,6 +110,24 @@ UICollectionViewDelegate,UICollectionViewDataSource
 //    }
 }
 
+
+- (void) setupMenuView {
+    
+    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"MenuView" owner:self options:nil];
+    menuView = [subviewArray objectAtIndex:0];
+    menuView.frame = self.view.frame;
+    menuView.transform = CGAffineTransformScale(self.view.transform, 3, 3);
+    menuView.alpha = 0.0;
+    menuView.delegate = self;
+    [menuView.closeButton addTarget:self action:@selector(hideMenuView) forControlEvents:UIControlEventTouchUpInside];
+    [menuView.switchToCardView addTarget:self action:@selector(switchViewButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [menuView.myBookbarkButton addTarget:self action:@selector(bookmarkButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    menuView.searchBar.delegate = self;
+    [menuView.switchToCardView setTitle:@"Switch To List View" forState:UIControlStateNormal];
+    
+}
+
+
 #pragma mark - Private
 
 - (void)generateDatasource {
@@ -131,7 +135,28 @@ UICollectionViewDelegate,UICollectionViewDataSource
     _photoModelsDatasource = [[NSMutableArray alloc] init];
     
     newsArr = [[NSMutableArray alloc] init];
-    newsArr = [[DBManager sharedManager] checkAndFetchNews];
+    
+    if ([[SharedClass sharedInstance] menuOptionType] == 1) {
+        
+        self.backButtonLeftConstraint.constant = 8;
+        [self.refreshButton setHidden:YES];
+        newsArr = [[DBManager sharedManager] getAllNewsForSearchedText:[[SharedClass sharedInstance] searchText]];
+        
+    }
+    else if ([[SharedClass sharedInstance] menuOptionType] == 2) {
+        
+        self.backButtonLeftConstraint.constant = 8;
+        [self.refreshButton setHidden:YES];
+        newsArr = [[DBManager sharedManager] checkAndFetchNews];
+        
+    }
+    else {
+        
+        self.backButtonLeftConstraint.constant = -65;
+        [self.refreshButton setHidden:NO];
+        newsArr = [[DBManager sharedManager] checkAndFetchNews];
+
+    }
     
     for (int i = 0; i < newsArr.count; i++) {
         
@@ -140,6 +165,7 @@ UICollectionViewDelegate,UICollectionViewDataSource
     }
     
     [_photosCollectionView reloadData];
+    [_photosCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     
     
 }
@@ -325,7 +351,10 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
 - (IBAction)shareButtonTapped:(id)sender {
     
     SingleNewsObject* newsObj = (SingleNewsObject *)[newsArr objectAtIndex:selectedIndex];
-    [self shareText:newsObj.heading andImage:[UIImage imageNamed:@"splash.png"] andUrl:[NSURL URLWithString:newsObj.newsImage]];
+    
+    CustomCollectionViewCollectionViewCell* cell = (CustomCollectionViewCollectionViewCell *)[_photosCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]];
+    
+    [self shareText:[NSString stringWithFormat:@"%@\n\%@\n\nvia HappPost",newsObj.heading,newsObj.subHeading] andImage:cell.newsImageView.image andUrl:[NSURL URLWithString:newsObj.newsImage]];
     
 }
 
@@ -371,6 +400,9 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
 
 - (IBAction)menuButtonTapped:(id)sender {
     
+    [menuView removeFromSuperview];
+    [self setupMenuView];
+    
     [self showMenuView];
     
 }
@@ -379,6 +411,14 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     
     isRefreshButtonTapped = true;
     [self startGetNewsContentService];
+    
+}
+
+- (IBAction)backButtonTapped:(id)sender {
+    
+    [[SharedClass sharedInstance] setMenuOptionType:0];
+    [[SharedClass sharedInstance] setSelectedGenresArr:[[NSMutableArray alloc] init]];
+    [self generateDatasource];
     
 }
 
@@ -393,6 +433,34 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     [self performSegueWithIdentifier:@"showBookmarkSegue" sender:nil];
     
 }
+
+- (void) genreCellSelected {
+    
+    [[SharedClass sharedInstance] setMenuOptionType:2];
+    [self hideMenuView];
+    
+}
+
+- (void) myNewsSectionSelected {
+    
+    [self hideMenuView];
+    
+}
+
+- (void) aboutUsTapped {
+    
+    webViewSegueType = 0;
+    [self performSegueWithIdentifier:@"showWebViewSegue" sender:nil];
+    
+}
+
+- (void) privacyPolicyTapped {
+    
+    webViewSegueType = 1;
+    [self performSegueWithIdentifier:@"showWebViewSegue" sender:nil];
+    
+}
+
 
 - (void) showMenuView {
     
@@ -430,8 +498,19 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     
     [self hideMenuView];
-    searchText = searchBar.text;
-    [self performSegueWithIdentifier:@"showSearchSegue" sender:nil];
+    [[SharedClass sharedInstance] setSearchText:searchBar.text];
+    [[SharedClass sharedInstance] setMenuOptionType:1];
+    [self generateDatasource];
+    //[self performSegueWithIdentifier:@"showSearchSegue" sender:nil];
+    
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length == 0) {
+        [menuView endEditing:YES];
+    }
+    
     
 }
 
@@ -450,11 +529,19 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
         [controller setNewsObj:(SingleNewsObject *)[newsArr objectAtIndex:selectedIndex]];
         
     }
-    if ([segue.identifier isEqualToString:@"showSearchSegue"]) {
+    if ([segue.identifier isEqualToString:@"showWebViewSegue"]) {
         
-        SearchListViewController* controller = (SearchListViewController *)[segue destinationViewController];
+        WebViewController* controller = (WebViewController *)[segue destinationViewController];
         
-        [controller setSearchText:searchText];
+        if (webViewSegueType == 0) {
+            [controller setWebViewTitle:@"About Us"];
+            [controller setWebViewURL:AboutUsURL];
+        }
+        else {
+            [controller setWebViewTitle:@"Privacy Policy"];
+            [controller setWebViewURL:PrivacyPolicyURL];
+        }
+        
         
     }
     

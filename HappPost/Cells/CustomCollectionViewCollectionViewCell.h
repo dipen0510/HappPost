@@ -31,6 +31,7 @@ extern NSString *const kCustomCellIdentifier;
     NSString* newsId;
 }
 
+@property (weak, nonatomic) IBOutlet UIImageView *newsImageView;
 @property (nonatomic,assign)  id <CustomCollectionViewCollectionViewCellDelegate> delegate;
 @property (nonatomic) CardModal *cardModel;
 @property (weak, nonatomic) IBOutlet UIView *cardView;

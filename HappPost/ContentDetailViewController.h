@@ -24,6 +24,10 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *contentCollectionView;
 @property (weak, nonatomic) IBOutlet UILabel *secondaryDescriptionLabel;
 @property (weak, nonatomic) IBOutlet YTPlayerView *videoPlayerView;
+@property (weak, nonatomic) IBOutlet YTPlayerView *primaryVideoPlayerView;
+@property (weak, nonatomic) IBOutlet UILabel *authorNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateTimeLabel;
+@property (weak, nonatomic) IBOutlet UIView *navigationView;
 
 @property (strong, nonatomic) SingleNewsObject* newsObj;
 
@@ -39,4 +43,5 @@
 @property (weak, nonatomic) IBOutlet UITableView *commentsTableView;
 
 - (IBAction)menuButtonTapped:(id)sender;
+- (IBAction)shareButtonTapped:(id)sender;
 @end

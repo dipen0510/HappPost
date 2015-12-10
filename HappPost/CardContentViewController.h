@@ -8,19 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomCollectionViewCollectionViewCell.h"
+#import "MenuView.h"
 
-@interface CardContentViewController : GAITrackedViewController <CustomCollectionViewCollectionViewCellDelegate,DataSyncManagerDelegate,UISearchBarDelegate> {
+@interface CardContentViewController : GAITrackedViewController <CustomCollectionViewCollectionViewCellDelegate,DataSyncManagerDelegate,UISearchBarDelegate,MenuViewDelegate> {
     BOOL isNavigationViewShown;
     NSMutableArray* newsArr;
     long selectedIndex;
     BOOL isRefreshButtonTapped;
-    NSString* searchText;
+    int webViewSegueType;
 }
+@property (weak, nonatomic) IBOutlet UIButton *refreshButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationMenuHeightConstraint;
 - (IBAction)expandButtonTapped:(id)sender;
 - (IBAction)shareButtonTapped:(id)sender;
 - (IBAction)menuButtonTapped:(id)sender;
 - (IBAction)refreshButtonTapped:(id)sender;
+- (IBAction)backButtonTapped:(id)sender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *backButtonLeftConstraint;
 
 @end

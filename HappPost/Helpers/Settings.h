@@ -12,6 +12,9 @@
 
 #define BaseWebServiceURL @"http://166.62.93.163/HappostService/HappostService"
 
+#define AboutUsURL @"http://166.62.93.163/happostwebsite/AboutUs.html"
+#define PrivacyPolicyURL @"http://166.62.93.163/happostwebsite/TermsAndPolicy.htm"
+
 #define kRegisterService @"RegisterTempiOSUser"
 #define kSkipRegistrationService @"SkipRegisteriOSUser"
 #define kGetNewsContent @"RetreiveData"

@@ -15,8 +15,6 @@
 
 @interface ContentDetailViewController ()
 
-@property (weak, nonatomic) IBOutlet UIView *navigationView;
-
 @end
 
 @implementation ContentDetailViewController
@@ -50,17 +48,63 @@
 
 -(void) generateContent {
     
+    UILongPressGestureRecognizer* gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleBookmarkTapForNewsId:)];
+    gesture.numberOfTouchesRequired = 1;
+    [self.headingLabel addGestureRecognizer:gesture];
+    [self.headingLabel setUserInteractionEnabled:YES];
+    
     self.headingLabel.text = newsObj.heading;
     self.subheadingLabel.text = newsObj.subHeading;
     self.primaryDescriptionLabel.text = newsObj.summary;
     self.secondaryDescriptionLabel.text = newsObj.detailedStory;
+    self.authorNameLabel.text = newsObj.authorName;
+    self.dateTimeLabel.text = newsObj.dateCreated;
     
     [self adjustHeightForLabel:self.headingLabel andConstraint:self.headingHeightConstraint];
     [self adjustHeightForLabel:self.subheadingLabel andConstraint:self.subheadingHeightCoonstraint];
     [self adjustHeightForLabel:self.primaryDescriptionLabel andConstraint:self.primaryDescriptionHeightConstraint];
     [self adjustHeightForLabel:self.secondaryDescriptionLabel andConstraint:self.scondaryDescriptionHeadingConstraint];
     
-    [self downloadPrimaryNewsImagewithURL:newsObj.newsImage];
+    
+    if (![[DBManager sharedManager] isNewsIdBookmarked:newsObj.newsId]) {
+        
+        [self.headingLabel setTextColor:[UIColor blackColor]];
+        
+    }
+    else {
+        
+        [self.headingLabel setTextColor:[UIColor whiteColor]];
+        
+    }
+    
+    //Primary Video Check
+    
+    if ([self isVideoURL:newsObj.newsImage]) {
+        
+        [self.primaryVideoPlayerView setHidden:YES];
+        
+        NSString* videoURl = [[newsObj.newsImage componentsSeparatedByString:@"/"] lastObject];
+        if ([videoURl containsString:@"watch"]) {
+            
+            videoURl = [[videoURl componentsSeparatedByString:@"="] lastObject];
+            
+        }
+        
+        [self.primaryVideoPlayerView loadWithVideoId:videoURl];
+        self.primaryVideoPlayerView.delegate = self;
+        
+        self.primaryImageView.image = [UIImage imageNamed:@"videoPlayerPlaceholder.png"];
+        
+    }
+    else {
+        
+        [self.primaryVideoPlayerView setHidden:YES];
+        [self downloadPrimaryNewsImagewithURL:newsObj.newsImage];
+        
+    }
+    
+    
+    //Secondary Video Check
     
     if (newsObj.newsInfographics.count > 0) {
         
@@ -95,7 +139,7 @@
         
         [self.videoPlayerView setHidden:YES];
         [self.secondaryImageView setHidden:YES];
-        self.primaryDescriptionTopConstraint.constant = 14.;
+        self.primaryDescriptionTopConstraint.constant = 69.;
         
     }
     
@@ -130,6 +174,11 @@
     if (playerView == self.videoPlayerView) {
         [self.videoPlayerView setHidden:NO];
         [self.secondaryImageView setHidden:YES];
+    }
+    
+    if (playerView == self.primaryVideoPlayerView) {
+        [self.primaryVideoPlayerView setHidden:NO];
+        [self.primaryImageView setHidden:YES];
     }
     
     
@@ -441,4 +490,77 @@
 - (IBAction)menuButtonTapped:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (IBAction)shareButtonTapped:(id)sender {
+    
+    [self shareText:[NSString stringWithFormat:@"%@\n\%@\n\nvia HappPost",newsObj.heading,newsObj.subHeading] andImage:self.primaryImageView.image andUrl:[NSURL URLWithString:newsObj.newsImage]];
+    
+}
+
+
+- (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url
+{
+    NSMutableArray *sharingItems = [NSMutableArray new];
+    
+    if (text) {
+        [sharingItems addObject:text];
+    }
+    if (image) {
+        [sharingItems addObject:image];
+    }
+    if (url) {
+        [sharingItems addObject:url];
+    }
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+    
+}
+
+
+- (void) handleBookmarkTapForNewsId:(UILongPressGestureRecognizer *)gesture {
+    
+    
+    if(UIGestureRecognizerStateBegan == gesture.state) {
+        // Called on start of gesture, do work here
+        
+        if ([[DBManager sharedManager] isNewsIdBookmarked:newsObj.newsId]) {
+            
+            [self.headingLabel setTextColor:[UIColor blackColor]];
+            [[DBManager sharedManager] deleteBookmarksWithNewsId:newsObj.newsId];
+            
+            [self.view makeToast:@"Removed form bookmark."];
+            
+        }
+        else {
+            
+            if ([[[DBManager sharedManager] getAllNewsWithBookmarks] count] >= 25) {
+                
+                [self.view makeToast:@"Bookmark cannot be added. Maximum limit of 25 reached."];
+                
+            }
+            else {
+                
+                [self.headingLabel setTextColor:[UIColor whiteColor]];
+                [[DBManager sharedManager] insertEntryIntoBookmarksWithNewsId:newsObj.newsId];
+                
+                [self.view makeToast:@"Bookmark Added successfully."];
+                
+            }
+            
+        }
+        
+    }
+    
+    if(UIGestureRecognizerStateChanged == gesture.state) {
+        // Do repeated work here (repeats continuously) while finger is down
+    }
+    
+    if(UIGestureRecognizerStateEnded == gesture.state) {
+        // Do end work here when finger is lifted
+    }
+    
+    
+}
+
 @end

@@ -80,6 +80,9 @@
 		1880A0FD1C04F290001F6B78 /* DetailContentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1880A0FC1C04F290001F6B78 /* DetailContentCollectionViewCell.m */; };
 		1882FADD1C10C9AB0063499C /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1882FADC1C10C9AB0063499C /* splash.png */; };
 		1882FAE01C10D5E10063499C /* NewsInfographicsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1882FADF1C10D5E10063499C /* NewsInfographicsObject.m */; };
+		18858EFD1C19F01C0039805C /* menuArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18858EFC1C19F01C0039805C /* menuArrow.png */; };
+		18858EFF1C19F0B20039805C /* menuDropArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18858EFE1C19F0B20039805C /* menuDropArrow.png */; };
+		18858F021C19F8680039805C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18858F011C19F8680039805C /* WebViewController.m */; };
 		188D52C61C120B0200C92A0E /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D52C51C120B0200C92A0E /* YTPlayerView.m */; };
 		188D52C91C120B1800C92A0E /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 188D52C71C120B1800C92A0E /* Assets.bundle */; };
 		188D52CD1C1211AA00C92A0E /* videoPlayerPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 188D52CC1C1211AA00C92A0E /* videoPlayerPlaceholder.png */; };
@@ -280,6 +283,10 @@
 		1882FADC1C10C9AB0063499C /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		1882FADE1C10D5E10063499C /* NewsInfographicsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsInfographicsObject.h; sourceTree = "<group>"; };
 		1882FADF1C10D5E10063499C /* NewsInfographicsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsInfographicsObject.m; sourceTree = "<group>"; };
+		18858EFC1C19F01C0039805C /* menuArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuArrow.png; sourceTree = "<group>"; };
+		18858EFE1C19F0B20039805C /* menuDropArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuDropArrow.png; sourceTree = "<group>"; };
+		18858F001C19F8680039805C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		18858F011C19F8680039805C /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		188D52C41C120B0200C92A0E /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		188D52C51C120B0200C92A0E /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
 		188D52C71C120B1800C92A0E /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Assets.bundle; sourceTree = "<group>"; };
@@ -689,6 +696,8 @@
 				180547951C18D74A00E604EB /* SearchListViewController.m */,
 				180547971C18E67F00E604EB /* VerifyViewController.h */,
 				180547981C18E67F00E604EB /* VerifyViewController.m */,
+				18858F001C19F8680039805C /* WebViewController.h */,
+				18858F011C19F8680039805C /* WebViewController.m */,
 			);
 			path = HappPost;
 			sourceTree = "<group>";
@@ -724,6 +733,8 @@
 		18BDF7951BFBA88A003B7D7D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18858EFE1C19F0B20039805C /* menuDropArrow.png */,
+				18858EFC1C19F01C0039805C /* menuArrow.png */,
 				1829BC451C162A5A005F9EB8 /* refresh.png */,
 				188D52CC1C1211AA00C92A0E /* videoPlayerPlaceholder.png */,
 				180B3C3F1C0B9F3D009D364B /* placeholder.png */,
@@ -894,6 +905,7 @@
 				18BDF7B01BFBA88A003B7D7D /* radio.png in Resources */,
 				18BDF7AE1BFBA88A003B7D7D /* india.png in Resources */,
 				188D52CD1C1211AA00C92A0E /* videoPlayerPlaceholder.png in Resources */,
+				18858EFD1C19F01C0039805C /* menuArrow.png in Resources */,
 				18BDF7AD1BFBA88A003B7D7D /* icnMenu.png in Resources */,
 				18908A7C1BFCFD9E008A7252 /* border.png in Resources */,
 				18BDF7AF1BFBA88A003B7D7D /* lifestyle.png in Resources */,
@@ -904,6 +916,7 @@
 				1801B89A1C0AD15600AA82CA /* SVProgressHUD.bundle in Resources */,
 				188D52D31C12567B00C92A0E /* NSDateTimeAgo.bundle in Resources */,
 				18BDF7B51BFBA88A003B7D7D /* spotlight.png in Resources */,
+				18858EFF1C19F0B20039805C /* menuDropArrow.png in Resources */,
 				18BDF7B11BFBA88A003B7D7D /* share.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -974,6 +987,7 @@
 				18BDF7BE1BFBAB8F003B7D7D /* ListViewTableViewCell.m in Sources */,
 				1801B86F1C0ABEF700AA82CA /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				1801B8741C0ABEF700AA82CA /* UIRefreshControl+AFNetworking.m in Sources */,
+				18858F021C19F8680039805C /* WebViewController.m in Sources */,
 				1829BC3B1C160F12005F9EB8 /* UIImageView+HighlightedWebCache.m in Sources */,
 				18945D751C0AE959007D6A26 /* SplashViewController.m in Sources */,
 				1801B8711C0ABEF700AA82CA /* UIButton+AFNetworking.m in Sources */,

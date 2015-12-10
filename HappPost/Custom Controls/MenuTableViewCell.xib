@@ -56,6 +56,7 @@
             <animations/>
             <connections>
                 <outlet property="categoryImage" destination="wsx-Rz-uIi" id="Bhe-Ld-vSO"/>
+                <outlet property="categoryImageWidthConstraint" destination="NMQ-v6-o9x" id="G4y-GH-0Vf"/>
                 <outlet property="categoryLabel" destination="ad8-3i-Z2Z" id="2UU-6R-lKd"/>
                 <outlet property="checkBoxImage" destination="7bK-HV-dAQ" id="1QX-BN-cud"/>
             </connections>
