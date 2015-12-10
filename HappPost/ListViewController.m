@@ -41,6 +41,8 @@
     blurEffectView.frame = self.view.bounds;
     blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
+    // Set screen name.
+    self.screenName = @"News List screen";
     
 }
 
@@ -181,24 +183,48 @@
     
     NSString* imgURL = newsObj.newsImage;
     
-    if(![imgURL isEqualToString:@""])
-    {
-        NSURL *url = [NSURL URLWithString:imgURL];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
+    if ([self isVideoURL:imgURL]) {
         
-        __weak UIImageView *weakImgView = cell.newsImgView;
+        NSString* videoURl = [[imgURL componentsSeparatedByString:@"/"] lastObject];
+        if ([videoURl containsString:@"watch"]) {
+            
+            videoURl = [[videoURl componentsSeparatedByString:@"="] lastObject];
+            
+        }
         
-        [cell.newsImgView setImageWithURLRequest:request
-                               placeholderImage:placeholderImage
-                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                            
-                                            weakImgView.image = image;
-                                            [weakImgView setNeedsLayout];
-                                            
-                                        } failure:nil];
+        [cell.playerView setBackgroundColor:[UIColor blackColor]];
+        [cell.playerView loadWithVideoId:videoURl];
+        cell.playerView.delegate = self;
+        [cell.playerView setHidden:NO];
+        [cell.newsImgView setHidden:YES];
         
     }
+    else {
+        [cell.newsImgView setHidden:NO];
+        [cell.playerView setHidden:YES];
+        
+        if(![imgURL isEqualToString:@""])
+        {
+            NSURL *url = [NSURL URLWithString:imgURL];
+            NSURLRequest *request = [NSURLRequest requestWithURL:url];
+            UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
+            
+            __weak UIImageView *weakImgView = cell.newsImgView;
+            
+            [cell.newsImgView setImageWithURLRequest:request
+                                    placeholderImage:placeholderImage
+                                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                 
+                                                 weakImgView.image = image;
+                                                 [weakImgView setNeedsLayout];
+                                                 
+                                             } failure:nil];
+            
+        }
+        
+    }
+    
+    
     
 }
 
@@ -297,6 +323,30 @@
         
     }
 }
+
+
+- (BOOL) isVideoURL:(NSString *)url {
+    
+    if ([url containsString:@"youtu"]) {
+        return true;
+    }
+    return false;
+    
+}
+
+
+#pragma mark - Youtube Player Delegates
+
+- (void)playerViewDidBecomeReady:(YTPlayerView *)playerView {
+    
+    
+    
+    
+}
+
+- (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state{}
+- (void)playerView:(YTPlayerView *)playerView didChangeToQuality:(YTPlaybackQuality)quality{}
+- (void)playerView:(YTPlayerView *)playerView receivedError:(YTPlayerError)error{}
 
 
 @end

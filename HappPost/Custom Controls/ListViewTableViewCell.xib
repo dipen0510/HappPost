@@ -57,10 +57,19 @@
                                 <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="border.png" translatesAutoresizingMaskIntoConstraints="NO" id="bgU-aq-bOp">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="border.png" translatesAutoresizingMaskIntoConstraints="NO" id="bgU-aq-bOp">
                                 <rect key="frame" x="0.0" y="0.0" width="304" height="133"/>
                                 <animations/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdO-V0-lEY" customClass="YTPlayerView">
+                                <rect key="frame" x="8" y="8" width="117" height="117"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="117" id="SJb-Cj-zrr"/>
+                                    <constraint firstAttribute="width" constant="117" id="yYT-Uo-A57"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -69,8 +78,10 @@
                             <constraint firstItem="bgU-aq-bOp" firstAttribute="leading" secondItem="gdC-fo-p5b" secondAttribute="leading" id="96D-33-Oue"/>
                             <constraint firstAttribute="bottom" secondItem="bgU-aq-bOp" secondAttribute="bottom" id="9sk-K2-W6W"/>
                             <constraint firstItem="iy7-0V-E38" firstAttribute="top" secondItem="nBU-Mr-HWD" secondAttribute="bottom" constant="10" id="KfZ-26-GAr"/>
+                            <constraint firstItem="jdO-V0-lEY" firstAttribute="leading" secondItem="gdC-fo-p5b" secondAttribute="leading" constant="8" id="OPF-vH-0C9"/>
                             <constraint firstAttribute="trailing" secondItem="bgU-aq-bOp" secondAttribute="trailing" id="OWj-gP-Nbj"/>
                             <constraint firstItem="bgU-aq-bOp" firstAttribute="top" secondItem="gdC-fo-p5b" secondAttribute="top" id="T03-fC-T1U"/>
+                            <constraint firstItem="jdO-V0-lEY" firstAttribute="top" secondItem="gdC-fo-p5b" secondAttribute="top" constant="8" id="aOd-YF-U4T"/>
                             <constraint firstItem="v5I-zk-XrS" firstAttribute="top" secondItem="gdC-fo-p5b" secondAttribute="top" constant="8" id="f14-Yg-Pdm"/>
                             <constraint firstItem="v5I-zk-XrS" firstAttribute="leading" secondItem="9oY-UF-rPv" secondAttribute="trailing" constant="8" id="fIK-Kt-cCe"/>
                             <constraint firstItem="nBU-Mr-HWD" firstAttribute="top" secondItem="v5I-zk-XrS" secondAttribute="bottom" constant="8" id="feM-cp-Ii5"/>
@@ -98,6 +109,7 @@
                 <outlet property="newsImgView" destination="9oY-UF-rPv" id="CnY-jD-PnK"/>
                 <outlet property="newsTime" destination="iy7-0V-E38" id="ER1-lc-CW6"/>
                 <outlet property="newsView" destination="gdC-fo-p5b" id="SFB-Tb-JRl"/>
+                <outlet property="playerView" destination="jdO-V0-lEY" id="Vzt-yc-urw"/>
             </connections>
             <point key="canvasLocation" x="245" y="312"/>
         </tableViewCell>

@@ -36,6 +36,9 @@
     
     [self generateContent];
     
+    // Set screen name.
+    self.screenName = @"News Detail Screen";
+    
 }
 
 - (void)didReceiveMemoryWarning {

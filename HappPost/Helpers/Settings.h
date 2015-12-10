@@ -10,7 +10,7 @@
 #define HappPost_Settings_h
 
 
-#define BaseWebServiceURL @"http://52.11.201.26/Happost/HappostService"
+#define BaseWebServiceURL @"http://166.62.93.163/HappostService/HappostService"
 
 #define kRegisterService @"RegisterTempiOSUser"
 #define kSkipRegistrationService @"SkipRegisteriOSUser"

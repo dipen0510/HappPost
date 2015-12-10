@@ -71,8 +71,34 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
         
     }
     
+    if ([self isVideoURL:cardModel.imgURL]) {
+        
+        NSString* videoURl = [[cardModel.imgURL componentsSeparatedByString:@"/"] lastObject];
+        if ([videoURl containsString:@"watch"]) {
+            
+            videoURl = [[videoURl componentsSeparatedByString:@"="] lastObject];
+            
+        }
+        
+        [self.playerView setBackgroundColor:[UIColor blackColor]];
+        [self.playerView loadWithVideoId:videoURl];
+        self.playerView.delegate = self;
+        [self.playerView setHidden:NO];
+        [_photoImageView setHidden:YES];
+        [_heading setHidden:YES];
+        [self.headingBGView setHidden:YES];
+        
+    }
+    else {
+        [_photoImageView setHidden:NO];
+        [_heading setHidden:NO];
+        [self.headingBGView setHidden:NO];
+        [self.playerView setHidden:YES];
+        [self downloadNewsImagewithURL:cardModel.imgURL];
+    }
     
-    [self downloadNewsImagewithURL:cardModel.imgURL];
+    
+    
     
     
     
@@ -177,5 +203,29 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
     
     
 }
+
+
+- (BOOL) isVideoURL:(NSString *)url {
+    
+    if ([url containsString:@"youtu"]) {
+        return true;
+    }
+    return false;
+    
+}
+
+
+#pragma mark - Youtube Player Delegates
+
+- (void)playerViewDidBecomeReady:(YTPlayerView *)playerView {
+    
+    
+    
+    
+}
+
+- (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state{}
+- (void)playerView:(YTPlayerView *)playerView didChangeToQuality:(YTPlaybackQuality)quality{}
+- (void)playerView:(YTPlayerView *)playerView receivedError:(YTPlayerError)error{}
 
 @end

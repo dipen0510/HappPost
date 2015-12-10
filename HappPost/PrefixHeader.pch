@@ -28,5 +28,7 @@
 #import "NSDate+TimeAgo.h"
 #import "HPTopLeftLabel.h"
 #import "UIView+Toast.h"
+#import <Google/Analytics.h>
+#import "GoogleAnalyticsHelper.h"
 
 #endif /* PrefixHeader_pch */

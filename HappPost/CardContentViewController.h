@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomCollectionViewCollectionViewCell.h"
 
-@interface CardContentViewController : UIViewController <CustomCollectionViewCollectionViewCellDelegate,DataSyncManagerDelegate,UISearchBarDelegate> {
+@interface CardContentViewController : GAITrackedViewController <CustomCollectionViewCollectionViewCellDelegate,DataSyncManagerDelegate,UISearchBarDelegate> {
     BOOL isNavigationViewShown;
     NSMutableArray* newsArr;
     long selectedIndex;

@@ -21,6 +21,8 @@
     [[DBManager sharedManager] setupDatabase];
     [[DBManager sharedManager] getAllUserDetailsAndStoreInSharedClass];
     
+    [[GoogleAnalyticsHelper sharedInstance] sendEventWithCategory:@"iOS Event Category" andAction:@"iOS App Launched" andLabel:@"iOS App Launched"];
+    
     return YES;
 }
 

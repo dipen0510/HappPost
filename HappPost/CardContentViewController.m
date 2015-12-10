@@ -79,6 +79,8 @@ UICollectionViewDelegate,UICollectionViewDataSource
     blurEffectView.frame = self.view.bounds;
     blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
+    // Set screen name.
+    self.screenName = @"News Card Screen";
     
 }
 

@@ -26,10 +26,9 @@ extern NSString *const kCustomCellIdentifier;
 /**
  *  Custom collection view cell that shows simple photo.
  */
-@interface CustomCollectionViewCollectionViewCell : UICollectionViewCell {
+@interface CustomCollectionViewCollectionViewCell : UICollectionViewCell<YTPlayerViewDelegate> {
     
     NSString* newsId;
-    
 }
 
 @property (nonatomic,assign)  id <CustomCollectionViewCollectionViewCellDelegate> delegate;
@@ -37,5 +36,8 @@ extern NSString *const kCustomCellIdentifier;
 @property (weak, nonatomic) IBOutlet UIView *cardView;
 @property (weak, nonatomic) IBOutlet UIView *contentContainerView;
 @property (weak, nonatomic) IBOutlet UIButton *expandButton;
+@property (weak, nonatomic) IBOutlet UIView *imageContainerView;
+@property (weak, nonatomic) IBOutlet UIView *headingBGView;
+@property (weak, nonatomic) IBOutlet YTPlayerView *playerView;
 
 @end

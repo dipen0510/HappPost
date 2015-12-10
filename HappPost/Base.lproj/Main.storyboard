@@ -171,7 +171,7 @@
                                             <constraint firstAttribute="height" constant="85" id="Oj5-Qs-8Fk"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="28"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fT1-xH-90t">
@@ -184,7 +184,7 @@
                                             <fragment>
                                                 <string key="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</string>
                                                 <attributes>
-                                                    <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="17" name="HelveticaNeue"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineHeightMultiple="1.1000000000000001" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -497,7 +497,7 @@ Cg
                                                                         <constraint firstAttribute="height" constant="47" id="k7U-cv-wJB"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="16"/>
-                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DCN-WC-bBP">
@@ -562,7 +562,7 @@ Cg
                                                                         <fragment>
                                                                             <string key="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, officia</string>
                                                                             <attributes>
-                                                                                <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineHeightMultiple="1.3" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
@@ -617,20 +617,29 @@ Cg
                                                                     <color key="textColor" red="0.99215686270000003" green="0.85490196080000003" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFh-lf-yU0" customClass="YTPlayerView">
+                                                                    <rect key="frame" x="-13" y="0.0" width="578" height="175"/>
+                                                                    <animations/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </view>
                                                             </subviews>
                                                             <animations/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
+                                                                <constraint firstItem="PFh-lf-yU0" firstAttribute="top" secondItem="uy2-0y-UTy" secondAttribute="top" id="0Vn-4K-8XS"/>
                                                                 <constraint firstAttribute="bottom" secondItem="2QF-ez-JuR" secondAttribute="bottom" id="7z0-ZE-7cT"/>
                                                                 <constraint firstAttribute="trailing" secondItem="RHi-jw-95d" secondAttribute="trailing" constant="35" id="Dzq-Cb-WwD"/>
+                                                                <constraint firstAttribute="trailing" secondItem="PFh-lf-yU0" secondAttribute="trailing" constant="-13" id="Ibv-iG-Yoo"/>
                                                                 <constraint firstItem="2QF-ez-JuR" firstAttribute="leading" secondItem="uy2-0y-UTy" secondAttribute="leading" constant="-13" id="SCB-ha-77K"/>
                                                                 <constraint firstAttribute="bottom" secondItem="RHi-jw-95d" secondAttribute="bottom" id="VRm-lN-WNx"/>
+                                                                <constraint firstItem="PFh-lf-yU0" firstAttribute="leading" secondItem="uy2-0y-UTy" secondAttribute="leading" constant="-13" id="Vqr-My-92S"/>
                                                                 <constraint firstAttribute="trailing" secondItem="een-tq-dGt" secondAttribute="trailing" constant="-13" id="WiM-Nb-pYy"/>
                                                                 <constraint firstAttribute="trailing" secondItem="2QF-ez-JuR" secondAttribute="trailing" constant="-13" id="XGx-QM-OEa"/>
                                                                 <constraint firstAttribute="bottom" secondItem="een-tq-dGt" secondAttribute="bottom" id="ZH0-lP-afZ"/>
                                                                 <constraint firstItem="RHi-jw-95d" firstAttribute="leading" secondItem="uy2-0y-UTy" secondAttribute="leading" constant="-5" id="j6K-5I-zZC"/>
                                                                 <constraint firstItem="een-tq-dGt" firstAttribute="top" secondItem="uy2-0y-UTy" secondAttribute="top" constant="-5" id="nQU-Eh-WuA"/>
                                                                 <constraint firstItem="een-tq-dGt" firstAttribute="leading" secondItem="uy2-0y-UTy" secondAttribute="leading" constant="-13" id="pFh-rR-2po"/>
+                                                                <constraint firstAttribute="bottom" secondItem="PFh-lf-yU0" secondAttribute="bottom" id="raw-Mx-A5D"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -670,6 +679,9 @@ Cg
                                             <outlet property="cardView" destination="jOb-pB-aCA" id="N9R-u6-yY1"/>
                                             <outlet property="contentContainerView" destination="X19-dQ-NFq" id="HR9-ct-SJT"/>
                                             <outlet property="expandButton" destination="qAL-Hr-Tvt" id="uud-Zk-adN"/>
+                                            <outlet property="headingBGView" destination="2QF-ez-JuR" id="vDe-bY-y70"/>
+                                            <outlet property="imageContainerView" destination="uy2-0y-UTy" id="TMr-hS-VnU"/>
+                                            <outlet property="playerView" destination="PFh-lf-yU0" id="FPi-0f-cBv"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1172,9 +1184,9 @@ Cg
         <image name="titleLogo.png" width="1401" height="1294"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="osz-5P-6rc"/>
+        <segue reference="Kb6-yS-sIu"/>
         <segue reference="wMo-YW-qj2"/>
         <segue reference="9X8-LD-gaR"/>
-        <segue reference="XZ9-Pc-gw8"/>
+        <segue reference="cV4-ek-xnD"/>
     </inferredMetricsTieBreakers>
 </document>
