@@ -418,6 +418,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     
     [[SharedClass sharedInstance] setMenuOptionType:0];
     [[SharedClass sharedInstance] setSelectedGenresArr:[[NSMutableArray alloc] init]];
+    [[SharedClass sharedInstance] setSelectedMyNewsArr:[[NSMutableArray alloc] init]];
     [self generateDatasource];
     
 }
@@ -436,7 +437,6 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
 
 - (void) genreCellSelected {
     
-    [[SharedClass sharedInstance] setMenuOptionType:2];
     [self hideMenuView];
     
 }

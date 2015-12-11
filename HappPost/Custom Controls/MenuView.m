@@ -590,6 +590,8 @@
         [[SharedClass sharedInstance] setSelectedGenresArr:selectedGenreArr];
         [[SharedClass sharedInstance] setSelectedMyNewsArr:selectedMyNewsArr];
         
+        [[SharedClass sharedInstance] setMenuOptionType:2];
+        
         [self.genreTableView reloadData];
         [self.menuTableView reloadData];
         
@@ -597,6 +599,7 @@
         if (tableView == self.genreTableView) {
             [self.delegate genreCellSelected];
         }
+        
         
     }
     

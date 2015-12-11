@@ -52,7 +52,7 @@
     [menuView.switchToCardView addTarget:self action:@selector(switchViewButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [menuView.myBookbarkButton addTarget:self action:@selector(bookmarkButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     menuView.searchBar.delegate = self;
-    [menuView.switchToCardView setTitle:@"Switch To List View" forState:UIControlStateNormal];
+    [menuView.switchToCardView setTitle:@"Switch To Card View" forState:UIControlStateNormal];
     
 }
 
@@ -305,6 +305,7 @@
     
     [[SharedClass sharedInstance] setMenuOptionType:0];
     [[SharedClass sharedInstance] setSelectedGenresArr:[[NSMutableArray alloc] init]];
+    [[SharedClass sharedInstance] setSelectedMyNewsArr:[[NSMutableArray alloc] init]];
     [self generateDatasourceForList];
     
 }
@@ -315,7 +316,6 @@
 
 - (void) myNewsSectionSelected {
     
-    [[SharedClass sharedInstance] setMenuOptionType:2];
     [self hideMenuView];
     
 }
