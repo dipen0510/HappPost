@@ -21,6 +21,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
+    // Set screen name.
+    [[GoogleAnalyticsHelper sharedInstance] sendScreenTrackingWithName:@"Bookmark List Screen"];
     
     
 }

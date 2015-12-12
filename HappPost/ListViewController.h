@@ -10,10 +10,13 @@
 #import "MenuView.h"
 #import "NewsContentRequestObject.h"
 
-@interface ListViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate,DataSyncManagerDelegate,UISearchBarDelegate,YTPlayerViewDelegate,MenuViewDelegate> {
+@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,DataSyncManagerDelegate,UISearchBarDelegate,YTPlayerViewDelegate,MenuViewDelegate> {
     
     NSMutableArray* newsContentArr;
     long selectedIndex;
+    
+    UIRefreshControl* refreshControl;
+    
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *listTblView;

@@ -10,7 +10,7 @@
 #import "CustomCollectionViewCollectionViewCell.h"
 #import "MenuView.h"
 
-@interface CardContentViewController : GAITrackedViewController <CustomCollectionViewCollectionViewCellDelegate,DataSyncManagerDelegate,UISearchBarDelegate,MenuViewDelegate> {
+@interface CardContentViewController : UIViewController <CustomCollectionViewCollectionViewCellDelegate,DataSyncManagerDelegate,UISearchBarDelegate,MenuViewDelegate> {
     BOOL isNavigationViewShown;
     NSMutableArray* newsArr;
     long selectedIndex;

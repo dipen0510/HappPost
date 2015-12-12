@@ -35,7 +35,7 @@
     [self generateContent];
     
     // Set screen name.
-    self.screenName = @"News Detail Screen";
+    [[GoogleAnalyticsHelper sharedInstance] sendScreenTrackingWithName:@"News Detail Screen"];
     
 }
 
@@ -79,11 +79,11 @@
     
     //Primary Video Check
     
-    if ([self isVideoURL:newsObj.newsImage]) {
+    if ([self isVideoURL:newsObj.webImage]) {
         
         [self.primaryVideoPlayerView setHidden:YES];
         
-        NSString* videoURl = [[newsObj.newsImage componentsSeparatedByString:@"/"] lastObject];
+        NSString* videoURl = [[newsObj.webImage componentsSeparatedByString:@"/"] lastObject];
         if ([videoURl containsString:@"watch"]) {
             
             videoURl = [[videoURl componentsSeparatedByString:@"="] lastObject];
@@ -99,22 +99,21 @@
     else {
         
         [self.primaryVideoPlayerView setHidden:YES];
-        [self downloadPrimaryNewsImagewithURL:newsObj.newsImage];
+        self.primaryVideoPlayerView.contentMode = UIViewContentModeScaleAspectFill;
+        [self downloadPrimaryNewsImagewithURL:newsObj.webImage];
         
     }
     
     
     //Secondary Video Check
     
-    if (newsObj.newsInfographics.count > 0) {
+    if (newsObj.secondLeadImage) {
         
-        secondaryImageNewsInfogrphicsObj = (NewsInfographicsObject *) [newsObj.newsInfographics objectAtIndex:0];
-        
-        if ([self isVideoURL:secondaryImageNewsInfogrphicsObj.newsImage]) {
+        if ([self isVideoURL:newsObj.secondLeadImage]) {
             
             [self.videoPlayerView setHidden:YES];
             
-            NSString* videoURl = [[secondaryImageNewsInfogrphicsObj.newsImage componentsSeparatedByString:@"/"] lastObject];
+            NSString* videoURl = [[newsObj.secondLeadImage componentsSeparatedByString:@"/"] lastObject];
             if ([videoURl containsString:@"watch"]) {
                 
                 videoURl = [[videoURl componentsSeparatedByString:@"="] lastObject];
@@ -130,7 +129,8 @@
         else {
             
             [self.videoPlayerView setHidden:YES];
-            [self downloadSecondaryNewsImagewithURL:secondaryImageNewsInfogrphicsObj.newsImage];
+            self.secondaryImageView.contentMode = UIViewContentModeScaleAspectFill;
+            [self downloadSecondaryNewsImagewithURL:newsObj.secondLeadImage];
             
         }
         
@@ -239,7 +239,7 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    long count = (newsObj.newsInfographics.count - 1);
+    long count = newsObj.newsInfographics.count ;
     
     if (count <= 0) {
         self.collectionViewHeightConstraint.constant = 0;
@@ -262,7 +262,7 @@
 - (void) generateContentForCell:(DetailContentCollectionViewCell *)cell andIndexPath:(NSIndexPath *)indexPath {
     
         
-        NewsInfographicsObject* newsInfoObj = (NewsInfographicsObject *)[newsObj.newsInfographics objectAtIndex:(indexPath.row + 1)];
+        NewsInfographicsObject* newsInfoObj = (NewsInfographicsObject *)[newsObj.newsInfographics objectAtIndex:(indexPath.row)];
         
         NSString* imgURL = newsInfoObj.newsImage;
         
@@ -285,6 +285,8 @@
             
         }
         else {
+            
+            cell.contentImageView.contentMode = UIViewContentModeScaleAspectFill;
             
             if(![imgURL isEqualToString:@""])
             {

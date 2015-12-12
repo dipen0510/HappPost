@@ -65,8 +65,9 @@ UICollectionViewDelegate,UICollectionViewDataSource
     blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     // Set screen name.
-    self.screenName = @"News Card Screen";
     
+    [[GoogleAnalyticsHelper sharedInstance] sendScreenTrackingWithName:@"News Card Screen"];
+        
 }
 
 

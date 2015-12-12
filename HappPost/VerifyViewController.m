@@ -19,6 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // Set screen name.
+    [[GoogleAnalyticsHelper sharedInstance] sendScreenTrackingWithName:@"Code Verify Screen"];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

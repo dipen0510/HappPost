@@ -56,9 +56,23 @@ static SharedClass *singletonObject = nil;
     
     [[DBManager sharedManager] insertEntryIntoSettingsTableWithTimeStamp:newsObj.timeStamp andNotificationSetting:newsObj.notificationSetting];
     
-    for (int i = 0; i<newsObj.newsDataInfo.count ; i++) {
+    NSMutableArray* insertArr = [[NSMutableArray alloc] init];
+    NSMutableArray* deleteArr = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i<newsObj.newsDataInfo.count; i++) {
         
-        SingleNewsObject* singleNewsObj = [[SingleNewsObject alloc] initWithDictionary:[newsObj.newsDataInfo objectAtIndex:i]];
+        if ([[[newsObj.newsDataInfo objectAtIndex:i] valueForKey:ActiveKey] boolValue]) {
+            [insertArr addObject:[newsObj.newsDataInfo objectAtIndex:i]];
+        }
+        else {
+            [deleteArr addObject:[newsObj.newsDataInfo objectAtIndex:i]];
+        }
+        
+    }
+    
+    for (int i = 0; i<insertArr.count ; i++) {
+        
+        SingleNewsObject* singleNewsObj = [[SingleNewsObject alloc] initWithDictionary:[insertArr objectAtIndex:i]];
         
         [[DBManager sharedManager] insertEntryIntoNewsTableWithObj:singleNewsObj];
         [[DBManager sharedManager] insertEntryIntoNewsCommentsTableWithCommentArr:singleNewsObj.newsComments andNewsId:singleNewsObj.newsId];
@@ -67,16 +81,26 @@ static SharedClass *singletonObject = nil;
         
     }
     
+    for (int i = 0; i<deleteArr.count ; i++) {
+        
+        SingleNewsObject* singleNewsObj = [[SingleNewsObject alloc] initWithDictionary:[deleteArr objectAtIndex:i]];
+        
+        [[DBManager sharedManager] deleteNewsWithNewsId:singleNewsObj.newsId];
+        
+    }
+    
     
 }
 
 - (NSDate *) dateFromString:(NSString *)dateTime {
     
+    dateTime = [dateTime stringByReplacingOccurrencesOfString:@"  " withString:@" "];
+    
     NSArray* dateArr = [dateTime componentsSeparatedByString:@" "];
     
-    int day = [[dateArr objectAtIndex:2] intValue];
+    int day = [[dateArr objectAtIndex:1] intValue];
     int month = [self monthForString:[dateArr objectAtIndex:0]];
-    int year = [[dateArr objectAtIndex:3] intValue];
+    int year = [[dateArr objectAtIndex:2] intValue];
     
     int hour = 0;
     int minute  = 0;
@@ -103,6 +127,32 @@ static SharedClass *singletonObject = nil;
     return [calendar dateFromComponents:components];
     
 }
+
+
+- (NSString *) sqlLiteFormattedDateStringFromResponseString:(NSString *)str {
+    
+    NSDate* date = [self dateFromString:str];
+    
+    NSDateFormatter *objDateformat = [[NSDateFormatter alloc] init];
+    [objDateformat setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSString *strTime = [objDateformat stringFromDate:date];
+    
+    return strTime;
+    
+}
+
+- (NSString *) sqlLiteFormattedCurrentDate {
+    
+    NSDate* date = [NSDate date];
+    
+    NSDateFormatter *objDateformat = [[NSDateFormatter alloc] init];
+    [objDateformat setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSString *strTime = [objDateformat stringFromDate:date];
+    
+    return strTime;
+    
+}
+
 
 - (int) monthForString:(NSString *)month {
     

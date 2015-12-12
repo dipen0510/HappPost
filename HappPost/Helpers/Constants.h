@@ -28,6 +28,7 @@
 
 //NEWS CONTENT KEYS
 
+#define ActiveKey @"Active"
 #define ActiveFromKey @"ActiveFrom"
 #define ActiveTillKey @"ActiveTill"
 #define AuthorIdKey @"AuthorId"
@@ -52,6 +53,8 @@
 #define isLeadStoryKey @"isLeadStory"
 #define isTrendingKey @"isTrending"
 #define HeadlineColorKey @"HeadlineColor"
+#define SecondLeadImageKey @"SecondLeadImage"
+#define WebImageKey @"WebImage"
 
 #define CommentsKey @"Comments"
 #define NewsCommentsIdKey @"NewsCommentsId"
@@ -68,6 +71,8 @@
 //MISC
 
 #define iOSDeviceType @"2"
+#define isFirstRun @"isFirstRun"
+
 
 #endif
 

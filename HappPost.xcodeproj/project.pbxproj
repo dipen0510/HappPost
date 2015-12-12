@@ -124,7 +124,7 @@
 		18BDF7B91BFBA88A003B7D7D /* world.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF7A71BFBA88A003B7D7D /* world.png */; };
 		18BDF7BE1BFBAB8F003B7D7D /* ListViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDF7BC1BFBAB8F003B7D7D /* ListViewTableViewCell.m */; };
 		18BDF7BF1BFBAB8F003B7D7D /* ListViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF7BD1BFBAB8F003B7D7D /* ListViewTableViewCell.xib */; };
-		18F21B161C18F4AE00BAD106 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F21B151C18F4AE00BAD106 /* GoogleService-Info.plist */; };
+		18C0C0C61C1C8BBC0060F9DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C0C0C51C1C8BBC0060F9DF /* GoogleService-Info.plist */; };
 		18F21B191C18F4D600BAD106 /* GoogleAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F21B181C18F4D600BAD106 /* GoogleAnalyticsHelper.m */; };
 		E897DE6AAB36E9D822A916D8 /* libPods-HappPost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2490601CA980886BDAF1D3F7 /* libPods-HappPost.a */; };
 /* End PBXBuildFile section */
@@ -348,7 +348,7 @@
 		18BDF7BB1BFBAB8F003B7D7D /* ListViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewTableViewCell.h; path = "Custom Controls/ListViewTableViewCell.h"; sourceTree = "<group>"; };
 		18BDF7BC1BFBAB8F003B7D7D /* ListViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewTableViewCell.m; path = "Custom Controls/ListViewTableViewCell.m"; sourceTree = "<group>"; };
 		18BDF7BD1BFBAB8F003B7D7D /* ListViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListViewTableViewCell.xib; path = "Custom Controls/ListViewTableViewCell.xib"; sourceTree = "<group>"; };
-		18F21B151C18F4AE00BAD106 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18C0C0C51C1C8BBC0060F9DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18F21B171C18F4D600BAD106 /* GoogleAnalyticsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsHelper.h; sourceTree = "<group>"; };
 		18F21B181C18F4D600BAD106 /* GoogleAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsHelper.m; sourceTree = "<group>"; };
 		2490601CA980886BDAF1D3F7 /* libPods-HappPost.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HappPost.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -705,7 +705,7 @@
 		18BDF76E1BFBA4EB003B7D7D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				18F21B151C18F4AE00BAD106 /* GoogleService-Info.plist */,
+				18C0C0C51C1C8BBC0060F9DF /* GoogleService-Info.plist */,
 				18BDF76F1BFBA4EB003B7D7D /* Info.plist */,
 				18BDF7701BFBA4EB003B7D7D /* main.m */,
 				1801B87A1C0ABF0E00AA82CA /* PrefixHeader.pch */,
@@ -909,7 +909,6 @@
 				18BDF7AD1BFBA88A003B7D7D /* icnMenu.png in Resources */,
 				18908A7C1BFCFD9E008A7252 /* border.png in Resources */,
 				18BDF7AF1BFBA88A003B7D7D /* lifestyle.png in Resources */,
-				18F21B161C18F4AE00BAD106 /* GoogleService-Info.plist in Resources */,
 				187197251C039C0500ACC58B /* MenuView.xib in Resources */,
 				18BDF7A81BFBA88A003B7D7D /* business.png in Resources */,
 				18BDF7BF1BFBAB8F003B7D7D /* ListViewTableViewCell.xib in Resources */,
@@ -918,6 +917,7 @@
 				18BDF7B51BFBA88A003B7D7D /* spotlight.png in Resources */,
 				18858EFF1C19F0B20039805C /* menuDropArrow.png in Resources */,
 				18BDF7B11BFBA88A003B7D7D /* share.png in Resources */,
+				18C0C0C61C1C8BBC0060F9DF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

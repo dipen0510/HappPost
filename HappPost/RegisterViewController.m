@@ -20,6 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // Set screen name.
+    [[GoogleAnalyticsHelper sharedInstance] sendScreenTrackingWithName:@"Register Screen"];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

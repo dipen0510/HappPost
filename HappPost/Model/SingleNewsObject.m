@@ -39,6 +39,18 @@
     _isLeadStory = dictionary[isLeadStoryKey];
     _isTrending = dictionary[isTrendingKey];
     _headlineColor = dictionary[HeadlineColorKey];
+    _secondLeadImage = dictionary[SecondLeadImageKey];
+    _webImage = dictionary[WebImageKey];
+    
+    _activeFromDate = [[SharedClass sharedInstance] sqlLiteFormattedDateStringFromResponseString:_activeFrom];
+    
+    if (_activeTill && !([_activeTill isEqual:[NSNull null]])) {
+        _activeTillDate = [[SharedClass sharedInstance] sqlLiteFormattedDateStringFromResponseString:_activeTill];
+    }
+    else {
+        _activeTillDate = @"a";
+    }
+    
     
     return self;
 }

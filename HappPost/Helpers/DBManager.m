@@ -13,7 +13,7 @@
 
 NSString* create_TblUser_table = @"CREATE TABLE IF NOT EXISTS USER (userId TEXT PRIMARY KEY, email TEXT, name TEXT, deviceId TEXT, gcmId TEXT, version TEXT)";
 
-NSString* create_TblNews_table = @"CREATE TABLE IF NOT EXISTS NEWS (newsId TEXT PRIMARY KEY, activeFrom TEXT, activeTill TEXT, authorId TEXT, authorName TEXT, dateCreated TEXT, dateModified TEXT, detailedStory TEXT, heading TEXT, impactSore TEXT, latLng TEXT , loc TEXT, name TEXT, newsImage TEXT, newsTimeStamp TEXT, subHeading TEXT, summary TEXT, tags TEXT, isLeadStory TEXT, isTrending TEXT, headlineColor TEXT)";
+NSString* create_TblNews_table = @"CREATE TABLE IF NOT EXISTS NEWS (newsId TEXT PRIMARY KEY, activeFrom TEXT, activeTill TEXT, authorId TEXT, authorName TEXT, dateCreated TEXT, dateModified TEXT, detailedStory TEXT, heading TEXT, impactSore TEXT, latLng TEXT , loc TEXT, name TEXT, newsImage TEXT, newsTimeStamp TEXT, subHeading TEXT, summary TEXT, tags TEXT, isLeadStory TEXT, isTrending TEXT, headlineColor TEXT, secondLeadImage TEXT, webImage TEXT, activeFromDate TEXT, activeTillDate TEXT)";
 
 NSString* create_TblNewsComments_table = @"CREATE TABLE IF NOT EXISTS NEWSCOMMENTS (newsCommentsId TEXT PRIMARY KEY, comments TEXT, dateCreated TEXT, user TEXT, newsId TEXT)";
 
@@ -325,10 +325,10 @@ static DBManager *sharedObject = nil;
     NSString* databasePath = [self getDatabasePath];
     FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
     
-    NSArray* arr = [NSArray arrayWithObjects:newsObj.newsId, newsObj.activeFrom, newsObj.activeTill, newsObj.authorId, newsObj.authorName, newsObj.dateCreated, newsObj.dateModified, newsObj.detailedStory, newsObj.heading, newsObj.impactSore, newsObj.latLng, newsObj.loc, newsObj.name, newsObj.newsImage, newsObj.newsTimeStamp, newsObj.subHeading, newsObj.summary, newsObj.tags, newsObj.isLeadStory, newsObj.isTrending, newsObj.headlineColor, nil];
+    NSArray* arr = [NSArray arrayWithObjects:newsObj.newsId, newsObj.activeFrom, newsObj.activeTill, newsObj.authorId, newsObj.authorName, newsObj.dateCreated, newsObj.dateModified, newsObj.detailedStory, newsObj.heading, newsObj.impactSore, newsObj.latLng, newsObj.loc, newsObj.name, newsObj.newsImage, newsObj.newsTimeStamp, newsObj.subHeading, newsObj.summary, newsObj.tags, newsObj.isLeadStory, newsObj.isTrending, newsObj.headlineColor, newsObj.secondLeadImage, newsObj.webImage, newsObj.activeFromDate, newsObj.activeTillDate, nil];
     
     if ([objectDB open]) {
-        NSString* query = @"INSERT INTO NEWS (newsId, activeFrom, activeTill, authorId, authorName, dateCreated, dateModified, detailedStory, heading, impactSore, latLng , loc, name, newsImage, newsTimeStamp, subHeading, summary, tags, isLeadStory, isTrending, headlineColor ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        NSString* query = @"INSERT INTO NEWS (newsId, activeFrom, activeTill, authorId, authorName, dateCreated, dateModified, detailedStory, heading, impactSore, latLng , loc, name, newsImage, newsTimeStamp, subHeading, summary, tags, isLeadStory, isTrending, headlineColor, secondLeadImage, webImage, activeFromDate, activeTillDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         if (![objectDB executeUpdate:query withArgumentsInArray:arr]) {
             
             NSLog(@"insert into NEWS table failed: %@)",[objectDB lastErrorMessage]);
@@ -386,12 +386,14 @@ static DBManager *sharedObject = nil;
 
 -(NSMutableArray *) getAllNews {
     
+    NSString* currentDate = [[SharedClass sharedInstance] sqlLiteFormattedCurrentDate];
+    
     NSMutableArray* arr = [[NSMutableArray alloc] init];
     
     NSString* databasePath = [self getDatabasePath];
     FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
     if ([objectDB open]) {
-        NSString* query= @"SELECT * from NEWS";
+        NSString* query= [NSString stringWithFormat:@"SELECT * from NEWS where activeFromDate < '%@' and activeTillDate > '%@' order by activeFromDate desc", currentDate, currentDate];
         FMResultSet* resultSet = [objectDB executeQuery:query withArgumentsInArray:nil];
         while ([resultSet next]) {
             
@@ -418,6 +420,10 @@ static DBManager *sharedObject = nil;
             newsObj.isLeadStory = [resultSet stringForColumnIndex:18];
             newsObj.isTrending = [resultSet stringForColumnIndex:19];
             newsObj.headlineColor = [resultSet stringForColumnIndex:20];
+            newsObj.secondLeadImage = [resultSet stringForColumnIndex:21];
+            newsObj.webImage = [resultSet stringForColumnIndex:22];
+            newsObj.activeFromDate = [resultSet stringForColumnIndex:23];
+            newsObj.activeTillDate = [resultSet stringForColumnIndex:24];
             
             newsObj.newsComments = [self getAllNewsCommentsForNewsId:newsObj.newsId];
             newsObj.newsGenres = [self getAllNewsGenreForNewsId:newsObj.newsId];
@@ -443,10 +449,12 @@ static DBManager *sharedObject = nil;
     
     NSMutableArray* arr = [[NSMutableArray alloc] init];
     
+    NSString* currentDate = [[SharedClass sharedInstance] sqlLiteFormattedCurrentDate];
+    
     NSString* databasePath = [self getDatabasePath];
     FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
     if ([objectDB open]) {
-        NSString* query= [NSString stringWithFormat:@"SELECT * from NEWS where newsId in (SELECT newsId from NEWSGENRES where genreId in %@)",categories];
+        NSString* query= [NSString stringWithFormat:@"SELECT * from NEWS where newsId in (SELECT newsId from NEWSGENRES where genreId in %@) and activeFromDate < '%@' and activeTillDate > '%@' order by activeFromDate desc",categories,currentDate,currentDate];
         FMResultSet* resultSet = [objectDB executeQuery:query withArgumentsInArray:nil];
         while ([resultSet next]) {
             
@@ -473,6 +481,10 @@ static DBManager *sharedObject = nil;
             newsObj.isLeadStory = [resultSet stringForColumnIndex:18];
             newsObj.isTrending = [resultSet stringForColumnIndex:19];
             newsObj.headlineColor = [resultSet stringForColumnIndex:20];
+            newsObj.secondLeadImage = [resultSet stringForColumnIndex:21];
+            newsObj.webImage = [resultSet stringForColumnIndex:22];
+            newsObj.activeFromDate = [resultSet stringForColumnIndex:23];
+            newsObj.activeTillDate = [resultSet stringForColumnIndex:24];
             
             newsObj.newsComments = [self getAllNewsCommentsForNewsId:newsObj.newsId];
             newsObj.newsGenres = [self getAllNewsGenreForNewsId:newsObj.newsId];
@@ -499,10 +511,12 @@ static DBManager *sharedObject = nil;
     
     NSMutableArray* arr = [[NSMutableArray alloc] init];
     
+    NSString* currentDate = [[SharedClass sharedInstance] sqlLiteFormattedCurrentDate];
+    
     NSString* databasePath = [self getDatabasePath];
     FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
     if ([objectDB open]) {
-        NSString* query= [NSString stringWithFormat:@"SELECT * from NEWS where newsId in (SELECT newsId from BOOKMARKS)"];
+        NSString* query= [NSString stringWithFormat:@"SELECT * from NEWS where newsId in (SELECT newsId from BOOKMARKS) and activeFromDate < '%@' and activeTillDate > '%@' order by activeFromDate desc", currentDate, currentDate];
         FMResultSet* resultSet = [objectDB executeQuery:query withArgumentsInArray:nil];
         while ([resultSet next]) {
             
@@ -529,6 +543,10 @@ static DBManager *sharedObject = nil;
             newsObj.isLeadStory = [resultSet stringForColumnIndex:18];
             newsObj.isTrending = [resultSet stringForColumnIndex:19];
             newsObj.headlineColor = [resultSet stringForColumnIndex:20];
+            newsObj.secondLeadImage = [resultSet stringForColumnIndex:21];
+            newsObj.webImage = [resultSet stringForColumnIndex:22];
+            newsObj.activeFromDate = [resultSet stringForColumnIndex:23];
+            newsObj.activeTillDate = [resultSet stringForColumnIndex:24];
             
             newsObj.newsComments = [self getAllNewsCommentsForNewsId:newsObj.newsId];
             newsObj.newsGenres = [self getAllNewsGenreForNewsId:newsObj.newsId];
@@ -555,10 +573,12 @@ static DBManager *sharedObject = nil;
     
     NSMutableArray* arr = [[NSMutableArray alloc] init];
     
+    NSString* currentDate = [[SharedClass sharedInstance] sqlLiteFormattedCurrentDate];
+    
     NSString* databasePath = [self getDatabasePath];
     FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
     if ([objectDB open]) {
-        NSString* query= [NSString stringWithFormat:@"SELECT * from NEWS where tags like '%%%@%%' OR heading like '%%%@%%' ",text, text];
+        NSString* query= [NSString stringWithFormat:@"SELECT * from NEWS where (tags like '%%%@%%' OR heading like '%%%@%%') and activeFromDate < '%@' and activeTillDate > '%@' order by activeFromDate desc ",text, text, currentDate, currentDate];
         FMResultSet* resultSet = [objectDB executeQuery:query withArgumentsInArray:nil];
         while ([resultSet next]) {
             
@@ -585,6 +605,10 @@ static DBManager *sharedObject = nil;
             newsObj.isLeadStory = [resultSet stringForColumnIndex:18];
             newsObj.isTrending = [resultSet stringForColumnIndex:19];
             newsObj.headlineColor = [resultSet stringForColumnIndex:20];
+            newsObj.secondLeadImage = [resultSet stringForColumnIndex:21];
+            newsObj.webImage = [resultSet stringForColumnIndex:22];
+            newsObj.activeFromDate = [resultSet stringForColumnIndex:23];
+            newsObj.activeTillDate = [resultSet stringForColumnIndex:24];
             
             newsObj.newsComments = [self getAllNewsCommentsForNewsId:newsObj.newsId];
             newsObj.newsGenres = [self getAllNewsGenreForNewsId:newsObj.newsId];
@@ -619,6 +643,27 @@ static DBManager *sharedObject = nil;
         }
         else {
             NSLog(@"NEWS Data deleted Successfully");
+        }
+        [objectDB close];
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+}
+
+
+-(void) deleteNewsWithNewsId:(NSString *)newsId {
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= [NSString stringWithFormat:@"DELETE FROM NEWS where newsId = %@",newsId];
+        if (![objectDB executeUpdate:query withArgumentsInArray:nil]) {
+            
+            NSLog(@"delete from NEWS failed: %@)",[objectDB lastErrorMessage]);
+            
+        }
+        else {
+            NSLog(@"NEWS Data %@ deleted Successfully",newsId);
         }
         [objectDB close];
     }

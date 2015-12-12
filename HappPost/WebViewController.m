@@ -26,6 +26,10 @@
     self.contentWebView.delegate = self;
     
     [self loadWebView:self.contentWebView withURLString:webViewURL andPostDictionaryOrNil:nil/*[NSDictionary dictionaryWithObject:@"key" forKey:@"vale"]*/];
+    
+    // Set screen name.
+    [[GoogleAnalyticsHelper sharedInstance] sendScreenTrackingWithName:@"In-app Webview"];
+    
 
 }
 

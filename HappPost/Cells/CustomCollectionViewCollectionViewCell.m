@@ -82,7 +82,7 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
         
         [self.playerView setBackgroundColor:[UIColor blackColor]];
         [self.playerView loadWithVideoId:videoURl];
-        self.playerView.delegate = self;
+        [self.playerView setDelegate:self];
         [self.playerView setHidden:NO];
         [_photoImageView setHidden:YES];
         [_heading setHidden:YES];
@@ -94,6 +94,11 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
         [_heading setHidden:NO];
         [self.headingBGView setHidden:NO];
         [self.playerView setHidden:YES];
+        [self.playerView stopVideo];
+        [self.playerView clearVideo];
+        [self.playerView removeWebView];
+        _photoImageView.contentMode = UIViewContentModeScaleAspectFill;
+        
         [self downloadNewsImagewithURL:cardModel.imgURL];
     }
     
@@ -215,12 +220,24 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
 }
 
 
+-(void)prepareForReuse {
+    
+    [super prepareForReuse];
+    
+    [self.playerView setHidden:YES];
+    [self.playerView stopVideo];
+    [self.playerView clearVideo];
+    [self.playerView removeWebView];
+    
+}
+
+
 #pragma mark - Youtube Player Delegates
 
 - (void)playerViewDidBecomeReady:(YTPlayerView *)playerView {
     
-    
-    
+    [self.playerView stopVideo];
+    [self.playerView clearVideo];
     
 }
 

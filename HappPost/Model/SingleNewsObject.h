@@ -34,6 +34,10 @@
 @property (nonatomic, strong) NSString* isLeadStory;
 @property (nonatomic, strong) NSString* isTrending;
 @property (nonatomic, strong) NSString* headlineColor;
+@property (nonatomic, strong) NSString* secondLeadImage;
+@property (nonatomic, strong) NSString* webImage;
+@property (nonatomic, strong) NSString* activeFromDate;
+@property (nonatomic, strong) NSString* activeTillDate;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

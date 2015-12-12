@@ -30,13 +30,25 @@
     blurEffectView.frame = self.view.bounds;
     blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
+    refreshControl = [[UIRefreshControl alloc]init];
+    [self.listTblView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+    
     // Set screen name.
-    self.screenName = @"News List screen";
+    // Set screen name.
+    [[GoogleAnalyticsHelper sharedInstance] sendScreenTrackingWithName:@"News List Screen"];
+    
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self generateDatasourceForList];
+}
+
+- (void) refreshTable {
+    
+    [self startGetNewsContentService];
+    
 }
 
 
@@ -106,6 +118,8 @@
 
 -(void) didFinishServiceWithSuccess:(NewsContentResponseObject *)responseData andServiceKey:(NSString *)requestServiceKey {
     
+    [refreshControl endRefreshing];
+    
     if ([requestServiceKey isEqualToString:kGetNewsContent]) {
         
         //[self performSegueWithIdentifier:@"showCardViewSegue" sender:nil];
@@ -118,6 +132,7 @@
 -(void) didFinishServiceWithFailure:(NSString *)errorMsg {
     
     [SVProgressHUD dismiss];
+    [refreshControl endRefreshing];
     
     UIAlertView* alert=[[UIAlertView alloc] initWithTitle:@"Server error"
                                                   message:@"Request timed out, please try again later."
@@ -231,6 +246,8 @@
     else {
         [cell.newsImgView setHidden:NO];
         [cell.playerView setHidden:YES];
+        
+        cell.newsImgView.contentMode = UIViewContentModeScaleAspectFill;
         
         if(![imgURL isEqualToString:@""])
         {
