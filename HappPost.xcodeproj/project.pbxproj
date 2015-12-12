@@ -125,6 +125,9 @@
 		18BDF7BE1BFBAB8F003B7D7D /* ListViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDF7BC1BFBAB8F003B7D7D /* ListViewTableViewCell.m */; };
 		18BDF7BF1BFBAB8F003B7D7D /* ListViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF7BD1BFBAB8F003B7D7D /* ListViewTableViewCell.xib */; };
 		18C0C0C61C1C8BBC0060F9DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C0C0C51C1C8BBC0060F9DF /* GoogleService-Info.plist */; };
+		18C0C0C81C1C8F060060F9DF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C0C0C71C1C8F060060F9DF /* libz.tbd */; };
+		18C0C0CA1C1C8F0D0060F9DF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C0C0C91C1C8F0D0060F9DF /* CoreData.framework */; };
+		18C0C0CC1C1C8F160060F9DF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C0C0CB1C1C8F160060F9DF /* SystemConfiguration.framework */; };
 		18F21B191C18F4D600BAD106 /* GoogleAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F21B181C18F4D600BAD106 /* GoogleAnalyticsHelper.m */; };
 		E897DE6AAB36E9D822A916D8 /* libPods-HappPost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2490601CA980886BDAF1D3F7 /* libPods-HappPost.a */; };
 /* End PBXBuildFile section */
@@ -349,6 +352,9 @@
 		18BDF7BC1BFBAB8F003B7D7D /* ListViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewTableViewCell.m; path = "Custom Controls/ListViewTableViewCell.m"; sourceTree = "<group>"; };
 		18BDF7BD1BFBAB8F003B7D7D /* ListViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ListViewTableViewCell.xib; path = "Custom Controls/ListViewTableViewCell.xib"; sourceTree = "<group>"; };
 		18C0C0C51C1C8BBC0060F9DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18C0C0C71C1C8F060060F9DF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		18C0C0C91C1C8F0D0060F9DF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		18C0C0CB1C1C8F160060F9DF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		18F21B171C18F4D600BAD106 /* GoogleAnalyticsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsHelper.h; sourceTree = "<group>"; };
 		18F21B181C18F4D600BAD106 /* GoogleAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsHelper.m; sourceTree = "<group>"; };
 		2490601CA980886BDAF1D3F7 /* libPods-HappPost.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HappPost.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -361,6 +367,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C0C0CC1C1C8F160060F9DF /* SystemConfiguration.framework in Frameworks */,
+				18C0C0CA1C1C8F0D0060F9DF /* CoreData.framework in Frameworks */,
+				18C0C0C81C1C8F060060F9DF /* libz.tbd in Frameworks */,
 				18945D721C0AE6B4007D6A26 /* libsqlite3.tbd in Frameworks */,
 				E897DE6AAB36E9D822A916D8 /* libPods-HappPost.a in Frameworks */,
 			);
@@ -793,6 +802,9 @@
 		D867C150BDEA4148E3753C0B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18C0C0CB1C1C8F160060F9DF /* SystemConfiguration.framework */,
+				18C0C0C91C1C8F0D0060F9DF /* CoreData.framework */,
+				18C0C0C71C1C8F060060F9DF /* libz.tbd */,
 				2490601CA980886BDAF1D3F7 /* libPods-HappPost.a */,
 			);
 			name = Frameworks;
