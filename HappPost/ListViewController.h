@@ -16,7 +16,7 @@
     long selectedIndex;
     
     UIRefreshControl* refreshControl;
-    
+    int webViewSegueType;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *listTblView;

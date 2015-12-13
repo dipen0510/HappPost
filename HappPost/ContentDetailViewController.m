@@ -99,7 +99,7 @@
     else {
         
         [self.primaryVideoPlayerView setHidden:YES];
-        self.primaryVideoPlayerView.contentMode = UIViewContentModeScaleAspectFill;
+        //self.primaryVideoPlayerView.contentMode = UIViewContentModeScaleAspectFill;
         [self downloadPrimaryNewsImagewithURL:newsObj.webImage];
         
     }
@@ -129,7 +129,7 @@
         else {
             
             [self.videoPlayerView setHidden:YES];
-            self.secondaryImageView.contentMode = UIViewContentModeScaleAspectFill;
+           // self.secondaryImageView.contentMode = UIViewContentModeScaleAspectFill;
             [self downloadSecondaryNewsImagewithURL:newsObj.secondLeadImage];
             
         }
@@ -495,7 +495,7 @@
 
 - (IBAction)shareButtonTapped:(id)sender {
     
-    [self shareText:[NSString stringWithFormat:@"%@\n\%@\n\nvia HappPost",newsObj.heading,newsObj.subHeading] andImage:self.primaryImageView.image andUrl:[NSURL URLWithString:newsObj.newsImage]];
+    [self shareText:[NSString stringWithFormat:@"%@\n\n\%@\n\nvia HappPost\n\n",newsObj.heading,newsObj.subHeading] andImage:self.primaryImageView.image andUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", HappPostShareURL, newsObj.newsId]]];
     
 }
 

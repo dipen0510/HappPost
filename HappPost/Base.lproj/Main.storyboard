@@ -111,29 +111,17 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ct8-ap-xsm">
-                                        <rect key="frame" x="8" y="30" width="21" height="17"/>
+                                        <rect key="frame" x="8" y="19" width="40" height="40"/>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="17" id="67z-d0-VWM"/>
-                                            <constraint firstAttribute="width" constant="21" id="eug-x4-QNf"/>
+                                            <constraint firstAttribute="height" constant="40" id="67z-d0-VWM"/>
+                                            <constraint firstAttribute="width" constant="40" id="eug-x4-QNf"/>
                                         </constraints>
                                         <state key="normal" image="icnMenu.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="menuButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9A6-yM-PUs"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiB-Gt-Ib2">
-                                        <rect key="frame" x="43" y="19" width="40" height="40"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="Zwd-HJ-AyS"/>
-                                            <constraint firstAttribute="height" constant="40" id="eeU-Tj-VlT"/>
-                                        </constraints>
-                                        <state key="normal" image="refresh.png"/>
-                                        <connections>
-                                            <action selector="refreshButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="J2M-EU-QUo"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cT-DK-RYZ">
@@ -151,19 +139,31 @@
                                             <action selector="backButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JVM-1g-pFi"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiB-Gt-Ib2">
+                                        <rect key="frame" x="56" y="21" width="37" height="37"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="37" id="Zwd-HJ-AyS"/>
+                                            <constraint firstAttribute="height" constant="37" id="eeU-Tj-VlT"/>
+                                        </constraints>
+                                        <state key="normal" image="refresh.png"/>
+                                        <connections>
+                                            <action selector="refreshButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="J2M-EU-QUo"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.98431372549019602" green="0.75686274509803919" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="xiB-Gt-Ib2" firstAttribute="leading" secondItem="Ct8-ap-xsm" secondAttribute="trailing" constant="14" id="2Av-4H-KV8"/>
+                                    <constraint firstItem="xiB-Gt-Ib2" firstAttribute="leading" secondItem="Ct8-ap-xsm" secondAttribute="trailing" constant="8" id="2Av-4H-KV8"/>
                                     <constraint firstItem="0cT-DK-RYZ" firstAttribute="leading" secondItem="0DI-J3-uYg" secondAttribute="leading" constant="-65" id="5Tc-xJ-fyl"/>
                                     <constraint firstItem="LbE-Ku-2Zt" firstAttribute="top" secondItem="0DI-J3-uYg" secondAttribute="top" constant="21" id="7cn-We-bWD"/>
                                     <constraint firstAttribute="trailing" secondItem="LbE-Ku-2Zt" secondAttribute="trailing" constant="8" id="Awn-LA-yEt"/>
                                     <constraint firstAttribute="height" constant="64" id="FeM-6R-HNO"/>
-                                    <constraint firstItem="Ct8-ap-xsm" firstAttribute="top" secondItem="0DI-J3-uYg" secondAttribute="top" constant="30" id="jPo-gx-7Oe"/>
+                                    <constraint firstItem="Ct8-ap-xsm" firstAttribute="top" secondItem="0DI-J3-uYg" secondAttribute="top" constant="19" id="jPo-gx-7Oe"/>
                                     <constraint firstItem="0cT-DK-RYZ" firstAttribute="top" secondItem="0DI-J3-uYg" secondAttribute="top" constant="24" id="pYe-la-EOw"/>
                                     <constraint firstItem="Ct8-ap-xsm" firstAttribute="leading" secondItem="0cT-DK-RYZ" secondAttribute="trailing" constant="27" id="sfg-bq-Z1T"/>
-                                    <constraint firstItem="xiB-Gt-Ib2" firstAttribute="top" secondItem="0DI-J3-uYg" secondAttribute="top" constant="19" id="vPF-qM-vh4"/>
+                                    <constraint firstItem="xiB-Gt-Ib2" firstAttribute="top" secondItem="0DI-J3-uYg" secondAttribute="top" constant="21" id="vPF-qM-vh4"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IbG-Di-psK">
@@ -578,29 +578,17 @@ Cg
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6A-Zj-WVi">
-                                        <rect key="frame" x="8" y="30" width="21" height="17"/>
+                                        <rect key="frame" x="8" y="19" width="40" height="40"/>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="17" id="kwV-Jb-0sf"/>
-                                            <constraint firstAttribute="width" constant="21" id="tZS-GU-yaS"/>
+                                            <constraint firstAttribute="height" constant="40" id="kwV-Jb-0sf"/>
+                                            <constraint firstAttribute="width" constant="40" id="tZS-GU-yaS"/>
                                         </constraints>
                                         <state key="normal" image="icnMenu.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="menuButtonTapped:" destination="4lm-Rr-60S" eventType="touchUpInside" id="ful-kz-NJn"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnC-YK-b3L">
-                                        <rect key="frame" x="46" y="19" width="40" height="40"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="PO8-QF-0kw"/>
-                                            <constraint firstAttribute="height" constant="40" id="XtW-tg-dHC"/>
-                                        </constraints>
-                                        <state key="normal" image="refresh.png"/>
-                                        <connections>
-                                            <action selector="refreshButtonTapped:" destination="4lm-Rr-60S" eventType="touchUpInside" id="O0P-4H-oxl"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KP-9e-beb">
@@ -618,17 +606,29 @@ Cg
                                             <action selector="backButtonTapped:" destination="4lm-Rr-60S" eventType="touchUpInside" id="WkT-yB-mFz"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnC-YK-b3L">
+                                        <rect key="frame" x="56" y="20" width="37" height="37"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="37" id="PO8-QF-0kw"/>
+                                            <constraint firstAttribute="height" constant="37" id="XtW-tg-dHC"/>
+                                        </constraints>
+                                        <state key="normal" image="refresh.png"/>
+                                        <connections>
+                                            <action selector="refreshButtonTapped:" destination="4lm-Rr-60S" eventType="touchUpInside" id="O0P-4H-oxl"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.75686274509999996" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="f6A-Zj-WVi" secondAttribute="bottom" constant="17" id="4aT-dc-BFx"/>
+                                    <constraint firstAttribute="bottom" secondItem="f6A-Zj-WVi" secondAttribute="bottom" constant="5" id="4aT-dc-BFx"/>
                                     <constraint firstAttribute="height" constant="64" id="7k8-dn-LNz"/>
                                     <constraint firstItem="6KP-9e-beb" firstAttribute="top" secondItem="mO2-rx-3jq" secondAttribute="top" constant="24" id="8Ma-Kg-vHA"/>
-                                    <constraint firstItem="RnC-YK-b3L" firstAttribute="leading" secondItem="f6A-Zj-WVi" secondAttribute="trailing" constant="17" id="9cN-pt-TaU"/>
+                                    <constraint firstItem="RnC-YK-b3L" firstAttribute="leading" secondItem="f6A-Zj-WVi" secondAttribute="trailing" constant="8" id="9cN-pt-TaU"/>
                                     <constraint firstAttribute="trailing" secondItem="Olz-QA-S7R" secondAttribute="trailing" constant="8" id="EKc-N3-AdT"/>
                                     <constraint firstItem="6KP-9e-beb" firstAttribute="leading" secondItem="mO2-rx-3jq" secondAttribute="leading" constant="-65" id="FNh-qe-yFM"/>
-                                    <constraint firstItem="RnC-YK-b3L" firstAttribute="top" secondItem="mO2-rx-3jq" secondAttribute="top" constant="19" id="N9S-iE-YSt"/>
+                                    <constraint firstItem="RnC-YK-b3L" firstAttribute="top" secondItem="mO2-rx-3jq" secondAttribute="top" constant="20" id="N9S-iE-YSt"/>
                                     <constraint firstItem="f6A-Zj-WVi" firstAttribute="leading" secondItem="6KP-9e-beb" secondAttribute="trailing" constant="27" id="NK1-jZ-SYg"/>
                                     <constraint firstAttribute="bottom" secondItem="Olz-QA-S7R" secondAttribute="bottom" constant="8" id="oyr-K6-yyY"/>
                                 </constraints>
@@ -1248,16 +1248,16 @@ Cg
     </scenes>
     <resources>
         <image name="expand.png" width="39" height="39"/>
-        <image name="icnMenu.png" width="57" height="42"/>
+        <image name="icnMenu.png" width="74" height="74"/>
         <image name="refresh.png" width="80" height="80"/>
         <image name="share.png" width="48" height="48"/>
         <image name="splash.png" width="960" height="1704"/>
         <image name="titleLogo.png" width="1401" height="1294"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kb6-yS-sIu"/>
         <segue reference="wMo-YW-qj2"/>
-        <segue reference="SBO-D2-E2l"/>
-        <segue reference="cV4-ek-xnD"/>
+        <segue reference="lY2-FV-ro0"/>
+        <segue reference="qV5-OO-1j4"/>
+        <segue reference="osz-5P-6rc"/>
     </inferredMetricsTieBreakers>
 </document>

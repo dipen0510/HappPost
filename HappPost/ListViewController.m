@@ -337,6 +337,20 @@
     
 }
 
+- (void) aboutUsTapped {
+    
+    webViewSegueType = 0;
+    [self performSegueWithIdentifier:@"showWebViewSegue" sender:nil];
+    
+}
+
+- (void) privacyPolicyTapped {
+    
+    webViewSegueType = 1;
+    [self performSegueWithIdentifier:@"showWebViewSegue" sender:nil];
+    
+}
+
 
 - (void) showMenuView {
     
@@ -402,6 +416,21 @@
         ContentDetailViewController* controller = (ContentDetailViewController *)[segue destinationViewController];
         
         [controller setNewsObj:(SingleNewsObject *)[newsContentArr objectAtIndex:selectedIndex]];
+        
+    }
+    if ([segue.identifier isEqualToString:@"showWebViewSegue"]) {
+        
+        WebViewController* controller = (WebViewController *)[segue destinationViewController];
+        
+        if (webViewSegueType == 0) {
+            [controller setWebViewTitle:@"About Us"];
+            [controller setWebViewURL:AboutUsURL];
+        }
+        else {
+            [controller setWebViewTitle:@"Privacy Policy"];
+            [controller setWebViewURL:PrivacyPolicyURL];
+        }
+        
         
     }
 }

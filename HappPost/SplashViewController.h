@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RegisterRequestObject.h"
 
-@interface SplashViewController : UIViewController<DataSyncManagerDelegate> {
+@interface SplashViewController : UIViewController<DataSyncManagerDelegate,UIAlertViewDelegate> {
     RegisterRequestObject* registerObj;
 }
 

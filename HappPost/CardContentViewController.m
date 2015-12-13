@@ -355,7 +355,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     
     CustomCollectionViewCollectionViewCell* cell = (CustomCollectionViewCollectionViewCell *)[_photosCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]];
     
-    [self shareText:[NSString stringWithFormat:@"%@\n\%@\n\nvia HappPost",newsObj.heading,newsObj.subHeading] andImage:cell.newsImageView.image andUrl:[NSURL URLWithString:newsObj.newsImage]];
+    [self shareText:[NSString stringWithFormat:@"%@\n\n\%@\n\nvia HappPost\n\n",newsObj.heading,newsObj.subHeading] andImage:cell.newsImageView.image andUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", HappPostShareURL, newsObj.newsId]]];
     
 }
 

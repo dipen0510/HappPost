@@ -25,17 +25,48 @@
     [[SharedClass sharedInstance] setSelectedMyNewsArr:[[NSMutableArray alloc] init]];
     [[SharedClass sharedInstance] setSelectedGenresArr:[[NSMutableArray alloc] init]];
     
-    if ([[SharedClass sharedInstance] userId]) {
+    
+    if ([self needsUpdate]) {
         
-        [self performSegueWithIdentifier:@"showCardViewSegue" sender:nil];
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Update is available" message:@"A new version of this application is available." delegate:self cancelButtonTitle:@"Update" otherButtonTitles:nil, nil];
+        [alert show];
         
     }
     else {
         
-        [self startSkipRegistrationService];
+        if ([[SharedClass sharedInstance] userId]) {
+            
+            [self performSegueWithIdentifier:@"showCardViewSegue" sender:nil];
+            
+        }
+        else {
+            
+            [self startSkipRegistrationService];
+            
+        }
         
     }
+
     
+}
+
+
+-(BOOL) needsUpdate{
+    NSDictionary* infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString* appID = infoDictionary[@"CFBundleIdentifier"];
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?bundleId=%@", appID]];
+    NSData* data = [NSData dataWithContentsOfURL:url];
+    NSDictionary* lookup = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    if ([lookup[@"resultCount"] integerValue] == 1){
+        NSString* appStoreVersion = lookup[@"results"][0][@"version"];
+        NSString* currentVersion = infoDictionary[@"CFBundleShortVersionString"];
+        if (![appStoreVersion isEqualToString:currentVersion]){
+            NSLog(@"Need to update [%@ != %@]", appStoreVersion, currentVersion);
+            return YES;
+        }
+    }
+    return NO;
 }
 
 
@@ -138,6 +169,15 @@
     
 }
 
+
+#pragma mark - Alertview Delegate
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    
+    NSString *iTunesLink = [NSString stringWithFormat:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftwareUpdate?id=%@&mt=8",kAppId];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

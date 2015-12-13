@@ -76,6 +76,7 @@
 		187197291C03A7B600ACC58B /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187197271C03A7B600ACC58B /* MenuTableViewCell.m */; };
 		1871972A1C03A7B600ACC58B /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187197281C03A7B600ACC58B /* MenuTableViewCell.xib */; };
 		187E2D1F1C0E2ADA0057B583 /* UILabel+UILabelDynamicHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 187E2D1E1C0E2ADA0057B583 /* UILabel+UILabelDynamicHeight.m */; };
+		188082ED1C1D526500BB6EB7 /* icnMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 188082EC1C1D526500BB6EB7 /* icnMenu.png */; };
 		1880A0FA1C04EC38001F6B78 /* ContentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1880A0F91C04EC38001F6B78 /* ContentDetailViewController.m */; };
 		1880A0FD1C04F290001F6B78 /* DetailContentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1880A0FC1C04F290001F6B78 /* DetailContentCollectionViewCell.m */; };
 		1882FADD1C10C9AB0063499C /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1882FADC1C10C9AB0063499C /* splash.png */; };
@@ -111,7 +112,6 @@
 		18BDF7AA1BFBA88A003B7D7D /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF7981BFBA88A003B7D7D /* close.png */; };
 		18BDF7AB1BFBA88A003B7D7D /* entertainment.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF7991BFBA88A003B7D7D /* entertainment.png */; };
 		18BDF7AC1BFBA88A003B7D7D /* expand.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF79A1BFBA88A003B7D7D /* expand.png */; };
-		18BDF7AD1BFBA88A003B7D7D /* icnMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF79B1BFBA88A003B7D7D /* icnMenu.png */; };
 		18BDF7AE1BFBA88A003B7D7D /* india.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF79C1BFBA88A003B7D7D /* india.png */; };
 		18BDF7AF1BFBA88A003B7D7D /* lifestyle.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF79D1BFBA88A003B7D7D /* lifestyle.png */; };
 		18BDF7B01BFBA88A003B7D7D /* radio.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BDF79E1BFBA88A003B7D7D /* radio.png */; };
@@ -279,6 +279,7 @@
 		187197281C03A7B600ACC58B /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuTableViewCell.xib; path = "Custom Controls/MenuTableViewCell.xib"; sourceTree = "<group>"; };
 		187E2D1D1C0E2ADA0057B583 /* UILabel+UILabelDynamicHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+UILabelDynamicHeight.h"; path = "Category/UILabel+UILabelDynamicHeight.h"; sourceTree = "<group>"; };
 		187E2D1E1C0E2ADA0057B583 /* UILabel+UILabelDynamicHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+UILabelDynamicHeight.m"; path = "Category/UILabel+UILabelDynamicHeight.m"; sourceTree = "<group>"; };
+		188082EC1C1D526500BB6EB7 /* icnMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icnMenu.png; sourceTree = "<group>"; };
 		1880A0F81C04EC38001F6B78 /* ContentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentDetailViewController.h; sourceTree = "<group>"; };
 		1880A0F91C04EC38001F6B78 /* ContentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentDetailViewController.m; sourceTree = "<group>"; };
 		1880A0FB1C04F290001F6B78 /* DetailContentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailContentCollectionViewCell.h; sourceTree = "<group>"; };
@@ -337,7 +338,6 @@
 		18BDF7981BFBA88A003B7D7D /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		18BDF7991BFBA88A003B7D7D /* entertainment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = entertainment.png; sourceTree = "<group>"; };
 		18BDF79A1BFBA88A003B7D7D /* expand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = expand.png; sourceTree = "<group>"; };
-		18BDF79B1BFBA88A003B7D7D /* icnMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icnMenu.png; sourceTree = "<group>"; };
 		18BDF79C1BFBA88A003B7D7D /* india.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = india.png; sourceTree = "<group>"; };
 		18BDF79D1BFBA88A003B7D7D /* lifestyle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifestyle.png; sourceTree = "<group>"; };
 		18BDF79E1BFBA88A003B7D7D /* radio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio.png; sourceTree = "<group>"; };
@@ -742,6 +742,7 @@
 		18BDF7951BFBA88A003B7D7D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				188082EC1C1D526500BB6EB7 /* icnMenu.png */,
 				18858EFE1C19F0B20039805C /* menuDropArrow.png */,
 				18858EFC1C19F01C0039805C /* menuArrow.png */,
 				1829BC451C162A5A005F9EB8 /* refresh.png */,
@@ -754,7 +755,6 @@
 				18BDF7981BFBA88A003B7D7D /* close.png */,
 				18BDF7991BFBA88A003B7D7D /* entertainment.png */,
 				18BDF79A1BFBA88A003B7D7D /* expand.png */,
-				18BDF79B1BFBA88A003B7D7D /* icnMenu.png */,
 				18BDF79C1BFBA88A003B7D7D /* india.png */,
 				18BDF79D1BFBA88A003B7D7D /* lifestyle.png */,
 				18BDF79E1BFBA88A003B7D7D /* radio.png */,
@@ -912,13 +912,13 @@
 				181D3F051C13731400C3C1DB /* UserCommenstsTableViewCell.xib in Resources */,
 				18BDF7B61BFBA88A003B7D7D /* switchView.png in Resources */,
 				18BDF7B41BFBA88A003B7D7D /* sports.png in Resources */,
+				188082ED1C1D526500BB6EB7 /* icnMenu.png in Resources */,
 				18BDF77C1BFBA4EB003B7D7D /* Images.xcassets in Resources */,
 				1871972A1C03A7B600ACC58B /* MenuTableViewCell.xib in Resources */,
 				18BDF7B01BFBA88A003B7D7D /* radio.png in Resources */,
 				18BDF7AE1BFBA88A003B7D7D /* india.png in Resources */,
 				188D52CD1C1211AA00C92A0E /* videoPlayerPlaceholder.png in Resources */,
 				18858EFD1C19F01C0039805C /* menuArrow.png in Resources */,
-				18BDF7AD1BFBA88A003B7D7D /* icnMenu.png in Resources */,
 				18908A7C1BFCFD9E008A7252 /* border.png in Resources */,
 				18BDF7AF1BFBA88A003B7D7D /* lifestyle.png in Resources */,
 				187197251C039C0500ACC58B /* MenuView.xib in Resources */,

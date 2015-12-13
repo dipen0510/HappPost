@@ -15,11 +15,15 @@
 #define AboutUsURL @"http://52.11.201.26/happostwebsite/fineprint/AboutUs.html"
 #define PrivacyPolicyURL @"http://52.11.201.26/happostwebsite/fineprint/TermsAndPolicy.htm"
 
+#define HappPostShareURL @"http://www.happpost.com/dashboard.html#/Detail"
+
 #define kRegisterService @"RegisterTempiOSUser"
 #define kSkipRegistrationService @"SkipRegisteriOSUser"
 #define kGetNewsContent @"RetreiveData"
 #define kAddComment @"InsertComment"
 #define kVerifyService @"RegisteriOSUser"
+
+#define kAppId @"1066218076"
 
 
 #endif

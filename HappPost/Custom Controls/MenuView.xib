@@ -64,7 +64,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scg-1x-PFo">
-                            <rect key="frame" x="282" y="1063" width="37" height="37"/>
+                            <rect key="frame" x="282" y="855" width="37" height="37"/>
                             <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="37" id="RHr-wV-rYF"/>
@@ -73,11 +73,11 @@
                             <state key="normal" image="close.png"/>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G4f-ZT-ttA">
-                            <rect key="frame" x="8" y="682" width="584" height="200"/>
+                            <rect key="frame" x="8" y="674" width="584" height="0.0"/>
                             <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="200" id="Hax-Bn-bVz"/>
+                                <constraint firstAttribute="height" id="Hax-Bn-bVz"/>
                             </constraints>
                             <connections>
                                 <outlet property="dataSource" destination="iN0-l3-epB" id="f7M-Ab-hwS"/>
@@ -85,7 +85,7 @@
                             </connections>
                         </tableView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xGD-hJ-Q53">
-                            <rect key="frame" x="8" y="890" width="584" height="150"/>
+                            <rect key="frame" x="8" y="682" width="584" height="150"/>
                             <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -124,7 +124,7 @@
                         <constraint firstItem="J1d-R9-fFa" firstAttribute="leading" secondItem="l6A-qz-S1h" secondAttribute="leading" constant="8" id="YlO-EU-oRo"/>
                         <constraint firstItem="G4f-ZT-ttA" firstAttribute="leading" secondItem="l6A-qz-S1h" secondAttribute="leading" constant="8" id="aZ4-mN-aN3"/>
                         <constraint firstItem="Yab-rQ-Q4h" firstAttribute="top" secondItem="J1d-R9-fFa" secondAttribute="bottom" constant="8" id="bwB-1j-aYM"/>
-                        <constraint firstItem="G4f-ZT-ttA" firstAttribute="top" secondItem="Yab-rQ-Q4h" secondAttribute="bottom" constant="8" id="cIh-cb-gr0"/>
+                        <constraint firstItem="G4f-ZT-ttA" firstAttribute="top" secondItem="Yab-rQ-Q4h" secondAttribute="bottom" id="cIh-cb-gr0"/>
                         <constraint firstItem="UQr-tw-2TJ" firstAttribute="leading" secondItem="l6A-qz-S1h" secondAttribute="leading" constant="8" id="fka-dU-Hfk"/>
                         <constraint firstItem="DUa-n2-Cm0" firstAttribute="top" secondItem="CXM-cu-wla" secondAttribute="bottom" constant="8" id="iVP-t3-z4T"/>
                         <constraint firstItem="Yab-rQ-Q4h" firstAttribute="leading" secondItem="l6A-qz-S1h" secondAttribute="leading" constant="8" id="llf-FU-JKG"/>

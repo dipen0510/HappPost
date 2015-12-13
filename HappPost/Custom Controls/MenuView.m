@@ -46,7 +46,7 @@
     
     self.menuTableViewHeightConstraint.constant = 55.;
     self.genreTableViewHeightConstraint.constant = 55.;
-     self.notificationsTableViewHeightConstraint.constant = 55.;
+     //self.notificationsTableViewHeightConstraint.constant = 55.;
      self.finePrintTableViewHeightConstraint.constant = 55.;
     
     [self.menuTableView setBackgroundColor:[UIColor clearColor]];
@@ -143,7 +143,7 @@
         numOfRows = (int)[self.notificationsTableView numberOfRowsInSection:section];
         indexPaths = [self indexPathsForSection:section withNumberOfRows:numOfRows];
         [self.notificationsTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-        self.notificationsTableViewHeightConstraint.constant = 55.;
+       // self.notificationsTableViewHeightConstraint.constant = 55.;
         [_notificationsCollapsedSections addObject:@(section)];
         [self.notificationsTableView endUpdates];
         
@@ -192,7 +192,7 @@
         numOfRows = (int)[self.notificationsTableView numberOfRowsInSection:section];
         indexPaths = [self indexPathsForSection:section withNumberOfRows:numOfRows];
         [self.notificationsTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-        self.notificationsTableViewHeightConstraint.constant = 55.;
+     //   self.notificationsTableViewHeightConstraint.constant = 55.;
         [_notificationsCollapsedSections addObject:@(section)];
         [self.notificationsTableView endUpdates];
         
@@ -285,7 +285,7 @@
         numOfRows = (int)[self.notificationsTableView numberOfRowsInSection:section];
         indexPaths = [self indexPathsForSection:section withNumberOfRows:numOfRows];
         [self.notificationsTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-        self.notificationsTableViewHeightConstraint.constant = 55.;
+    //    self.notificationsTableViewHeightConstraint.constant = 55.;
         [_notificationsCollapsedSections addObject:@(section)];
         [self.notificationsTableView endUpdates];
         
