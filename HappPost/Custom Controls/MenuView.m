@@ -28,11 +28,8 @@
     self.mewnuScrollView.delegate = self;
     [self.mewnuScrollView setShowsHorizontalScrollIndicator:NO];
     
-    selectedGenreArr = [[NSMutableArray alloc] init];
-    selectedMyNewsArr = [[NSMutableArray alloc] init];
-    
-    selectedGenreArr = [[SharedClass sharedInstance] selectedGenresArr];
-    selectedMyNewsArr = [[SharedClass sharedInstance] selectedMyNewsArr];
+    selectedGenreArr = [[NSMutableArray alloc] initWithArray:[[SharedClass sharedInstance] selectedGenresArr]];
+    selectedMyNewsArr = [[NSMutableArray alloc] initWithArray:[[SharedClass sharedInstance] selectedMyNewsArr]];
     
     _myNewsCollapsedSections = [NSMutableSet new];
     _genresCollapsedSections = [NSMutableSet new];
@@ -379,7 +376,7 @@
     }
     else if (tableView == self.menuTableView){
         
-        if ([selectedMyNewsArr containsObject:indexPath]) {
+        if ([selectedMyNewsArr containsObject:[NSNumber numberWithLong:indexPath.row]]) {
             cell.backgroundColor = [UIColor colorWithRed:251./255 green:193./255 blue:21./255 alpha:0.8];
         }
         else {
@@ -577,18 +574,19 @@
         }
         else if (tableView == self.menuTableView){
             
-            if ([selectedMyNewsArr containsObject:indexPath]) {
-                [selectedMyNewsArr removeObject:indexPath];
+            if ([selectedMyNewsArr containsObject:[NSNumber numberWithLong:indexPath.row]]) {
+                [selectedMyNewsArr removeObject:[NSNumber numberWithLong:indexPath.row]];
             }
             else {
                 [selectedGenreArr removeAllObjects];
-                [selectedMyNewsArr addObject:indexPath];
+                [selectedMyNewsArr addObject:[NSNumber numberWithLong:indexPath.row]];
             }
             
         }
         
         [[SharedClass sharedInstance] setSelectedGenresArr:selectedGenreArr];
         [[SharedClass sharedInstance] setSelectedMyNewsArr:selectedMyNewsArr];
+        
         
         [[SharedClass sharedInstance] setMenuOptionType:2];
         

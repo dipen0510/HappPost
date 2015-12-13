@@ -195,5 +195,35 @@ static SharedClass *singletonObject = nil;
 }
 
 
+- (NSMutableArray *) encodeIndexpathToString:(NSMutableArray *)arr {
+    
+    NSMutableArray* tmpArr = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i<arr.count; i++) {
+        
+        NSIndexPath* path = (NSIndexPath *)[arr objectAtIndex:i];
+        [tmpArr addObject:[NSString stringWithFormat:@"%ld:%ld",path.section,path.row]];
+        
+    }
+    
+    return tmpArr;
+    
+}
+
+- (NSMutableArray *) decodeStringToIndexPath:(NSMutableArray *)arr {
+    
+    NSMutableArray* tmpArr = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i<arr.count; i++) {
+        
+        NSIndexPath* path = [NSIndexPath indexPathForRow:[[[[arr objectAtIndex:i] componentsSeparatedByString:@":"] lastObject] intValue] inSection:[[[[arr objectAtIndex:i] componentsSeparatedByString:@":"] firstObject] intValue]];
+        [tmpArr addObject:path];
+        
+    }
+    
+    return tmpArr;
+    
+}
+
 
 @end

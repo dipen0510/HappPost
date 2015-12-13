@@ -354,9 +354,9 @@ static DBManager *sharedObject = nil;
         
         for (int i = 0; i<[[[SharedClass sharedInstance] selectedMyNewsArr] count]; i++) {
             
-            NSIndexPath* indexpath = (NSIndexPath *)[[[SharedClass sharedInstance] selectedMyNewsArr] objectAtIndex:i];
+            long indexpath = [[[[SharedClass sharedInstance] selectedMyNewsArr] objectAtIndex:i] longValue];
             
-            str = [str stringByAppendingString:[NSString stringWithFormat:@"%ld.0",(indexpath.row+1)]];
+            str = [str stringByAppendingString:[NSString stringWithFormat:@"%ld.0",(indexpath+1)]];
             if (i < ([[[SharedClass sharedInstance] selectedMyNewsArr] count]-1)) {
                 
                 str = [str stringByAppendingString:@","];

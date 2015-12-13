@@ -29,4 +29,7 @@
 - (NSString *) sqlLiteFormattedDateStringFromResponseString:(NSString *)str;
 - (NSString *) sqlLiteFormattedCurrentDate;
 
+- (NSMutableArray *) encodeIndexpathToString:(NSMutableArray *)arr;
+- (NSMutableArray *) decodeStringToIndexPath:(NSMutableArray *)arr;
+
 @end
