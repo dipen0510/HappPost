@@ -155,7 +155,7 @@ UICollectionViewDelegate,UICollectionViewDataSource
         
         self.backButtonLeftConstraint.constant = -65;
         [self.refreshButton setHidden:NO];
-        newsArr = [[DBManager sharedManager] checkAndFetchNews];
+        newsArr = [[DBManager sharedManager] getAllNews];
 
     }
     
@@ -170,6 +170,8 @@ UICollectionViewDelegate,UICollectionViewDataSource
     
     
 }
+
+
 
 
 #pragma mark - API Handling
@@ -355,7 +357,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     
     CustomCollectionViewCollectionViewCell* cell = (CustomCollectionViewCollectionViewCell *)[_photosCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]];
     
-    [self shareText:[NSString stringWithFormat:@"%@\n\n\%@\n\nvia HappPost\n\n",newsObj.heading,newsObj.subHeading] andImage:cell.newsImageView.image andUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", HappPostShareURL, newsObj.newsId]]];
+    [self shareText:[NSString stringWithFormat:@"%@.\n\n\%@.\n\nvia HappPost\n\n",newsObj.heading,newsObj.subHeading] andImage:cell.newsImageView.image andUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", HappPostShareURL, newsObj.newsId]]];
     
 }
 
@@ -419,7 +421,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     
     [[SharedClass sharedInstance] setMenuOptionType:0];
     [[SharedClass sharedInstance] setSelectedGenresArr:[[NSMutableArray alloc] init]];
-    [[SharedClass sharedInstance] setSelectedMyNewsArr:[[NSMutableArray alloc] init]];
+    //[[SharedClass sharedInstance] setSelectedMyNewsArr:[[NSMutableArray alloc] init]];
     [self generateDatasource];
     
 }
@@ -444,6 +446,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
 
 - (void) myNewsSectionSelected {
     
+    [[SharedClass sharedInstance] setMenuOptionType:2];
     [self hideMenuView];
     
 }

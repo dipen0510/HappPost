@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NewsInfographicsObject.h"
 
-@interface ContentDetailViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,YTPlayerViewDelegate,UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,DataSyncManagerDelegate> {
+@interface ContentDetailViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,YTPlayerViewDelegate,UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,DataSyncManagerDelegate,UIDocumentInteractionControllerDelegate> {
     
     NewsInfographicsObject* secondaryImageNewsInfogrphicsObj;
     

@@ -495,7 +495,8 @@
 
 - (IBAction)shareButtonTapped:(id)sender {
     
-    [self shareText:[NSString stringWithFormat:@"%@\n\n\%@\n\nvia HappPost\n\n",newsObj.heading,newsObj.subHeading] andImage:self.primaryImageView.image andUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", HappPostShareURL, newsObj.newsId]]];
+    //[self share];
+    [self shareText:[NSString stringWithFormat:@"%@.\n\n\%@.\n\nvia HappPost\n\n",newsObj.heading,newsObj.subHeading] andImage:self.primaryImageView.image andUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", HappPostShareURL, newsObj.newsId]]];
     
 }
 
@@ -518,6 +519,32 @@
     [self presentViewController:activityController animated:YES completion:nil];
     
 }
+
+//- (void)share {
+//    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/tmptmpimg.jpg"];
+//    [UIImageJPEGRepresentation(self.primaryImageView.image, 1.0) writeToFile:path atomically:YES];
+//    
+//    UIDocumentInteractionController* _documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:path]];
+//    _documentInteractionController.delegate = self;
+//    [_documentInteractionController presentOptionsMenuFromRect:CGRectZero inView:self.view animated:YES];
+//}
+//
+//- (void)documentInteractionController:(UIDocumentInteractionController *)controller willBeginSendingToApplication:(NSString *)application {
+//    if ([self isWhatsApplication:application]) {
+//        NSString *savePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/tmptmpimg.wai"];
+//        [UIImageJPEGRepresentation(self.primaryImageView.image, 1.0) writeToFile:savePath atomically:YES];
+//        controller.URL = [NSURL fileURLWithPath:savePath];
+//        controller.UTI = @"net.whatsapp.image";
+//    }
+//}
+//
+//- (BOOL)isWhatsApplication:(NSString *)application {
+//    if ([application rangeOfString:@"whats"].location == NSNotFound) { // unfortunately, no other way...
+//        return NO;
+//    } else {
+//        return YES;
+//    }
+//}
 
 
 - (void) handleBookmarkTapForNewsId:(UILongPressGestureRecognizer *)gesture {

@@ -220,24 +220,21 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
 }
 
 
--(void)prepareForReuse {
-    
-    [super prepareForReuse];
-    
-    [self.playerView setHidden:YES];
-    [self.playerView stopVideo];
-    [self.playerView clearVideo];
-    [self.playerView removeWebView];
-    
-}
+//-(void)prepareForReuse {
+//    
+//    [super prepareForReuse];
+//    
+//    
+//    
+//}
 
 
 #pragma mark - Youtube Player Delegates
 
 - (void)playerViewDidBecomeReady:(YTPlayerView *)playerView {
-    
-    [self.playerView stopVideo];
-    [self.playerView clearVideo];
+//    
+//    [self.playerView stopVideo];
+//    [self.playerView clearVideo];
     
 }
 

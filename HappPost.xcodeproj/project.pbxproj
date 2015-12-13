@@ -320,7 +320,7 @@
 		18945D711C0AE6B4007D6A26 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		18945D731C0AE959007D6A26 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		18945D741C0AE959007D6A26 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
-		18BDF76B1BFBA4EB003B7D7D /* HappPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18BDF76B1BFBA4EB003B7D7D /* Happ Post.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Happ Post.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BDF76F1BFBA4EB003B7D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18BDF7701BFBA4EB003B7D7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18BDF7721BFBA4EB003B7D7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -668,7 +668,7 @@
 		18BDF76C1BFBA4EB003B7D7D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18BDF76B1BFBA4EB003B7D7D /* HappPost.app */,
+				18BDF76B1BFBA4EB003B7D7D /* Happ Post.app */,
 				18BDF7841BFBA4EB003B7D7D /* HappPostTests.xctest */,
 			);
 			name = Products;
@@ -830,7 +830,7 @@
 			);
 			name = HappPost;
 			productName = HappPost;
-			productReference = 18BDF76B1BFBA4EB003B7D7D /* HappPost.app */;
+			productReference = 18BDF76B1BFBA4EB003B7D7D /* Happ Post.app */;
 			productType = "com.apple.product-type.application";
 		};
 		18BDF7831BFBA4EB003B7D7D /* HappPostTests */ = {
@@ -1208,7 +1208,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.HappPost;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Happ Post";
 				PROVISIONING_PROFILE = "8cbaef95-94b0-4c6e-a1c5-d718ba79197e";
 			};
 			name = Debug;
@@ -1225,7 +1225,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.HappPost;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Happ Post";
 				PROVISIONING_PROFILE = "8cbaef95-94b0-4c6e-a1c5-d718ba79197e";
 			};
 			name = Release;

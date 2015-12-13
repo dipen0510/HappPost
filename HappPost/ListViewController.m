@@ -90,7 +90,7 @@
         
         self.backButtonLeftConstraint.constant = -65;
         [self.refreshButton setHidden:NO];
-        newsContentArr = [[DBManager sharedManager] checkAndFetchNews];
+        newsContentArr = [[DBManager sharedManager] getAllNews];
         
     }
     
@@ -99,6 +99,8 @@
     [self.listTblView setContentOffset:CGPointZero animated:YES];
     
 }
+
+
 
 
 #pragma mark - API Handling
@@ -322,7 +324,7 @@
     
     [[SharedClass sharedInstance] setMenuOptionType:0];
     [[SharedClass sharedInstance] setSelectedGenresArr:[[NSMutableArray alloc] init]];
-    [[SharedClass sharedInstance] setSelectedMyNewsArr:[[NSMutableArray alloc] init]];
+    //[[SharedClass sharedInstance] setSelectedMyNewsArr:[[NSMutableArray alloc] init]];
     [self generateDatasourceForList];
     
 }
@@ -333,6 +335,7 @@
 
 - (void) myNewsSectionSelected {
     
+    [[SharedClass sharedInstance] setMenuOptionType:2];
     [self hideMenuView];
     
 }
