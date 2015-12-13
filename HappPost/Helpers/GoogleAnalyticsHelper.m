@@ -37,7 +37,7 @@ static GoogleAnalyticsHelper *singletonObject = nil;
         // Optional: configure GAI options.
         gai = [GAI sharedInstance];
         gai.trackUncaughtExceptions = YES;  // report uncaught exceptions
-        gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
+        //gai.logger.logLevel = kGAILogLevelVerbose;  // remove before app release
         
         // May return nil if a tracker has not already been initialized with a property
         // ID.
