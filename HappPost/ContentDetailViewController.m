@@ -34,6 +34,12 @@
     
     [self generateContent];
     
+    if ([self iPhone6PlusUnZoomed]) {
+        self.primaryDescriptionTopConstraint.constant = 305;
+    }
+    
+    
+    
     // Set screen name.
     [[GoogleAnalyticsHelper sharedInstance] sendScreenTrackingWithName:@"News Detail Screen"];
     
@@ -42,6 +48,20 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(BOOL) iPhone6PlusUnZoomed{
+    if ([self iPhone6PlusDevice]){
+        if ([UIScreen mainScreen].bounds.size.height > 720.0) return YES;  // Height is 736, but 667 when zoomed.
+    }
+    return NO;
+}
+
+
+-(BOOL)iPhone6PlusDevice{
+    if ([UIScreen mainScreen].scale > 2.9) return YES;   // Scale is only 3 when not in scaled mode for iPhone 6 Plus
+    return NO;
 }
 
 

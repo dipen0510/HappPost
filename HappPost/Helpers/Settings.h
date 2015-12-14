@@ -13,9 +13,9 @@
 #define BaseWebServiceURL @"http://services.happpost.com/HappostService"
 
 #define AboutUsURL @"http://happpost.com/Happ/AppHtml/Aboutus.html"
-#define PrivacyPolicyURL @"http://happpost.com/Happ/AppHtml/TermsAndPolicy.htm"
+#define PrivacyPolicyURL @"http://happpost.com/Happ/AppHtml/TermsAndCondition.html"
 
-#define HappPostShareURL @"http://www.happpost.com/dashboard.html#/Detail"
+#define HappPostShareURL @"http://services.happpost.com/website/dashboard.html#/Detail"
 
 #define kRegisterService @"RegisterTempiOSUser"
 #define kSkipRegistrationService @"SkipRegisteriOSUser"
