@@ -10,10 +10,10 @@
 #define HappPost_Settings_h
 
 
-#define BaseWebServiceURL @"http://52.11.201.26/Happost/HappostService"
+#define BaseWebServiceURL @"http://services.happpost.com/HappostService"
 
-#define AboutUsURL @"http://52.11.201.26/happostwebsite/fineprint/AboutUs.html"
-#define PrivacyPolicyURL @"http://52.11.201.26/happostwebsite/fineprint/TermsAndPolicy.htm"
+#define AboutUsURL @"http://happpost.com/Happ/AppHtml/Aboutus.html"
+#define PrivacyPolicyURL @"http://happpost.com/Happ/AppHtml/TermsAndPolicy.htm"
 
 #define HappPostShareURL @"http://www.happpost.com/dashboard.html#/Detail"
 
