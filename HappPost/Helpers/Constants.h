@@ -65,6 +65,9 @@
 #define NewsInfographicsIdKey @"NewsInfographicId"
 #define NewsImageKey @"NewsImage"
 
+#define MasterGenreIdKey @"GenreID"
+#define ListOfAllGenresKey @"ListOfAllGenres"
+
 #define CodeKey @"Code"
 
 

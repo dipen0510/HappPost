@@ -19,6 +19,7 @@
 }
 @property (weak, nonatomic) IBOutlet UIButton *refreshButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *menuTitle;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationMenuHeightConstraint;
 - (IBAction)expandButtonTapped:(id)sender;
 - (IBAction)shareButtonTapped:(id)sender;

@@ -15,7 +15,6 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *listTblView;
-@property (nonatomic, strong) NSString* searchText;
 - (IBAction)menuButtonTapped:(id)sender;
 
 

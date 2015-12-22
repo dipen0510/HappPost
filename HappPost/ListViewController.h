@@ -27,6 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *backButtonLeftConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *refreshButton;
+@property (weak, nonatomic) IBOutlet UILabel *menuTitle;
 
 @end
 

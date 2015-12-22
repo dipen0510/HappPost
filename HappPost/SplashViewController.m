@@ -95,6 +95,16 @@
     
 }
 
+-(void) startGetGenresContentService {
+    
+    
+    DataSyncManager* manager = [[DataSyncManager alloc] init];
+    manager.serviceKey = kGetMasterGenreList;
+    manager.delegate = self;
+    [manager startGETWebServicesWithBaseURL];
+    
+}
+
 
 #pragma mark - DATASYNCMANAGER Delegates
 
@@ -108,13 +118,13 @@
         
         [[DBManager sharedManager] insertEntryIntoUserTableWithUserId:responseData.userId andOtherUserDetails:registerObj];
         
-        [self startGetNewsContentService];
+        [self startGetGenresContentService];
         
     }
     
-    if ([requestServiceKey isEqualToString:kGetNewsContent]) {
+    if ([requestServiceKey isEqualToString:kGetMasterGenreList]) {
         
-        [SVProgressHUD showSuccessWithStatus:@"News Updated"];
+        [self startGetNewsContentService];
         
     }
     
@@ -143,6 +153,7 @@
 
 -(void) didUpdateLatestNewsContent {
     
+    [SVProgressHUD showSuccessWithStatus:@"News Updated"];
     [self performSegueWithIdentifier:@"showCardViewSegue" sender:nil];
     
 }

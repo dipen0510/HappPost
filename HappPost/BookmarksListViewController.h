@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *listTblView;
 - (IBAction)menuButtonTapped:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *emptyBookmarksLabel;
 
 
 @end

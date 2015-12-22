@@ -27,6 +27,8 @@
     NSMutableArray* selectedGenreArr;
     NSMutableArray* selectedMyNewsArr;
     
+    NSMutableArray* masterGenreArr;
+    
     NSMutableSet* _notificationsCollapsedSections;
     NSMutableSet* _finePrintCollapsedSections;
     

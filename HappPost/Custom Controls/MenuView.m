@@ -8,6 +8,7 @@
 
 #import "MenuView.h"
 #import "MenuTableViewCell.h"
+#import "MasterGenreObject.h"
 
 @implementation MenuView
 
@@ -30,6 +31,9 @@
     
     selectedGenreArr = [[NSMutableArray alloc] initWithArray:[[SharedClass sharedInstance] selectedGenresArr]];
     selectedMyNewsArr = [[NSMutableArray alloc] initWithArray:[[SharedClass sharedInstance] selectedMyNewsArr]];
+    
+    masterGenreArr = [[NSMutableArray alloc] init];
+    masterGenreArr = [[DBManager sharedManager] getAllMasterGenres];
     
     _myNewsCollapsedSections = [NSMutableSet new];
     _genresCollapsedSections = [NSMutableSet new];
@@ -70,7 +74,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     if (tableView == self.genreTableView) {
-        return [_genresCollapsedSections containsObject:@(section)] ? 0 : 8;
+        return [_genresCollapsedSections containsObject:@(section)] ? 0 : masterGenreArr.count;
     }
     if (tableView == self.notificationsTableView) {
         return [_notificationsCollapsedSections containsObject:@(section)] ? 0 : 3;
@@ -79,7 +83,7 @@
         return [_finePrintCollapsedSections containsObject:@(section)] ? 0 : 2;
     }
     
-    return [_myNewsCollapsedSections containsObject:@(section)] ? 0 : 8;
+    return [_myNewsCollapsedSections containsObject:@(section)] ? 0 : masterGenreArr.count;
 
 }
 
@@ -118,7 +122,7 @@
             [_myNewsCollapsedSections addObject:@(section)];
         }
         else {
-            int numOfRows = 8;
+            int numOfRows = masterGenreArr.count;
             NSArray* indexPaths = [self indexPathsForSection:section withNumberOfRows:numOfRows];
             [self.menuTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
             self.menuTableViewHeightConstraint.constant = 240;
@@ -168,7 +172,7 @@
             [_genresCollapsedSections addObject:@(section)];
         }
         else {
-            int numOfRows = 8;
+            int numOfRows = masterGenreArr.count;
             NSArray* indexPaths = [self indexPathsForSection:section withNumberOfRows:numOfRows];
             [self.genreTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
             self.genreTableViewHeightConstraint.constant = 240;
@@ -314,123 +318,77 @@
     
     cell.categoryImageWidthConstraint.constant = 25;
     
+    
+    
     if (tableView == self.genreTableView) {
         
-        if ([selectedGenreArr containsObject:indexPath]) {
+        MasterGenreObject* genreObj = (MasterGenreObject *)[masterGenreArr objectAtIndex:indexPath.row];
+        
+        if ([selectedGenreArr containsObject:genreObj.genreId]) {
             cell.backgroundColor = [UIColor colorWithRed:251./255 green:193./255 blue:21./255 alpha:0.8];
         }
         else {
             cell.backgroundColor = [UIColor clearColor];
         }
         
-        switch (indexPath.row) {
-            case 0:
-                cell.categoryLabel.text = @"India";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"india"]];
-                break;
-                
-            case 1:
-                cell.categoryLabel.text = @"World";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"world"]];
-                break;
-                
-            case 2:
-                cell.categoryLabel.text = @"Sport";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"sports"]];
-                break;
-                
-            case 3:
-                cell.categoryLabel.text = @"Entertainment";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"entertainment"]];
-                break;
-                
-            case 4:
-                cell.categoryLabel.text = @"Business";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"business"]];
-                break;
-                
-            case 5:
-                cell.categoryLabel.text = @"Life/Style";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"lifestyle"]];
-                break;
-                
-            case 6:
-                cell.categoryLabel.text = @"Spotlight";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"spotlight"]];
-                break;
-                
-            case 7:
-                cell.categoryLabel.text = @"Special";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"special"]];
-                break;
-                
-            case 8:
-                cell.categoryLabel.text = @"Trending";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"trending"]];
-                break;
-                
-            default:
-                break;
+        cell.categoryLabel.text = genreObj.name;
+        NSString *imgURL = [NSString stringWithFormat:@"%@/%@.png",HappPostGenreImageURL,genreObj.name];
+        
+        if(![imgURL isEqualToString:@""])
+        {
+            NSString* urlTextEscaped = [imgURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSURL *url = [NSURL URLWithString:urlTextEscaped];
+            NSURLRequest *request = [NSURLRequest requestWithURL:url];
+            UIImage *placeholderImage = [UIImage imageNamed:@""];
+            
+            __weak UIImageView *weakImgView = cell.categoryImage;
+            
+            [cell.categoryImage setImageWithURLRequest:request
+                                    placeholderImage:placeholderImage
+                                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                 
+                                                 weakImgView.image = image;
+                                                 [weakImgView setNeedsLayout];
+                                                 
+                                             } failure:nil];
+            
         }
         
     }
     else if (tableView == self.menuTableView){
         
-        if ([selectedMyNewsArr containsObject:[NSNumber numberWithLong:indexPath.row]]) {
+        MasterGenreObject* genreObj = (MasterGenreObject *)[masterGenreArr objectAtIndex:indexPath.row];
+        
+        if ([selectedMyNewsArr containsObject:genreObj.genreId]) {
             cell.backgroundColor = [UIColor colorWithRed:251./255 green:193./255 blue:21./255 alpha:0.8];
         }
         else {
             cell.backgroundColor = [UIColor clearColor];
         }
         
-        switch (indexPath.row) {
-            case 0:
-                cell.categoryLabel.text = @"India";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"india"]];
-                break;
-                
-            case 1:
-                cell.categoryLabel.text = @"World";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"world"]];
-                break;
-                
-            case 2:
-                cell.categoryLabel.text = @"Sport";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"sports"]];
-                break;
-                
-            case 3:
-                cell.categoryLabel.text = @"Entertainment";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"entertainment"]];
-                break;
-                
-            case 4:
-                cell.categoryLabel.text = @"Business";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"business"]];
-                break;
-                
-            case 5:
-                cell.categoryLabel.text = @"Life/Style";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"lifestyle"]];
-                break;
-                
-            case 6:
-                cell.categoryLabel.text = @"Spotlight";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"spotlight"]];
-                break;
-                
-            case 7:
-                cell.categoryLabel.text = @"Special";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"special"]];
-                break;
-                
-            case 8:
-                cell.categoryLabel.text = @"Trending";
-                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"trending"]];
-                break;
-                
-            default:
-                break;
+        
+        
+        cell.categoryLabel.text = genreObj.name;
+        NSString *imgURL = [NSString stringWithFormat:@"%@/%@.png",HappPostGenreImageURL,genreObj.name];
+        
+        if(![imgURL isEqualToString:@""])
+        {
+            NSString* urlTextEscaped = [imgURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSURL *url = [NSURL URLWithString:urlTextEscaped];
+            NSURLRequest *request = [NSURLRequest requestWithURL:url];
+            UIImage *placeholderImage = [UIImage imageNamed:@""];
+            
+            __weak UIImageView *weakImgView = cell.categoryImage;
+            
+            [cell.categoryImage setImageWithURLRequest:request
+                                      placeholderImage:placeholderImage
+                                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                   
+                                                   weakImgView.image = image;
+                                                   [weakImgView setNeedsLayout];
+                                                   
+                                               } failure:nil];
+            
         }
         
     }
@@ -560,26 +518,28 @@
     }
     else {
         
+        MasterGenreObject* genreObj = (MasterGenreObject *)[masterGenreArr objectAtIndex:indexPath.row];
+        
         if (tableView == self.genreTableView) {
             
-            if ([selectedGenreArr containsObject:indexPath]) {
-                [selectedGenreArr removeObject:indexPath];
+            if ([selectedGenreArr containsObject:genreObj.genreId]) {
+                [selectedGenreArr removeObject:genreObj.genreId];
             }
             else {
                 [selectedGenreArr removeAllObjects];
                 [selectedMyNewsArr removeAllObjects];
-                [selectedGenreArr addObject:indexPath];
+                [selectedGenreArr addObject:genreObj.genreId];
             }
             
         }
         else if (tableView == self.menuTableView){
             
-            if ([selectedMyNewsArr containsObject:[NSNumber numberWithLong:indexPath.row]]) {
-                [selectedMyNewsArr removeObject:[NSNumber numberWithLong:indexPath.row]];
+            if ([selectedMyNewsArr containsObject:genreObj.genreId]) {
+                [selectedMyNewsArr removeObject:genreObj.genreId];
             }
             else {
                 [selectedGenreArr removeAllObjects];
-                [selectedMyNewsArr addObject:[NSNumber numberWithLong:indexPath.row]];
+                [selectedMyNewsArr addObject:genreObj.genreId];
             }
             
         }

@@ -75,8 +75,17 @@
     
     self.headingLabel.text = newsObj.heading;
     self.subheadingLabel.text = newsObj.subHeading;
-    self.primaryDescriptionLabel.text = newsObj.summary;
-    self.secondaryDescriptionLabel.text = newsObj.detailedStory;
+    
+    if (newsObj.detailedStory) {
+        self.secondaryDescriptionLabel.text = newsObj.detailedStory;
+        self.primaryDescriptionLabel.text = @"";
+    }
+    else {
+        self.secondaryDescriptionLabel.text = @"";
+        self.primaryDescriptionLabel.text = newsObj.summary;
+    }
+    
+    
     self.authorNameLabel.text = newsObj.authorName;
     self.dateTimeLabel.text = newsObj.dateCreated;
     
@@ -214,7 +223,8 @@
     
     if(![imgURL isEqualToString:@""])
     {
-        NSURL *url = [NSURL URLWithString:imgURL];
+        NSString* urlTextEscaped = [imgURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *url = [NSURL URLWithString:urlTextEscaped];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
         
@@ -236,7 +246,8 @@
     
     if(![imgURL isEqualToString:@""])
     {
-        NSURL *url = [NSURL URLWithString:imgURL];
+        NSString* urlTextEscaped = [imgURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *url = [NSURL URLWithString:urlTextEscaped];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
         
@@ -310,7 +321,8 @@
             
             if(![imgURL isEqualToString:@""])
             {
-                NSURL *url = [NSURL URLWithString:imgURL];
+                NSString* urlTextEscaped = [imgURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                NSURL *url = [NSURL URLWithString:urlTextEscaped];
                 NSURLRequest *request = [NSURLRequest requestWithURL:url];
                 UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
                 

@@ -16,7 +16,6 @@
 
 @implementation SearchListViewController
 
-@synthesize searchText;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,7 +34,7 @@
 - (void) generateDatasourceForList {
     
     newsContentArr = [[NSMutableArray alloc] init];
-    newsContentArr = [[DBManager sharedManager] getAllNewsForSearchedText:searchText];
+    newsContentArr = [[DBManager sharedManager] getAllNewsForSearchedText:[[SharedClass sharedInstance] searchText]];
     [self.listTblView reloadData];
     
 }
@@ -111,7 +110,8 @@
         
         if(![imgURL isEqualToString:@""])
         {
-            NSURL *url = [NSURL URLWithString:imgURL];
+            NSString* urlTextEscaped = [imgURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSURL *url = [NSURL URLWithString:urlTextEscaped];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
             UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
             

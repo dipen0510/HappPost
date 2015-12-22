@@ -9,6 +9,7 @@
 #import "DBManager.h"
 #import "RegisterRequestObject.h"
 #import "SingleNewsObject.h"
+#import "MasterGenreObject.h"
 
 
 NSString* create_TblUser_table = @"CREATE TABLE IF NOT EXISTS USER (userId TEXT PRIMARY KEY, email TEXT, name TEXT, deviceId TEXT, gcmId TEXT, version TEXT)";
@@ -24,6 +25,9 @@ NSString* create_TblNewsInfographics_table = @"CREATE TABLE IF NOT EXISTS NEWSIN
 NSString* create_TblSettings_table = @"CREATE TABLE IF NOT EXISTS SETTINGS (timestamp TEXT, notificationSetting TEXT)";
 
 NSString* create_TblBookmarks_table = @"CREATE TABLE IF NOT EXISTS BOOKMARKS (newsId TEXT PRIMARY KEY)";
+
+NSString* create_TblMasterGenres_table = @"CREATE TABLE IF NOT EXISTS MASTERGENRES (genreId TEXT PRIMARY KEY, active TEXT, dateCreated TEXT, name TEXT)";
+
 
 @implementation DBManager
 
@@ -129,12 +133,30 @@ static DBManager *sharedObject = nil;
                 NSLog(@"Failed to create BOOKMARKS table: %@)",[objectDB lastErrorMessage]);
             }
             
+            if([objectDB executeUpdate:create_TblMasterGenres_table withArgumentsInArray:nil])
+            {
+                NSLog(@"MASTERGENRES table created");
+            }
+            else
+            {
+                NSLog(@"Failed to create MASTERGENRES table: %@)",[objectDB lastErrorMessage]);
+            }
+            
+            
             [objectDB close];
             
             
         } else {
             NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
         }
+    }
+    
+    //Version 2
+    else {
+        
+//        [filemgr removeItemAtPath:databasePath error:nil];
+//        [self setupDatabase];
+        
     }
     
 }
@@ -354,9 +376,9 @@ static DBManager *sharedObject = nil;
         
         for (int i = 0; i<[[[SharedClass sharedInstance] selectedMyNewsArr] count]; i++) {
             
-            long indexpath = [[[[SharedClass sharedInstance] selectedMyNewsArr] objectAtIndex:i] longValue];
+            NSString* indexpath = [[[SharedClass sharedInstance] selectedMyNewsArr] objectAtIndex:i];
             
-            str = [str stringByAppendingString:[NSString stringWithFormat:@"%ld.0",(indexpath+1)]];
+            str = [str stringByAppendingString:[NSString stringWithFormat:@"%@.0",indexpath]];
             if (i < ([[[SharedClass sharedInstance] selectedMyNewsArr] count]-1)) {
                 
                 str = [str stringByAppendingString:@","];
@@ -372,8 +394,8 @@ static DBManager *sharedObject = nil;
     }
     else if ([[[SharedClass sharedInstance] selectedGenresArr] count] > 0) {
         
-        NSIndexPath* indexpath = (NSIndexPath *)[[[SharedClass sharedInstance] selectedGenresArr] objectAtIndex:0];
-        str = [str stringByAppendingString:[NSString stringWithFormat:@"%ld.0)",(indexpath.row+1)]];
+        NSString* indexpath = [[[SharedClass sharedInstance] selectedGenresArr] objectAtIndex:0];
+        str = [str stringByAppendingString:[NSString stringWithFormat:@"%@.0)",indexpath]];
         
         return [self getAllNewsWithSelectedCategories:str];
         
@@ -1022,6 +1044,128 @@ static DBManager *sharedObject = nil;
     }
     
     return false;
+}
+
+
+
+
+#pragma mark - MASTERGENRES TABLE
+
+-(void) insertEntryIntoMasterGenresTableWithGenreArr:(NSMutableArray *)newsGenresArr {
+    
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    
+    for (int i = 0; i<newsGenresArr.count; i++) {
+        
+        MasterGenreObject* obj = [[MasterGenreObject alloc] initWithDictionary:[newsGenresArr objectAtIndex:i]];
+        
+        NSArray* arr = [NSArray arrayWithObjects: obj.genreId, obj.active, obj.dateCreated, obj.name, nil];
+        
+        if ([objectDB open]) {
+            NSString* query = @"INSERT INTO MASTERGENRES (genreId, active, dateCreated, name) VALUES (?, ?, ?, ?)";
+            if (![objectDB executeUpdate:query withArgumentsInArray:arr]) {
+                
+                NSLog(@"insert into MASTERGENRES table failed: %@)",[objectDB lastErrorMessage]);
+                
+            }
+            else {
+                NSLog(@"MASTERGENRES Data inserted Successfully");
+            }
+            
+            [objectDB close];
+        }
+        else {
+            NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+        }
+        
+    }
+    
+    
+}
+
+
+-(NSMutableArray *) getAllMasterGenres {
+    
+    NSMutableArray* arr = [[NSMutableArray alloc] init];
+    
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= @"SELECT * from MASTERGENRES";
+        FMResultSet* resultSet = [objectDB executeQuery:query withArgumentsInArray:nil];
+        while ([resultSet next]) {
+            
+            MasterGenreObject* newsObj = [[MasterGenreObject alloc] init];
+            
+            newsObj.genreId = [resultSet stringForColumnIndex:0];
+            newsObj.active = [resultSet stringForColumnIndex:1];
+            newsObj.dateCreated = [resultSet stringForColumnIndex:2];
+            newsObj.name = [resultSet stringForColumnIndex:3];
+            
+            
+            [arr addObject:newsObj];
+            
+        }
+        [objectDB close];
+        
+        NSLog(@"MASTERGENRES Data fetched Successfully");
+        
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+    
+    return arr;
+    
+}
+
+
+-(NSString *) getNameFrommasterGenreForId:(NSString *)genreId {
+    
+    NSString* arr = @"";
+    
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= @"SELECT name from MASTERGENRES where genreId = ?";
+        FMResultSet* resultSet = [objectDB executeQuery:query withArgumentsInArray:[NSArray arrayWithObject:genreId]];
+        if ([resultSet next]) {
+           
+            arr = [resultSet stringForColumnIndex:0];
+        
+        }
+        [objectDB close];
+        
+        NSLog(@"MASTERGENRES Data fetched Successfully");
+        
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+    
+    return arr;
+    
+}
+
+-(void) deleteAllEntriesFromMasterGenreTable {
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= @"DELETE FROM MASTERGENRES";
+        if (![objectDB executeUpdate:query withArgumentsInArray:nil]) {
+            
+            NSLog(@"delete from MASTERGENRES failed: %@)",[objectDB lastErrorMessage]);
+            
+        }
+        else {
+            NSLog(@"MASTERGENRES Data deleted Successfully");
+        }
+        [objectDB close];
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
 }
 
 @end

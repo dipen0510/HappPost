@@ -71,12 +71,14 @@
 - (void) generateDatasourceForList {
     
     newsContentArr = [[NSMutableArray alloc] init];
+    self.menuTitle.text = @"";
     
     if ([[SharedClass sharedInstance] menuOptionType] == 1) {
         
         self.backButtonLeftConstraint.constant = 8;
         [self.refreshButton setHidden:YES];
         newsContentArr = [[DBManager sharedManager] getAllNewsForSearchedText:[[SharedClass sharedInstance] searchText]];
+        self.menuTitle.text = @"Search";
         
     }
     else if ([[SharedClass sharedInstance] menuOptionType] == 2) {
@@ -84,6 +86,13 @@
         self.backButtonLeftConstraint.constant = 8;
         [self.refreshButton setHidden:YES];
         newsContentArr = [[DBManager sharedManager] checkAndFetchNews];
+        
+        if ([[[SharedClass sharedInstance] selectedMyNewsArr] count] > 0) {
+            self.menuTitle.text = @"My News";
+        }
+        if ([[[SharedClass sharedInstance] selectedGenresArr] count] > 0) {
+            self.menuTitle.text = [[DBManager sharedManager] getNameFrommasterGenreForId:[[[SharedClass sharedInstance] selectedGenresArr] objectAtIndex:0]];
+        }
         
     }
     else {
@@ -225,7 +234,7 @@
     
     cell.newsHeading.text = newsObj.heading;
     cell.newsDescription.text = newsObj.subHeading;
-    cell.newsTime.text = [[[SharedClass sharedInstance] dateFromString:newsObj.dateCreated] timeAgo];
+    cell.newsTime.text = [[[SharedClass sharedInstance] dateFromString:newsObj.activeFrom] timeAgo];
     
     NSString* imgURL = newsObj.newsImage;
     
@@ -253,7 +262,8 @@
         
         if(![imgURL isEqualToString:@""])
         {
-            NSURL *url = [NSURL URLWithString:imgURL];
+            NSString* urlTextEscaped = [imgURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSURL *url = [NSURL URLWithString:urlTextEscaped];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
             UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
             
@@ -391,9 +401,9 @@
     
     [self hideMenuView];
     [[SharedClass sharedInstance] setSearchText:searchBar.text];
-    [[SharedClass sharedInstance] setMenuOptionType:1];
-    [self generateDatasourceForList];
-    //[self performSegueWithIdentifier:@"showSearchSegue" sender:nil];
+    //[[SharedClass sharedInstance] setMenuOptionType:1];
+    //[self generateDatasourceForList];
+    [self performSegueWithIdentifier:@"showSearchSegue" sender:nil];
     
 }
 

@@ -31,18 +31,20 @@
     
     [manager GET:self.serviceKey parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        NSLog(@"Response %@",responseObject);
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             
-            if ([[responseObject valueForKey:@"success"] intValue] == 1) {
+            if ([[responseObject valueForKey:statusKey] isEqualToString:@"Success"]) {
                 [delegate didFinishServiceWithSuccess:[self prepareResponseObjectForServiceKey:self.serviceKey withData:responseObject] andServiceKey:self.serviceKey];
             }
             else {
-                [delegate didFinishServiceWithFailure:[[responseObject valueForKey:@"error"] valueForKey:@"message"]];
+                [delegate didFinishServiceWithFailure:[responseObject valueForKey:@"Message"]];
             }
             
+            
         }
-        
+        else {
+            [delegate didFinishServiceWithFailure:@"Unexpected network error"];
+        }
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -114,6 +116,12 @@
     }
     if ([responseServiceKey isEqualToString:kVerifyService] ) {
         
+        return [[NSDictionary alloc] init];
+        
+    }
+    if ([responseServiceKey isEqualToString:kGetMasterGenreList] ) {
+        
+        [[DBManager sharedManager] insertEntryIntoMasterGenresTableWithGenreArr:[responseObj valueForKey:ListOfAllGenresKey]];
         return [[NSDictionary alloc] init];
         
     }

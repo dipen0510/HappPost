@@ -136,12 +136,14 @@ UICollectionViewDelegate,UICollectionViewDataSource
     _photoModelsDatasource = [[NSMutableArray alloc] init];
     
     newsArr = [[NSMutableArray alloc] init];
+    self.menuTitle.text = @"";
     
     if ([[SharedClass sharedInstance] menuOptionType] == 1) {
         
         self.backButtonLeftConstraint.constant = 8;
         [self.refreshButton setHidden:YES];
         newsArr = [[DBManager sharedManager] getAllNewsForSearchedText:[[SharedClass sharedInstance] searchText]];
+        self.menuTitle.text = @"Search";
         
     }
     else if ([[SharedClass sharedInstance] menuOptionType] == 2) {
@@ -149,6 +151,13 @@ UICollectionViewDelegate,UICollectionViewDataSource
         self.backButtonLeftConstraint.constant = 8;
         [self.refreshButton setHidden:YES];
         newsArr = [[DBManager sharedManager] checkAndFetchNews];
+        
+        if ([[[SharedClass sharedInstance] selectedMyNewsArr] count] > 0) {
+            self.menuTitle.text = @"My News";
+        }
+        if ([[[SharedClass sharedInstance] selectedGenresArr] count] > 0) {
+            self.menuTitle.text = [[DBManager sharedManager] getNameFrommasterGenreForId:[[[SharedClass sharedInstance] selectedGenresArr] objectAtIndex:0]];
+        }
         
     }
     else {
@@ -503,9 +512,9 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     
     [self hideMenuView];
     [[SharedClass sharedInstance] setSearchText:searchBar.text];
-    [[SharedClass sharedInstance] setMenuOptionType:1];
-    [self generateDatasource];
-    //[self performSegueWithIdentifier:@"showSearchSegue" sender:nil];
+    //[[SharedClass sharedInstance] setMenuOptionType:1];
+    //[self generateDatasource];
+    [self performSegueWithIdentifier:@"showSearchSegue" sender:nil];
     
 }
 

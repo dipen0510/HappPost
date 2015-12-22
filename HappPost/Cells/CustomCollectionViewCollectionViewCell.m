@@ -23,8 +23,8 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
     __weak IBOutlet UILabel *_subheading;
     __weak IBOutlet UILabel *_heading;
     __weak IBOutlet UILabel *_authorName;
-    __weak IBOutlet UILabel *_summary;
     __weak IBOutlet UILabel *_dateTime;
+    __weak IBOutlet UITextView *summary;
 }
 
 @synthesize delegate;
@@ -39,16 +39,20 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
     [_heading addGestureRecognizer:gesture];
     [_heading setUserInteractionEnabled:YES];
     
+    self.playerView.layer.zPosition = 1;
+    _heading.layer.zPosition = 20;
+    self.headingBGView.layer.zPosition = 20;
     _cardModel = cardModel;
     
     _heading.text = cardModel.heading;
     _subheading.text = cardModel.subheading;
-    _summary.text = cardModel.summary;
+    summary.text = cardModel.summary;
     _authorName.text = cardModel.author;
     _dateTime.text = cardModel.dateTime;
     
     newsId = cardModel.newsId;
 
+    [summary setContentOffset:CGPointZero animated:YES];
     
     if (cardModel.headlineColor) {
         
@@ -84,9 +88,12 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
         [self.playerView loadWithVideoId:videoURl];
         [self.playerView setDelegate:self];
         [self.playerView setHidden:NO];
+        [self.playerView addGestureRecognizer:gesture];
+        
         [_photoImageView setHidden:YES];
-        [_heading setHidden:YES];
-        [self.headingBGView setHidden:YES];
+        [_heading setHidden:NO];
+        [self.headingBGView setHidden:NO];
+        
         
     }
     else {
@@ -98,7 +105,6 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
         [self.playerView clearVideo];
         [self.playerView removeWebView];
         _photoImageView.contentMode = UIViewContentModeScaleAspectFill;
-        
         [self downloadNewsImagewithURL:cardModel.imgURL];
     }
     
@@ -137,7 +143,8 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
     
    if(![imgURL isEqualToString:@""])
     {
-        NSURL *url = [NSURL URLWithString:imgURL];
+        NSString* urlTextEscaped = [imgURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *url = [NSURL URLWithString:urlTextEscaped];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
         

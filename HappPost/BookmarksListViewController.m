@@ -43,6 +43,15 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
+    if (newsContentArr.count < 1) {
+        [self.emptyBookmarksLabel setHidden:NO];
+        [self.listTblView setHidden:YES];
+    }
+    else {
+        [self.emptyBookmarksLabel setHidden:YES];
+        [self.listTblView setHidden:NO];
+    }
+    
     return newsContentArr.count;
 }
 
@@ -127,7 +136,8 @@
         
         if(![imgURL isEqualToString:@""])
         {
-            NSURL *url = [NSURL URLWithString:imgURL];
+            NSString* urlTextEscaped = [imgURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSURL *url = [NSURL URLWithString:urlTextEscaped];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
             UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
             
