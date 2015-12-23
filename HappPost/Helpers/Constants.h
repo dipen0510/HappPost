@@ -76,7 +76,7 @@
 #define iOSDeviceType @"2"
 #define isFirstRun @"isFirstRun"
 #define myNewsUserDefaultsKey @"myNewsUserDefaultsKey"
-
+#define SecondRunKey @"SecondRun"
 
 #endif
 

@@ -28,6 +28,15 @@ NSString* create_TblBookmarks_table = @"CREATE TABLE IF NOT EXISTS BOOKMARKS (ne
 
 NSString* create_TblMasterGenres_table = @"CREATE TABLE IF NOT EXISTS MASTERGENRES (genreId TEXT PRIMARY KEY, active TEXT, dateCreated TEXT, name TEXT)";
 
+NSString* drop_TblUser_table = @"DROP TABLE IF EXISTS USER";
+NSString* drop_TblNews_table = @"DROP TABLE IF EXISTS NEWS";
+NSString* drop_TblNewsComments_table = @"DROP TABLE IF EXISTS NEWSCOMMENTS";
+NSString* drop_TblNewsGenres_table = @"DROP TABLE IF EXISTS NEWSGENRES";
+NSString* drop_TblNewsInfographics_table = @"DROP TABLE IF EXISTS NEWSINFOGRAPHICS";
+NSString* drop_TblSettings_table = @"DROP TABLE IF EXISTS SETTINGS";
+NSString* drop_TblBookmarks_table = @"DROP TABLE IF EXISTS BOOKMARKS";
+NSString* drop_TblMasterGenres_table = @"DROP TABLE IF EXISTS MASTERGENRES";
+
 
 @implementation DBManager
 
@@ -67,6 +76,8 @@ static DBManager *sharedObject = nil;
     
     if ([filemgr fileExistsAtPath:databasePath] == NO)
     {
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:SecondRunKey];
         
         if ([objectDB open])
         {
@@ -151,11 +162,179 @@ static DBManager *sharedObject = nil;
         }
     }
     
-    //Version 2
+    //Update to Version 2
     else {
         
-//        [filemgr removeItemAtPath:databasePath error:nil];
-//        [self setupDatabase];
+        BOOL isSecondRun = [[NSUserDefaults standardUserDefaults] boolForKey:SecondRunKey];
+        if (!isSecondRun) {
+            
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:SecondRunKey];
+            
+            if ([objectDB open])
+            {
+                
+                //DELETING PREVIOUS VERSION SCHEMAS
+                
+                if([objectDB executeUpdate:drop_TblUser_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"USER table droppped");
+                }
+                else
+                {
+                    NSLog(@"Failed to droppped USER table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:drop_TblNews_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"NEWS table droppped");
+                }
+                else
+                {
+                    NSLog(@"Failed to droppped NEWS table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:drop_TblNewsComments_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"NEWSCOMMENTS table droppped");
+                }
+                else
+                {
+                    NSLog(@"Failed to droppped NEWSCOMMENTS table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:drop_TblNewsGenres_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"NEWSGENRES table droppped");
+                }
+                else
+                {
+                    NSLog(@"Failed to droppped NEWSGENRES table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:drop_TblNewsInfographics_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"NEWSINFOGRAPHICS table droppped");
+                }
+                else
+                {
+                    NSLog(@"Failed to droppped NEWSINFOGRAPHICS table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:drop_TblSettings_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"SETTINGS table droppped");
+                }
+                else
+                {
+                    NSLog(@"Failed to droppped SETTINGS table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:drop_TblBookmarks_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"BOOKMARKS table droppped");
+                }
+                else
+                {
+                    NSLog(@"Failed to droppped BOOKMARKS table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:drop_TblMasterGenres_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"MASTERGENRES table droppped");
+                }
+                else
+                {
+                    NSLog(@"Failed to droppped MASTERGENRES table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                
+                
+                //CREATING FRESH SCHEMAS
+                
+                if([objectDB executeUpdate:create_TblUser_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"USER table created");
+                }
+                else
+                {
+                    NSLog(@"Failed to create USER table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:create_TblNews_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"NEWS table created");
+                }
+                else
+                {
+                    NSLog(@"Failed to create NEWS table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:create_TblNewsComments_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"NEWSCOMMENTS table created");
+                }
+                else
+                {
+                    NSLog(@"Failed to create NEWSCOMMENTS table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:create_TblNewsGenres_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"NEWSGENRES table created");
+                }
+                else
+                {
+                    NSLog(@"Failed to create NEWSGENRES table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:create_TblNewsInfographics_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"NEWSINFOGRAPHICS table created");
+                }
+                else
+                {
+                    NSLog(@"Failed to create NEWSINFOGRAPHICS table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:create_TblSettings_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"SETTINGS table created");
+                }
+                else
+                {
+                    NSLog(@"Failed to create SETTINGS table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:create_TblBookmarks_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"BOOKMARKS table created");
+                }
+                else
+                {
+                    NSLog(@"Failed to create BOOKMARKS table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:create_TblMasterGenres_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"MASTERGENRES table created");
+                }
+                else
+                {
+                    NSLog(@"Failed to create MASTERGENRES table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                
+                [objectDB close];
+                
+                
+            } else {
+                NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+            }
+            
+            
+        }
+
+        
         
     }
     

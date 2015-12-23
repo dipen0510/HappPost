@@ -108,11 +108,21 @@ static SharedClass *singletonObject = nil;
     if ([[dateArr lastObject] containsString:@"AM"]) {
         NSString* time = [[dateArr lastObject] stringByReplacingOccurrencesOfString:@"AM" withString:@""];
         hour = [[[time componentsSeparatedByString:@":"] firstObject] intValue];
+        
+        if (hour == 12) {
+            hour = 0;
+        }
+        
         minute = [[[time componentsSeparatedByString:@":"] lastObject] intValue];
     }
     else {
         NSString* time = [[dateArr lastObject] stringByReplacingOccurrencesOfString:@"PM" withString:@""];
         hour = [[[time componentsSeparatedByString:@":"] firstObject] intValue] + 12;
+        
+        if (hour == 24) {
+            hour = 12;
+        }
+        
         minute = [[[time componentsSeparatedByString:@":"] lastObject] intValue];
     }
     
@@ -134,7 +144,7 @@ static SharedClass *singletonObject = nil;
     NSDate* date = [self dateFromString:str];
     
     NSDateFormatter *objDateformat = [[NSDateFormatter alloc] init];
-    [objDateformat setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    [objDateformat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *strTime = [objDateformat stringFromDate:date];
     
     return strTime;
@@ -146,7 +156,7 @@ static SharedClass *singletonObject = nil;
     NSDate* date = [NSDate date];
     
     NSDateFormatter *objDateformat = [[NSDateFormatter alloc] init];
-    [objDateformat setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    [objDateformat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *strTime = [objDateformat stringFromDate:date];
     
     return strTime;
