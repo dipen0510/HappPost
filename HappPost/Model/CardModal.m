@@ -26,7 +26,10 @@
         _imgURL = newsObj.webImage;
         _headlineColor = newsObj.headlineColor;
         _newsId = newsObj.newsId;
-        _dateTime = [[[SharedClass sharedInstance] dateFromString:newsObj.activeFrom] timeAgo];
+        
+        NSDate* date = [[SharedClass sharedInstance] dateFromString:newsObj.activeFrom];
+        
+        _dateTime = [date timeAgo];
         
     }
     

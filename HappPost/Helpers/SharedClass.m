@@ -127,6 +127,8 @@ static SharedClass *singletonObject = nil;
     }
     
     NSCalendar *calendar = [NSCalendar currentCalendar] ;
+    [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    
     NSDateComponents *components = [[NSDateComponents alloc] init] ;
     [components setYear:year];
     [components setMonth:month];

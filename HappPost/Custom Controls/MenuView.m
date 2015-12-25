@@ -332,7 +332,7 @@
         }
         
         cell.categoryLabel.text = genreObj.name;
-        NSString *imgURL = [NSString stringWithFormat:@"%@/%@.png",HappPostGenreImageURL,genreObj.name];
+        NSString *imgURL = [NSString stringWithFormat:@"%@/%@.png",HappPostGenreImageURL,[self genreImageNameWithoutSpecial:genreObj.name]];
         
         if(![imgURL isEqualToString:@""])
         {
@@ -369,7 +369,7 @@
         
         
         cell.categoryLabel.text = genreObj.name;
-        NSString *imgURL = [NSString stringWithFormat:@"%@/%@.png",HappPostGenreImageURL,genreObj.name];
+        NSString *imgURL = [NSString stringWithFormat:@"%@/%@.png",HappPostGenreImageURL,[self genreImageNameWithoutSpecial:genreObj.name]];
         
         if(![imgURL isEqualToString:@""])
         {
@@ -561,6 +561,22 @@
         
     }
     
+    
+}
+
+
+- (NSString *) genreImageNameWithoutSpecial:(NSString *)imageName {
+    
+    NSString* str = imageName;
+    
+    if ([str containsString:@" & "]) {
+        str = [str stringByReplacingOccurrencesOfString:@" & " withString:@""];
+    }
+    if ([str containsString:@"/"]) {
+        str = [str stringByReplacingOccurrencesOfString:@"/" withString:@""];
+    }
+    
+    return [str stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
 }
 
