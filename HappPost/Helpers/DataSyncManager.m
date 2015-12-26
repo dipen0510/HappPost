@@ -110,6 +110,7 @@
     if ([responseServiceKey isEqualToString:kGetNewsContent] ) {
         
         NewsContentResponseObject* response = [[NewsContentResponseObject alloc] initWithDictionary:responseObj];
+        [[DBManager sharedManager] deleteAllEntriesFromNewsTable];      // NEED TO REMOVE //
         [[SharedClass sharedInstance] insertNewsContentResponseIntoDB:response];
         [delegate didUpdateLatestNewsContent];
         

@@ -245,7 +245,7 @@ UICollectionViewDelegate,UICollectionViewDataSource
     NewsContentRequestObject* requestObj = [[NewsContentRequestObject alloc] init];
     requestObj.userId = [[SharedClass sharedInstance] userId];
     
-    if (requestObj.timestamp) {
+    if ([[[DBManager sharedManager] getAllSettings] valueForKey:timestampKey]) {
         requestObj.timestamp = [[[DBManager sharedManager] getAllSettings] valueForKey:timestampKey];
     }
     else {
