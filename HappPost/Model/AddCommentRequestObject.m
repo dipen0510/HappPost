@@ -10,7 +10,7 @@
 
 @implementation AddCommentRequestObject
 
-@synthesize userId,newsId,comments;
+@synthesize userId,newsId,comments,dateAndTime;
 
 - (NSMutableDictionary *)createRequestDictionary {
     
@@ -18,6 +18,7 @@
     
     [dict setObject:userId forKey:userIdKey];
     [dict setObject:newsId forKey:NewsIdKey];
+    [dict setObject:dateAndTime forKey:DateAndTimeKey];
     [dict setObject:comments forKey:CommentsKey];
     
     return dict;

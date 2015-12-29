@@ -25,6 +25,8 @@
 #define newsDataInfoKey @"NewsDataInfo"
 #define notificationSettingKey @"NotificationSetting"
 
+#define timestampForGetNewsKey @"Timestamp"
+#define DateAndTimeKey @"DateAndTime"
 
 //NEWS CONTENT KEYS
 

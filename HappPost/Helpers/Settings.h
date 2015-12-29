@@ -21,7 +21,7 @@
 #define kRegisterService @"RegisterTempiOSUser"
 #define kSkipRegistrationService @"SkipRegisteriOSUser"
 #define kGetNewsContent @"RetreiveData"
-#define kAddComment @"InsertComment"
+#define kAddComment @"InsertCommentNew"
 #define kVerifyService @"RegisteriOSUser"
 #define kGetMasterGenreList @"GetGenresList"
 

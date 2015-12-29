@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSString* userId;
 @property (nonatomic, strong) NSString* newsId;
+@property (nonatomic, strong) NSString* dateAndTime;
 @property (nonatomic, strong) NSString* comments;
 
 - (NSMutableDictionary *)createRequestDictionary;

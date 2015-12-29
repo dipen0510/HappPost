@@ -12,6 +12,7 @@
 @interface ContentDetailViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,YTPlayerViewDelegate,UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,DataSyncManagerDelegate,UIDocumentInteractionControllerDelegate> {
     
     NewsInfographicsObject* secondaryImageNewsInfogrphicsObj;
+    NSMutableArray* commentArr;
     
 }
 

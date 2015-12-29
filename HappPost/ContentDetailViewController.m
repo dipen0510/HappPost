@@ -38,6 +38,7 @@
         self.primaryDescriptionTopConstraint.constant = 305;
     }
     
+    commentArr = [[NSMutableArray alloc] initWithArray:newsObj.newsComments];
     
     
     // Set screen name.
@@ -191,6 +192,18 @@
     CGSize size = [label sizeOfMultiLineLabel];
     
     constraint.constant = size.height + 20.;
+    if (constraint.constant<40.0) {
+        constraint.constant = 20.0;
+    }
+    
+    
+    if (IS_IPHONE_4_OR_LESS || IS_IPHONE_5) {
+        if (label == self.secondaryDescriptionLabel || label == self.primaryDescriptionLabel) {
+            constraint.constant = constraint.constant + (constraint.constant * 0.15);
+        }
+    }
+    
+    
     
 }
 
@@ -348,7 +361,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return newsObj.newsComments.count + 1;
+    return commentArr.count + 1;
     
 }
 
@@ -378,7 +391,7 @@
         cell=[nib objectAtIndex:0];
     }
     
-    NewsCommentObject* commentObj = (NewsCommentObject *)[newsObj.newsComments objectAtIndex:indexPath.row-1];
+    NewsCommentObject* commentObj = (NewsCommentObject *)[commentArr objectAtIndex:indexPath.row-1];
     
     cell.profileNameLbl.text = commentObj.user;
     cell.commentDateLbl.text = commentObj.dateCreated;
@@ -395,7 +408,7 @@
         return 180.0;
     }
     
-    NewsCommentObject* commentObj = (NewsCommentObject *)[newsObj.newsComments objectAtIndex:indexPath.row-1];
+    NewsCommentObject* commentObj = (NewsCommentObject *)[commentArr objectAtIndex:indexPath.row-1];
     NSString *str = commentObj.comments;
     CGSize size = [str sizeWithFont:[UIFont fontWithName:@"Helvetica" size:16] constrainedToSize:CGSizeMake(280, 999) lineBreakMode:NSLineBreakByWordWrapping];
     NSLog(@"%f",size.height);
@@ -459,6 +472,9 @@
         AddCommentsTableViewCell* cell = (AddCommentsTableViewCell *)[self.commentsTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         [cell.addCommentTextView setText:@""];
         
+        commentArr = [[NSMutableArray alloc] initWithArray:[[DBManager sharedManager] getAllNewsCommentsForNewsId:newsObj.newsId]];
+        
+        [self.commentsTableView reloadData];
     }
     
 }
@@ -491,6 +507,7 @@
     AddCommentRequestObject* requestObj = [[AddCommentRequestObject alloc] init];
     requestObj.userId = [[SharedClass sharedInstance] userId];
     requestObj.newsId = newsObj.newsId;
+    requestObj.dateAndTime = [[[SharedClass sharedInstance] getUTCDateFormatter] stringFromDate:[NSDate date]];
     
     AddCommentsTableViewCell* cell = (AddCommentsTableViewCell *)[self.commentsTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     

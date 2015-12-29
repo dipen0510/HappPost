@@ -76,7 +76,7 @@
 
 - (void) startSkipRegistrationService {
     
-    [SVProgressHUD showWithStatus:@"Preparing app for its first time use"];
+    [SVProgressHUD showWithStatus:@"Preparing for first time use"];
     
     DataSyncManager* manager = [[DataSyncManager alloc] init];
     manager.serviceKey = kSkipRegistrationService;

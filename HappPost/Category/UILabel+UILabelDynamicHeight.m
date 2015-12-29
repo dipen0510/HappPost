@@ -55,7 +55,7 @@
         
         //Return the calculated size of the Label
         return [aLabelTextString boundingRectWithSize:CGSizeMake(aLabelSizeWidth, MAXFLOAT)
-                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                              options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
                                            attributes:@{
                                                         NSFontAttributeName : aLabelFont
                                                         }

@@ -1010,7 +1010,7 @@ static DBManager *sharedObject = nil;
     NSString* databasePath = [self getDatabasePath];
     FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
     if ([objectDB open]) {
-        NSString* query= @"SELECT * from NEWSCOMMENTS where newsId = ?";
+        NSString* query= @"SELECT * from NEWSCOMMENTS where newsId = ? order by dateCreated desc";
         FMResultSet* resultSet = [objectDB executeQuery:query withArgumentsInArray:[NSArray arrayWithObject:newsId]];
         while ([resultSet next]) {
             

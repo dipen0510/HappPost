@@ -110,7 +110,7 @@
     if ([responseServiceKey isEqualToString:kGetNewsContent] ) {
         
         NewsContentResponseObject* response = [[NewsContentResponseObject alloc] initWithDictionary:responseObj];
-        [[DBManager sharedManager] deleteAllEntriesFromNewsTable];      // NEED TO REMOVE //
+        [[DBManager sharedManager] insertEntryIntoSettingsTableWithTimeStamp:response.timeStamp andNotificationSetting:response.notificationSetting];
         [[SharedClass sharedInstance] insertNewsContentResponseIntoDB:response];
         [delegate didUpdateLatestNewsContent];
         
@@ -124,6 +124,12 @@
         
         [[DBManager sharedManager] insertEntryIntoMasterGenresTableWithGenreArr:[responseObj valueForKey:ListOfAllGenresKey]];
         return [[NSDictionary alloc] init];
+        
+    }
+    if ([responseServiceKey isEqualToString:kAddComment] ) {
+        
+        NewsContentResponseObject* response = [[NewsContentResponseObject alloc] initWithDictionary:responseObj];
+        [[SharedClass sharedInstance] insertNewsContentResponseIntoDB:response];
         
     }
     

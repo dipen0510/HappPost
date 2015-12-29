@@ -35,6 +35,16 @@ static SharedClass *singletonObject = nil;
     return singletonObject;
 }
 
+-(NSDateFormatter* )getUTCDateFormatter
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    return dateFormatter;
+}
+
 -(NSDate* )getCurrentUTCFormatDate
 {
     
@@ -53,8 +63,6 @@ static SharedClass *singletonObject = nil;
 
 
 - (void) insertNewsContentResponseIntoDB: (NewsContentResponseObject *)newsObj {
-    
-    [[DBManager sharedManager] insertEntryIntoSettingsTableWithTimeStamp:newsObj.timeStamp andNotificationSetting:newsObj.notificationSetting];
     
     NSMutableArray* insertArr = [[NSMutableArray alloc] init];
     NSMutableArray* deleteArr = [[NSMutableArray alloc] init];

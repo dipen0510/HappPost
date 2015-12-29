@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSString* searchText;
 
 -(NSDate *)getCurrentUTCFormatDate;
+-(NSDateFormatter* )getUTCDateFormatter;
 - (void) insertNewsContentResponseIntoDB: (NewsContentResponseObject *)newsObj;
 - (NSDate *) dateFromString:(NSString *)dateTime;
 - (NSString *) sqlLiteFormattedDateStringFromResponseString:(NSString *)str;

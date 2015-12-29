@@ -17,7 +17,7 @@
     NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
     
     [dict setObject:userId forKey:userIdKey];
-    [dict setObject:timestamp forKey:timestampKey];
+    [dict setObject:timestamp forKey:timestampForGetNewsKey];
     
     return dict;
 }
