@@ -57,6 +57,7 @@
 #define HeadlineColorKey @"HeadlineColor"
 #define SecondLeadImageKey @"SecondLeadImage"
 #define WebImageKey @"WebImage"
+#define AuthorBioKey @"AuthorBio"
 
 #define CommentsKey @"Comments"
 #define NewsCommentsIdKey @"NewsCommentsId"

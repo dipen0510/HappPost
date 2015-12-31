@@ -38,6 +38,7 @@
 @property (nonatomic, strong) NSString* webImage;
 @property (nonatomic, strong) NSString* activeFromDate;
 @property (nonatomic, strong) NSString* activeTillDate;
+@property (nonatomic, strong) NSString* authorBio;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

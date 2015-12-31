@@ -41,6 +41,7 @@
     _headlineColor = dictionary[HeadlineColorKey];
     _secondLeadImage = dictionary[SecondLeadImageKey];
     _webImage = dictionary[WebImageKey];
+    _authorBio = dictionary[AuthorBioKey];
     
     _activeFromDate = [[SharedClass sharedInstance] sqlLiteFormattedDateStringFromResponseString:_activeFrom];
     

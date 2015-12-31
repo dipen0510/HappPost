@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *authorNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateTimeLabel;
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
+@property (strong, nonatomic) IBOutlet UILabel *authorBioLabel;
 
 @property (strong, nonatomic) SingleNewsObject* newsObj;
 
@@ -36,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *subheadingHeightCoonstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *primaryDescriptionHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scondaryDescriptionHeadingConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *authorBioHeightConstraint;
 
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *primaryDescriptionTopConstraint;
