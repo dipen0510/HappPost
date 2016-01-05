@@ -34,7 +34,7 @@
     
     [self generateContent];
     
-    if ([self iPhone6PlusUnZoomed]) {
+    if ([self iPhone6PlusUnZoomed] && ![self.primaryDescriptionLabel.text isEqualToString:@""]) {
         self.primaryDescriptionTopConstraint.constant = 305;
     }
     
