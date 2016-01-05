@@ -86,6 +86,8 @@
         self.primaryDescriptionLabel.text = newsObj.summary;
     }
     
+    self.authorBioLabel.text = newsObj.authorBio;
+    
     
     self.authorNameLabel.text = newsObj.authorName;
     self.dateTimeLabel.text = newsObj.dateCreated;
@@ -94,6 +96,7 @@
     [self adjustHeightForLabel:self.subheadingLabel andConstraint:self.subheadingHeightCoonstraint];
     [self adjustHeightForLabel:self.primaryDescriptionLabel andConstraint:self.primaryDescriptionHeightConstraint];
     [self adjustHeightForLabel:self.secondaryDescriptionLabel andConstraint:self.scondaryDescriptionHeadingConstraint];
+    [self adjustHeightForLabel:self.authorBioLabel andConstraint:self.authorBioHeightConstraint];
     
     
     if (![[DBManager sharedManager] isNewsIdBookmarked:newsObj.newsId]) {
