@@ -176,7 +176,7 @@ UICollectionViewDelegate,UICollectionViewDataSource
     }
     
     [_photosCollectionView reloadData];
-    [_photosCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+   // [_photosCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     
     
 }

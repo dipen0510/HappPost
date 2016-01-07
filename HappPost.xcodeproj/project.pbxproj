@@ -1207,15 +1207,15 @@
 			baseConfigurationReference = DC838FBA122D124D9E159CA1 /* Pods-HappPost.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Swapnil Harkanth (CZA6DXR72T)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Sorbojeet Chatterjee (JR5944AAL5)";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = HappPost/PrefixHeader.pch;
 				INFOPLIST_FILE = HappPost/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.HappPost;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stardeep.happpost;
 				PRODUCT_NAME = "Happ Post";
-				PROVISIONING_PROFILE = "8cbaef95-94b0-4c6e-a1c5-d718ba79197e";
+				PROVISIONING_PROFILE = "90c0ee94-9df9-4293-9084-fc441aeab04e";
 			};
 			name = Debug;
 		};
@@ -1224,15 +1224,15 @@
 			baseConfigurationReference = 3FBE6F01B800EFA6F7EB4070 /* Pods-HappPost.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Swapnil Harkanth (CZA6DXR72T)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Sorbojeet Chatterjee (JR5944AAL5)";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = HappPost/PrefixHeader.pch;
 				INFOPLIST_FILE = HappPost/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.HappPost;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stardeep.happpost;
 				PRODUCT_NAME = "Happ Post";
-				PROVISIONING_PROFILE = "8cbaef95-94b0-4c6e-a1c5-d718ba79197e";
+				PROVISIONING_PROFILE = "90c0ee94-9df9-4293-9084-fc441aeab04e";
 			};
 			name = Release;
 		};

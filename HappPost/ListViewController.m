@@ -109,7 +109,7 @@
     
     
     [self.listTblView reloadData];
-    [self.listTblView setContentOffset:CGPointZero animated:YES];
+    //[self.listTblView setContentOffset:CGPointZero animated:YES];
     
 }
 

@@ -34,9 +34,9 @@
     
     [self generateContent];
     
-    if ([self iPhone6PlusUnZoomed] && ![self.primaryDescriptionLabel.text isEqualToString:@""]) {
-        self.primaryDescriptionTopConstraint.constant = 305;
-    }
+//    if ([self iPhone6PlusUnZoomed] && ![self.primaryDescriptionLabel.text isEqualToString:@""]) {
+//        self.primaryDescriptionTopConstraint.constant = 305;
+//    }
     
     commentArr = [[NSMutableArray alloc] initWithArray:newsObj.newsComments];
     
