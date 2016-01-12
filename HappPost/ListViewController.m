@@ -67,6 +67,7 @@
     [menuView.closeButton addTarget:self action:@selector(hideMenuView) forControlEvents:UIControlEventTouchUpInside];
     [menuView.switchToCardView addTarget:self action:@selector(switchViewButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [menuView.myBookbarkButton addTarget:self action:@selector(bookmarkButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [menuView.shareHappButton addTarget:self action:@selector(shareHappButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     menuView.searchBar.delegate = self;
     [menuView.switchToCardView setTitle:@"Switch To Card View" forState:UIControlStateNormal];
     
@@ -169,6 +170,10 @@
     
     [self.view makeToast:@"News content updated succesfully"];
     [self generateDatasourceForList];
+    if (isRefreshButtonTapped) {
+        isRefreshButtonTapped = NO;
+        [self.listTblView setContentOffset:CGPointZero animated:YES];
+    }
     
 }
 
@@ -318,6 +323,7 @@
 
 - (IBAction)refreshButtonTapped:(id)sender {
     
+    isRefreshButtonTapped = YES;
     [self startGetNewsContentService];
     
 }
@@ -368,6 +374,29 @@
     
 }
 
+- (void) shareHappButtonTapped:(id)sender {
+    
+    [self shareText:[NSString stringWithFormat:@"Add some sunshine to your life.\nDownload Happ Post from %@",HappPostAppShareURL] andImage:nil andUrl:[NSURL URLWithString:HappPostAppShareURL]];
+    
+}
+
+- (void)shareText:(NSString *)text andImage:(UIImage *)image andUrl:(NSURL *)url
+{
+    NSMutableArray *sharingItems = [NSMutableArray new];
+    
+    if (text) {
+        [sharingItems addObject:text];
+    }
+    if (image) {
+        [sharingItems addObject:image];
+    }
+    if (url) {
+        [sharingItems addObject:url];
+    }
+    
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+}
 
 - (void) showMenuView {
     

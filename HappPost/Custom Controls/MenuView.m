@@ -415,7 +415,7 @@
                 cell.categoryLabel.text = @"None";
             }
             else if (indexPath.row == 1) {
-                cell.categoryLabel.text = @"2-3 Key Notifications / Day";
+                cell.categoryLabel.text = @"2-3 Notifications / Day";
             }
             else {
                 cell.categoryLabel.text = @"All Notifications";

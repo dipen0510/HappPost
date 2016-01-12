@@ -16,6 +16,7 @@
 - (void) myNewsSectionSelected;
 - (void) aboutUsTapped;
 - (void) privacyPolicyTapped;
+- (void) shareHappTapped;
 
 @end
 
@@ -46,6 +47,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *finePrintTableViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIScrollView *mewnuScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *menuTableView;
+@property (weak, nonatomic) IBOutlet UIButton *shareHappButton;
 @property (weak, nonatomic) IBOutlet UITableView *genreTableView;
 @property (weak, nonatomic) IBOutlet UIButton *switchToCardView;
 @property (weak, nonatomic) IBOutlet UIButton *noneButton;

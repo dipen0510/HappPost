@@ -14,20 +14,8 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6A-qz-S1h">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="1120"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DUa-n2-Cm0">
-                            <rect key="frame" x="8" y="133" width="584" height="240"/>
-                            <animations/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="240" id="AEQ-G6-4Pa"/>
-                            </constraints>
-                            <connections>
-                                <outlet property="dataSource" destination="iN0-l3-epB" id="MRy-gj-b75"/>
-                                <outlet property="delegate" destination="iN0-l3-epB" id="etq-ig-L0s"/>
-                            </connections>
-                        </tableView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J1d-R9-fFa">
-                            <rect key="frame" x="8" y="381" width="584" height="240"/>
+                            <rect key="frame" x="8" y="436" width="584" height="240"/>
                             <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -50,8 +38,20 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6I-s1-ZVM">
+                            <rect key="frame" x="17" y="133" width="210" height="45"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="210" id="B5L-c4-EgO"/>
+                                <constraint firstAttribute="height" constant="45" id="TlS-Nj-Ioh"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <state key="normal" title="Share the H-app">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yab-rQ-Q4h">
-                            <rect key="frame" x="8" y="629" width="210" height="45"/>
+                            <rect key="frame" x="8" y="684" width="210" height="45"/>
                             <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="k0u-Ey-H8Q"/>
@@ -64,7 +64,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scg-1x-PFo">
-                            <rect key="frame" x="282" y="855" width="37" height="37"/>
+                            <rect key="frame" x="282" y="910" width="37" height="37"/>
                             <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="37" id="RHr-wV-rYF"/>
@@ -73,7 +73,7 @@
                             <state key="normal" image="close.png"/>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G4f-ZT-ttA">
-                            <rect key="frame" x="8" y="674" width="584" height="0.0"/>
+                            <rect key="frame" x="8" y="729" width="584" height="0.0"/>
                             <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -85,7 +85,7 @@
                             </connections>
                         </tableView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xGD-hJ-Q53">
-                            <rect key="frame" x="8" y="682" width="584" height="150"/>
+                            <rect key="frame" x="8" y="737" width="584" height="150"/>
                             <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -105,6 +105,18 @@
                             </constraints>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DUa-n2-Cm0">
+                            <rect key="frame" x="8" y="188" width="584" height="240"/>
+                            <animations/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="240" id="AEQ-G6-4Pa"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="dataSource" destination="iN0-l3-epB" id="MRy-gj-b75"/>
+                                <outlet property="delegate" destination="iN0-l3-epB" id="etq-ig-L0s"/>
+                            </connections>
+                        </tableView>
                     </subviews>
                     <animations/>
                     <constraints>
@@ -116,6 +128,7 @@
                         <constraint firstAttribute="bottom" secondItem="scg-1x-PFo" secondAttribute="bottom" constant="8" id="8Lh-1I-SOg"/>
                         <constraint firstAttribute="trailing" secondItem="J1d-R9-fFa" secondAttribute="trailing" constant="8" id="BvS-dp-YzC"/>
                         <constraint firstItem="J1d-R9-fFa" firstAttribute="top" secondItem="DUa-n2-Cm0" secondAttribute="bottom" constant="8" id="FlT-ei-HGI"/>
+                        <constraint firstItem="I6I-s1-ZVM" firstAttribute="top" secondItem="CXM-cu-wla" secondAttribute="bottom" constant="8" id="HTM-bj-FrD"/>
                         <constraint firstItem="UQr-tw-2TJ" firstAttribute="top" secondItem="l6A-qz-S1h" secondAttribute="top" constant="36" id="HmM-wm-hwO"/>
                         <constraint firstItem="DUa-n2-Cm0" firstAttribute="leading" secondItem="l6A-qz-S1h" secondAttribute="leading" constant="8" id="LzR-vG-1NU"/>
                         <constraint firstAttribute="trailing" secondItem="DUa-n2-Cm0" secondAttribute="trailing" constant="8" id="Nay-Mv-Dzo"/>
@@ -126,7 +139,8 @@
                         <constraint firstItem="Yab-rQ-Q4h" firstAttribute="top" secondItem="J1d-R9-fFa" secondAttribute="bottom" constant="8" id="bwB-1j-aYM"/>
                         <constraint firstItem="G4f-ZT-ttA" firstAttribute="top" secondItem="Yab-rQ-Q4h" secondAttribute="bottom" id="cIh-cb-gr0"/>
                         <constraint firstItem="UQr-tw-2TJ" firstAttribute="leading" secondItem="l6A-qz-S1h" secondAttribute="leading" constant="8" id="fka-dU-Hfk"/>
-                        <constraint firstItem="DUa-n2-Cm0" firstAttribute="top" secondItem="CXM-cu-wla" secondAttribute="bottom" constant="8" id="iVP-t3-z4T"/>
+                        <constraint firstItem="DUa-n2-Cm0" firstAttribute="top" secondItem="CXM-cu-wla" secondAttribute="bottom" constant="63" id="iVP-t3-z4T"/>
+                        <constraint firstItem="I6I-s1-ZVM" firstAttribute="leading" secondItem="l6A-qz-S1h" secondAttribute="leading" constant="17" id="lNx-kn-HLb"/>
                         <constraint firstItem="Yab-rQ-Q4h" firstAttribute="leading" secondItem="l6A-qz-S1h" secondAttribute="leading" constant="8" id="llf-FU-JKG"/>
                         <constraint firstAttribute="trailing" secondItem="UQr-tw-2TJ" secondAttribute="trailing" constant="8" id="pL7-nq-7OH"/>
                         <constraint firstItem="xGD-hJ-Q53" firstAttribute="leading" secondItem="l6A-qz-S1h" secondAttribute="leading" constant="8" id="uAM-ln-xvz"/>
@@ -157,6 +171,7 @@
                 <outlet property="notificationsTableView" destination="G4f-ZT-ttA" id="sFk-Et-bqW"/>
                 <outlet property="notificationsTableViewHeightConstraint" destination="Hax-Bn-bVz" id="1Xk-Ht-RT5"/>
                 <outlet property="searchBar" destination="UQr-tw-2TJ" id="Rg0-fF-jkr"/>
+                <outlet property="shareHappButton" destination="I6I-s1-ZVM" id="Fez-3L-KHe"/>
                 <outlet property="switchToCardView" destination="CXM-cu-wla" id="HUa-Ft-E8i"/>
             </connections>
         </view>

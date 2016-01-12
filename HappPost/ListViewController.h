@@ -17,6 +17,7 @@
     
     UIRefreshControl* refreshControl;
     int webViewSegueType;
+    BOOL isRefreshButtonTapped;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *listTblView;

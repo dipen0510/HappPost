@@ -17,6 +17,7 @@
 
 #define HappPostShareURL @"http://services.happpost.com/website/dashboard.html#/Detail"
 #define HappPostGenreImageURL @"http://happpost.com/Happ/Genre"
+#define HappPostAppShareURL @"http://onelink.to/bbuvww"
 
 #define kRegisterService @"RegisterTempiOSUser"
 #define kSkipRegistrationService @"SkipRegisteriOSUser"

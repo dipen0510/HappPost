@@ -104,12 +104,7 @@ UICollectionViewDelegate,UICollectionViewDataSource
     [_photosCollectionView layoutIfNeeded];
     [_photosCollectionView reloadData];
     
-//    if (isRefreshButtonTapped) {
-//        isRefreshButtonTapped = false;
-//        [_photosCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]
-//                                      atScrollPosition:UICollectionViewScrollPositionTop
-//                                              animated:YES];
-//    }
+
 }
 
 
@@ -124,6 +119,7 @@ UICollectionViewDelegate,UICollectionViewDataSource
     [menuView.closeButton addTarget:self action:@selector(hideMenuView) forControlEvents:UIControlEventTouchUpInside];
     [menuView.switchToCardView addTarget:self action:@selector(switchViewButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [menuView.myBookbarkButton addTarget:self action:@selector(bookmarkButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [menuView.shareHappButton addTarget:self action:@selector(shareHappButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     menuView.searchBar.delegate = self;
     [menuView.switchToCardView setTitle:@"Switch To List View" forState:UIControlStateNormal];
     
@@ -177,6 +173,8 @@ UICollectionViewDelegate,UICollectionViewDataSource
     
     [_photosCollectionView reloadData];
    // [_photosCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    
+    
     
     
 }
@@ -235,7 +233,10 @@ UICollectionViewDelegate,UICollectionViewDataSource
     
     [self.view makeToast:@"News content updated succesfully"];
     [self generateDatasource];
-    
+    if (isRefreshButtonTapped) {
+        isRefreshButtonTapped = false;
+            [_photosCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }
 }
 
 
@@ -368,6 +369,12 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     CustomCollectionViewCollectionViewCell* cell = (CustomCollectionViewCollectionViewCell *)[_photosCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]];
     
     [self shareText:[NSString stringWithFormat:@"%@.\n\n\%@.\n\nvia HappPost\n\n",newsObj.heading,newsObj.subHeading] andImage:cell.newsImageView.image andUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", HappPostShareURL, newsObj.newsId]]];
+    
+}
+
+- (void) shareHappButtonTapped:(id)sender {
+    
+    [self shareText:[NSString stringWithFormat:@"Add some sunshine to your life.\nDownload Happ Post from %@",HappPostAppShareURL] andImage:nil andUrl:[NSURL URLWithString:HappPostAppShareURL]];
     
 }
 
