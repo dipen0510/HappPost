@@ -80,7 +80,7 @@
 #define isFirstRun @"isFirstRun"
 #define myNewsUserDefaultsKey @"myNewsUserDefaultsKey"
 #define SecondRunKey @"SecondRun"
-
+#define kDeviceToken @"deviceToken"
 #endif
 
 

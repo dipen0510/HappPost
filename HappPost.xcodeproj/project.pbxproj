@@ -130,6 +130,7 @@
 		18C0C0CA1C1C8F0D0060F9DF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C0C0C91C1C8F0D0060F9DF /* CoreData.framework */; };
 		18C0C0CC1C1C8F160060F9DF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C0C0CB1C1C8F160060F9DF /* SystemConfiguration.framework */; };
 		18F21B191C18F4D600BAD106 /* GoogleAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F21B181C18F4D600BAD106 /* GoogleAnalyticsHelper.m */; };
+		D4A3CEFF1C450EBE005D9428 /* radio_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A3CEFE1C450EBE005D9428 /* radio_fill.png */; };
 		E897DE6AAB36E9D822A916D8 /* libPods-HappPost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2490601CA980886BDAF1D3F7 /* libPods-HappPost.a */; };
 /* End PBXBuildFile section */
 
@@ -362,6 +363,7 @@
 		18F21B181C18F4D600BAD106 /* GoogleAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsHelper.m; sourceTree = "<group>"; };
 		2490601CA980886BDAF1D3F7 /* libPods-HappPost.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HappPost.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FBE6F01B800EFA6F7EB4070 /* Pods-HappPost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappPost.release.xcconfig"; path = "Pods/Target Support Files/Pods-HappPost/Pods-HappPost.release.xcconfig"; sourceTree = "<group>"; };
+		D4A3CEFE1C450EBE005D9428 /* radio_fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_fill.png; sourceTree = "<group>"; };
 		DC838FBA122D124D9E159CA1 /* Pods-HappPost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappPost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HappPost/Pods-HappPost.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -747,6 +749,7 @@
 		18BDF7951BFBA88A003B7D7D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D4A3CEFE1C450EBE005D9428 /* radio_fill.png */,
 				188082EC1C1D526500BB6EB7 /* icnMenu.png */,
 				18858EFE1C19F0B20039805C /* menuDropArrow.png */,
 				18858EFC1C19F01C0039805C /* menuArrow.png */,
@@ -928,6 +931,7 @@
 				18BDF7AF1BFBA88A003B7D7D /* lifestyle.png in Resources */,
 				187197251C039C0500ACC58B /* MenuView.xib in Resources */,
 				18BDF7A81BFBA88A003B7D7D /* business.png in Resources */,
+				D4A3CEFF1C450EBE005D9428 /* radio_fill.png in Resources */,
 				18BDF7BF1BFBAB8F003B7D7D /* ListViewTableViewCell.xib in Resources */,
 				1801B89A1C0AD15600AA82CA /* SVProgressHUD.bundle in Resources */,
 				188D52D31C12567B00C92A0E /* NSDateTimeAgo.bundle in Resources */,
@@ -1207,15 +1211,15 @@
 			baseConfigurationReference = DC838FBA122D124D9E159CA1 /* Pods-HappPost.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sorbojeet Chatterjee (JR5944AAL5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Henryk Schmied (BLSCG3CGJQ)";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = HappPost/PrefixHeader.pch;
 				INFOPLIST_FILE = HappPost/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.stardeep.happpost;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aimia.pampers.loyalty;
 				PRODUCT_NAME = "Happ Post";
-				PROVISIONING_PROFILE = "90c0ee94-9df9-4293-9084-fc441aeab04e";
+				PROVISIONING_PROFILE = "92afc3bf-9bd8-4d63-ad23-f5d6a11256f3";
 			};
 			name = Debug;
 		};
@@ -1224,15 +1228,15 @@
 			baseConfigurationReference = 3FBE6F01B800EFA6F7EB4070 /* Pods-HappPost.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sorbojeet Chatterjee (JR5944AAL5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Henryk Schmied (BLSCG3CGJQ)";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = HappPost/PrefixHeader.pch;
 				INFOPLIST_FILE = HappPost/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.stardeep.happpost;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aimia.pampers.loyalty;
 				PRODUCT_NAME = "Happ Post";
-				PROVISIONING_PROFILE = "90c0ee94-9df9-4293-9084-fc441aeab04e";
+				PROVISIONING_PROFILE = "92afc3bf-9bd8-4d63-ad23-f5d6a11256f3";
 			};
 			name = Release;
 		};

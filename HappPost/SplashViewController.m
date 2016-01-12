@@ -162,12 +162,17 @@
 
 - (NSMutableDictionary *) prepareDictionaryForSkipregistration {
     
+    NSString* deviceToken = [[NSUserDefaults standardUserDefaults] valueForKey:kDeviceToken];
+    if (!deviceToken) {
+        deviceToken = @"111";
+    }
+    
     registerObj = [[RegisterRequestObject alloc] init];
     registerObj.email = @"";
     registerObj.name = @"";
-    registerObj.deviceId = @"111";
+    registerObj.deviceId = deviceToken;
     registerObj.deviceTypeId = iOSDeviceType;
-    registerObj.gcmId = @"222";
+    registerObj.gcmId = deviceToken;
     registerObj.ver = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     
     return [registerObj createRequestDictionary];

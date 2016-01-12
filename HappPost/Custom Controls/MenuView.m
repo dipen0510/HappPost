@@ -47,10 +47,15 @@
     
     self.menuTableViewHeightConstraint.constant = 55.;
     self.genreTableViewHeightConstraint.constant = 55.;
-     //self.notificationsTableViewHeightConstraint.constant = 55.;
+     self.notificationsTableViewHeightConstraint.constant = 55.;
      self.finePrintTableViewHeightConstraint.constant = 55.;
     
     [self.menuTableView setBackgroundColor:[UIColor clearColor]];
+    
+    settingsDict = [[NSMutableDictionary alloc] init];
+    settingsDict = [[DBManager sharedManager] getAllSettings] ;
+    selectedNotificationIndex = [[settingsDict valueForKey:notificationSettingKey] intValue] - 1;
+    
     
 //    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
 //    tapGesture.delegate = self;
@@ -144,7 +149,7 @@
         numOfRows = (int)[self.notificationsTableView numberOfRowsInSection:section];
         indexPaths = [self indexPathsForSection:section withNumberOfRows:numOfRows];
         [self.notificationsTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-       // self.notificationsTableViewHeightConstraint.constant = 55.;
+        self.notificationsTableViewHeightConstraint.constant = 55.;
         [_notificationsCollapsedSections addObject:@(section)];
         [self.notificationsTableView endUpdates];
         
@@ -193,7 +198,7 @@
         numOfRows = (int)[self.notificationsTableView numberOfRowsInSection:section];
         indexPaths = [self indexPathsForSection:section withNumberOfRows:numOfRows];
         [self.notificationsTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-     //   self.notificationsTableViewHeightConstraint.constant = 55.;
+        self.notificationsTableViewHeightConstraint.constant = 55.;
         [_notificationsCollapsedSections addObject:@(section)];
         [self.notificationsTableView endUpdates];
         
@@ -286,7 +291,7 @@
         numOfRows = (int)[self.notificationsTableView numberOfRowsInSection:section];
         indexPaths = [self indexPathsForSection:section withNumberOfRows:numOfRows];
         [self.notificationsTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-    //    self.notificationsTableViewHeightConstraint.constant = 55.;
+        self.notificationsTableViewHeightConstraint.constant = 55.;
         [_notificationsCollapsedSections addObject:@(section)];
         [self.notificationsTableView endUpdates];
         
@@ -398,7 +403,13 @@
         
         if (tableView == self.notificationsTableView) {
             
-            cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"radio"]];
+            if (indexPath.row == selectedNotificationIndex) {
+                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"radio_fill"]];
+            }
+            else {
+                cell.categoryImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"radio"]];
+            }
+            
             
             if (indexPath.row == 0) {
                 cell.categoryLabel.text = @"None";
@@ -511,6 +522,13 @@
             else {
                 [self.delegate privacyPolicyTapped];
             }
+            
+        }
+        else {
+            
+            selectedNotificationIndex = indexPath.row;
+            [self.notificationsTableView reloadData];
+            [[DBManager sharedManager] insertEntryIntoSettingsTableWithTimeStamp:[settingsDict valueForKey:timestampKey] andNotificationSetting:[NSString stringWithFormat:@"%ld",(selectedNotificationIndex+1)]];
             
         }
         

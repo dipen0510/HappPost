@@ -32,6 +32,10 @@
     NSMutableSet* _notificationsCollapsedSections;
     NSMutableSet* _finePrintCollapsedSections;
     
+    NSMutableDictionary* settingsDict;
+    
+    long selectedNotificationIndex;
+    
 }
 
 @property (nonatomic,assign)  id <MenuViewDelegate> delegate;
