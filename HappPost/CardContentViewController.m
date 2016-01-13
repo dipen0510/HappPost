@@ -374,7 +374,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
 
 - (void) shareHappButtonTapped:(id)sender {
     
-    [self shareText:[NSString stringWithFormat:@"Add some sunshine to your life.\nDownload Happ Post from %@",HappPostAppShareURL] andImage:nil andUrl:[NSURL URLWithString:HappPostAppShareURL]];
+    [self shareText:[NSString stringWithFormat:@"Add some sunshine to your life.\nDownload Happ Post from %@",HappPostAppShareURL] andImage:nil andUrl:nil];
     
 }
 

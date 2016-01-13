@@ -80,8 +80,8 @@
         [[DBManager sharedManager] insertEntryIntoUserTableWithUserId:responseData.userId andOtherUserDetails:registerObj];
         
         [SVProgressHUD dismiss];
-        
-        [self performSegueWithIdentifier:@"showVerifySegue" sender:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        //[self performSegueWithIdentifier:@"showVerifySegue" sender:nil];
         
     }
     

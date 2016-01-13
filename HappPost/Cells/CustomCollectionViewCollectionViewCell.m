@@ -50,6 +50,16 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
     _authorName.text = cardModel.author;
     _dateTime.text = cardModel.dateTime;
     
+    CGSize size = [_heading sizeOfMultiLineLabel];
+    if (size.height < 50) {
+        self.headingBGViewHeightConstraint.constant = 40.0;
+        self.headingHeightConstraint.constant = 40.0;
+    }
+    else {
+        self.headingBGViewHeightConstraint.constant = 59.0;
+        self.headingHeightConstraint.constant = 59.0;
+    }
+    
     newsId = cardModel.newsId;
 
     [summary setContentOffset:CGPointZero animated:YES];

@@ -40,5 +40,7 @@ extern NSString *const kCustomCellIdentifier;
 @property (weak, nonatomic) IBOutlet UIView *imageContainerView;
 @property (weak, nonatomic) IBOutlet UIView *headingBGView;
 @property (weak, nonatomic) IBOutlet YTPlayerView *playerView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *headingBGViewHeightConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *headingHeightConstraint;
 
 @end

@@ -129,8 +129,8 @@
 		18C0C0C81C1C8F060060F9DF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C0C0C71C1C8F060060F9DF /* libz.tbd */; };
 		18C0C0CA1C1C8F0D0060F9DF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C0C0C91C1C8F0D0060F9DF /* CoreData.framework */; };
 		18C0C0CC1C1C8F160060F9DF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C0C0CB1C1C8F160060F9DF /* SystemConfiguration.framework */; };
-		18DFE20C1C45906600411CB2 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DFE20B1C45906600411CB2 /* FBSDKCoreKit.framework */; };
 		18F21B191C18F4D600BAD106 /* GoogleAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F21B181C18F4D600BAD106 /* GoogleAnalyticsHelper.m */; };
+		D412D0901C46769F00A6AE24 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D412D08F1C46769F00A6AE24 /* FBSDKCoreKit.framework */; };
 		D4A3CEFF1C450EBE005D9428 /* radio_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A3CEFE1C450EBE005D9428 /* radio_fill.png */; };
 		E897DE6AAB36E9D822A916D8 /* libPods-HappPost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2490601CA980886BDAF1D3F7 /* libPods-HappPost.a */; };
 /* End PBXBuildFile section */
@@ -360,11 +360,11 @@
 		18C0C0C71C1C8F060060F9DF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		18C0C0C91C1C8F0D0060F9DF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		18C0C0CB1C1C8F160060F9DF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		18DFE20B1C45906600411CB2 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		18F21B171C18F4D600BAD106 /* GoogleAnalyticsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsHelper.h; sourceTree = "<group>"; };
 		18F21B181C18F4D600BAD106 /* GoogleAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsHelper.m; sourceTree = "<group>"; };
 		2490601CA980886BDAF1D3F7 /* libPods-HappPost.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HappPost.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FBE6F01B800EFA6F7EB4070 /* Pods-HappPost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappPost.release.xcconfig"; path = "Pods/Target Support Files/Pods-HappPost/Pods-HappPost.release.xcconfig"; sourceTree = "<group>"; };
+		D412D08F1C46769F00A6AE24 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		D4A3CEFE1C450EBE005D9428 /* radio_fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_fill.png; sourceTree = "<group>"; };
 		DC838FBA122D124D9E159CA1 /* Pods-HappPost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappPost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HappPost/Pods-HappPost.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -375,9 +375,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				18C0C0CC1C1C8F160060F9DF /* SystemConfiguration.framework in Frameworks */,
-				18DFE20C1C45906600411CB2 /* FBSDKCoreKit.framework in Frameworks */,
 				18C0C0CA1C1C8F0D0060F9DF /* CoreData.framework in Frameworks */,
 				18C0C0C81C1C8F060060F9DF /* libz.tbd in Frameworks */,
+				D412D0901C46769F00A6AE24 /* FBSDKCoreKit.framework in Frameworks */,
 				18945D721C0AE6B4007D6A26 /* libsqlite3.tbd in Frameworks */,
 				E897DE6AAB36E9D822A916D8 /* libPods-HappPost.a in Frameworks */,
 			);
@@ -805,7 +805,7 @@
 		18DFE20A1C45902600411CB2 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
-				18DFE20B1C45906600411CB2 /* FBSDKCoreKit.framework */,
+				D412D08F1C46769F00A6AE24 /* FBSDKCoreKit.framework */,
 			);
 			name = Facebook;
 			sourceTree = "<group>";
@@ -1235,7 +1235,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.HappPost;
 				PRODUCT_NAME = "Happ Post";
-				PROVISIONING_PROFILE = "8cbaef95-94b0-4c6e-a1c5-d718ba79197e";
+				PROVISIONING_PROFILE = "7d7bea2b-dd77-4d14-875d-401e5c7e22a3";
 			};
 			name = Debug;
 		};
@@ -1256,7 +1256,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.HappPost;
 				PRODUCT_NAME = "Happ Post";
-				PROVISIONING_PROFILE = "8cbaef95-94b0-4c6e-a1c5-d718ba79197e";
+				PROVISIONING_PROFILE = "7d7bea2b-dd77-4d14-875d-401e5c7e22a3";
 			};
 			name = Release;
 		};

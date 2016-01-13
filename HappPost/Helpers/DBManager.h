@@ -65,5 +65,8 @@ FOUNDATION_EXPORT NSString* getRiverImagesURL;
 -(void) deleteBookmarksWithNewsId:(NSString *)newsId;
 -(void) deleteNewsWithNewsId:(NSString *)newsId;
 -(void) deleteAllEntriesFromMasterGenreTable;
+-(void) deleteNewsGenresWithNewsId:(NSString *)newsId;
+-(void) deleteNewsCommentsWithNewsId:(NSString *)newsId;
+-(void) deleteNewsInfographicsWithNewsId:(NSString *)newsId;
 
 @end

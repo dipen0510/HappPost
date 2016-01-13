@@ -971,6 +971,26 @@ static DBManager *sharedObject = nil;
     }
 }
 
+-(void) deleteNewsGenresWithNewsId:(NSString *)newsId {
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= [NSString stringWithFormat:@"DELETE FROM NEWSGENRES where newsId = %@",newsId];
+        if (![objectDB executeUpdate:query withArgumentsInArray:nil]) {
+            
+            NSLog(@"delete from NEWSGENRES failed: %@)",[objectDB lastErrorMessage]);
+            
+        }
+        else {
+            NSLog(@"NEWSGENRES Data %@ deleted Successfully",newsId);
+        }
+        [objectDB close];
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+}
+
 
 #pragma mark - NEWSCOMMENTS TABLE
 
@@ -1063,6 +1083,26 @@ static DBManager *sharedObject = nil;
     }
 }
 
+-(void) deleteNewsCommentsWithNewsId:(NSString *)newsId {
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= [NSString stringWithFormat:@"DELETE FROM NEWSCOMMENTS where newsId = %@",newsId];
+        if (![objectDB executeUpdate:query withArgumentsInArray:nil]) {
+            
+            NSLog(@"delete from NEWSCOMMENTS failed: %@)",[objectDB lastErrorMessage]);
+            
+        }
+        else {
+            NSLog(@"NEWSCOMMENTS Data %@ deleted Successfully",newsId);
+        }
+        [objectDB close];
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+}
+
 #pragma mark - NEWSINFOGRAPHICS TABLE
 
 -(void) insertEntryIntoNewsInfographicsTableWithCommentArr:(NSMutableArray *)newsInfographicsArr andNewsId:(NSString *)newsId {
@@ -1144,6 +1184,27 @@ static DBManager *sharedObject = nil;
         }
         else {
             NSLog(@"NEWSINFOGRAPHICS Data deleted Successfully");
+        }
+        [objectDB close];
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+}
+
+
+-(void) deleteNewsInfographicsWithNewsId:(NSString *)newsId {
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= [NSString stringWithFormat:@"DELETE FROM NEWSINFOGRAPHICS where newsId = %@",newsId];
+        if (![objectDB executeUpdate:query withArgumentsInArray:nil]) {
+            
+            NSLog(@"delete from NEWSINFOGRAPHICS failed: %@)",[objectDB lastErrorMessage]);
+            
+        }
+        else {
+            NSLog(@"NEWSINFOGRAPHICS Data %@ deleted Successfully",newsId);
         }
         [objectDB close];
     }

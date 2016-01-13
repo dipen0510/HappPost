@@ -82,6 +82,11 @@ static SharedClass *singletonObject = nil;
         
         SingleNewsObject* singleNewsObj = [[SingleNewsObject alloc] initWithDictionary:[insertArr objectAtIndex:i]];
         
+        [[DBManager sharedManager] deleteNewsWithNewsId:singleNewsObj.newsId];
+        [[DBManager sharedManager] deleteNewsCommentsWithNewsId:singleNewsObj.newsId];
+        [[DBManager sharedManager] deleteNewsGenresWithNewsId:singleNewsObj.newsId];
+        [[DBManager sharedManager] deleteNewsInfographicsWithNewsId:singleNewsObj.newsId];
+        
         [[DBManager sharedManager] insertEntryIntoNewsTableWithObj:singleNewsObj];
         [[DBManager sharedManager] insertEntryIntoNewsCommentsTableWithCommentArr:singleNewsObj.newsComments andNewsId:singleNewsObj.newsId];
         [[DBManager sharedManager] insertEntryIntoNewsGenresTableWithGenreArr:singleNewsObj.newsGenres andNewsId:singleNewsObj.newsId];
