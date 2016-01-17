@@ -79,7 +79,7 @@
 #define iOSDeviceType @"2"
 #define isFirstRun @"isFirstRun"
 #define myNewsUserDefaultsKey @"myNewsUserDefaultsKey"
-#define SecondRunKey @"SecondRun"
+#define SecondRunKey @"SecondRunv1.0.2"
 #define kDeviceToken @"deviceToken"
 #endif
 

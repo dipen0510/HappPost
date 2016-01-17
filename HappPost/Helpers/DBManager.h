@@ -41,6 +41,7 @@ FOUNDATION_EXPORT NSString* getRiverImagesURL;
 -(NSMutableArray *) getAllNewsForSearchedText:(NSString *)text;
 -(NSMutableArray *) getAllMasterGenres;
 -(NSString *) getNameFrommasterGenreForId:(NSString *)genreId;
+-(BOOL) isNewsIdSmiled:(NSString *)newsId;
 
 //INSERT DATA
 
@@ -52,6 +53,7 @@ FOUNDATION_EXPORT NSString* getRiverImagesURL;
 -(void) insertEntryIntoNewsInfographicsTableWithCommentArr:(NSMutableArray *)newsInfographicsArr andNewsId:(NSString *)newsId;
 -(void) insertEntryIntoBookmarksWithNewsId:(NSString *)newsId;
 -(void) insertEntryIntoMasterGenresTableWithGenreArr:(NSMutableArray *)newsGenresArr;
+-(void) insertEntryIntoSmileyWithNewsId:(NSString *)newsId;
 
 
 //DELETE DATA
@@ -68,5 +70,6 @@ FOUNDATION_EXPORT NSString* getRiverImagesURL;
 -(void) deleteNewsGenresWithNewsId:(NSString *)newsId;
 -(void) deleteNewsCommentsWithNewsId:(NSString *)newsId;
 -(void) deleteNewsInfographicsWithNewsId:(NSString *)newsId;
+-(void) deleteSmileyWithNewsId:(NSString *)newsId;
 
 @end

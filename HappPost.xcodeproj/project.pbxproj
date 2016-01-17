@@ -90,6 +90,10 @@
 		188D52CD1C1211AA00C92A0E /* videoPlayerPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 188D52CC1C1211AA00C92A0E /* videoPlayerPlaceholder.png */; };
 		188D52D21C12567B00C92A0E /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D52D01C12567B00C92A0E /* NSDate+TimeAgo.m */; };
 		188D52D31C12567B00C92A0E /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 188D52D11C12567B00C92A0E /* NSDateTimeAgo.bundle */; };
+		188DE9E51C4C224F005EBDBC /* smiling.png in Resources */ = {isa = PBXBuildFile; fileRef = 188DE9E11C4C224F005EBDBC /* smiling.png */; };
+		188DE9E61C4C224F005EBDBC /* smily-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 188DE9E21C4C224F005EBDBC /* smily-2.png */; };
+		188DE9E81C4C224F005EBDBC /* smily-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 188DE9E41C4C224F005EBDBC /* smily-4.png */; };
+		188DE9EB1C4C2D20005EBDBC /* SmileyRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 188DE9EA1C4C2D20005EBDBC /* SmileyRequestObject.m */; };
 		18908A7C1BFCFD9E008A7252 /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = 18908A7B1BFCFD9E008A7252 /* border.png */; };
 		18945D591C0AD956007D6A26 /* NewsContentRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 18945D581C0AD956007D6A26 /* NewsContentRequestObject.m */; };
 		18945D5C1C0ADA64007D6A26 /* NewsContentResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 18945D5B1C0ADA64007D6A26 /* NewsContentResponseObject.m */; };
@@ -304,6 +308,11 @@
 		188D52CF1C12567B00C92A0E /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
 		188D52D01C12567B00C92A0E /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeAgo.m"; sourceTree = "<group>"; };
 		188D52D11C12567B00C92A0E /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
+		188DE9E11C4C224F005EBDBC /* smiling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiling.png; sourceTree = "<group>"; };
+		188DE9E21C4C224F005EBDBC /* smily-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smily-2.png"; sourceTree = "<group>"; };
+		188DE9E41C4C224F005EBDBC /* smily-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smily-4.png"; sourceTree = "<group>"; };
+		188DE9E91C4C2D20005EBDBC /* SmileyRequestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmileyRequestObject.h; sourceTree = "<group>"; };
+		188DE9EA1C4C2D20005EBDBC /* SmileyRequestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmileyRequestObject.m; sourceTree = "<group>"; };
 		18908A7B1BFCFD9E008A7252 /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border.png; sourceTree = "<group>"; };
 		18945D571C0AD956007D6A26 /* NewsContentRequestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsContentRequestObject.h; sourceTree = "<group>"; };
 		18945D581C0AD956007D6A26 /* NewsContentRequestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsContentRequestObject.m; sourceTree = "<group>"; };
@@ -471,6 +480,8 @@
 				181D3F0A1C138BCE00C3C1DB /* AddCommentRequestObject.m */,
 				1805479A1C18E75400E604EB /* VerifyRequestObject.h */,
 				1805479B1C18E75400E604EB /* VerifyRequestObject.m */,
+				188DE9E91C4C2D20005EBDBC /* SmileyRequestObject.h */,
+				188DE9EA1C4C2D20005EBDBC /* SmileyRequestObject.m */,
 			);
 			name = RequestObj;
 			sourceTree = "<group>";
@@ -753,6 +764,9 @@
 		18BDF7951BFBA88A003B7D7D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				188DE9E11C4C224F005EBDBC /* smiling.png */,
+				188DE9E21C4C224F005EBDBC /* smily-2.png */,
+				188DE9E41C4C224F005EBDBC /* smily-4.png */,
 				D4A3CEFE1C450EBE005D9428 /* radio_fill.png */,
 				188082EC1C1D526500BB6EB7 /* icnMenu.png */,
 				18858EFE1C19F0B20039805C /* menuDropArrow.png */,
@@ -918,12 +932,14 @@
 				18BDF77A1BFBA4EB003B7D7D /* Main.storyboard in Resources */,
 				181D3EFD1C1367B100C3C1DB /* AddCommentsTableViewCell.xib in Resources */,
 				18BDF7A91BFBA88A003B7D7D /* check.png in Resources */,
+				188DE9E81C4C224F005EBDBC /* smily-4.png in Resources */,
 				18BDF77F1BFBA4EB003B7D7D /* LaunchScreen.xib in Resources */,
 				1801B82D1C0AB81B00AA82CA /* happ post .png in Resources */,
 				180B3C401C0B9F3D009D364B /* placeholder.png in Resources */,
 				1882FADD1C10C9AB0063499C /* splash.png in Resources */,
 				180547931C18C52900E604EB /* titleLogo.png in Resources */,
 				18BDF7AB1BFBA88A003B7D7D /* entertainment.png in Resources */,
+				188DE9E61C4C224F005EBDBC /* smily-2.png in Resources */,
 				18BDF7B81BFBA88A003B7D7D /* trending.png in Resources */,
 				1829BC461C162A5A005F9EB8 /* refresh.png in Resources */,
 				188D52C91C120B1800C92A0E /* Assets.bundle in Resources */,
@@ -951,6 +967,7 @@
 				18858EFF1C19F0B20039805C /* menuDropArrow.png in Resources */,
 				18BDF7B11BFBA88A003B7D7D /* share.png in Resources */,
 				18C0C0C61C1C8BBC0060F9DF /* GoogleService-Info.plist in Resources */,
+				188DE9E51C4C224F005EBDBC /* smiling.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,6 +1060,7 @@
 				182B20C41C01057B000AD63D /* CustomCollectionViewCollectionViewCell.m in Sources */,
 				1829BC331C160F12005F9EB8 /* SDWebImageDownloader.m in Sources */,
 				1801B86C1C0ABEF700AA82CA /* AFURLResponseSerialization.m in Sources */,
+				188DE9EB1C4C2D20005EBDBC /* SmileyRequestObject.m in Sources */,
 				1801B89C1C0AD15600AA82CA /* SVRadialGradientLayer.m in Sources */,
 				1829BC301C160F12005F9EB8 /* SDImageCache.m in Sources */,
 				181D3EFC1C1367B100C3C1DB /* AddCommentsTableViewCell.m in Sources */,
@@ -1235,7 +1253,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.HappPost;
 				PRODUCT_NAME = "Happ Post";
-				PROVISIONING_PROFILE = "7d7bea2b-dd77-4d14-875d-401e5c7e22a3";
+				PROVISIONING_PROFILE = "8cbaef95-94b0-4c6e-a1c5-d718ba79197e";
 			};
 			name = Debug;
 		};
@@ -1256,7 +1274,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.HappPost;
 				PRODUCT_NAME = "Happ Post";
-				PROVISIONING_PROFILE = "7d7bea2b-dd77-4d14-875d-401e5c7e22a3";
+				PROVISIONING_PROFILE = "8cbaef95-94b0-4c6e-a1c5-d718ba79197e";
 			};
 			name = Release;
 		};

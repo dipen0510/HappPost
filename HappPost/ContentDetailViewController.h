@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateTimeLabel;
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
 @property (strong, nonatomic) IBOutlet UILabel *authorBioLabel;
+@property (weak, nonatomic) IBOutlet UIButton *smileyButton;
 
 @property (strong, nonatomic) SingleNewsObject* newsObj;
 
@@ -47,4 +48,5 @@
 
 - (IBAction)menuButtonTapped:(id)sender;
 - (IBAction)shareButtonTapped:(id)sender;
+- (IBAction)smileyButtonTapped:(id)sender;
 @end

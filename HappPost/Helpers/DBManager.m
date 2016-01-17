@@ -28,6 +28,8 @@ NSString* create_TblBookmarks_table = @"CREATE TABLE IF NOT EXISTS BOOKMARKS (ne
 
 NSString* create_TblMasterGenres_table = @"CREATE TABLE IF NOT EXISTS MASTERGENRES (genreId TEXT PRIMARY KEY, active TEXT, dateCreated TEXT, name TEXT)";
 
+NSString* create_TblSmiley_table = @"CREATE TABLE IF NOT EXISTS SMILEY (newsId TEXT PRIMARY KEY)";
+
 NSString* drop_TblUser_table = @"DROP TABLE IF EXISTS USER";
 NSString* drop_TblNews_table = @"DROP TABLE IF EXISTS NEWS";
 NSString* drop_TblNewsComments_table = @"DROP TABLE IF EXISTS NEWSCOMMENTS";
@@ -36,6 +38,7 @@ NSString* drop_TblNewsInfographics_table = @"DROP TABLE IF EXISTS NEWSINFOGRAPHI
 NSString* drop_TblSettings_table = @"DROP TABLE IF EXISTS SETTINGS";
 NSString* drop_TblBookmarks_table = @"DROP TABLE IF EXISTS BOOKMARKS";
 NSString* drop_TblMasterGenres_table = @"DROP TABLE IF EXISTS MASTERGENRES";
+NSString* drop_TblSmiley_table = @"DROP TABLE IF EXISTS SMILEY";
 
 
 @implementation DBManager
@@ -153,6 +156,15 @@ static DBManager *sharedObject = nil;
                 NSLog(@"Failed to create MASTERGENRES table: %@)",[objectDB lastErrorMessage]);
             }
             
+            if([objectDB executeUpdate:create_TblSmiley_table withArgumentsInArray:nil])
+            {
+                NSLog(@"SMILEY table created");
+            }
+            else
+            {
+                NSLog(@"Failed to create SMILEY table: %@)",[objectDB lastErrorMessage]);
+            }
+            
             
             [objectDB close];
             
@@ -247,6 +259,15 @@ static DBManager *sharedObject = nil;
                     NSLog(@"Failed to droppped MASTERGENRES table: %@)",[objectDB lastErrorMessage]);
                 }
                 
+                if([objectDB executeUpdate:drop_TblSmiley_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"SMILEY table droppped");
+                }
+                else
+                {
+                    NSLog(@"Failed to droppped SMILEY table: %@)",[objectDB lastErrorMessage]);
+                }
+                
                 
                 
                 //CREATING FRESH SCHEMAS
@@ -321,6 +342,15 @@ static DBManager *sharedObject = nil;
                 else
                 {
                     NSLog(@"Failed to create MASTERGENRES table: %@)",[objectDB lastErrorMessage]);
+                }
+                
+                if([objectDB executeUpdate:create_TblSmiley_table withArgumentsInArray:nil])
+                {
+                    NSLog(@"SMILEY table created");
+                }
+                else
+                {
+                    NSLog(@"Failed to create SMILEY table: %@)",[objectDB lastErrorMessage]);
                 }
                 
                 
@@ -1411,5 +1441,83 @@ static DBManager *sharedObject = nil;
         NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
     }
 }
+
+
+
+#pragma mark - SMILEY TABLE
+
+-(void) insertEntryIntoSmileyWithNewsId:(NSString *)newsId {
+    
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    
+    NSArray* arr = [NSArray arrayWithObjects:newsId, nil];
+    
+    if ([objectDB open]) {
+        NSString* query = @"INSERT INTO SMILEY (newsId) VALUES (?)";
+        if (![objectDB executeUpdate:query withArgumentsInArray:arr]) {
+            
+            NSLog(@"insert into SMILEY table failed: %@)",[objectDB lastErrorMessage]);
+            
+        }
+        else {
+            NSLog(@"SMILEY Data inserted Successfully");
+        }
+        
+        [objectDB close];
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+}
+
+
+
+-(void) deleteSmileyWithNewsId:(NSString *)newsId {
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= [NSString stringWithFormat:@"DELETE FROM SMILEY where newsId = %@",newsId];
+        if (![objectDB executeUpdate:query withArgumentsInArray:nil]) {
+            
+            NSLog(@"delete from SMILEY failed: %@)",[objectDB lastErrorMessage]);
+            
+        }
+        else {
+            NSLog(@"SMILEY Data deleted Successfully");
+        }
+        [objectDB close];
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+}
+
+
+-(BOOL) isNewsIdSmiled:(NSString *)newsId {
+    
+    NSString* databasePath = [self getDatabasePath];
+    FMDatabase* objectDB = [[FMDatabase alloc] initWithPath:databasePath];
+    if ([objectDB open]) {
+        NSString* query= @"SELECT * from SMILEY where newsId = ?";
+        FMResultSet* resultSet = [objectDB executeQuery:query withArgumentsInArray:[NSArray arrayWithObject:newsId]];
+        if ([resultSet next]) {
+            
+            [objectDB close];
+            return true;
+            
+        }
+        
+        
+        [objectDB close];
+        
+    }
+    else {
+        NSLog(@"Failed to open/create database: %@)",[objectDB lastErrorMessage]);
+    }
+    
+    return false;
+}
+
 
 @end

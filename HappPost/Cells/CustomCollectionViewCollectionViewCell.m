@@ -15,6 +15,7 @@
 #import "UIImageView+WebCache.h"
 
 #import "DBManager.h"
+#import "SmileyRequestObject.h"
 
 NSString *const kCustomCellIdentifier = @"CustomCell";
 
@@ -84,6 +85,20 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
         [_heading setTextColor:[UIColor whiteColor]];
         
     }
+    
+    
+    if ([[DBManager sharedManager] isNewsIdSmiled:newsId]) {
+        
+        [self.smileyButton setImage:[UIImage imageNamed:@"smily-2.png"] forState:UIControlStateNormal];
+        
+    }
+    else {
+        
+        [self.smileyButton setImage:[UIImage imageNamed:@"smiling.png"] forState:UIControlStateNormal];
+        
+    }
+    
+    
     
     if ([self isVideoURL:cardModel.imgURL]) {
         
@@ -226,6 +241,45 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
     
 }
 
+- (IBAction)smileyButtonTapped:(id)sender {
+    
+    if (![[DBManager sharedManager] isNewsIdSmiled:newsId]) {
+        
+        [self.smileyButton setImage:[UIImage imageNamed:@"smily-2.png"] forState:UIControlStateNormal];
+        [self startMarkSmileService];
+        [[DBManager sharedManager] insertEntryIntoSmileyWithNewsId:newsId];
+
+        
+    }
+    else {
+        
+        [self.smileyButton setImage:[UIImage imageNamed:@"smiling.png"] forState:UIControlStateNormal];
+        [self startMarkUnsmileService];
+        [[DBManager sharedManager] deleteSmileyWithNewsId:newsId];
+        
+    }
+    
+    
+}
+
+#pragma mark - API Handling
+
+-(void) startMarkSmileService {
+
+    DataSyncManager* manager = [[DataSyncManager alloc] init];
+    manager.serviceKey = kMarkSmile;
+    [manager startPOSTWebServicesWithParams:[self prepareDictionaryForSmile]];
+    
+}
+
+-(void) startMarkUnsmileService {
+    
+    DataSyncManager* manager = [[DataSyncManager alloc] init];
+    manager.serviceKey = kMarkUnSmile;
+    [manager startPOSTWebServicesWithParams:[self prepareDictionaryForSmile]];
+    
+}
+
 
 - (BOOL) isVideoURL:(NSString *)url {
     
@@ -236,14 +290,17 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
     
 }
 
+#pragma mark - Modalobject
 
-//-(void)prepareForReuse {
-//    
-//    [super prepareForReuse];
-//    
-//    
-//    
-//}
+- (NSMutableDictionary *) prepareDictionaryForSmile {
+    
+    SmileyRequestObject* requestObj = [[SmileyRequestObject alloc] init];
+    requestObj.userId = [[SharedClass sharedInstance] userId];
+    requestObj.newsId = newsId;
+    
+    return [requestObj createRequestDictionary];
+    
+}
 
 
 #pragma mark - Youtube Player Delegates
@@ -258,5 +315,6 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
 - (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state{}
 - (void)playerView:(YTPlayerView *)playerView didChangeToQuality:(YTPlaybackQuality)quality{}
 - (void)playerView:(YTPlayerView *)playerView receivedError:(YTPlayerError)error{}
+
 
 @end

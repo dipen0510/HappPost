@@ -12,6 +12,7 @@
 #import "UserCommenstsTableViewCell.h"
 #import "NewsCommentObject.h"
 #import "AddCommentRequestObject.h"
+#import "SmileyRequestObject.h"
 
 @interface ContentDetailViewController ()
 
@@ -107,6 +108,17 @@
     else {
         
         [self.headingLabel setTextColor:[UIColor whiteColor]];
+        
+    }
+    
+    if ([[DBManager sharedManager] isNewsIdSmiled:newsObj.newsId]) {
+        
+        [self.smileyButton setImage:[UIImage imageNamed:@"smily-2.png"] forState:UIControlStateNormal];
+        
+    }
+    else {
+        
+        [self.smileyButton setImage:[UIImage imageNamed:@"smily-4.png"] forState:UIControlStateNormal];
         
     }
     
@@ -548,7 +560,28 @@
 - (IBAction)shareButtonTapped:(id)sender {
     
     //[self share];
-    [self shareText:[NSString stringWithFormat:@"%@.\n\n\%@.\n\nvia HappPost\n\n",newsObj.heading,newsObj.subHeading] andImage:self.primaryImageView.image andUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", HappPostShareURL, newsObj.newsId]]];
+    [self shareText:[NSString stringWithFormat:@"%@.\n\n\%@.\n\nvia HappPost\n\n",newsObj.heading,newsObj.subHeading] andImage:self.primaryImageView.image andUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@.html", HappPostShareURL, newsObj.newsId]]];
+    
+}
+
+- (IBAction)smileyButtonTapped:(id)sender {
+    
+    if (![[DBManager sharedManager] isNewsIdSmiled:newsObj.newsId]) {
+        
+        [self.smileyButton setImage:[UIImage imageNamed:@"smily-2.png"] forState:UIControlStateNormal];
+        [self startMarkSmileService];
+        [[DBManager sharedManager] insertEntryIntoSmileyWithNewsId:newsObj.newsId];
+        
+        
+    }
+    else {
+        
+        [self.smileyButton setImage:[UIImage imageNamed:@"smily-4.png"] forState:UIControlStateNormal];
+        [self startMarkUnsmileService];
+        [[DBManager sharedManager] deleteSmileyWithNewsId:newsObj.newsId];
+        
+    }
+    
     
 }
 
@@ -641,6 +674,37 @@
         // Do end work here when finger is lifted
     }
     
+    
+}
+
+
+#pragma mark - API Handling
+
+-(void) startMarkSmileService {
+    
+    DataSyncManager* manager = [[DataSyncManager alloc] init];
+    manager.serviceKey = kMarkSmile;
+    [manager startPOSTWebServicesWithParams:[self prepareDictionaryForSmile]];
+    
+}
+
+-(void) startMarkUnsmileService {
+    
+    DataSyncManager* manager = [[DataSyncManager alloc] init];
+    manager.serviceKey = kMarkUnSmile;
+    [manager startPOSTWebServicesWithParams:[self prepareDictionaryForSmile]];
+    
+}
+
+#pragma mark - Modalobject
+
+- (NSMutableDictionary *) prepareDictionaryForSmile {
+    
+    SmileyRequestObject* requestObj = [[SmileyRequestObject alloc] init];
+    requestObj.userId = [[SharedClass sharedInstance] userId];
+    requestObj.newsId = newsObj.newsId;
+    
+    return [requestObj createRequestDictionary];
     
 }
 
