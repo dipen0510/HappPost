@@ -10,12 +10,13 @@
 #define HappPost_Settings_h
 
 
-#define BaseWebServiceURL @"http://services.happpost.com/HappostService"
+//#define BaseWebServiceURL @"http://services.happpost.com/HappostService"
+#define BaseWebServiceURL @"http://admin.happpost.com/HappostService"
 
 #define AboutUsURL @"http://happpost.com/Happ/AppHtml/Aboutus.html"
 #define PrivacyPolicyURL @"http://happpost.com/Happ/AppHtml/TermsAndCondition.html"
 
-#define HappPostShareURL @"http://services.happpost.com/website/dashboard.html#/Detail"
+#define HappPostShareURL @"http://www.happpost.com/hp/"
 #define HappPostGenreImageURL @"http://happpost.com/Happ/Genre"
 #define HappPostAppShareURL @"http://onelink.to/bbuvww"
 
@@ -25,6 +26,8 @@
 #define kAddComment @"InsertCommentNew"
 #define kVerifyService @"RegisteriOSUser"
 #define kGetMasterGenreList @"GetGenresList"
+#define kMarkSmile @"MarkSmile"
+#define kMarkUnSmile @"MarkUnSmile"
 
 #define kAppId @"1066218076"
 
