@@ -118,7 +118,7 @@
     }
     else {
         
-        [self.smileyButton setImage:[UIImage imageNamed:@"smily-4.png"] forState:UIControlStateNormal];
+        [self.smileyButton setImage:[UIImage imageNamed:@"smiling.png"] forState:UIControlStateNormal];
         
     }
     
@@ -576,7 +576,7 @@
     }
     else {
         
-        [self.smileyButton setImage:[UIImage imageNamed:@"smily-4.png"] forState:UIControlStateNormal];
+        [self.smileyButton setImage:[UIImage imageNamed:@"smiling.png"] forState:UIControlStateNormal];
         [self startMarkUnsmileService];
         [[DBManager sharedManager] deleteSmileyWithNewsId:newsObj.newsId];
         

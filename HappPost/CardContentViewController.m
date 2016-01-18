@@ -159,7 +159,7 @@ UICollectionViewDelegate,UICollectionViewDataSource
     }
     else {
         
-        self.backButtonLeftConstraint.constant = -65;
+        self.backButtonLeftConstraint.constant = -49;
         [self.refreshButton setHidden:NO];
         newsArr = [[DBManager sharedManager] getAllNews];
 

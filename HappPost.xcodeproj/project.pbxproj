@@ -92,7 +92,6 @@
 		188D52D31C12567B00C92A0E /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 188D52D11C12567B00C92A0E /* NSDateTimeAgo.bundle */; };
 		188DE9E51C4C224F005EBDBC /* smiling.png in Resources */ = {isa = PBXBuildFile; fileRef = 188DE9E11C4C224F005EBDBC /* smiling.png */; };
 		188DE9E61C4C224F005EBDBC /* smily-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 188DE9E21C4C224F005EBDBC /* smily-2.png */; };
-		188DE9E81C4C224F005EBDBC /* smily-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 188DE9E41C4C224F005EBDBC /* smily-4.png */; };
 		188DE9EB1C4C2D20005EBDBC /* SmileyRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 188DE9EA1C4C2D20005EBDBC /* SmileyRequestObject.m */; };
 		18908A7C1BFCFD9E008A7252 /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = 18908A7B1BFCFD9E008A7252 /* border.png */; };
 		18945D591C0AD956007D6A26 /* NewsContentRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 18945D581C0AD956007D6A26 /* NewsContentRequestObject.m */; };
@@ -310,7 +309,6 @@
 		188D52D11C12567B00C92A0E /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
 		188DE9E11C4C224F005EBDBC /* smiling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiling.png; sourceTree = "<group>"; };
 		188DE9E21C4C224F005EBDBC /* smily-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smily-2.png"; sourceTree = "<group>"; };
-		188DE9E41C4C224F005EBDBC /* smily-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smily-4.png"; sourceTree = "<group>"; };
 		188DE9E91C4C2D20005EBDBC /* SmileyRequestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmileyRequestObject.h; sourceTree = "<group>"; };
 		188DE9EA1C4C2D20005EBDBC /* SmileyRequestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmileyRequestObject.m; sourceTree = "<group>"; };
 		18908A7B1BFCFD9E008A7252 /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border.png; sourceTree = "<group>"; };
@@ -766,7 +764,6 @@
 			children = (
 				188DE9E11C4C224F005EBDBC /* smiling.png */,
 				188DE9E21C4C224F005EBDBC /* smily-2.png */,
-				188DE9E41C4C224F005EBDBC /* smily-4.png */,
 				D4A3CEFE1C450EBE005D9428 /* radio_fill.png */,
 				188082EC1C1D526500BB6EB7 /* icnMenu.png */,
 				18858EFE1C19F0B20039805C /* menuDropArrow.png */,
@@ -932,7 +929,6 @@
 				18BDF77A1BFBA4EB003B7D7D /* Main.storyboard in Resources */,
 				181D3EFD1C1367B100C3C1DB /* AddCommentsTableViewCell.xib in Resources */,
 				18BDF7A91BFBA88A003B7D7D /* check.png in Resources */,
-				188DE9E81C4C224F005EBDBC /* smily-4.png in Resources */,
 				18BDF77F1BFBA4EB003B7D7D /* LaunchScreen.xib in Resources */,
 				1801B82D1C0AB81B00AA82CA /* happ post .png in Resources */,
 				180B3C401C0B9F3D009D364B /* placeholder.png in Resources */,
@@ -1253,7 +1249,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.HappPost;
 				PRODUCT_NAME = "Happ Post";
-				PROVISIONING_PROFILE = "8cbaef95-94b0-4c6e-a1c5-d718ba79197e";
+				PROVISIONING_PROFILE = "7d7bea2b-dd77-4d14-875d-401e5c7e22a3";
 			};
 			name = Debug;
 		};
@@ -1274,7 +1270,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.HappPost;
 				PRODUCT_NAME = "Happ Post";
-				PROVISIONING_PROFILE = "8cbaef95-94b0-4c6e-a1c5-d718ba79197e";
+				PROVISIONING_PROFILE = "7d7bea2b-dd77-4d14-875d-401e5c7e22a3";
 			};
 			name = Release;
 		};

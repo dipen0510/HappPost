@@ -474,10 +474,12 @@
     if (tableView == self.genreTableView) {
         string = @"Genres";
         result.tag = 1;
+        dropButton.tag = 1;
     }
     else if (tableView == self.menuTableView) {
         string = @"My News";
         result.tag = 0;
+        dropButton.tag = 0;
         [view addSubview:myNewsRightButton];
         [result removeTarget:self action:@selector(sectionButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
         [result addTarget:self action:@selector(myNewsSectionTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -486,10 +488,12 @@
     else if (tableView == self.notificationsTableView) {
         string = @"My Notifications";
         result.tag = 2;
+        dropButton.tag = 2;
     }
     else {
         string = @"Fine Print";
         result.tag = 3;
+        dropButton.tag = 3;
     }
     
     /* Section header is in 0th index... */
