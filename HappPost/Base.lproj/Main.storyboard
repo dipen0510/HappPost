@@ -745,8 +745,8 @@ Cg
                                                                         <constraint firstAttribute="width" constant="67" id="cq2-pl-fxD"/>
                                                                         <constraint firstAttribute="height" constant="25" id="m3z-kZ-G6I"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                                    <state key="normal" title="+MORE">
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                                    <state key="normal" title="MORE">
                                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
                                                                     <connections>
