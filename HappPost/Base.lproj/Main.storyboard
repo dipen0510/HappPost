@@ -700,17 +700,6 @@ Cg
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAL-Hr-Tvt">
-                                                                    <rect key="frame" x="25" y="292" width="25" height="25"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="25" id="cq2-pl-fxD"/>
-                                                                        <constraint firstAttribute="height" constant="25" id="m3z-kZ-G6I"/>
-                                                                    </constraints>
-                                                                    <state key="normal" image="expand.png"/>
-                                                                    <connections>
-                                                                        <action selector="expandButtonTapped:" destination="4lm-Rr-60S" eventType="touchUpInside" id="8Lf-Po-dPU"/>
-                                                                    </connections>
-                                                                </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fh2-Mn-VNg">
                                                                     <rect key="frame" x="528" y="292" width="25" height="25"/>
                                                                     <constraints>
@@ -750,6 +739,20 @@ Cg
                                                                         <action selector="smileyButtonTapped:" destination="CE9-aU-Mii" eventType="touchUpInside" id="KeF-nf-mBC"/>
                                                                     </connections>
                                                                 </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAL-Hr-Tvt">
+                                                                    <rect key="frame" x="16" y="292" width="67" height="25"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="67" id="cq2-pl-fxD"/>
+                                                                        <constraint firstAttribute="height" constant="25" id="m3z-kZ-G6I"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                                    <state key="normal" title="+MORE">
+                                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <connections>
+                                                                        <action selector="expandButtonTapped:" destination="4lm-Rr-60S" eventType="touchUpInside" id="8Lf-Po-dPU"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.99215686270000003" green="0.85490196080000003" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
@@ -757,7 +760,7 @@ Cg
                                                                 <constraint firstItem="CUU-ZC-sKe" firstAttribute="top" secondItem="G6L-Xr-i5H" secondAttribute="bottom" constant="8" id="5jA-lE-rEw"/>
                                                                 <constraint firstItem="Mhe-ff-A1b" firstAttribute="top" secondItem="G6L-Xr-i5H" secondAttribute="bottom" constant="8" id="6sO-Jh-Qh1"/>
                                                                 <constraint firstAttribute="bottom" secondItem="fh2-Mn-VNg" secondAttribute="bottom" constant="8" id="9nR-UR-Ixv"/>
-                                                                <constraint firstItem="qAL-Hr-Tvt" firstAttribute="leading" secondItem="X19-dQ-NFq" secondAttribute="leading" constant="25" id="Lf8-OB-GoO"/>
+                                                                <constraint firstItem="qAL-Hr-Tvt" firstAttribute="leading" secondItem="X19-dQ-NFq" secondAttribute="leading" constant="16" id="Lf8-OB-GoO"/>
                                                                 <constraint firstAttribute="bottom" secondItem="qAL-Hr-Tvt" secondAttribute="bottom" constant="8" id="Lhj-7f-idg"/>
                                                                 <constraint firstAttribute="trailing" secondItem="rGu-0l-By3" secondAttribute="trailing" constant="8" id="Maa-Gv-gyc"/>
                                                                 <constraint firstItem="fh2-Mn-VNg" firstAttribute="leading" secondItem="n6S-zQ-GwV" secondAttribute="trailing" constant="16" id="XXz-fX-y2x"/>
@@ -1334,7 +1337,6 @@ Cg
         </scene>
     </scenes>
     <resources>
-        <image name="expand.png" width="39" height="39"/>
         <image name="icnMenu.png" width="74" height="74"/>
         <image name="refresh.png" width="80" height="80"/>
         <image name="share.png" width="48" height="48"/>
