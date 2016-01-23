@@ -67,14 +67,16 @@ UICollectionViewDelegate,UICollectionViewDataSource
     // Set screen name.
     
     [[GoogleAnalyticsHelper sharedInstance] sendScreenTrackingWithName:@"News Card Screen"];
-        
+    
+    [self startGetNewsContentService];
+    
 }
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self generateDatasource];
-    [self startGetNewsContentService];
+    
 }
 
 
@@ -131,6 +133,7 @@ UICollectionViewDelegate,UICollectionViewDataSource
 - (void)generateDatasource {
     
     _photoModelsDatasource = [[NSMutableArray alloc] init];
+
     
     newsArr = [[NSMutableArray alloc] init];
     self.menuTitle.text = @"";
@@ -172,10 +175,13 @@ UICollectionViewDelegate,UICollectionViewDataSource
     }
     
     [_photosCollectionView reloadData];
-   // [_photosCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    
-    
-    
+    if (![[SharedClass sharedInstance] isBackButtonTapped]) {
+        [_photosCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }
+    else {
+        [[SharedClass sharedInstance] setIsBackButtonTapped:NO];
+    }
+
     
 }
 

@@ -11,7 +11,7 @@
 
 @implementation SharedClass
 
-@synthesize userId,userRegisterDetails,selectedMyNewsArr,selectedGenresArr,menuOptionType,searchText;
+@synthesize userId,userRegisterDetails,selectedMyNewsArr,selectedGenresArr,menuOptionType,searchText,isBackButtonTapped;
 
 static SharedClass *singletonObject = nil;
 

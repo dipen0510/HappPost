@@ -25,13 +25,13 @@
     [[SharedClass sharedInstance] setSelectedGenresArr:[[NSMutableArray alloc] init]];
     
     
-    /*if ([self needsUpdate]) {
+    if ([self needsUpdate]) {
         
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Update is available" message:@"A new version of this application is available." delegate:self cancelButtonTitle:@"Update" otherButtonTitles:nil, nil];
         [alert show];
         
     }
-    else {*/
+    else {
         
         if ([[SharedClass sharedInstance] userId]) {
             
@@ -44,12 +44,12 @@
             
         }
         
-   // }
+    }
 
     
 }
 
-/*
+
 -(BOOL) needsUpdate{
     NSDictionary* infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString* appID = infoDictionary[@"CFBundleIdentifier"];
@@ -62,7 +62,7 @@
         if ([lookup[@"resultCount"] integerValue] == 1){
             NSString* appStoreVersion = lookup[@"results"][0][@"version"];
             NSString* currentVersion = infoDictionary[@"CFBundleShortVersionString"];
-            if (![appStoreVersion isEqualToString:currentVersion]){
+            if ([currentVersion compare:appStoreVersion] == NSOrderedAscending){
                 NSLog(@"Need to update [%@ != %@]", appStoreVersion, currentVersion);
                 return YES;
             }
@@ -72,7 +72,7 @@
     
     return NO;
 }
-*/
+
 
 - (void) startSkipRegistrationService {
     

@@ -110,7 +110,13 @@
     
     
     [self.listTblView reloadData];
-    //[self.listTblView setContentOffset:CGPointZero animated:YES];
+    if (![[SharedClass sharedInstance] isBackButtonTapped]) {
+        [self.listTblView setContentOffset:CGPointZero animated:YES];
+    }
+    else {
+        [[SharedClass sharedInstance] setIsBackButtonTapped:NO];
+    }
+    
     
 }
 

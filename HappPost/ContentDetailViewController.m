@@ -554,6 +554,7 @@
 */
 
 - (IBAction)menuButtonTapped:(id)sender {
+    [[SharedClass sharedInstance] setIsBackButtonTapped:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

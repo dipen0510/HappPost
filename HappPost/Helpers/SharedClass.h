@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSMutableArray* selectedMyNewsArr;
 
 @property int menuOptionType;
+@property BOOL isBackButtonTapped;
 @property (strong, nonatomic) NSString* searchText;
 
 -(NSDate *)getCurrentUTCFormatDate;
