@@ -1249,7 +1249,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.HappPost;
 				PRODUCT_NAME = "Happ Post";
-				PROVISIONING_PROFILE = "7d7bea2b-dd77-4d14-875d-401e5c7e22a3";
+				PROVISIONING_PROFILE = "8cbaef95-94b0-4c6e-a1c5-d718ba79197e";
 			};
 			name = Debug;
 		};
@@ -1270,7 +1270,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.HappPost;
 				PRODUCT_NAME = "Happ Post";
-				PROVISIONING_PROFILE = "7d7bea2b-dd77-4d14-875d-401e5c7e22a3";
+				PROVISIONING_PROFILE = "8cbaef95-94b0-4c6e-a1c5-d718ba79197e";
 			};
 			name = Release;
 		};

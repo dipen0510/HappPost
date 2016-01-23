@@ -10,8 +10,8 @@
 #define HappPost_Settings_h
 
 
-//#define BaseWebServiceURL @"http://services.happpost.com/HappostService"
-#define BaseWebServiceURL @"http://admin.happpost.com/HappostService"
+#define BaseWebServiceURL @"http://services.happpost.com/HappostService"
+//#define BaseWebServiceURL @"http://admin.happpost.com/HappostService"
 
 #define AboutUsURL @"http://happpost.com/Happ/AppHtml/Aboutus.html"
 #define PrivacyPolicyURL @"http://happpost.com/Happ/AppHtml/TermsAndCondition.html"
