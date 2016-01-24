@@ -28,6 +28,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     
+    [manager.requestSerializer setValue: @"HappyKey"  forHTTPHeaderField:@"API-KEY"];
     
     [manager GET:self.serviceKey parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
@@ -68,6 +69,8 @@
     manager.responseSerializer.acceptableStatusCodes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(200, 300)];
     //manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
     //manager.securityPolicy.allowInvalidCertificates = YES;
+    
+    [manager.requestSerializer setValue: @"HappyKey"  forHTTPHeaderField:@"API-KEY"];
     
     [manager POST:self.serviceKey parameters:postData success:^(NSURLSessionDataTask *task, id responseObject) {
             
