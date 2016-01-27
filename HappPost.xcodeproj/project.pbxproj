@@ -93,6 +93,13 @@
 		188DE9E51C4C224F005EBDBC /* smiling.png in Resources */ = {isa = PBXBuildFile; fileRef = 188DE9E11C4C224F005EBDBC /* smiling.png */; };
 		188DE9E61C4C224F005EBDBC /* smily-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 188DE9E21C4C224F005EBDBC /* smily-2.png */; };
 		188DE9EB1C4C2D20005EBDBC /* SmileyRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 188DE9EA1C4C2D20005EBDBC /* SmileyRequestObject.m */; };
+		188F289B1C5957EE00179791 /* AppTutorialFirstPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188F28921C5957EE00179791 /* AppTutorialFirstPageViewController.m */; };
+		188F289D1C5957EE00179791 /* AppTutorialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188F28961C5957EE00179791 /* AppTutorialPageViewController.m */; };
+		188F289E1C5957EE00179791 /* AppTutorialSecondPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188F28981C5957EE00179791 /* AppTutorialSecondPageViewController.m */; };
+		188F289F1C5957EE00179791 /* AppTutorialThirdPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188F289A1C5957EE00179791 /* AppTutorialThirdPageViewController.m */; };
+		188F28A31C595C6900179791 /* tute01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 188F28A01C595C6900179791 /* tute01.jpg */; };
+		188F28A41C595C6900179791 /* tute02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 188F28A11C595C6900179791 /* tute02.jpg */; };
+		188F28A51C595C6900179791 /* tute03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 188F28A21C595C6900179791 /* tute03.jpg */; };
 		18908A7C1BFCFD9E008A7252 /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = 18908A7B1BFCFD9E008A7252 /* border.png */; };
 		18945D591C0AD956007D6A26 /* NewsContentRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 18945D581C0AD956007D6A26 /* NewsContentRequestObject.m */; };
 		18945D5C1C0ADA64007D6A26 /* NewsContentResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 18945D5B1C0ADA64007D6A26 /* NewsContentResponseObject.m */; };
@@ -311,6 +318,17 @@
 		188DE9E21C4C224F005EBDBC /* smily-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smily-2.png"; sourceTree = "<group>"; };
 		188DE9E91C4C2D20005EBDBC /* SmileyRequestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmileyRequestObject.h; sourceTree = "<group>"; };
 		188DE9EA1C4C2D20005EBDBC /* SmileyRequestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmileyRequestObject.m; sourceTree = "<group>"; };
+		188F28911C5957EE00179791 /* AppTutorialFirstPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTutorialFirstPageViewController.h; sourceTree = "<group>"; };
+		188F28921C5957EE00179791 /* AppTutorialFirstPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTutorialFirstPageViewController.m; sourceTree = "<group>"; };
+		188F28951C5957EE00179791 /* AppTutorialPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTutorialPageViewController.h; sourceTree = "<group>"; };
+		188F28961C5957EE00179791 /* AppTutorialPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTutorialPageViewController.m; sourceTree = "<group>"; };
+		188F28971C5957EE00179791 /* AppTutorialSecondPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTutorialSecondPageViewController.h; sourceTree = "<group>"; };
+		188F28981C5957EE00179791 /* AppTutorialSecondPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTutorialSecondPageViewController.m; sourceTree = "<group>"; };
+		188F28991C5957EE00179791 /* AppTutorialThirdPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppTutorialThirdPageViewController.h; sourceTree = "<group>"; };
+		188F289A1C5957EE00179791 /* AppTutorialThirdPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppTutorialThirdPageViewController.m; sourceTree = "<group>"; };
+		188F28A01C595C6900179791 /* tute01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tute01.jpg; sourceTree = "<group>"; };
+		188F28A11C595C6900179791 /* tute02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tute02.jpg; sourceTree = "<group>"; };
+		188F28A21C595C6900179791 /* tute03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tute03.jpg; sourceTree = "<group>"; };
 		18908A7B1BFCFD9E008A7252 /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border.png; sourceTree = "<group>"; };
 		18945D571C0AD956007D6A26 /* NewsContentRequestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsContentRequestObject.h; sourceTree = "<group>"; };
 		18945D581C0AD956007D6A26 /* NewsContentRequestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsContentRequestObject.m; sourceTree = "<group>"; };
@@ -655,6 +673,21 @@
 			name = DateTimeAgo;
 			sourceTree = "<group>";
 		};
+		188F28901C5957EE00179791 /* ScanTutorialViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				188F28951C5957EE00179791 /* AppTutorialPageViewController.h */,
+				188F28961C5957EE00179791 /* AppTutorialPageViewController.m */,
+				188F28911C5957EE00179791 /* AppTutorialFirstPageViewController.h */,
+				188F28921C5957EE00179791 /* AppTutorialFirstPageViewController.m */,
+				188F28971C5957EE00179791 /* AppTutorialSecondPageViewController.h */,
+				188F28981C5957EE00179791 /* AppTutorialSecondPageViewController.m */,
+				188F28991C5957EE00179791 /* AppTutorialThirdPageViewController.h */,
+				188F289A1C5957EE00179791 /* AppTutorialThirdPageViewController.m */,
+			);
+			path = ScanTutorialViewControllers;
+			sourceTree = "<group>";
+		};
 		18945D601C0AE04D007D6A26 /* fmdb */ = {
 			isa = PBXGroup;
 			children = (
@@ -697,6 +730,7 @@
 		18BDF76D1BFBA4EB003B7D7D /* HappPost */ = {
 			isa = PBXGroup;
 			children = (
+				188F28901C5957EE00179791 /* ScanTutorialViewControllers */,
 				187E2D1C1C0E2A9E0057B583 /* Category */,
 				1801B8311C0ABC9300AA82CA /* Library */,
 				182B20CB1C01064E000AD63D /* Modal */,
@@ -762,6 +796,9 @@
 		18BDF7951BFBA88A003B7D7D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				188F28A01C595C6900179791 /* tute01.jpg */,
+				188F28A11C595C6900179791 /* tute02.jpg */,
+				188F28A21C595C6900179791 /* tute03.jpg */,
 				188DE9E11C4C224F005EBDBC /* smiling.png */,
 				188DE9E21C4C224F005EBDBC /* smily-2.png */,
 				D4A3CEFE1C450EBE005D9428 /* radio_fill.png */,
@@ -934,6 +971,7 @@
 				1801B82D1C0AB81B00AA82CA /* happ post .png in Resources */,
 				180B3C401C0B9F3D009D364B /* placeholder.png in Resources */,
 				1882FADD1C10C9AB0063499C /* splash.png in Resources */,
+				188F28A51C595C6900179791 /* tute03.jpg in Resources */,
 				180547931C18C52900E604EB /* titleLogo.png in Resources */,
 				18BDF7AB1BFBA88A003B7D7D /* entertainment.png in Resources */,
 				188DE9E61C4C224F005EBDBC /* smily-2.png in Resources */,
@@ -950,6 +988,7 @@
 				1871972A1C03A7B600ACC58B /* MenuTableViewCell.xib in Resources */,
 				18BDF7B01BFBA88A003B7D7D /* radio.png in Resources */,
 				18BDF7AE1BFBA88A003B7D7D /* india.png in Resources */,
+				188F28A41C595C6900179791 /* tute02.jpg in Resources */,
 				188D52CD1C1211AA00C92A0E /* videoPlayerPlaceholder.png in Resources */,
 				18858EFD1C19F01C0039805C /* menuArrow.png in Resources */,
 				18908A7C1BFCFD9E008A7252 /* border.png in Resources */,
@@ -958,6 +997,7 @@
 				18BDF7A81BFBA88A003B7D7D /* business.png in Resources */,
 				D4A3CEFF1C450EBE005D9428 /* radio_fill.png in Resources */,
 				18BDF7BF1BFBAB8F003B7D7D /* ListViewTableViewCell.xib in Resources */,
+				188F28A31C595C6900179791 /* tute01.jpg in Resources */,
 				1801B89A1C0AD15600AA82CA /* SVProgressHUD.bundle in Resources */,
 				188D52D31C12567B00C92A0E /* NSDateTimeAgo.bundle in Resources */,
 				18BDF7B51BFBA88A003B7D7D /* spotlight.png in Resources */,
@@ -1053,8 +1093,11 @@
 				18BDF7771BFBA4EB003B7D7D /* ListViewController.m in Sources */,
 				1801B8351C0ABED300AA82CA /* DataSyncManager.m in Sources */,
 				1829BC3D1C160F12005F9EB8 /* UIView+WebCacheOperation.m in Sources */,
+				188F289F1C5957EE00179791 /* AppTutorialThirdPageViewController.m in Sources */,
 				1829BC341C160F12005F9EB8 /* SDWebImageDownloaderOperation.m in Sources */,
+				188F289E1C5957EE00179791 /* AppTutorialSecondPageViewController.m in Sources */,
 				182B20C41C01057B000AD63D /* CustomCollectionViewCollectionViewCell.m in Sources */,
+				188F289B1C5957EE00179791 /* AppTutorialFirstPageViewController.m in Sources */,
 				1829BC331C160F12005F9EB8 /* SDWebImageDownloader.m in Sources */,
 				1801B86C1C0ABEF700AA82CA /* AFURLResponseSerialization.m in Sources */,
 				188DE9EB1C4C2D20005EBDBC /* SmileyRequestObject.m in Sources */,
@@ -1107,6 +1150,7 @@
 				18F21B191C18F4D600BAD106 /* GoogleAnalyticsHelper.m in Sources */,
 				187197231C039BF700ACC58B /* MenuView.m in Sources */,
 				1801B86D1C0ABEF700AA82CA /* AFURLSessionManager.m in Sources */,
+				188F289D1C5957EE00179791 /* AppTutorialPageViewController.m in Sources */,
 				18945D6F1C0AE04D007D6A26 /* FMDatabaseQueue.m in Sources */,
 				1829BC361C160F12005F9EB8 /* SDWebImagePrefetcher.m in Sources */,
 				1829BC3A1C160F12005F9EB8 /* UIImage+WebP.m in Sources */,

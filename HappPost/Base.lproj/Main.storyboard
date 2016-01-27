@@ -99,7 +99,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="839"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0DI-J3-uYg">
@@ -183,7 +183,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IbG-Di-psK">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="775"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1119,11 +1119,152 @@ Cg
                     <navigationItem key="navigationItem" id="mt1-cT-GCy"/>
                     <connections>
                         <segue destination="4lm-Rr-60S" kind="show" identifier="showCardViewSegue" id="eca-uT-q5f"/>
+                        <segue destination="IPq-B7-uCf" kind="show" identifier="showTutorialSegue" id="ZzS-2i-vjh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5I-go-Y3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="361" y="447"/>
+        </scene>
+        <!--App Tutorial Page View Controller-->
+        <scene sceneID="Cou-cv-z9x">
+            <objects>
+                <viewController id="IPq-B7-uCf" customClass="AppTutorialPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wqX-Nh-0B2"/>
+                        <viewControllerLayoutGuide type="bottom" id="zUe-hK-XdR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mh1-fx-5Gv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="1" green="0.792156862745098" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="4lm-Rr-60S" kind="show" identifier="showCardViewSegue" id="Pov-WF-wWn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0X9-f7-saJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="361" y="1203"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="xqa-mL-hxC">
+            <objects>
+                <pageViewController storyboardIdentifier="AppTutorialPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="RTL-kc-yc3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cYF-6k-jqz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="361" y="1919"/>
+        </scene>
+        <!--App Tutorial First Page View Controller-->
+        <scene sceneID="aET-0e-AF1">
+            <objects>
+                <viewController storyboardIdentifier="AppTutorialFirstPageViewController" id="f8Z-Ee-AdG" customClass="AppTutorialFirstPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CCS-sm-yMi"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lm1-nu-Qwd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MLB-pD-5gc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tute01.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="wwb-Ve-N86">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wwb-Ve-N86" firstAttribute="top" secondItem="MLB-pD-5gc" secondAttribute="topMargin" id="5IF-Hy-RTb"/>
+                            <constraint firstItem="Lm1-nu-Qwd" firstAttribute="top" secondItem="wwb-Ve-N86" secondAttribute="bottom" id="9cE-CA-Eam"/>
+                            <constraint firstItem="wwb-Ve-N86" firstAttribute="leading" secondItem="MLB-pD-5gc" secondAttribute="leadingMargin" constant="-20" id="cF1-ea-QKa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wwb-Ve-N86" secondAttribute="trailing" constant="-20" id="sjh-FK-UPB"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JEZ-3v-TkW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-446" y="2679"/>
+        </scene>
+        <!--App Tutorial Second Page View Controller-->
+        <scene sceneID="qfw-tt-kgX">
+            <objects>
+                <viewController storyboardIdentifier="AppTutorialSecondPageViewController" id="rnN-ys-sE2" customClass="AppTutorialSecondPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ebd-dI-cug"/>
+                        <viewControllerLayoutGuide type="bottom" id="OVn-Es-sZ3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eig-Os-ILs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tute02.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="fhr-jw-xR6">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="fhr-jw-xR6" secondAttribute="trailing" constant="-20" id="6mp-B9-unn"/>
+                            <constraint firstItem="fhr-jw-xR6" firstAttribute="leading" secondItem="eig-Os-ILs" secondAttribute="leadingMargin" constant="-20" id="6th-Bb-rd0"/>
+                            <constraint firstItem="fhr-jw-xR6" firstAttribute="top" secondItem="eig-Os-ILs" secondAttribute="topMargin" id="Pgh-y0-9iV"/>
+                            <constraint firstItem="OVn-Es-sZ3" firstAttribute="top" secondItem="fhr-jw-xR6" secondAttribute="bottom" id="uEe-Hv-tSW"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ui4-ev-Adt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="361" y="2679"/>
+        </scene>
+        <!--App Tutorial Third Page View Controller-->
+        <scene sceneID="DAU-fc-Uji">
+            <objects>
+                <viewController storyboardIdentifier="AppTutorialThirdPageViewController" id="Hah-s6-hON" customClass="AppTutorialThirdPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Uy-CH-srx"/>
+                        <viewControllerLayoutGuide type="bottom" id="SWj-pX-tde"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="utZ-0G-EoB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tute03.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="AM4-YN-Sbl">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcj-EL-ZoC">
+                                <rect key="frame" x="253" y="550" width="94" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7dP-0H-and"/>
+                                    <constraint firstAttribute="width" constant="94" id="d0N-57-jon"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                <state key="normal" title="DONE">
+                                    <color key="titleColor" red="0.23137254901960785" green="0.23529411764705882" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonTapped:" destination="Hah-s6-hON" eventType="touchUpInside" id="a8m-0j-hsY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qcj-EL-ZoC" firstAttribute="centerX" secondItem="utZ-0G-EoB" secondAttribute="centerX" id="66s-wV-p2T"/>
+                            <constraint firstItem="AM4-YN-Sbl" firstAttribute="leading" secondItem="utZ-0G-EoB" secondAttribute="leadingMargin" constant="-20" id="Aa6-tj-pk2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AM4-YN-Sbl" secondAttribute="trailing" constant="-20" id="FjZ-OC-LMK"/>
+                            <constraint firstItem="SWj-pX-tde" firstAttribute="top" secondItem="qcj-EL-ZoC" secondAttribute="bottom" constant="20" id="fAN-Mq-OLC"/>
+                            <constraint firstItem="SWj-pX-tde" firstAttribute="top" secondItem="AM4-YN-Sbl" secondAttribute="bottom" id="uLG-DC-kVK"/>
+                            <constraint firstItem="AM4-YN-Sbl" firstAttribute="top" secondItem="utZ-0G-EoB" secondAttribute="topMargin" id="zUk-Pf-0po"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="57T-91-nJg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1166" y="2679"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bKx-H7-HlG">
@@ -1154,7 +1295,7 @@ Cg
                         <viewControllerLayoutGuide type="bottom" id="0MM-Py-eST"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fr9-Iz-6Xh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="839"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wVb-zf-gUM">
@@ -1208,7 +1349,7 @@ Cg
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No bookmarks added. Long press a headline to save it as a bookmark." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="zdE-3P-crq">
-                                <rect key="frame" x="20" y="278" width="560" height="44"/>
+                                <rect key="frame" x="20" y="398" width="560" height="44"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="xQv-Yp-gy0"/>
@@ -1217,7 +1358,7 @@ Cg
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qNl-fe-hUh">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="775"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1342,7 +1483,7 @@ Cg
                         <viewControllerLayoutGuide type="bottom" id="OVK-mD-6LU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="c2b-UI-TL0">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="839"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLr-qh-EUb">
@@ -1396,7 +1537,7 @@ Cg
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zfO-wi-zPH">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="775"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1435,12 +1576,15 @@ Cg
         <image name="smiling.png" width="100" height="100"/>
         <image name="splash.png" width="960" height="1704"/>
         <image name="titleLogo.png" width="1401" height="1294"/>
+        <image name="tute01.jpg" width="944" height="1677"/>
+        <image name="tute02.jpg" width="944" height="1677"/>
+        <image name="tute03.jpg" width="944" height="1677"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Kb6-yS-sIu"/>
-        <segue reference="wMo-YW-qj2"/>
+        <segue reference="Pov-WF-wWn"/>
         <segue reference="cV4-ek-xnD"/>
-        <segue reference="SBO-D2-E2l"/>
         <segue reference="VQ8-mS-zsU"/>
+        <segue reference="SBO-D2-E2l"/>
     </inferredMetricsTieBreakers>
 </document>

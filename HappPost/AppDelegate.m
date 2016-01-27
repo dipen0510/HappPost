@@ -36,6 +36,8 @@
     
     [[GoogleAnalyticsHelper sharedInstance] sendEventWithCategory:@"iOS Event Category" andAction:@"iOS App Launched" andLabel:@"iOS App Launched"];
     
+    [self customizePageControlIndicator];
+    
     return YES;
 }
 
@@ -148,6 +150,17 @@
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
     }
 #endif
+    
+}
+
+
+
+- (void) customizePageControlIndicator {
+    
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor colorWithWhite:0.5 alpha:0.7];
+    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    pageControl.backgroundColor = [UIColor clearColor];;
     
 }
 
