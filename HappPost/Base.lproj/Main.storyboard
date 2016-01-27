@@ -417,7 +417,7 @@
                                             <outlet property="delegate" destination="AI0-gY-Tst" id="sQQ-5v-SjI"/>
                                         </connections>
                                     </collectionView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="99" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWU-BA-2yA" customClass="HPTopLeftLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="9999" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWU-BA-2yA" customClass="HPTopLeftLabel">
                                         <rect key="frame" x="16" y="1176" width="360" height="291"/>
                                         <animations/>
                                         <constraints>
