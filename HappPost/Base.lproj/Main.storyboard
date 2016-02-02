@@ -1230,12 +1230,12 @@ Cg
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tute03.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="AM4-YN-Sbl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tute3.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="AM4-YN-Sbl">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcj-EL-ZoC">
-                                <rect key="frame" x="253" y="550" width="94" height="30"/>
+                                <rect key="frame" x="253" y="519" width="94" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7dP-0H-and"/>
@@ -1256,7 +1256,7 @@ Cg
                             <constraint firstItem="qcj-EL-ZoC" firstAttribute="centerX" secondItem="utZ-0G-EoB" secondAttribute="centerX" id="66s-wV-p2T"/>
                             <constraint firstItem="AM4-YN-Sbl" firstAttribute="leading" secondItem="utZ-0G-EoB" secondAttribute="leadingMargin" constant="-20" id="Aa6-tj-pk2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AM4-YN-Sbl" secondAttribute="trailing" constant="-20" id="FjZ-OC-LMK"/>
-                            <constraint firstItem="SWj-pX-tde" firstAttribute="top" secondItem="qcj-EL-ZoC" secondAttribute="bottom" constant="20" id="fAN-Mq-OLC"/>
+                            <constraint firstItem="SWj-pX-tde" firstAttribute="top" secondItem="qcj-EL-ZoC" secondAttribute="bottom" constant="51" id="fAN-Mq-OLC"/>
                             <constraint firstItem="SWj-pX-tde" firstAttribute="top" secondItem="AM4-YN-Sbl" secondAttribute="bottom" id="uLG-DC-kVK"/>
                             <constraint firstItem="AM4-YN-Sbl" firstAttribute="top" secondItem="utZ-0G-EoB" secondAttribute="topMargin" id="zUk-Pf-0po"/>
                         </constraints>
@@ -1578,7 +1578,7 @@ Cg
         <image name="titleLogo.png" width="1401" height="1294"/>
         <image name="tute01.jpg" width="944" height="1677"/>
         <image name="tute02.jpg" width="944" height="1677"/>
-        <image name="tute03.jpg" width="944" height="1677"/>
+        <image name="tute3.jpg" width="453" height="805"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Kb6-yS-sIu"/>
