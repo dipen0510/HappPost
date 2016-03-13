@@ -26,6 +26,9 @@
 #define kAddComment @"InsertCommentNew"
 #define kVerifyService @"RegisteriOSUser"
 #define kGetMasterGenreList @"GetGenresList"
+#define kGetAdData @"GetAdDataMobile"
+
+
 #define kMarkSmile @"MarkSmile"
 #define kMarkUnSmile @"MarkUnSmile"
 
