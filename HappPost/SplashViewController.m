@@ -7,6 +7,7 @@
 //
 
 #import "SplashViewController.h"
+#import "GetAdDataRequestObject.h"
 
 @interface SplashViewController ()
 
@@ -20,6 +21,7 @@
     
     [[SharedClass sharedInstance] setSelectedGenresArr:[[NSMutableArray alloc] init]];
     
+    [self startGetAdService];
     
     if ([self needsUpdate]) {
         
@@ -42,6 +44,25 @@
         
     }
 
+    
+}
+
+- (void) startGetAdService {
+    
+    DataSyncManager* manager = [[DataSyncManager alloc] init];
+    manager.serviceKey = kGetAdData;
+    [manager startPOSTWebServicesWithParams:[self prepareDictionaryForGetAd]];
+    
+}
+
+#pragma mark - Modalobject
+
+- (NSMutableDictionary *) prepareDictionaryForGetAd {
+    
+    GetAdDataRequestObject* registerObj = [[GetAdDataRequestObject alloc] init];
+    registerObj.timeStamp = [[[SharedClass sharedInstance] getUTCDateFormatter] stringFromDate:[NSDate date]];
+    
+    return [registerObj createRequestDictionary];
     
 }
 

@@ -111,6 +111,9 @@
 		18945D701C0AE04D007D6A26 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 18945D6B1C0AE04D007D6A26 /* FMResultSet.m */; };
 		18945D721C0AE6B4007D6A26 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18945D711C0AE6B4007D6A26 /* libsqlite3.tbd */; };
 		18945D751C0AE959007D6A26 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18945D741C0AE959007D6A26 /* SplashViewController.m */; };
+		189B7D881C9542E0003A3257 /* GetAdDataRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 189B7D871C9542E0003A3257 /* GetAdDataRequestObject.m */; };
+		189B7D8B1C9542FB003A3257 /* GetAdDataResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 189B7D8A1C9542FB003A3257 /* GetAdDataResponseObject.m */; };
+		189B7D8E1C954861003A3257 /* AdModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 189B7D8D1C954861003A3257 /* AdModal.m */; };
 		18BDF7711BFBA4EB003B7D7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDF7701BFBA4EB003B7D7D /* main.m */; };
 		18BDF7741BFBA4EB003B7D7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDF7731BFBA4EB003B7D7D /* AppDelegate.m */; };
 		18BDF7771BFBA4EB003B7D7D /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BDF7761BFBA4EB003B7D7D /* ListViewController.m */; };
@@ -350,6 +353,12 @@
 		18945D711C0AE6B4007D6A26 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		18945D731C0AE959007D6A26 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		18945D741C0AE959007D6A26 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		189B7D861C9542E0003A3257 /* GetAdDataRequestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAdDataRequestObject.h; sourceTree = "<group>"; };
+		189B7D871C9542E0003A3257 /* GetAdDataRequestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAdDataRequestObject.m; sourceTree = "<group>"; };
+		189B7D891C9542FB003A3257 /* GetAdDataResponseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAdDataResponseObject.h; sourceTree = "<group>"; };
+		189B7D8A1C9542FB003A3257 /* GetAdDataResponseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAdDataResponseObject.m; sourceTree = "<group>"; };
+		189B7D8C1C954861003A3257 /* AdModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdModal.h; sourceTree = "<group>"; };
+		189B7D8D1C954861003A3257 /* AdModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdModal.m; sourceTree = "<group>"; };
 		18BDF76B1BFBA4EB003B7D7D /* Happ Post.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Happ Post.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BDF76F1BFBA4EB003B7D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18BDF7701BFBA4EB003B7D7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -498,6 +507,8 @@
 				1805479B1C18E75400E604EB /* VerifyRequestObject.m */,
 				188DE9E91C4C2D20005EBDBC /* SmileyRequestObject.h */,
 				188DE9EA1C4C2D20005EBDBC /* SmileyRequestObject.m */,
+				189B7D861C9542E0003A3257 /* GetAdDataRequestObject.h */,
+				189B7D871C9542E0003A3257 /* GetAdDataRequestObject.m */,
 			);
 			name = RequestObj;
 			sourceTree = "<group>";
@@ -509,6 +520,8 @@
 				1801B8871C0AC02A00AA82CA /* RegisterResponseObject.m */,
 				18945D5A1C0ADA64007D6A26 /* NewsContentResponseObject.h */,
 				18945D5B1C0ADA64007D6A26 /* NewsContentResponseObject.m */,
+				189B7D891C9542FB003A3257 /* GetAdDataResponseObject.h */,
+				189B7D8A1C9542FB003A3257 /* GetAdDataResponseObject.m */,
 			);
 			name = ResponseObj;
 			sourceTree = "<group>";
@@ -638,6 +651,8 @@
 				1882FADF1C10D5E10063499C /* NewsInfographicsObject.m */,
 				181967541C29E54000B70D7E /* MasterGenreObject.h */,
 				181967551C29E54000B70D7E /* MasterGenreObject.m */,
+				189B7D8C1C954861003A3257 /* AdModal.h */,
+				189B7D8D1C954861003A3257 /* AdModal.m */,
 			);
 			name = Modal;
 			path = Model;
@@ -1071,6 +1086,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				187E2D1F1C0E2ADA0057B583 /* UILabel+UILabelDynamicHeight.m in Sources */,
+				189B7D8B1C9542FB003A3257 /* GetAdDataResponseObject.m in Sources */,
 				18BDF7BE1BFBAB8F003B7D7D /* ListViewTableViewCell.m in Sources */,
 				1801B86F1C0ABEF700AA82CA /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				1801B8741C0ABEF700AA82CA /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -1083,6 +1099,7 @@
 				18945D591C0AD956007D6A26 /* NewsContentRequestObject.m in Sources */,
 				1829BC311C160F12005F9EB8 /* SDWebImageCompat.m in Sources */,
 				1829BC321C160F12005F9EB8 /* SDWebImageDecoder.m in Sources */,
+				189B7D881C9542E0003A3257 /* GetAdDataRequestObject.m in Sources */,
 				1801B89B1C0AD15600AA82CA /* SVProgressHUD.m in Sources */,
 				1805479C1C18E75400E604EB /* VerifyRequestObject.m in Sources */,
 				181D3F0B1C138BCE00C3C1DB /* AddCommentRequestObject.m in Sources */,
@@ -1118,6 +1135,7 @@
 				1801B8661C0ABEF700AA82CA /* AFHTTPRequestOperationManager.m in Sources */,
 				182B20CE1C01064E000AD63D /* CardModal.m in Sources */,
 				1801B8691C0ABEF700AA82CA /* AFSecurityPolicy.m in Sources */,
+				189B7D8E1C954861003A3257 /* AdModal.m in Sources */,
 				180547961C18D74B00E604EB /* SearchListViewController.m in Sources */,
 				1880A0FD1C04F290001F6B78 /* DetailContentCollectionViewCell.m in Sources */,
 				18945D701C0AE04D007D6A26 /* FMResultSet.m in Sources */,

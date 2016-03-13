@@ -9,6 +9,7 @@
 #import "DataSyncManager.h"
 #import "RegisterResponseObject.h"
 #import "NewsContentResponseObject.h"
+#import "GetAdDataResponseObject.h"
 
 @implementation DataSyncManager
 @synthesize delegate,serviceKey;
@@ -133,6 +134,14 @@
         
         NewsContentResponseObject* response = [[NewsContentResponseObject alloc] initWithDictionary:responseObj];
         [[SharedClass sharedInstance] insertNewsContentResponseIntoDB:response];
+        
+    }
+    if ([responseServiceKey isEqualToString:kGetAdData] ) {
+        
+        GetAdDataResponseObject* response = [[GetAdDataResponseObject alloc] initWithDictionary:responseObj];
+        [[SharedClass sharedInstance] setAdData:response];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kAdsNotification object:nil];
+        return response;
         
     }
     

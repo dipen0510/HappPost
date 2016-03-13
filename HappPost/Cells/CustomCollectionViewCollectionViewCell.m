@@ -34,6 +34,8 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
 
 - (void)setCardModel:(CardModal *)cardModel {
     
+    _adImageView.hidden = YES;
+    _cardView.hidden = NO;
     
     UILongPressGestureRecognizer* gesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleBookmarkTapForNewsId:)];
     gesture.numberOfTouchesRequired = 1;
@@ -162,6 +164,37 @@ NSString *const kCustomCellIdentifier = @"CustomCell";
     
     self.layer.shouldRasterize = YES;
     self.layer.rasterizationScale = UIScreen.mainScreen.scale;
+}
+
+
+
+- (void)setAdModel:(AdModal *)adModel {
+    
+    _adImageView.hidden = NO;
+    _cardView.hidden = YES;
+    
+    _adModel = adModel;
+    
+    if(![_adModel.adImage isEqualToString:@""])
+    {
+        NSString* urlTextEscaped = [_adModel.adImage stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *url = [NSURL URLWithString:urlTextEscaped];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
+        
+        __weak UIImageView *weakImgView = _adImageView;
+        
+        [_adImageView setImageWithURLRequest:request
+                               placeholderImage:placeholderImage
+                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                            
+                                            weakImgView.image = image;
+                                            [weakImgView setNeedsLayout];
+                                            
+                                        } failure:nil];
+        
+    }
+    
 }
 
 -(void) downloadNewsImagewithURL:(NSString *)imgURL {

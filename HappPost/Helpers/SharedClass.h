@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "RegisterRequestObject.h"
 #import "NewsContentResponseObject.h"
+#import "GetAdDataResponseObject.h"
 
 @interface SharedClass : NSObject
 
@@ -23,6 +24,7 @@
 @property int menuOptionType;
 @property BOOL isBackButtonTapped;
 @property (strong, nonatomic) NSString* searchText;
+@property (strong, nonatomic) GetAdDataResponseObject* adData;
 
 -(NSDate *)getCurrentUTCFormatDate;
 -(NSDateFormatter* )getUTCDateFormatter;

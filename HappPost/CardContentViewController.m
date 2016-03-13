@@ -63,6 +63,8 @@ UICollectionViewDelegate,UICollectionViewDataSource
     blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     blurEffectView.frame = self.view.bounds;
     blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(adsNotificationReceived) name:kAdsNotification object:nil];
 
     // Set screen name.
     
@@ -174,6 +176,9 @@ UICollectionViewDelegate,UICollectionViewDataSource
         
     }
     
+    [self adsNowAvailable];
+    
+    
     [_photosCollectionView reloadData];
     if (![[SharedClass sharedInstance] isBackButtonTapped]) {
         [_photosCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
@@ -277,7 +282,26 @@ UICollectionViewDelegate,UICollectionViewDataSource
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CustomCollectionViewCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCustomCellIdentifier
                                                                                              forIndexPath:indexPath];
-    [cell setCardModel:_photoModelsDatasource[indexPath.row]];
+    
+    if ([_photoModelsDatasource[indexPath.row] isKindOfClass:[AdModal class]]) {
+        [cell setAdModel:_photoModelsDatasource[indexPath.row]];
+    }
+    else {
+        
+        [cell setCardModel:_photoModelsDatasource[indexPath.row]];
+        
+        SingleNewsObject* newsObj = (SingleNewsObject *)[newsArr objectAtIndex:indexPath.row];
+        
+        if (!newsObj.detailedStory || [newsObj.detailedStory isEqualToString:@""]) {
+            [cell.expandButton setHidden:YES];
+        }
+        else {
+            [cell.expandButton setHidden:NO];
+        }
+        
+    }
+    
+    
     //cell.cardView.layer.cornerRadius = 10.0;
     [cell.cardView.layer setMasksToBounds:YES];
     
@@ -291,14 +315,7 @@ UICollectionViewDelegate,UICollectionViewDataSource
     
     cell.delegate = self;
     
-    SingleNewsObject* newsObj = (SingleNewsObject *)[newsArr objectAtIndex:indexPath.row];
     
-    if (!newsObj.detailedStory || [newsObj.detailedStory isEqualToString:@""]) {
-        [cell.expandButton setHidden:YES];
-    }
-    else {
-        [cell.expandButton setHidden:NO];
-    }
     
     //selectedIndex = indexPath.row;
     
@@ -569,6 +586,34 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
             [controller setWebViewURL:PrivacyPolicyURL];
         }
         
+        
+    }
+    
+}
+
+#pragma mark - Ads Handler
+
+- (void) adsNotificationReceived {
+    
+    [self adsNowAvailable];
+    [_photosCollectionView reloadData];
+    
+}
+
+- (void) adsNowAvailable {
+    
+    NSMutableArray* adArr = [NSMutableArray arrayWithArray:[[SharedClass sharedInstance] adData].listAdData];
+    
+    for (int i = 0; i < adArr.count; i++) {
+        
+        AdModal* adObj = [AdModal modelWithNews:[adArr objectAtIndex:i]];
+        
+        if ([[adObj.adType lowercaseString] isEqualToString:@"card"]) {
+            
+            int index = [adObj.count intValue];
+            [_photoModelsDatasource insertObject:adObj atIndex:index];
+            
+        }
         
     }
     

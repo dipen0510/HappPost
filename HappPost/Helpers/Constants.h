@@ -71,6 +71,17 @@
 #define MasterGenreIdKey @"GenreID"
 #define ListOfAllGenresKey @"ListOfAllGenres"
 
+
+//Ad API Details
+
+#define ListAdDataKey @"ListAdData"
+#define AdIdKey @"AdId"
+#define CountKey @"Count"
+#define AdImageKey @"Image"
+#define AdLinkKey @"Link"
+#define AdNameKey @"Name"
+#define AdTypeKey @"Type"
+
 #define CodeKey @"Code"
 
 
@@ -81,6 +92,8 @@
 #define myNewsUserDefaultsKey @"myNewsUserDefaultsKey"
 #define SecondRunKey @"SecondRunv1.0.2"
 #define kDeviceToken @"deviceToken"
+#define kAdsNotification @"kAdsNotification"
+
 #endif
 
 

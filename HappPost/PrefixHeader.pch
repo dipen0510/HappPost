@@ -31,6 +31,7 @@
 #import <Google/Analytics.h>
 #import "GoogleAnalyticsHelper.h"
 #import "WebViewController.h"
+#import "AdModal.h"
 
 #endif /* PrefixHeader_pch */
 

@@ -45,4 +45,7 @@ extern NSString *const kCustomCellIdentifier;
 @property (weak, nonatomic) IBOutlet UIButton *smileyButton;
 - (IBAction)smileyButtonTapped:(id)sender;
 
+@property (nonatomic) AdModal *adModel;
+@property (weak, nonatomic) IBOutlet UIImageView *adImageView;
+
 @end
